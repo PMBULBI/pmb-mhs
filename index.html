@@ -471,84 +471,254 @@
                     </div>
                   </div>
                   <div class="space-y-5 profile-page">
-                    <div class="profiel-wrap px-[35px] pb-10 md:pt-[84px] pt-10 rounded-lg bg-white dark:bg-slate-800 lg:flex lg:space-y-0
-                  space-y-6 justify-between items-end relative z-[1]">
-                      <div class="bg-slate-800 dark:bg-slate-300 absolute left-0 top-0 md:h-1/2 h-[150px] w-full z-[-1] rounded-t-lg"></div>
-                      <div class="profile-box flex-none md:text-start text-center">
-                        <div class="md:flex items-end md:space-x-6 rtl:space-x-reverse">
-                          <div class="flex-none">
-                            <div class="md:h-[186px] md:w-[186px] h-[140px] w-[140px] md:ml-0 md:mr-0 ml-auto mr-auto md:mb-0 mb-4 rounded-full ring-4
-                                  ring-slate-100 relative">
-                              <img src="assets/images/all-img/bungaoren.png" alt="" class="w-full h-full object-cover rounded-full">
-                              <a href="profile-setting" class="absolute right-2 h-8 w-8 bg-slate-50 text-slate-600 rounded-full shadow-sm flex flex-col items-center
-                                      justify-center md:top-[140px] top-[100px]">
-                                <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
+                    <div class="grid gap-4 grid-cols-12">
+                      <div class="xl:col-span-8 col-span-12">
+                        <div class="card rounded-md bg-white dark:bg-slate-800 shadow-base">
+                          <div class="card-body flex flex-col p-6">
+                            <div class="md:flex items-end md:space-x-6 rtl:space-x-reverse">
+                              <div class="flex-none">
+                                <div class="md:h-[186px] md:w-[186px] h-[140px] w-[140px] md:ml-0 md:mr-0 ml-auto mr-auto md:mb-0 mb-4 rounded-full ring-4
+                                      ring-slate-100 relative">
+                                  <img src="assets/images/all-img/bungaoren.png" alt="" class="w-full h-full object-cover rounded-full">
+                                  <a href="profile-setting" class="absolute right-2 h-8 w-8 bg-slate-50 text-slate-600 rounded-full shadow-sm flex flex-col items-center
+                                          justify-center md:top-[140px] top-[100px]">
+                                    <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
+                                  </a>
+                                </div>
+                              </div>
+                              <div class="flex-1">
+                                <!-- Title Calon Mahasiswa & Nama Start -->
+                                <div class="text-2xl font-medium text-slate-900 dark:text-slate-200 mb-[3px]">
+                                  Naruto Uzumaki
+                                </div>
+                                <div class="text-sm font-light text-slate-600 dark:text-slate-400 mb-3">
+                                  Calon Mahasiswa Baru
+                                </div>
+                                <!-- Title Calon Mahasiswa & Nama End -->
+                                <!-- Biodata Pendaftaran Mahasiswa Start -->
+                                <div class="profile-info-500 md:flex md:text-start text-center flex-1 max-w-[516px] md:space-y-0 space-y-4">
+                                  <div class="flex-1">
+                                    <div class="text-base text-slate-900 dark:text-slate-300 font-medium mb-1" style="font-size: 13px;">
+                                      uzumaki@gmail.com
+                                    </div>
+                                    <div class="text-sm text-slate-600 font-light dark:text-slate-300">
+                                      <iconify-icon class=" nav-icon" icon="heroicons-outline:mail"></iconify-icon>
+                                      Email
+                                    </div>
+                                  </div>
+                                  <!-- end single -->
+                                  <div class="flex-1">
+                                    <div class="text-base text-slate-900 dark:text-slate-300 font-medium mb-1" style="font-size: 13px;">
+                                      +62 852 1392 1331
+                                    </div>
+                                    <div class="text-sm text-slate-600 font-light dark:text-slate-300">
+                                      <iconify-icon class=" nav-icon" icon="heroicons-outline:phone"></iconify-icon>
+                                      No Handphone
+                                    </div>
+                                  </div>
+                                  <!-- end single -->
+                                  <div class="flex-1">
+                                    <div class="text-base text-slate-900 dark:text-slate-300 font-medium mb-1" style="font-size: 13px;">
+                                      Jalur UTBK
+                                    </div>
+                                    <div class="text-sm text-slate-600 font-light dark:text-slate-300">
+                                      <iconify-icon class=" nav-icon" icon="heroicons-outline:archive-box-arrow-down"></iconify-icon>
+                                      Jalur Pendaftaran
+                                    </div>
+                                  </div>
+                                  <!-- end single -->
+                                </div>
+                                <!-- Biodata Pendaftaran Mahasiswa End -->
+                              </div>
+                            </div>
+                            <div class="card-text h-full mt-5">
+                              <div class="flex justify-between mb-4">
+                                <div class="card dark mr-1">
+                                  <div class="card-body rounded-md bg-white dark:bg-slate-800 shadow-base">
+                                    <div class="items-center p-5">
+                                        <button class="toolTip onTop rounded-md bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xl px-5" data-tippy-content="heroicons:user-group">
+                                          <iconify-icon icon="heroicons:user-group"></iconify-icon>
+                                        </button>
+                                      <h3 class="card-title text-slate-900 dark:text-white text-center" style="font-size: 12px;">Kuesioner</h3>
+                                      <i class="fa-solid fa-list-check"></i>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="card dark mr-1">
+                                  <div class="card-body rounded-md bg-white dark:bg-slate-800 shadow-base">
+                                    <div class="items-center p-5">
+                                      <button class="toolTip onTop rounded-md bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xl px-4" data-tippy-content="heroicons:user">
+                                        <iconify-icon icon="heroicons:user"></iconify-icon>
+                                      </button>
+                                      <h3 class="card-title text-slate-900 dark:text-white text-center" style="font-size: 12px;">Biodata</h3>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="card dark mr-1">
+                                  <div class="card-body rounded-md bg-white dark:bg-slate-800 shadow-base">
+                                    <div class="items-center p-5">
+                                      <button class="toolTip onTop rounded-md bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xl px-6" data-tippy-content="heroicons:pencil-square">
+                                        <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
+                                      </button>
+                                      <h3 class="card-title text-slate-900 dark:text-white text-center" style="font-size: 12px;">Online Test</h3>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="card dark mr-1">
+                                  <div class="card-body rounded-md bg-white dark:bg-slate-800 shadow-base">
+                                    <div class="items-center p-5">
+                                      <button class="toolTip onTop rounded-md bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xl px-7" data-tippy-content="heroicons:document-arrow-down">
+                                        <iconify-icon icon="heroicons:document-arrow-down"></iconify-icon>
+                                      </button>
+                                      <h3 class="card-title text-slate-900 dark:text-white text-center" style="font-size: 12px;">Pengumuman</h3>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="card dark mr-1">
+                                  <div class="card-body rounded-md bg-white dark:bg-slate-800 shadow-base">
+                                    <div class="items-center p-5">
+                                      <button class="toolTip onTop rounded-md bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xl px-6" data-tippy-content="heroicons:archive-box-arrow-down">
+                                        <iconify-icon icon="heroicons:archive-box-arrow-down"></iconify-icon>
+                                      </button>
+                                      <h3 class="card-title text-slate-900 dark:text-white text-center" style="font-size: 12px;">Pembayaran</h3>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="card dark mr-1">
+                                  <div class="card-body rounded-md bg-white dark:bg-slate-800 shadow-base">
+                                    <div class="items-center p-5">
+                                      <button class="toolTip onTop rounded-md bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xl px-6" data-tippy-content="heroicons:pencil-square">
+                                        <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
+                                      </button>
+                                      <h3 class="card-title text-slate-900 dark:text-white text-center" style="font-size: 11px;">Daftar Ulang</h3>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="flex flex-wrap">
+                          <div class="w-1/2 px-1">
+                          <a href="http://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg9BMLf9uq8CTnAsOO6cNO_5qPZgQQMDXiAkod3HYpnCE4-yeXVRw9MppQhvCa_Sd-owByQ-_zY2t8VZNoLnI3hp9gPaimfyhy_DCZ-HNWhy0gf2ErOfC19NUvPTPPWeRNnEZj11-w5hxsZlyJuAozr-UTdCs0uydGN_PvzHhTO-vJ_2Qj8fQ5Sw-JE/s3449/Biaya%20+%20Pot" class="btn inline-flex justify-center btn-secondary block-btn mt-3">
+                            <span class="flex items-center">
+                              <iconify-icon class="text-xl ltr:mr-2 rtl:ml-2" icon="heroicons-outline:archive-box-arrow-down"></iconify-icon>
+                              <span>Biaya Kuliah ULBI 2024/2025</span>
+                            </span>
+                          </a>
+                          </div>
+                          <div class="w-1/2">
+                            <a href="http://drive.google.com/file/d/1ArLjdAitDDgm9f8bUicHtYOTh0aN5mw5/view?usp=share_link" class="btn inline-flex justify-center btn-secondary block-btn mt-3">
+                              <span class="flex items-center">
+                                <iconify-icon class="text-xl ltr:mr-2 rtl:ml-2" icon="heroicons-outline:link"></iconify-icon>
+                                <span>E-Book Panduan Daftar Ulang</span>
+                              </span>
+                            </a>
+                          </div>
+                          <div class="w-1/2 px-1">
+                            <a href="http://drive.google.com/file/d/1k_GLr2ro7R8TK-FpdKaD7hbjpJHyRaWw/view?usp=share_link" class="btn inline-flex justify-center btn-secondary block-btn mt-3">
+                              <span class="flex items-center">
+                                <iconify-icon class="text-xl ltr:mr-2 rtl:ml-2" icon="heroicons-outline:newspaper"></iconify-icon>
+                                <span>Download Surat Pernyataan Daftar Ulang</span>
+                              </span>
+                            </a>
+                            </div>
+                            <div class="w-1/2">
+                              <a href="http://wa.me/+6281395294882" class="btn inline-flex justify-center btn-secondary block-btn mt-3">
+                                <span class="flex items-center">
+                                  <iconify-icon class="text-xl ltr:mr-2 rtl:ml-2" icon="heroicons-outline:users"></iconify-icon>
+                                  <span>Layanan Konsultasi via WhatsApps</span>
+                                </span>
                               </a>
+                          </div>
+                          <div class="w-1/2 px-1">
+                            <a href="http://drive.google.com/file/d/12E-p-yOQdfJ7Q5PWIEyAlvkyDvpMaBC2/view?usp=share_link" class="btn inline-flex justify-center btn-secondary block-btn mt-3">
+                              <span class="flex items-center">
+                                <iconify-icon class="text-xl ltr:mr-2 rtl:ml-2" icon="heroicons-outline:newspaper"></iconify-icon>
+                                <span>Panduan Cara Pembayaran</span>
+                              </span>
+                            </a>
+                            </div>
+                            <div class="w-1/2">
+                              <a href="http://drive.google.com/file/d/1PDQuCkg0r5mGXGZX55XEacUfCe9O_jCY/view?usp=share_link" class="btn inline-flex justify-center btn-secondary block-btn mt-3">
+                                <span class="flex items-center">
+                                  <iconify-icon class="text-xl ltr:mr-2 rtl:ml-2" icon="heroicons-outline:newspaper"></iconify-icon>
+                                  <span>Brosur ULBI 2024/2025</span>
+                                </span>
+                              </a>
+                          </div> 
+                          <div class="w-1/2 px-1">
+                            <a href="http://drive.google.com/file/d/1INny_c2KZMEquPEYhtIOanXpAE2vu1hI/view?usp=share_link" class="btn inline-flex justify-center btn-secondary block-btn mt-3">
+                              <span class="flex items-center">
+                                <iconify-icon class="text-xl ltr:mr-2 rtl:ml-2" icon="heroicons-outline:link"></iconify-icon>
+                                <span>E-Flyer ULBI</span>
+                              </span>
+                            </a>
+                            </div>
+                            <div class="w-1/2">
+                              <a href="http://drive.google.com/file/d/1Oc7jZIujLm_4nOJgOVnAu6O1-DrpxSmf/view?usp=share_link" class="btn inline-flex justify-center btn-secondary block-btn mt-3">
+                                <span class="flex items-center">
+                                  <iconify-icon class="text-xl ltr:mr-2 rtl:ml-2" icon="heroicons-outline:pencil-square"></iconify-icon>
+                                  <span>Alur Pendaftaran</span>
+                                </span>
+                              </a>
+                          </div> 
+                        </div>
+                      </div>
+                      <div class="xl:col-span-4 col-span-12 space-y-4">
+                        <div class="card rounded-md bg-white dark:bg-slate-800  shadow-base">
+                          <div class="card-body flex flex-col p-6">
+                            <div class="image-box order-0 -mx-6 -mt-6 mb-6">
+                              <img src="/assets/images/all-img/post-1.png" alt="" class="block w-full h-full object-cover">
+                            </div>
+                            <div class="order-2 card-text h-full">
+                              <div class="flex justify-between mb-4">
+                                <div>
+                                  <div class="text-xl text-slate-900 dark:text-white">
+                                    Berita Terkini
+                                  </div>
+                                </div>
+                                <a href="card.html" class="inline-flex leading-5 text-slate-500 dark:text-slate-400 text-sm font-normal">
+                                  <iconify-icon class="text-secondary-500 ltr:mr-2 rtl:ml-2 text-lg" icon="heroicons-outline:calendar"></iconify-icon>
+                                  10/02/2021
+                                </a>
+                              </div>
+                              <div class="card-text mt-4">
+                                <p>Pos Indonesia Menanam AKHLAK 26.700 Pohon Serentak dan Launching ULBI</p>
+                                <div class="mt-4 space-x-4 rtl:space-x-reverse">
+                                  <a href="card.html" class=" btn-link">Baca Lebih Lanjut</a>
+                                </div>
+                              </div>
                             </div>
                           </div>
-                          <div class="flex-1">
-                            <div class="text-2xl font-medium text-slate-900 dark:text-slate-200 mb-[3px]">
-                              Naruto Uzumaki
-                            </div>
-                            <div class="text-sm font-light text-slate-600 dark:text-slate-400">
-                              Calon Mahasiswa Baru
+                        </div>
+                        <div class="card rounded-md bg-white dark:bg-slate-800 shadow-base">
+                          <div class="card-body flex flex-col p-6">
+                            <div class="card-text h-full">
+                              <div class="flex justify-between mb-4">
+                                <div>
+                                  <div class="text-xl text-slate-900 dark:text-white">
+                                    Panduan Pendaftaran
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="card-text mt-4">
+                                <p>
+                                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.Lorem ipsum dolor sit amet, consectetur adipiscing eli.
+                                </p>
+                                <div class="mt-6 flex justify-between">
+                                  <a href="card.html" class=" btn-link">Baca Lebih Lanjut</a>
+                                </div>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <!-- end profile box -->
-                      <div class="profile-info-500 md:flex md:text-start text-center flex-1 max-w-[516px] md:space-y-0 space-y-4">
-                        <div class="flex-1">
-                          <div class="text-base text-slate-900 dark:text-slate-300 font-medium mb-1">
-                            uzumaki@gmail.com
-                          </div>
-                          <div class="text-sm text-slate-600 font-light dark:text-slate-300">
-                            <iconify-icon class=" nav-icon" icon="heroicons-outline:mail"></iconify-icon>
-                            Email
-                          </div>
-                        </div>
-                        <!-- end single -->
-                        <div class="flex-1">
-                          <div class="text-base text-slate-900 dark:text-slate-300 font-medium mb-1">
-                            +62 852 1392 1331
-                          </div>
-                          <div class="text-sm text-slate-600 font-light dark:text-slate-300">
-                            <iconify-icon class=" nav-icon" icon="heroicons-outline:phone"></iconify-icon>
-                            No Handphone
-                          </div>
-                        </div>
-                        <!-- end single -->
-                        <div class="flex-1">
-                          <div class="text-base text-slate-900 dark:text-slate-300 font-medium mb-1">
-                            Jalur UTBK
-                          </div>
-                          <div class="text-sm text-slate-600 font-light dark:text-slate-300">
-                            <iconify-icon class=" nav-icon" icon="heroicons-outline:archive-box-arrow-down"></iconify-icon>
-                            Jalur Pendaftaran
-                          </div>
-                        </div>
-                        <!-- end single -->
-                      </div>
-                      <!-- profile info-500 -->
-                    </div>
-                    <div
-                    class="flex flex-col rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700 md:max-w-xl md:flex-row">
-                    <img
-                      class="h-30 w-30 rounded-t-lg object-cover md:h-30 md:!rounded-none md:!rounded-l-lg"
-                      src="assets/images/all-img/fotoulbih.png"
-                      alt="" />
-                    <div class="flex flex-col justify-start p-6">
-                      <h5
-                        class="mb-2 text-xl font-medium text-neutral-800 dark:text-neutral-50">
-                        Pembayaran
-                      </h5>
-                      <p class="mb-4 text-base text-neutral-600 dark:text-neutral-200">
-                        This is a wider card with supporting text below as a natural lead-in
-                        to additional content. This content is a little bit longer.
-                      </p>
-                      <p class="text-xs text-neutral-500 dark:text-neutral-300">
-                        Last updated 3 mins ago
-                      </p>
                     </div>
                   </div>
               </div>
@@ -564,12 +734,12 @@
             <div class="text-center ltr:md:text-start rtl:md:text-right text-sm">
               COPYRIGHT ©
               <span id="thisYear"></span>
-              DashCode, All rights Reserved
+              Marketing And Admission Directorate 
             </div>
             <div class="ltr:md:text-right rtl:md:text-end text-center text-sm">
               Hand-crafted &amp; Made by
-              <a href="https://codeshaper.net" target="_blank" class="text-primary-500 font-semibold">
-                Codeshaper
+              <a href="#" target="_blank" class="text-primary-500 font-semibold">
+                DTI ULBI
               </a>
             </div>
           </div>
