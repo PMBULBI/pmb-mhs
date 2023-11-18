@@ -436,14 +436,14 @@
               <div id="content_layout">
                 <div>
                   <div class="flex justify-between flex-wrap items-center mb-6">
-                    <h4 class="font-medium lg:text-2xl text-xl capitalize text-slate-900 inline-block ltr:pr-4 rtl:pl-4 mb-4 sm:mb-0 flex space-x-3 rtl:space-x-reverse">Isi Kuesioner</h4>
+                    <h4 class="font-medium lg:text-2xl text-xl capitalize text-slate-900 inline-block ltr:pr-4 rtl:pl-4 mb-4 sm:mb-0 flex space-x-3 rtl:space-x-reverse">Check Kelulusan</h4>
                   </div>
                     <!-- BEGIN: Breadcrumb -->
                     <div class="mb-5">
                     <ul class="m-0 p-0 list-none">
                         <li class="inline-block relative top-[3px] text-base text-primary-500 font-Inter ">
                         <a href="index.html">
-                            <iconify-icon icon="heroicons-outline:archive"></iconify-icon>
+                            <iconify-icon icon="heroicons-outline:speakerphone"></iconify-icon>
                             <iconify-icon icon="heroicons-outline:chevron-right" class="relative text-slate-500 text-sm rtl:rotate-180"></iconify-icon>
                         </a>
                         </li>
@@ -452,20 +452,31 @@
                         <iconify-icon icon="heroicons-outline:chevron-right" class="relative top-[3px] text-slate-500 rtl:rotate-180"></iconify-icon>
                         </li>
                         <li class="inline-block relative text-sm text-slate-500 font-Inter dark:text-white">
-                        Isi Kuesioner</li>
+                        Check Kelulusan</li>
                     </ul>
                     </div>
                     <!-- END: BreadCrumb -->
-                  <div class="grid grid-cols-14 gap-5 mb-5 mx-auto">
-                    <div class="2xl:col-span-3 lg:col-span-4 col-span-12">
-                      <div class="bg-no-repeat bg-cover bg-center p-5 rounded-[6px] relative" style="background-color: #00277F;">
-                          <div class="">
-                              <p class="text-sm text-white font-normal">
-                                  Cek Kelulusan anda
-                              </p>
+                    <!-- Card Peringatan Start -->
+                    <div class="card rounded-md bg-white dark:bg-slate-800 lg:h-full  shadow-base">
+                      <div class="card-body flex flex-col p-6">
+                        <header class="flex mb-3 items-center">
+                          <div class="flex-1">
+                            <div class="card-title font-Inter text-slate-900 dark:text-white text-center mb-7 mt-4" style="font-size: 30px; color: red;"><b>PENGUMUMAN</b></div>
+                            <div class="card-subtitle font-Inter text-center" style="font-size: larger;">Maaf, Pengumuman kelulusan belum ada silahkan cek kembali nanti.</div>
                           </div>
+                        </header>
+                        <div class="image-box">
+                          <img src="/assets/images/all-img/sorry.png" alt="" class="block w-full h-full object-cover rounded-md" style="width: 20%; margin-left: 400px;">
+                        </div>
+                        <div class="card-text h-full text-center mt-5">
+                          <p style="color: red;"><b>Mohon Bersabar Untuk Menunggu.</b></p>
+                        </div>
                       </div>
-                  </div>
+                    </div>
+                    <!-- Card Peringatan End -->
+                    </div>
+                    <div class="flex justify-between items-center">
+                      <button class="btn inline-flex justify-center btn-primary shadow-base2 ml-auto mt-2">Cek Pembayaran Registrasi</button>
                     </div>
                     </div>
                   </div>
