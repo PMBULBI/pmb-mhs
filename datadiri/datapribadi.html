@@ -664,8 +664,7 @@
                               <div class="basicRadio">
                                 <label class="flex items-center cursor-pointer">
                                   <input type="radio" class="hidden" name="basicradios" value="secondary-500">
-                                  <span class="flex-none bg-white dark:bg-slate-500 rounded-full border inline-flex ltr:mr-2 rtl:ml-2 relative transition-all
-                                            duration-150 h-[16px] w-[16px] border-slate-400 dark:border-slate-600 dark:ring-slate-700"></span>
+                                  <span class="flex-none bg-white dark:bg-slate-500 rounded-full border inline-flex ltr:mr-2 rtl:ml-2 relative transition-all duration-150 h-[16px] w-[16px] border-slate-400 dark:border-slate-600 dark:ring-slate-700"></span>
                                   <span class="text-secondary-500 text-sm leading-6 capitalize">Male</span>
                                 </label>
                               </div>
@@ -696,6 +695,50 @@
                                 <option value="option3" class=" inline-block font-Inter font-normal text-sm text-slate-600">Kristen</option>
                                 <option value="option3" class=" inline-block font-Inter font-normal text-sm text-slate-600">Protestan</option>
                               </select>
+                            </div>
+                            <div class="input-area">
+                              <label for="alamat" class="form-label">Alamat Lengkap*</label>
+                              <textarea id="alamat" type="text" class="form-control" placeholder="Alamat Lengkap"></textarea>
+                            </div>
+                            <div class="input-area">
+                              <label for="prov" class="form-label">Kota/Kabupaten*</label>
+                                <select name="select2basic" id="selectkota" class="select2 form-control w-full mt-2 py-2" disabled>
+                                  <option selected  value="" class=" inline-block font-Inter font-normal text-sm text-slate-600">Pilih Provinsi</option>
+                                  <option value="option1" class=" inline-block font-Inter font-normal text-sm text-slate-600">Jawa Barat</option>
+                                  <option value="option2" class=" inline-block font-Inter font-normal text-sm text-slate-600">Jawa Tengah</option>
+                                  <option value="option3" class=" inline-block font-Inter font-normal text-sm text-slate-600">Jawa Timur</option>                                  
+                                </select>
+                            </div>
+                            <div class="input-area">
+                              <label for="prov" class="form-label">Kecamatan*</label>
+                                <select name="select2basic" id="selectkec" class="select2 form-control w-full mt-2 py-2" disabled>
+                                  <option selected  value="" class=" inline-block font-Inter font-normal text-sm text-slate-600">Pilih Provinsi</option>
+                                  <option value="option1" class=" inline-block font-Inter font-normal text-sm text-slate-600">Jawa Barat</option>
+                                  <option value="option2" class=" inline-block font-Inter font-normal text-sm text-slate-600">Jawa Tengah</option>
+                                  <option value="option3" class=" inline-block font-Inter font-normal text-sm text-slate-600">Jawa Timur</option>                                  
+                                </select>
+                            </div>
+                            <div class="input-area">
+                              <label for="prov" class="form-label">Kelurahan*</label>
+                                <select name="select2basic" id="selectkel" class="select2 form-control w-full mt-2 py-2" disabled>
+                                  <option selected  value="" class=" inline-block font-Inter font-normal text-sm text-slate-600">Pilih Provinsi</option>
+                                  <option value="option1" class=" inline-block font-Inter font-normal text-sm text-slate-600">Jawa Barat</option>
+                                  <option value="option2" class=" inline-block font-Inter font-normal text-sm text-slate-600">Jawa Tengah</option>
+                                  <option value="option3" class=" inline-block font-Inter font-normal text-sm text-slate-600">Jawa Timur</option>                                  
+                                </select>
+                            </div>
+                            <div class="input-area">
+                              <label for="prov" class="form-label">Provinsi*</label>
+                                <select name="select2basic" id="selectprov" class="select2 form-control w-full mt-2 py-2" >
+                                  <option selected  value="" class=" inline-block font-Inter font-normal text-sm text-slate-600">Pilih Provinsi</option>
+                                  <option value="option1" class=" inline-block font-Inter font-normal text-sm text-slate-600">Jawa Barat</option>
+                                  <option value="option2" class=" inline-block font-Inter font-normal text-sm text-slate-600">Jawa Tengah</option>
+                                  <option value="option3" class=" inline-block font-Inter font-normal text-sm text-slate-600">Jawa Timur</option>                                  
+                                </select>
+                            </div>
+                            <div class="input-area">
+                              <label for="kodepos" class="form-label">Kode Pos*</label>
+                              <input id="kodepos" type="text" class="form-control" placeholder="Kode Pos">
                             </div>
                           </div>
                         </div>
@@ -811,7 +854,8 @@
                                     <option selected  value="" class=" inline-block font-Inter font-normal text-sm text-slate-600">Pilih Provinsi</option>
                                     <option value="option1" class=" inline-block font-Inter font-normal text-sm text-slate-600">Jawa Barat</option>
                                     <option value="option2" class=" inline-block font-Inter font-normal text-sm text-slate-600">Jawa Tengah</option>
-                                    <option value="option3" class=" inline-block font-Inter font-normal text-sm text-slate-600">Jawa Timur</option>                                  </select>
+                                    <option value="option3" class=" inline-block font-Inter font-normal text-sm text-slate-600">Jawa Timur</option>                                  
+                                  </select>
                               </div>
                               <div class="input-area">
                                 <label for="prov" class="form-label">Kota/Kabupaten*</label>
