@@ -450,24 +450,228 @@
                     <!-- Card Peringatan Start -->
                     <div class="card rounded-md bg-white dark:bg-slate-800 lg:h-full  shadow-base">
                         <div class="card-body flex flex-col p-6">
-                          <header class="flex mb-3 items-center">
-                            <div class="flex-1">
-                              <div class="card-title font-Inter text-slate-900 dark:text-white text-center mb-7 mt-4" style="font-size: 30px; color: red;"><b>PERSETUJUAN</b></div>
-                              <div class="card-subtitle font-Inter text-center p-6" style="font-size: large;">Perlu kami sampaikan, bahwa setelah klik tombol <b>Saya Setuju</b> di bawah, <b>Anda tidak dapat mengubah data apapun</b>. Seperti Jalur, Jurusan, dsb. Saya setuju dengan segala konsekuensi serta patuh dan tunduk pada ketentuan yang berlaku.</div>
-                            </div>
-                          </header>
-                          <div class="card-text h-full text-center">
-                            <p style="color: red;"><b>PADA MENU SELANJUTNYA ANDA HARUS MEMILIH POLA PEMBAYARAN DAFTAR ULANG (PEMBAYARAN LUNAS ATAU CICILAN 3X)</b></p>
-                            <p style="color: red;"><b>(Perlu diingat, setelah setuju Anda tidak dapat mengubah data apapun)</b></p>
-                          </div>
+                            <div class="space-y-5 profile-page">
+                                <div class="grid gap-4 grid-cols-12">
+                                  <div class="xl:col-span-8 col-span-12">
+                                        <div class="md:flex items-end md:space-x-6 rtl:space-x-reverse">
+                                          <div class="flex-none">
+                                            <div class="md:h-[186px] md:w-[186px] h-[140px] w-[140px] md:ml-0 md:mr-0 ml-auto mr-auto md:mb-0 mb-4 rounded-full ring-4
+                                                  ring-slate-100 relative">
+                                              <img src="../assets/images/all-img/bungaoren.png" alt="" class="w-full h-full object-cover rounded-full">
+                                              <a href="profile-setting" class="absolute right-2 h-8 w-8 bg-slate-50 text-slate-600 rounded-full shadow-sm flex flex-col items-center
+                                                      justify-center md:top-[140px] top-[100px]">
+                                                <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
+                                              </a>
+                                            </div>
+                                          </div>
+                                          <div class="flex-1">
+                                            <!-- Title Calon Mahasiswa & Nama Start -->
+                                            <div class="text-2xl font-medium text-slate-900 dark:text-slate-200 mb-[3px]">
+                                              Naruto Uzumaki
+                                            </div>
+                                            <div class="text-sm font-light text-slate-600 dark:text-slate-400 mb-3">
+                                              Calon Mahasiswa Baru
+                                            </div>
+                                            <!-- Title Calon Mahasiswa & Nama End -->
+                                            <!-- Biodata Pendaftaran Mahasiswa Start -->
+                                            <div class="profile-info-500 md:flex md:text-start text-center flex-1 max-w-[516px] md:space-y-0 space-y-4">
+                                              <div class="flex-1">
+                                                <div class="text-base text-slate-900 dark:text-slate-300 font-medium mb-1" style="font-size: 13px;">
+                                                  uzumaki@gmail.com
+                                                </div>
+                                                <div class="text-sm text-slate-600 font-light dark:text-slate-300">
+                                                  <iconify-icon class=" nav-icon" icon="heroicons-outline:mail"></iconify-icon>
+                                                  Email
+                                                </div>
+                                              </div>
+                                              <!-- end single -->
+                                              <div class="flex-1">
+                                                <div class="text-base text-slate-900 dark:text-slate-300 font-medium mb-1" style="font-size: 13px;">
+                                                  +62 852 1392 1331
+                                                </div>
+                                                <div class="text-sm text-slate-600 font-light dark:text-slate-300">
+                                                  <iconify-icon class=" nav-icon" icon="heroicons-outline:phone"></iconify-icon>
+                                                  No Handphone
+                                                </div>
+                                              </div>
+                                              <!-- end single -->
+                                              <div class="flex-1">
+                                                <div class="text-base text-slate-900 dark:text-slate-300 font-medium mb-1" style="font-size: 13px;">
+                                                  Jalur UTBK
+                                                </div>
+                                                <div class="text-sm text-slate-600 font-light dark:text-slate-300">
+                                                  <iconify-icon class=" nav-icon" icon="heroicons-outline:archive-box-arrow-down"></iconify-icon>
+                                                  Jalur Pendaftaran
+                                                </div>
+                                              </div>
+                                              <!-- end single -->
+                                            </div>
+                                            <!-- Biodata Pendaftaran Mahasiswa End -->
+                                          </div>
+                                        </div>
+                                  </div>
+                                </div>
+                              </div>
                         </div>
                     </div>
                     <!-- Card Peringatan End -->
-                  </div>
-                  <div class="flex justify-between items-center">
-                    <button class="btn inline-flex justify-center btn-primary shadow-base2 ml-auto mt-2" id="buttonSetujuPembayaran">Saya Setuju</button>
-                    <button class="btn inline-flex justify-center btn-danger shadow-base2 mt-2 ml-2">Kembali</button>
-                  </div>
+
+                    <div class="flex mt-4">
+                        <!-- Card Pembayaran Lunas -->
+                        <div class="card ring-1 ring-success-500 flex-1 mr-4">
+                          <div class="card-body p-6">
+                            <div class="flex-1 items-center">
+                              <div class="card-title mb-1"><b>Rincian Pembayaran Lunas</b></div>
+                              <table class="w-full border-collapse table-fixed dark:border-slate-700 dark:border">
+                                <tr>
+                                  <th colspan="3" class="bg-slate-50 dark:bg-slate-700 dark:text-slate-300 text-xs font-medium leading-4 uppercase text-slate-600
+                                          ltr:text-left ltr:last:text-right rtl:text-right rtl:last:text-left">
+                                    <span class="block px-6 py-5 font-semibold">Biaya Pembayaran</span>
+                                  </th>
+                                  <th class="bg-slate-50 dark:bg-slate-700 dark:text-slate-300 text-xs font-medium leading-4 uppercase text-slate-600
+                                          ltr:text-left ltr:last:text-right rtl:text-right rtl:last:text-left">
+                                    <span class="block px-6 py-5 font-semibold">Jumlah Pembayaran</span>
+                                  </th>
+                                </tr>
+                                <tr class="border-b border-slate-100 dark:border-slate-700">
+                                  <td colspan="3" class="text-slate-900 dark:text-slate-300 text-sm font-normal ltr:text-left ltr:last:text-right rtl:text-right
+                                          rtl:last:text-left px-6 py-4">
+                                    Biaya DPP (1x Bayar)</td>
+                                  <td class="text-slate-900 dark:text-slate-300 text-sm font-normal ltr:text-left ltr:last:text-right rtl:text-right
+                                          rtl:last:text-left px-6 py-4">
+                                    6.000.000</td>
+                                </tr>
+                                <tr class="border-b border-slate-100 dark:border-slate-700">
+                                  <td colspan="3" class="text-slate-900 dark:text-slate-300 text-sm font-normal ltr:text-left ltr:last:text-right rtl:text-right
+                                          rtl:last:text-left px-6 py-4">
+                                    Biaya SPP (Per Semester)</td>
+                                  <td class="text-slate-900 dark:text-slate-300 text-sm font-normal ltr:text-left ltr:last:text-right rtl:text-right
+                                          rtl:last:text-left px-6 py-4">
+                                    7.700.000</td>
+                                </tr>
+                                <tr class="border-b border-slate-100 dark:border-slate-700">
+                                  <td colspan="3" class="text-slate-900 dark:text-slate-300 text-sm font-normal ltr:text-left ltr:last:text-right rtl:text-right
+                                          rtl:last:text-left px-6 py-4">
+                                    <b>Total Daftar Ulang (Semester 1)</b></td>
+                                  <td class="text-slate-900 dark:text-slate-300 text-sm font-normal ltr:text-left ltr:last:text-right rtl:text-right
+                                          rtl:last:text-left px-6 py-4">
+                                    <b>13.700.000</b></td>
+                                </tr>
+                                <tr class="border-b border-slate-100 dark:border-slate-700">
+                                  <td colspan="3" class="text-slate-900 dark:text-slate-300 text-sm font-normal ltr:text-left ltr:last:text-right rtl:text-right
+                                          rtl:last:text-left px-6 py-4">
+                                    Diskon DPP (Periode 1) 100%</td>
+                                  <td class="text-slate-900 dark:text-slate-300 text-sm font-normal ltr:text-left ltr:last:text-right rtl:text-right
+                                          rtl:last:text-left px-6 py-4">
+                                    -6.000.000</td>
+                                </tr>
+                                <tr class="border-b border-slate-100 dark:border-slate-700">
+                                  <td colspan="3" class="text-slate-900 dark:text-slate-300 text-sm font-normal ltr:text-left ltr:last:text-right rtl:text-right
+                                          rtl:last:text-left px-6 py-4">
+                                    Diskon SPP Semester 1</td>
+                                  <td class="text-slate-900 dark:text-slate-300 text-sm font-normal ltr:text-left ltr:last:text-right rtl:text-right
+                                          rtl:last:text-left px-6 py-4">
+                                    -1.000.000</td>
+                                </tr>
+                                <tr class="border-b border-slate-100 dark:border-slate-700">
+                                  <td colspan="3" class="text-slate-900 dark:text-slate-300 text-sm font-normal ltr:text-left ltr:last:text-right rtl:text-right
+                                          rtl:last:text-left px-6 py-4">
+                                    <b>Jumlah Tagihan</b></td>
+                                  <td class="text-slate-900 dark:text-slate-300 text-sm font-normal ltr:text-left ltr:last:text-right rtl:text-right
+                                          rtl:last:text-left px-6 py-4">
+                                    <b>6.700.000</b></td>
+                                </tr>
+                              </table>
+                            </div>
+                            <!-- Button Pilih Pembayaran Lunas Start -->
+                            <br>
+                            <br>
+                            <button class="btn w-full inline-flex justify-center btn-success rounded-[25px] mt-6">Pilih Pembayaran Lunas</button>
+                            <!-- Button Pilih Pembayaran Lunas End -->
+                          </div>
+                        </div>
+                      
+                        <!-- Kartu Peringatan -->
+                        <div class="card ring-1 ring-warning-500 flex-1">
+                          <div class="card-body p-6">
+                            <div class="flex-1 items-center">
+                              <div class="card-title mb-1"><b>Rincian Pembayaran Cicilan</b></div>
+                              <table class="w-full border-collapse table-fixed dark:border-slate-700 dark:border">
+                                <tr>
+                                  <th colspan="3" class="bg-slate-50 dark:bg-slate-700 dark:text-slate-300 text-xs font-medium leading-4 uppercase text-slate-600
+                                          ltr:text-left ltr:last:text-right rtl:text-right rtl:last:text-left">
+                                    <span class="block px-6 py-5 font-semibold">Biaya Pembayaran</span>
+                                  </th>
+                                  <th class="bg-slate-50 dark:bg-slate-700 dark:text-slate-300 text-xs font-medium leading-4 uppercase text-slate-600
+                                          ltr:text-left ltr:last:text-right rtl:text-right rtl:last:text-left">
+                                    <span class="block px-6 py-5 font-semibold">Jumlah Pembayaran</span>
+                                  </th>
+                                </tr>
+                                <tr class="border-b border-slate-100 dark:border-slate-700">
+                                  <td colspan="3" class="text-slate-900 dark:text-slate-300 text-sm font-normal ltr:text-left ltr:last:text-right rtl:text-right
+                                          rtl:last:text-left px-6 py-4">
+                                    Pembayaran Ke-1 (Min.20%)</td>
+                                  <td class="text-slate-900 dark:text-slate-300 text-sm font-normal ltr:text-left ltr:last:text-right rtl:text-right
+                                          rtl:last:text-left px-6 py-4">
+                                    1.340.000</td>
+                                </tr>
+                                <tr class="border-b border-slate-100 dark:border-slate-700">
+                                  <td colspan="3" class="text-slate-900 dark:text-slate-300 text-sm font-normal ltr:text-left ltr:last:text-right rtl:text-right
+                                          rtl:last:text-left px-6 py-4">
+                                    Pembayaran Ke-2</td>
+                                  <td class="text-slate-900 dark:text-slate-300 text-sm font-normal ltr:text-left ltr:last:text-right rtl:text-right
+                                          rtl:last:text-left px-6 py-4">
+                                    1.072.000</td>
+                                </tr>
+                                <tr class="border-b border-slate-100 dark:border-slate-700">
+                                  <td colspan="3" class="text-slate-900 dark:text-slate-300 text-sm font-normal ltr:text-left ltr:last:text-right rtl:text-right
+                                          rtl:last:text-left px-6 py-4">
+                                    Pembayaran Ke-3</td>
+                                  <td class="text-slate-900 dark:text-slate-300 text-sm font-normal ltr:text-left ltr:last:text-right rtl:text-right
+                                          rtl:last:text-left px-6 py-4">
+                                    1.072.000</td>
+                                </tr>
+                                <tr class="border-b border-slate-100 dark:border-slate-700">
+                                  <td colspan="3" class="text-slate-900 dark:text-slate-300 text-sm font-normal ltr:text-left ltr:last:text-right rtl:text-right
+                                          rtl:last:text-left px-6 py-4">
+                                    Pembayaran Ke-4</td>
+                                  <td class="text-slate-900 dark:text-slate-300 text-sm font-normal ltr:text-left ltr:last:text-right rtl:text-right
+                                          rtl:last:text-left px-6 py-4">
+                                    1.072.000</td>
+                                </tr>
+                                <tr class="border-b border-slate-100 dark:border-slate-700">
+                                  <td colspan="3" class="text-slate-900 dark:text-slate-300 text-sm font-normal ltr:text-left ltr:last:text-right rtl:text-right
+                                          rtl:last:text-left px-6 py-4">
+                                    Pembayaran Ke-5</td>
+                                  <td class="text-slate-900 dark:text-slate-300 text-sm font-normal ltr:text-left ltr:last:text-right rtl:text-right
+                                          rtl:last:text-left px-6 py-4">
+                                    1.072.000</td>
+                                </tr>
+                                <tr class="border-b border-slate-100 dark:border-slate-700">
+                                  <td colspan="3" class="text-slate-900 dark:text-slate-300 text-sm font-normal ltr:text-left ltr:last:text-right rtl:text-right
+                                          rtl:last:text-left px-6 py-4">
+                                    Pembayaran Ke-6</td>
+                                  <td class="text-slate-900 dark:text-slate-300 text-sm font-normal ltr:text-left ltr:last:text-right rtl:text-right
+                                          rtl:last:text-left px-6 py-4">
+                                    1.072.000</td>
+                                </tr>
+                                <tr class="border-b border-slate-100 dark:border-slate-700">
+                                  <td colspan="3" class="text-slate-900 dark:text-slate-300 text-sm font-normal ltr:text-left ltr:last:text-right rtl:text-right
+                                          rtl:last:text-left px-6 py-4">
+                                    <b>Jumlah Tagihan</b></td>
+                                  <td class="text-slate-900 dark:text-slate-300 text-sm font-normal ltr:text-left ltr:last:text-right rtl:text-right
+                                          rtl:last:text-left px-6 py-4">
+                                    <b>6.700.000</b></td>
+                                </tr>
+                              </table>
+                            </div>
+                            <!-- Button Pilih Pembayaran Cicilan Start -->
+                            <button class="btn w-full inline-flex justify-center btn-warning rounded-[25px] mt-5">Pilih Pembayaran Cicilan</button>
+                            <!-- Button Pilih Pembayaran Cicilan End -->
+                          </div>
+                        </div>
+                      </div>
+
               </div>
             </div>
           </div>
