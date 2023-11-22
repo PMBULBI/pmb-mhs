@@ -1,4 +1,5 @@
 $.sidebarMenu = function(menu) {
+
   var animationSpeed = 300,
     subMenuSelector = '.sidebar-submenu';
 
