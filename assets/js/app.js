@@ -2,6 +2,7 @@
 
 // import * as te from 'tw-elements';
 (function ($) {
+  let isSidebarVisible = false;
   var currentPageUrl = window.location.href;
   var currentLink = currentPageUrl.split("/");
   var Href = currentLink[currentLink.length - 1];
@@ -12,25 +13,27 @@
   $(ParentClass).addClass("active");
   function screenWidth() {
     if ($(window).width() < 1281) {
-      $(".sidebar-wrapper").addClass("menu-hide");
-      $("#menuCollapse").hide();
-      $(".app-header").addClass("margin-0");
-      $(".site-footer ").addClass("margin-0");
-      $("#content_wrapper").addClass("margin-0");
-      $(".sidebarCloseIcon").show();
-      $("#sidebar_type").hide();
-      $("#bodyOverlay").addClass("block");
+        isSidebarVisible = false;
+        $(".sidebar-wrapper").addClass("menu-hide");
+        $("#menuCollapse").hide();
+        $(".app-header").addClass("margin-0");
+        $(".site-footer ").addClass("margin-0");
+        $("#content_wrapper").addClass("margin-0");
+        $(".sidebarCloseIcon").show();
+        $("#sidebar_type").hide();
+        $("#bodyOverlay").addClass("block");
     } else {
-      $(".sidebar-wrapper").removeClass("menu-hide");
-      $("#menuCollapse").show();
-      $(".app-header").removeClass("margin-0");
-      $(".site-footer").removeClass("margin-0");
-      $("#content_wrapper").removeClass("margin-0");
-      $(".sidebarCloseIcon").hide();
-      $("#sidebar_type").show();
-      $("#bodyOverlay").removeClass("block");
+        isSidebarVisible = true;
+        $(".sidebar-wrapper").removeClass("menu-hide");
+        $("#menuCollapse").show();
+        $(".app-header").removeClass("margin-0");
+        $(".site-footer").removeClass("margin-0");
+        $("#content_wrapper").removeClass("margin-0");
+        $(".sidebarCloseIcon").hide();
+        $("#sidebar_type").show();
+        $("#bodyOverlay").removeClass("block");
     }
-  }
+}
   screenWidth();
   $(window).resize(function () {
     screenWidth();
@@ -259,11 +262,17 @@
   /* =============================
   Small Device Buttons function
   ===============================*/
-  $(".smallDeviceMenuController").on("click", function () {
-    $(".sidebar-wrapper").toggleClass("menu-hide");
-    $("#bodyOverlay").removeClass("hidden");
-    $("body").addClass("overflow-hidden");
-  });
+
+  $(".smallDeviceMenuController, #bodyOverlay").on("click", function () {
+    isSidebarVisible = !isSidebarVisible;
+    updateSidebarAndOverlay();
+});
+
+  function updateSidebarAndOverlay() {
+    $("#bodyOverlay").removeClass("hidden"); // Remove "hidden" class immediately
+    $(".sidebar-wrapper").toggleClass("menu-hide", !isSidebarVisible);
+    $("body").toggleClass("overflow-hidden", isSidebarVisible);
+  }
   $(".sidebarCloseIcon, #bodyOverlay").on("click", function () {
     $(".sidebar-wrapper").toggleClass("menu-hide");
     $("#bodyOverlay").addClass("hidden");
@@ -314,7 +323,7 @@
   $.sidebarMenu($(".sidebar-menu"));
 
   // Simple Bar
-  new SimpleBar($("#sidebar_menus, #scrollModal")[0]);
+  new SimpleBar($("#sidebar-container,#sidebar_menus, #scrollModal")[0]);
 
   // Basic Carousel
   $(".basic-carousel").owlCarousel({
