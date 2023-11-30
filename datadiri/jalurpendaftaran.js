@@ -1,7 +1,10 @@
+// Import function or library
+import { UrlGetJalurPendaftaran } from "../static/js/controller/template.js";
+
 // Jalur Pendaftaran
 // Membuat fungsi untuk fetch data ke dropdown jalur
 function fetchData() {
-    fetch('https://komarbe.ulbi.ac.id/jalur')
+    fetch(UrlGetJalurPendaftaran)
         .then(response => response.json())
         .then(data => {
             populateDropdown(data.data);
@@ -16,7 +19,6 @@ function populateDropdown(data) {
     const selectDropdown = document.getElementById('selectjalur');
     selectDropdown.innerHTML = '';
 
-    // Add default option
     const defaultOption = document.createElement('option');
     defaultOption.value = '';
     defaultOption.text = 'Pilih Jalur';
