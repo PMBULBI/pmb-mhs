@@ -311,7 +311,7 @@
 
                       </div>
                       <form class="wizard-form mt-10" action="#">
-                        <div class="wizard-form-step active" data-step="1">
+                        <div class="wizard-form-step active" id="jalur-pendaftaran" data-step="1">
                           <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
                             <div class="lg:col-span-3 md:col-span-2 col-span-1">
                               <h4 class="text-base text-slate-800 dark:text-slate-300 my-6">Isi Data Jalur Pendaftaran</h4>
@@ -344,18 +344,10 @@
                             </div>
                           </div>
                         </div>
-                        <div class="wizard-form-step" data-step="2">
+                        <div class="wizard-form-step" id="pilih-prodi" data-step="2">
                           <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
                             <div class="lg:col-span-3 md:col-span-2 col-span-1">
                               <h4 class="text-base text-slate-800 dark:text-slate-300 my-6">Personal Information</h4>
-                            </div>
-                            <div class="input-area">
-                              <label for="firstname" class="form-label">Pilih Fakultas*</label>
-                              <select name="select2basic" id="selectfak" class="select2 form-control w-full mt-2 py-2">
-                                <option selected  value="" class=" inline-block font-Inter font-normal text-sm text-slate-600">Pilih Jalur</option>
-                                <option value="option1" class=" inline-block font-Inter font-normal text-sm text-slate-600">Option 1</option>
-                                <option value="option2" class=" inline-block font-Inter font-normal text-sm text-slate-600">Option 2</option>
-                              </select>
                             </div>
                             <div class="input-area">
                               <label for="lastname" class="form-label">Program Studi Pilihan Ke-1*</label>
@@ -377,7 +369,7 @@
                             </div>
                           </div>
                         </div>
-                        <div class="wizard-form-step" data-step="3">
+                        <div class="wizard-form-step" id="data-diri" data-step="3">
                           <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
                             <div class="lg:col-span-3 md:col-span-2 col-span-1">
                               <h4 class="text-base text-slate-800 dark:text-slate-300 my-6">Data Diri</h4>
@@ -489,7 +481,7 @@
                             </div>
                           </div>
                         </div>
-                        <div class="wizard-form-step" data-step="4">
+                        <div class="wizard-form-step" id="data-orang-tua" data-step="4">
                           <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
                             <div class="lg:col-span-3 md:col-span-2 col-span-1">
                               <h4 class="text-base text-slate-800 dark:text-slate-300 my-6">Data Orang Tua</h4>
@@ -548,7 +540,7 @@
                             </div>
                           </div>
                         </div>
-                        <div class="wizard-form-step" data-step="5">
+                        <div class="wizard-form-step" id="data-sekolah" data-step="5">
                           <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
                               <div class="lg:col-span-3 md:col-span-2 col-span-1">
                                   <h4 class="text-base text-slate-800 dark:text-slate-300 my-6">Data Sekolah</h4>
@@ -619,7 +611,7 @@
                               <!-- Additional input areas for Step 5 -->
                           </div>
                       </div>
-                      <div class="wizard-form-step" data-step="6">
+                      <div class="wizard-form-step" id="persyaratan" data-step="6">
                         <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
                             <div class="lg:col-span-3 md:col-span-2 col-span-1">
                                 <h4 class="text-base text-slate-800 dark:text-slate-300 my-6">Persyaratan</h4>
