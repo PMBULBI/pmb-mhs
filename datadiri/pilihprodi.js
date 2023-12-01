@@ -1,8 +1,21 @@
 // Import function or library
-import { UrlGetFakultas, UrlGetProgramStudi } from "../static/js/controller/template.js";
+import { CookieName, UrlGetFakultas, UrlGetProgramStudi, UrlBiodataJalur, TokenHeader } from "../static/js/controller/template.js";
+import { getWithHeader } from "https://jscroot.github.io/api/croot.js";
+import { getCookie } from "https://jscroot.github.io/cookie/croot.js";
+
 
 // Get Fakultas
 // Membuat fungsi untuk fetch data fakultas
+const setValue = ( res ) =>{
+    console.log(res);
+} 
+
+function fetchDataBiodataJalur(){
+    getWithHeader(UrlBiodataJalur, TokenHeader, getCookie(CookieName), setValue);
+}
+
+fetchDataBiodataJalur();
+
 function fetchDataFakultas() {
     fetch(UrlGetFakultas)
         .then(response => response.json())
