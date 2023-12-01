@@ -15,6 +15,7 @@ function setDataMhs(result){
     setInner("email_mhs", result.data.email_mhs);
     setInner("no_hp", result.data.hp_mhs);
     setInner("nama_mhs", result.data.nama_mhs);
+    setInner("nama_mhs_span", result.data.nama_mhs);
 }
 
 main();
