@@ -111,3 +111,5 @@ function populateDropdownProdi2(data) {
     })
 }
 fetchDataProdi2();
+
+// Untuk POST prodi & fakultas
