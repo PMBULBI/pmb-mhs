@@ -39,7 +39,7 @@ function populateDropdown(data) {
 fetchData();
 
 // Untuk POST Jalur Pendaftaran
-// Membuat fungsi untuk mengirimkan data perizinan ke API
+// Membuat fungsi untuk mengirimkan data jalur pendaftaran ke API
 function submitJalurPendaftaran() {
     // Ambil Tahun Lulus
     const tahunLulus = document.querySelector("#selecttahunlulus");
@@ -86,37 +86,33 @@ function submitJalurPendaftaran() {
 }
 
 // Event listener untuk tombol "Submit"
-const submitButton = document.querySelector('submitButton');
+const submitButton = document.getElementById('submitButton');
 submitButton.addEventListener('click', () => {
-    const tahunLulus = document.querySelector('#selecttahunlulus').value;
-    const jalurPendaftaran = document.querySelector('#selectjalur').value;
-    // const referralInput = document.querySelector('#referral').value;
-    const form = document.getElementById('#jalurPendaftaranForm');
+    const tahunLulus = document.getElementById('selecttahunlulus').value;
+    const jalurPendaftaran = document.getElementById('selectjalur').value;
+    const referralInput = document.getElementById('referral').value;
 
     if (!tahunLulus || !jalurPendaftaran) {
         Swal.fire({
-            icon : 'warning',
-            title : 'Oops...',
-            text : 'Semua field harus diisi!',
+            icon: 'warning',
+            title: 'Oops...',
+            text: 'Semua field harus diisi!',
         });
         return;
     }
-    if (form.checkValidity()) {
-        Swal.fire({
-            title : 'Submit Jalur Pendaftaran?',
-            text : 'Apakah anda yakin ingin submit jalur pendaftaran?',
-            icon : 'question',
-            showCancelButton : true,
-            confirmButtonColor: '#3085d6',
-			cancelButtonColor: '#d33',
-			confirmButtonText: 'Yes',
-			cancelButtonText: 'No'
-        }).then((result) => {
-            if(result.isConfirmed) {
-                submitJalurPendaftaran();
-            }
-        });
-    } else {
-        form.reportValidity();
-    }
-})
+    // Add additional validation if needed
+    Swal.fire({
+        title: 'Submit Jalur Pendaftaran?',
+        text: 'Apakah anda yakin ingin submit jalur pendaftaran?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'No',
+    }).then((result) => {
+        if (result.isConfirmed) {
+            submitJalurPendaftaran();
+        }
+    });
+});
