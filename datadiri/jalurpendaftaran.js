@@ -1,5 +1,10 @@
 // Import function or library
 import { UrlGetJalurPendaftaran } from "../static/js/controller/template.js";
+import { token } from "../static/js/controller/cookies.js";
+
+var header = new Headers();
+header.append("login", token);
+header.append("Content-Type", "application/json");
 
 // Jalur Pendaftaran
 // Membuat fungsi untuk fetch data ke dropdown jalur
@@ -86,7 +91,6 @@ submitButton.addEventListener('click', () => {
     const tahunLulus = document.querySelector('#selecttahunlulus').value;
     const jalurPendaftaran = document.querySelector('#selectjalur').value;
     // const referralInput = document.querySelector('#referral').value;
-    
     const form = document.getElementById('#jalurPendaftaranForm');
 
     if (!tahunLulus || !jalurPendaftaran) {
