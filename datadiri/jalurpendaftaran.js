@@ -86,8 +86,8 @@ submitButton.addEventListener('click', () => {
     const tahunLulus = document.querySelector('#selecttahunlulus').value;
     const jalurPendaftaran = document.querySelector('#selectjalur').value;
     // const referralInput = document.querySelector('#referral').value;
-
-    const form = document.getElementById('jalurPendaftaranForm');
+    
+    const form = document.getElementById('#jalurPendaftaranForm');
 
     if (!tahunLulus || !jalurPendaftaran) {
         Swal.fire({
@@ -97,7 +97,6 @@ submitButton.addEventListener('click', () => {
         });
         return;
     }
-
     if (form.checkValidity()) {
         Swal.fire({
             title : 'Submit Jalur Pendaftaran?',
@@ -116,4 +115,4 @@ submitButton.addEventListener('click', () => {
     } else {
         form.reportValidity();
     }
-})  
+})
