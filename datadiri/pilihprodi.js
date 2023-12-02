@@ -2,6 +2,11 @@
 import { CookieName, UrlGetFakultas, UrlGetProgramStudi, UrlBiodataJalur, TokenHeader } from "../static/js/controller/template.js";
 import { getWithHeader } from "https://jscroot.github.io/api/croot.js";
 import { getCookie } from "https://jscroot.github.io/cookie/croot.js";
+import { token } from "../static/js/controller/cookies.js";
+
+var header = new Headers();
+header.append("login", token);
+header.append("Content-Type", "application/json");
 
 let dataJalur;
 
@@ -113,3 +118,44 @@ function populateDropdownProdi2(data) {
 fetchDataProdi2();
 
 // Untuk POST prodi & fakultas
+// Membuat fungsi untuk mengirimkan data pilih prodi ke API
+function submitPilihProdi() {
+    const prodiSatu = document.querySelector('#selectprog');
+    const statusProdiSatu = prodiSatu ? prodiSatu.value : "";
+    const prodiKedua = document.querySelector('#selectprog2');
+    const statusProdiKedua = prodiKedua ? prodiKedua.value : "";
+
+    const postData = {
+        prodi1 : statusProdiSatu,
+        prodi2 : statusProdiKedua,
+    };
+
+    fetch(`https://komarbe.ulbi.ac.id/biodata/prodi`, {
+        method : "POST",
+        headers : header,
+        body : JSON.stringify(postData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            Swal.fire({
+                icon : 'success',
+                title : 'Sukses!',
+                text : 'Program studi berhasil disubmit.',
+                showConfirmButton : false,
+                timer : 1500
+            }).then(() => {
+                window.location.href = 'biodatadiri.html';
+            });
+        } else {
+            Swal.fire({
+                icon : 'error',
+                title : 'Oops...',
+                text : 'Jalur pendaftaran gagal disubmit.'
+            })
+        }
+    })
+    .catch(error => {
+        console.error("Error saat melakukan POST Data : ", error);
+    });
+}
