@@ -228,39 +228,41 @@
                             </div>
                             <div class="input-area">
                               <label for="nohp" class="form-label">Pekerjaan Orang Tua/Wali*</label>
-                              <select name="select2basic" id="selectpekerjaan" class="select2 form-control w-full mt-2 py-2">
+                              <!-- <select name="select2basic" id="selectpekerjaan" class="select2 form-control w-full mt-2 py-2">
                                 <option selected  value="" class=" inline-block font-Inter font-normal text-sm text-slate-600">Pilih Pekerjaan</option>
                                 <option value="option1" class=" inline-block font-Inter font-normal text-sm text-slate-600">Youtuber</option>
                                 <option value="option2" class=" inline-block font-Inter font-normal text-sm text-slate-600">Tiktoker</option>
                                 <option value="option3" class=" inline-block font-Inter font-normal text-sm text-slate-600">Influencer</option>
                                 <option value="option3" class=" inline-block font-Inter font-normal text-sm text-slate-600">ASN</option>
-                              </select>
+                              </select> -->
+                              <input id="pekerjaanortu" type="text" class="form-control" placeholder="Masukkan Pekerjaan Orang tua">
                             </div>
                             <div class="input-area">
                               <label for="nohp" class="form-label">Penghasilan Orang Tua / Bulan*</label>
                               <select name="select2basic" id="selectpenghasilan" class="select2 form-control w-full mt-2 py-2">
                                 <option selected  value="" class=" inline-block font-Inter font-normal text-sm text-slate-600">Pilih Range</option>
-                                <option value="option1" class=" inline-block font-Inter font-normal text-sm text-slate-600"> &lt; 1 Juta></option>
-                                <option value="option2" class=" inline-block font-Inter font-normal text-sm text-slate-600">1 Juta s/d 2.5 Juta</option>
-                                <option value="option3" class=" inline-block font-Inter font-normal text-sm text-slate-600">2.5 Juta s/d 5 Juta</option>
-                                <option value="option3" class=" inline-block font-Inter font-normal text-sm text-slate-600">5 Juta s/d 10 Juta</option>
+                                <option value="1 Juta >" class=" inline-block font-Inter font-normal text-sm text-slate-600"> &lt; 1 Juta ></option>
+                                <option value="1 Juta s/d 2.5 Juta" class=" inline-block font-Inter font-normal text-sm text-slate-600">1 Juta s/d 2.5 Juta</option>
+                                <option value="2.5 Juta s/d 5 Juta" class=" inline-block font-Inter font-normal text-sm text-slate-600">2.5 Juta s/d 5 Juta</option>
+                                <option value="5 Juta s/d 10 Juta" class=" inline-block font-Inter font-normal text-sm text-slate-600">5 Juta s/d 10 Juta</option>
+                                <option value="> 10 Juta" class=" inline-block font-Inter font-normal text-sm text-slate-600">> 10 Juta</option>
                               </select>
                             </div>
                             <div class="input-area">
                               <label for="nohp" class="form-label">Sumber Dana*</label>
                               <select name="select2basic" id="selectsumberdana" class="select2 form-control w-full mt-2 py-2">
                                 <option selected  value="" class=" inline-block font-Inter font-normal text-sm text-slate-600">Pilih Sumber</option>
-                                <option value="option1" class=" inline-block font-Inter font-normal text-sm text-slate-600">Orang Tua</option>
-                                <option value="option2" class=" inline-block font-Inter font-normal text-sm text-slate-600">Penghasilan Sendiri</option>
-                                <option value="option3" class=" inline-block font-Inter font-normal text-sm text-slate-600">Pinjaman</option>
-                                <option value="option3" class=" inline-block font-Inter font-normal text-sm text-slate-600">Saudara</option>
-                                <option value="option3" class=" inline-block font-Inter font-normal text-sm text-slate-600">Wali</option>
-                                <option value="option3" class=" inline-block font-Inter font-normal text-sm text-slate-600">Warisan</option>
+                                <option value="Orang Tua" class=" inline-block font-Inter font-normal text-sm text-slate-600">Orang Tua</option>
+                                <option value="Penghasilan Sendiri" class=" inline-block font-Inter font-normal text-sm text-slate-600">Penghasilan Sendiri</option>
+                                <option value="Pinjaman" class=" inline-block font-Inter font-normal text-sm text-slate-600">Pinjaman</option>
+                                <option value="Saudara" class=" inline-block font-Inter font-normal text-sm text-slate-600">Saudara</option>
+                                <option value="Wali" class=" inline-block font-Inter font-normal text-sm text-slate-600">Wali</option>
+                                <option value="Warisan" class=" inline-block font-Inter font-normal text-sm text-slate-600">Warisan</option>
                               </select>
                             </div>
                             <div class="input-area">
                               <label for="ibukandung" class="form-label">Alamat Orang Tua / Wali*</label>
-                              <textarea id="ibukandung" type="textarea" class="form-control" placeholder="Masukkan Alamat Orang Tua / Wali"></textarea>
+                              <textarea id="alamatortu" type="textarea" class="form-control" placeholder="Masukkan Alamat Orang Tua / Wali"></textarea>
                             </div>
                           </div>
                             </div>
@@ -270,7 +272,7 @@
                     <!-- Biodata Diri End -->
                     <div class="flex justify-between items-center">
                         <button class="btn inline-flex justify-center btn-info shadow-base2 mt-2 ml-auto mr-1">Kembali</button>
-                        <button class="btn inline-flex justify-center btn-warning shadow-base2 mt-2">Submit Data</button>
+                        <button class="btn inline-flex justify-center btn-warning shadow-base2 mt-2" id="submitButton">Submit Data</button>
                     </div>
                   </div>
               </div>
@@ -342,7 +344,7 @@
     </div>
   </main>
   <!-- scripts -->
-  <script src="pilihprodi.js" type="module"></script>
+  <script src="../static/js/controller/biodataortu.js" type="module"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://cdn.jsdelivr.net/gh/PMBULBI/javascript-fe@0.0.7/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/PMBULBI/javascript-fe@0.0.7/rt-plugins.js"></script>
