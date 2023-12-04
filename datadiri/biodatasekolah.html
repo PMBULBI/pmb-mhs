@@ -215,38 +215,41 @@
                               <input id="nisn" type="text" class="form-control" placeholder="Masukkan NISN">
                             </div>
                             <div class="input-area">
-                              <label for="ayahkandung" class="form-label">Asal Sekolah*</label>
-                              <input id="ayahkandung" type="text" class="form-control" placeholder="Masukkan Asal Sekolah" disabled>
+                              <label for="ayahkandung" class="form-label" type="hidden">Akreditasi Sekolah *</label>
+                              <input id="akred" type="text" class="form-control" placeholder="Masukkan Akreditasi Sekolah">
                             </div>
                             <div class="input-area">
                               <label for="jenis" class="form-label">Jenis Sekolah*</label>
                               <select name="select2basic" id="selectjenis" class="select2 form-control w-full mt-2 py-2">
                                 <option selected  value="" class=" inline-block font-Inter font-normal text-sm text-slate-600">Pilih Range</option>
-                                <option value="option1" class=" inline-block font-Inter font-normal text-sm text-slate-600"> Sekolah Menengah Atas</option>
-                                <option value="option2" class=" inline-block font-Inter font-normal text-sm text-slate-600">Sekolah Menengah Kejuruan</option>
-                                <option value="option3" class=" inline-block font-Inter font-normal text-sm text-slate-600">Madrasah Aliyah</option>
-                                <option value="option3" class=" inline-block font-Inter font-normal text-sm text-slate-600">Madrasah Aliyah Kejuruan</option>
+                                <option value="SMA" class=" inline-block font-Inter font-normal text-sm text-slate-600"> Sekolah Menengah Atas</option>
+                                <option value="SMK" class=" inline-block font-Inter font-normal text-sm text-slate-600">Sekolah Menengah Kejuruan</option>
+                                <option value="MA" class=" inline-block font-Inter font-normal text-sm text-slate-600">Madrasah Aliyah</option>
+                                <option value="MAK" class=" inline-block font-Inter font-normal text-sm text-slate-600">Madrasah Aliyah Kejuruan</option>
                               </select>
                             </div>
                             <div class="input-area">
-                              <label for="jurusan" class="form-label">Jurusan*</label>
-                              <select name="select2basic" id="selectjurusan" class="select2 form-control w-full mt-2 py-2" disabled>
+                              <label for="jurusan" class="form-label">Asal Jurusan*</label>
+                              <!-- <select name="select2basic" id="selectjurusan" class="select2 form-control w-full mt-2 py-2" disabled>
                                 <option selected  value="" class=" inline-block font-Inter font-normal text-sm text-slate-600">Pilih Jurusan</option>
                                 <option value="option1" class=" inline-block font-Inter font-normal text-sm text-slate-600"> Sekolah Menengah Atas</option>
                                 <option value="option2" class=" inline-block font-Inter font-normal text-sm text-slate-600">Sekolah Menengah Kejuruan</option>
                                 <option value="option3" class=" inline-block font-Inter font-normal text-sm text-slate-600">Madrasah Aliyah</option>
                                 <option value="option3" class=" inline-block font-Inter font-normal text-sm text-slate-600">Madrasah Aliyah Kejuruan</option>
-                              </select>
+                              </select> -->
+                              <input id="jurusan" type="text" class="form-control" placeholder="Masukkan jurusan">
                             </div>
                             <div class="input-area">
                               <label for="tahun" class="form-label">Tahun Lulusan*</label>
-                              <select name="select2basic" id="selecttahun" class="select2 form-control w-full mt-2 py-2" disabled>
+                              <!-- <select name="select2basic" id="selecttahun" class="select2 form-control w-full mt-2 py-2" disabled>
                                 <option selected  value="" class=" inline-block font-Inter font-normal text-sm text-slate-600">Pilih Jurusan</option>
                                 <option value="option1" class=" inline-block font-Inter font-normal text-sm text-slate-600"> Sekolah Menengah Atas</option>
                                 <option value="option2" class=" inline-block font-Inter font-normal text-sm text-slate-600">Sekolah Menengah Kejuruan</option>
                                 <option value="option3" class=" inline-block font-Inter font-normal text-sm text-slate-600">Madrasah Aliyah</option>
                                 <option value="option3" class=" inline-block font-Inter font-normal text-sm text-slate-600">Madrasah Aliyah Kejuruan</option>
-                              </select>
+                              </select> -->
+                              <input id="tahun" type="text" class="form-control" placeholder="Masukkan NISN">
+
                             </div>
                             <div class="input-area">
                               <label for="alamat" class="form-label">Alamat Lengkap Sekolah*</label>
@@ -263,7 +266,7 @@
                             </div>
                             <div class="input-area">
                               <label for="prov" class="form-label">Kota/Kabupaten*</label>
-                                <select name="select2basic" id="selectkota" class="select2 form-control w-full mt-2 py-2" disabled>
+                                <select name="select2basic" id="selectkota" class="select2 form-control w-full mt-2 py-2">
                                   <option selected  value="" class=" inline-block font-Inter font-normal text-sm text-slate-600">Pilih Provinsi</option>
                                   <option value="option1" class=" inline-block font-Inter font-normal text-sm text-slate-600">Jawa Barat</option>
                                   <option value="option2" class=" inline-block font-Inter font-normal text-sm text-slate-600">Jawa Tengah</option>
@@ -271,7 +274,7 @@
                             </div>
                             <div class="input-area">
                               <label for="ayahkandung" class="form-label">Kode POS*</label>
-                              <input id="ayahkandung" type="text" class="form-control" placeholder="Masukkan Kode Pos">
+                              <input id="kodepos" type="text" class="form-control" placeholder="Masukkan Kode Pos">
                             </div>
                             <!-- Additional input areas for Step 5 -->
                         </div>
@@ -282,7 +285,7 @@
                     <!-- Biodata Diri End -->
                     <div class="flex justify-between items-center">
                         <button class="btn inline-flex justify-center btn-info shadow-base2 mt-2 ml-auto mr-1">Kembali</button>
-                        <button class="btn inline-flex justify-center btn-warning shadow-base2 mt-2">Submit Data</button>
+                        <button class="btn inline-flex justify-center btn-warning shadow-base2 mt-2" id="submitButton">Submit Data</button>
                     </div>
                   </div>
               </div>
@@ -354,7 +357,7 @@
     </div>
   </main>
   <!-- scripts -->
-  <script src="pilihprodi.js" type="module"></script>
+  <script src="../static/js/controller/biodatasekolah.js" type="module"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://cdn.jsdelivr.net/gh/PMBULBI/javascript-fe@0.0.7/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/PMBULBI/javascript-fe@0.0.7/rt-plugins.js"></script>
