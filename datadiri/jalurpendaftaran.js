@@ -1,10 +1,18 @@
 // Import function or library
 import { UrlGetJalurPendaftaran } from "../static/js/controller/template.js";
+import {getCookie} from "https://jscroot.github.io/cookie/croot.js";
 import { token } from "../static/js/controller/cookies.js";
+
+let cookielog = getCookie("login");
+if (cookielog === "") {
+    window.location.href("https://pmb.ulbi.ac.id/")
+}
 
 var header = new Headers();
 header.append("login", token);
 header.append("Content-Type", "application/json");
+
+let referal = getCookie("referal");
 
 // Jalur Pendaftaran
 // Membuat fungsi untuk fetch data ke dropdown jalur
@@ -50,9 +58,9 @@ function submitJalurPendaftaran() {
     const referralInput = document.querySelector("#referral");
     
     const postData = {
-        id_jalur : statusJalur,
-        tahun_lulus : statusLulus,
-        kode_ref : referralInput
+        id_jalur : parseInt(statusJalur),
+        tahun_lulus : parseInt(statusLulus),
+        kode_ref : referal
     };
 
     fetch(`https://komarbe.ulbi.ac.id/biodata/jalur`, {
