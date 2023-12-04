@@ -238,14 +238,14 @@
                               <label for="fblink" class="form-label">Gender*</label>
                               <div class="basicRadio">
                                 <label class="flex items-center cursor-pointer">
-                                  <input type="radio" class="hidden" name="basicradios" value="secondary-500">
+                                  <input id="laki-laki" type="radio" class="hidden" name="basicradios" value="Laki-Laki">
                                   <span class="flex-none bg-white dark:bg-slate-500 rounded-full border inline-flex ltr:mr-2 rtl:ml-2 relative transition-all duration-150 h-[16px] w-[16px] border-slate-400 dark:border-slate-600 dark:ring-slate-700"></span>
                                   <span class="text-secondary-500 text-sm leading-6 capitalize">Laki-Laki</span>
                                 </label>
                               </div>
                               <div class="basicRadio">
                                 <label class="flex items-center cursor-pointer">
-                                  <input type="radio" class="hidden" name="basicradios" value="secondary-500">
+                                  <input type="radio" id="Perempuan" class="hidden" name="basicradios" value="Perempuan">
                                   <span class="flex-none bg-white dark:bg-slate-500 rounded-full border inline-flex ltr:mr-2 rtl:ml-2 relative transition-all
                                                 duration-150 h-[16px] w-[16px] border-slate-400 dark:border-slate-600 dark:ring-slate-700"></span>
                                   <span class="text-secondary-500 text-sm leading-6 capitalize">Perempuan</span>
@@ -256,11 +256,13 @@
                               <label for="fblink" class="form-label">Religion*</label>
                               <select name="select2basic" id="selectreligion" class="select2 form-control w-full mt-2 py-2">
                                 <option selected  value="" class=" inline-block font-Inter font-normal text-sm text-slate-600">Pilih agama</option>
-                                <option value="option1" class=" inline-block font-Inter font-normal text-sm text-slate-600">Islam</option>
-                                <option value="option2" class=" inline-block font-Inter font-normal text-sm text-slate-600">Konghucu</option>
-                                <option value="option3" class=" inline-block font-Inter font-normal text-sm text-slate-600">Katholik</option>
-                                <option value="option3" class=" inline-block font-Inter font-normal text-sm text-slate-600">Kristen</option>
-                                <option value="option3" class=" inline-block font-Inter font-normal text-sm text-slate-600">Protestan</option>
+                                <option value="Islam" class=" inline-block font-Inter font-normal text-sm text-slate-600">Islam</option>
+                                <option value="Konghucu" class=" inline-block font-Inter font-normal text-sm text-slate-600">Konghucu</option>
+                                <option value="Katholik" class=" inline-block font-Inter font-normal text-sm text-slate-600">Katholik</option>
+                                <option value="Kristen" class=" inline-block font-Inter font-normal text-sm text-slate-600">Kristen</option>
+                                <option value="Protestan" class=" inline-block font-Inter font-normal text-sm text-slate-600">Protestan</option>
+                                <option value="Budha" class=" inline-block font-Inter font-normal text-sm text-slate-600">Budha</option>
+                                <option value="Hindu" class=" inline-block font-Inter font-normal text-sm text-slate-600">Hindu</option>
                               </select>
                             </div>
                             <div class="input-area">
@@ -287,21 +289,23 @@
                             </div>
                             <div class="input-area">
                               <label for="prov" class="form-label">Kecamatan*</label>
-                                <select name="select2basic" id="selectkec" class="select2 form-control w-full mt-2 py-2" >
+                                <!-- <select name="select2basic" id="selectkec" class="select2 form-control w-full mt-2 py-2" >
                                   <option selected  value="" class=" inline-block font-Inter font-normal text-sm text-slate-600">Pilih Provinsi</option>
                                   <option value="option1" class=" inline-block font-Inter font-normal text-sm text-slate-600">Jawa Barat</option>
                                   <option value="option2" class=" inline-block font-Inter font-normal text-sm text-slate-600">Jawa Tengah</option>
                                   <option value="option3" class=" inline-block font-Inter font-normal text-sm text-slate-600">Jawa Timur</option>                                  
-                                </select>
+                                </select> -->
+                                <input id="kecamatan" type="text" class="form-control" placeholder="Masukan kecamatan">
                             </div>
                             <div class="input-area">
                               <label for="prov" class="form-label">Kelurahan*</label>
-                                <select name="select2basic" id="selectkel" class="select2 form-control w-full mt-2 py-2" >
+                                <!-- <select name="select2basic" id="selectkel" class="select2 form-control w-full mt-2 py-2" >
                                   <option selected  value="" class=" inline-block font-Inter font-normal text-sm text-slate-600">Pilih Provinsi</option>
                                   <option value="option1" class=" inline-block font-Inter font-normal text-sm text-slate-600">Jawa Barat</option>
                                   <option value="option2" class=" inline-block font-Inter font-normal text-sm text-slate-600">Jawa Tengah</option>
                                   <option value="option3" class=" inline-block font-Inter font-normal text-sm text-slate-600">Jawa Timur</option>                                  
-                                </select>
+                                </select> -->
+                                <input id="kelurahan" type="text" class="form-control" placeholder="Masukan kelurahan">
                             </div>
                             <div class="input-area">
                               <label for="kodepos" class="form-label">Kode Pos*</label>
@@ -315,8 +319,10 @@
                       </div>
                     <!-- Biodata Diri End -->
                     <div class="flex justify-between items-center">
+                      <a href="pilihprodi.html">
                         <button class="btn inline-flex justify-center btn-info shadow-base2 mt-2 ml-auto mr-1">Kembali</button>
-                        <button class="btn inline-flex justify-center btn-warning shadow-base2 mt-2">Submit Data</button>
+                      </a>
+                        <button class="btn inline-flex justify-center btn-warning shadow-base2 mt-2" id="submitButton">Submit Data</button>
                     </div>
                   </div>
               </div>
@@ -388,7 +394,8 @@
     </div>
   </main>
   <!-- scripts -->
-  <script src="pilihprodi.js" type="module"></script>
+  <!-- <script src="pilihprodi.js" type="module"></script> -->
+  <script src="../static/js/controller/biodatadiri.js" type="module"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://cdn.jsdelivr.net/gh/PMBULBI/javascript-fe@0.0.7/jquery-3.6.0.min.js"></script>
