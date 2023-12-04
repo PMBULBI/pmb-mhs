@@ -1,6 +1,7 @@
 // Import function or library
 import { UrlGetJalurPendaftaran } from "../static/js/controller/template.js";
 import {getCookie} from "https://jscroot.github.io/cookie/croot.js";
+import {setValue} from "https://jscroot.github.io/element/croot.js";
 import { token } from "../static/js/controller/cookies.js";
 
 let cookielog = getCookie("login");
@@ -13,6 +14,7 @@ header.append("login", token);
 header.append("Content-Type", "application/json");
 
 let referal = getCookie("referal");
+setValue("referral", referal);
 
 // Jalur Pendaftaran
 // Membuat fungsi untuk fetch data ke dropdown jalur
