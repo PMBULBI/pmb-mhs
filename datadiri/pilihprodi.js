@@ -126,8 +126,8 @@ function submitPilihProdi() {
     const statusProdiKedua = prodiKedua ? prodiKedua.value : "";
 
     const postData = {
-        prodi1 : statusProdiSatu,
-        prodi2 : statusProdiKedua,
+        prodi1 : parseInt(statusProdiSatu),
+        prodi2 : parseInt(statusProdiKedua),
     };
 
     fetch(`https://komarbe.ulbi.ac.id/biodata/prodi`, {
