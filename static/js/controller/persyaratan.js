@@ -46,7 +46,7 @@ window.addEventListener('load', (event) => {
 
                 fetch(UrlFilePost, {
                     method: "POST",
-                    headers: headers,
+                    headers: header,
                     body: file
                 })
                 .then(response => response.json())
