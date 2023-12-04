@@ -1,5 +1,4 @@
 import { UrlGetKota, UrlGetProvinsi, UrlPostDataOrtu, UrlPostDatadiri } from "./template.js";
-import {get} from "https://jscroot.github.io/api/croot.js";
 import {getValue} from "https://jscroot.github.io/element/croot.js";
 import { token } from "./cookies.js";
 

@@ -7,6 +7,7 @@ export let UrlGetKota = 'https://komarbe.ulbi.ac.id/wilayah-kota/get';
 export let UrlPostDatadiri = 'https://komarbe.ulbi.ac.id/biodata/data_diri';
 export let UrlPostDataOrtu = 'https://komarbe.ulbi.ac.id/biodata/data_ortu';
 export let UrlPostDataSekolah = 'https://komarbe.ulbi.ac.id/biodata/data_sekolah';
+export let UrlFilePost = 'https://komarbe.ulbi.ac.id/files/upload';
 
 export const UrlBiodataJalur = 'https://komarbe.ulbi.ac.id/biodata/jalur';
 
