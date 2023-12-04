@@ -5,7 +5,7 @@ import { token } from "../static/js/controller/cookies.js";
 
 let cookielog = getCookie("login");
 if (cookielog === "") {
-    window.location.href("https://pmb.ulbi.ac.id/")
+    window.location.replace("https://pmb.ulbi.ac.id/");
 }
 
 var header = new Headers();
