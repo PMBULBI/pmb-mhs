@@ -1,11 +1,16 @@
-import { UrlGetKota, UrlGetProvinsi, UrlPostDatadiri } from "./template.js";
-import {get} from "https://jscroot.github.io/api/croot.js";
-import {getValue} from "https://jscroot.github.io/element/croot.js";
+import { UrlGetKecamatan, UrlGetKota, UrlGetProvinsi, UrlPostDatadiri } from "./template.js";
+import { get } from "https://jscroot.github.io/api/croot.js";
+import { getValue } from "https://jscroot.github.io/element/croot.js";
 import { token } from "./cookies.js";
 
 var header = new Headers();
 header.append("login", token);
 header.append("Content-Type", "application/json");
+
+// Get Data Kecamatan JSCroot
+function fetchDataKecamatan() {
+    get(UrlGetKecamatan, populateDropdownKecamatan);
+}
 
 //get data provinsi pake jscroot dong
 function fetchDataProvinsi() {
