@@ -29,97 +29,71 @@ function getCookieData(name) {
     return null;
 }
 
-// Get Data Kelurahan JSCroot
-function fetchDataKelurahan() {
-    get(UrlGetKelurahan, populateDropdownKelurahan);
-}
-// Membuat fungsi dropdown data kelurahan
-function populateDropdownKelurahan(data) {
-    const selectDropdown = document.getElementById('selectkel');
-    selectDropdown.innerHTML = '';
+// Get Data Provinsi Untuk Dropdown
+// Buat variabel untuk get id element
+const provinsiSuggestion = document.getElementById('provinsi-suggestions');
+const inputProvinsi = document.getElementById("provinsi-biodata");
+let selectedProvinsiId;
 
-    const defaultOption = document.createElement('option');
-    defaultOption.value = '';
-    defaultOption.text = 'Pilih Kelurahan';
-    selectDropdown.appendChild(defaultOption);
+// Listener untuk suggestion
+inputProvinsi.addEventListener("input", async () => {
+  const provinsiValue = inputProvinsi.value;
+  const body = {
+    nama_provinsi: provinsiValue
+  };
 
-    data.data.forEach(item => {
-        const option = document.createElement('option');
-        option.value = item.nama_kelurahan;
-        option.text = item.nama_kelurahan;
-        selectDropdown.appendChild(option);
-    })
-}
-fetchDataKelurahan();
+  try {
+    const inputValue = inputProvinsi.value.trim();
 
-// Get Data Kecamatan JSCroot
-function fetchDataKecamatan() {
-    get(UrlGetKecamatan, populateDropdownKecamatan);
-}
-// Membuat fungsi dropdown data kecamatan
-function populateDropdownKecamatan(data) {
-    const selectDropdown = document.getElementById('selectkec');
-    selectDropdown.innerHTML = '';
+    if (inputValue === '') {
+      provinsiSuggestion.innerHTML = '';
+      provinsiSuggestion.style.display = 'none';
+      inputProvinsi.disabled = false;
+    } else if (inputValue.length < 2) {
+      provinsiSuggestion.textContent = 'Masukkan setidaknya 2 karakter';
+      provinsiSuggestion.style.display = 'block';
+    } else {
+      const data = await CihuyPost(UrlGetProvinsi, body);
 
-    const defaultOption = document.createElement('option');
-    defaultOption.value = '';
-    defaultOption.text = 'Pilih Kecamatan';
-    selectDropdown.appendChild(defaultOption);
+      if (data.success == false) {
+        provinsiSuggestion.textContent = data.status;
+        provinsiSuggestion.style.display = 'block';
+      } else {
+        provinsiSuggestion.textContent = '';
+        const provinceNames = data.data.map(provinsi => provinsi.nama_provinsi);
+        provinsiSuggestion.innerHTML = "";
 
-    data.data.forEach(item => {
-        const option = document.createElement('option');
-        option.value = item.nama_kecamatan;
-        option.text = item.nama_kecamatan;
-        selectDropdown.appendChild(option);
-    })
-}
-fetchDataKecamatan();
+        provinceNames.forEach(provinceNames => {
+          const elementProvinsi = document.createElement("div");
+          elementProvinsi.className = "provinsi";
+          elementProvinsi.textContent = provinceNames;
 
-// Get Data Provinsi JSCroot
-function fetchDataProvinsi() {
-    get(UrlGetProvinsi, populateDropdownProvinsi);
-}
-// Membuat fungsi dropdown jalur pendaftaran
-function populateDropdownProvinsi(data) {
-    const selectDropdown = document.getElementById('selectprov');
-    selectDropdown.innerHTML = '';
+          const selectedProvinsi = data.data.find(provinsi => provinsi.nama_provinsi === provinceNames);
+          if (selectedProvinsi) {
+            elementProvinsi.addEventListener("click", () => {
+              inputProvinsi.value = provinceNames;  // Mengatur nilai input saat suggestion di klik
+              provinsiSuggestion.innerHTML = "";
+              selectedProvinsiId = selectedProvinsi.id_provinsi; // Menyimpan ID provinsi yang dipilih
+              inputProvinsi.disabled = false;
+            });
+          }
 
-    const defaultOption = document.createElement('option');
-    defaultOption.value = '';
-    defaultOption.text = 'Pilih Provinsi';
-    selectDropdown.appendChild(defaultOption);
+          provinsiSuggestion.appendChild(elementProvinsi);
 
-    data.data.forEach(item => {
-        const option = document.createElement('option');
-        option.value = item.nama_provinsi;
-        option.text = item.nama_provinsi;
-        selectDropdown.appendChild(option);
-    })
-}
-fetchDataProvinsi();
+          if (provinceNames.length > 0) {
+            provinsiSuggestion.style.display = "block";
+          } else {
+            provinsiSuggestion.style.display = "none";
+          }
+        });
+      }
 
-
-function fetchDataKota() {
-    get(UrlGetKota, populateDropdownKota);
-}
-// Membuat fungsi dropdown jalur pendaftaran
-function populateDropdownKota(data) {
-    const selectDropdown = document.getElementById('selectkota');
-    selectDropdown.innerHTML = '';
-
-    const defaultOption = document.createElement('option');
-    defaultOption.value = '';
-    defaultOption.text = 'Pilih Kota';
-    selectDropdown.appendChild(defaultOption);
-
-    data.data.forEach(item => {
-        const option = document.createElement('option');
-        option.value = item.nama_kota;
-        option.text = item.nama_kota;
-        selectDropdown.appendChild(option);
-    })
-}
-fetchDataKota();
+      provinsiSuggestion.classList.add('dropdown');
+    }
+  } catch (error) {
+    console.error("Terjadi kesalahan saat melakukan GET:", error);
+  }
+});
 
 // Untuk POST prodi & fakultas
 // Membuat fungsi untuk mengirimkan data pilih prodi ke API
