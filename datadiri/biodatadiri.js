@@ -1,5 +1,4 @@
-import { UrlGetKelurahan, UrlGetKecamatan, UrlGetKota, UrlGetKotaByIdProvNmKota, UrlGetProvinsi, UrlPostDatadiri, UrlGetKecamatanByIdKotaNmKec, UrlGetKelurahanByIdKecNmKel } from "../static/js/controller/template.js";
-// import { CihuyPostApi } from "https://c-craftjs.github.io/simpelbi/api.js";
+import { UrlGetKotaByIdProvNmKota, UrlGetProvinsi, UrlPostDatadiri, UrlGetKecamatanByIdKotaNmKec, UrlGetKelurahanByIdKecNmKel } from "../static/js/controller/template.js";
 import { CihuyPost } from "https://c-craftjs.github.io/api/api.js";
 import { get } from "https://jscroot.github.io/api/croot.js";
 import { getValue } from "https://jscroot.github.io/element/croot.js";
