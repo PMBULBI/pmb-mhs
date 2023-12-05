@@ -407,15 +407,10 @@
                               <input id="kota-biodata" type="text" class="form-control" placeholder="Masukkan Kabupaten/Kota">
                               <div id="kota-suggestions" class="suggestions"></div>
                             </div>
-                            <div class="input-area">
-                              <label for="prov" class="form-label">Kecamatan*</label>
-                                <select name="select2basic" id="selectkec" class="select2 form-control w-full mt-2 py-2" >
-                                  <option selected  value="" class=" inline-block font-Inter font-normal text-sm text-slate-600">Pilih Provinsi</option>
-                                  <option value="option1" class=" inline-block font-Inter font-normal text-sm text-slate-600">Jawa Barat</option>
-                                  <option value="option2" class=" inline-block font-Inter font-normal text-sm text-slate-600">Jawa Tengah</option>
-                                  <option value="option3" class=" inline-block font-Inter font-normal text-sm text-slate-600">Jawa Timur</option>                                  
-                                </select>
-                                <!-- <input id="kecamatan" type="text" class="form-control" placeholder="Masukan kecamatan"> -->
+                            <div class="input-area" id="kecamatanInput">
+                              <label for="kecamatan" class="form-label">Kecamatan*</label>
+                              <input id="kecamatan-biodata" type="text" class="form-control" placeholder="Masukkan Kecamatan">
+                              <div id="kecamatan-suggestions" class="suggestions"></div>
                             </div>
                             <div class="input-area">
                               <label for="prov" class="form-label">Kelurahan*</label>
