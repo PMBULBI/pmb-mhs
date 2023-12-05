@@ -1,4 +1,4 @@
-import { UrlGetKelurahan, UrlGetKecamatan, UrlGetKota, UrlGetKotaByIdProvNmKota, UrlGetProvinsi, UrlPostDatadiri } from "../static/js/controller/template.js";
+import { UrlGetKelurahan, UrlGetKecamatan, UrlGetKota, UrlGetKotaByIdProvNmKota, UrlGetProvinsi, UrlPostDatadiri, UrlGetKecamatanByIdKotaNmKec } from "../static/js/controller/template.js";
 // import { CihuyPostApi } from "https://c-craftjs.github.io/simpelbi/api.js";
 import { CihuyPost } from "https://c-craftjs.github.io/api/api.js";
 import { get } from "https://jscroot.github.io/api/croot.js";
@@ -55,53 +55,29 @@ function populateDropdownKelurahan(data) {
 fetchDataKelurahan();
 console.log(fetchDataKelurahan);
 
-// Get Data Kecamatan JSCroot
-function fetchDataKecamatan() {
-    get(UrlGetKecamatan, populateDropdownKecamatan);
-}
-// Membuat fungsi dropdown data kecamatan
-function populateDropdownKecamatan(data) {
-    const selectDropdown = document.getElementById('selectkec');
-    selectDropdown.innerHTML = '';
-
-    const defaultOption = document.createElement('option');
-    defaultOption.value = '';
-    defaultOption.text = 'Pilih Kecamatan';
-    selectDropdown.appendChild(defaultOption);
-
-    data.data.forEach(item => {
-        const option = document.createElement('option');
-        option.value = item.nama_kecamatan;
-        option.text = item.nama_kecamatan;
-        selectDropdown.appendChild(option);
-    })
-}
-fetchDataKecamatan();
-console.log(fetchDataKecamatan);
-
-// // Get Data Provinsi JSCroot
-// function fetchDataProvinsi() {
-//     get(UrlGetProvinsi, populateDropdownProvinsi);
+// // Get Data Kecamatan JSCroot
+// function fetchDataKecamatan() {
+//     get(UrlGetKecamatan, populateDropdownKecamatan);
 // }
-// // Membuat fungsi dropdown data provinsi
-// function populateDropdownProvinsi(data) {
-//     const selectDropdown = document.getElementById('selectprovince');
+// // Membuat fungsi dropdown data kecamatan
+// function populateDropdownKecamatan(data) {
+//     const selectDropdown = document.getElementById('selectkec');
 //     selectDropdown.innerHTML = '';
 
 //     const defaultOption = document.createElement('option');
 //     defaultOption.value = '';
-//     defaultOption.text = 'Pilih Provinsi';
+//     defaultOption.text = 'Pilih Kecamatan';
 //     selectDropdown.appendChild(defaultOption);
 
 //     data.data.forEach(item => {
 //         const option = document.createElement('option');
-//         option.value = item.nama_provinsi;
-//         option.text = item.nama_provinsi;
+//         option.value = item.nama_kecamatan;
+//         option.text = item.nama_kecamatan;
 //         selectDropdown.appendChild(option);
 //     })
 // }
-// fetchDataProvinsi();
-// console.log(fetchDataProvinsi);
+// fetchDataKecamatan();
+// console.log(fetchDataKecamatan);
 
 // Get Data Provinsi Untuk Dropdown
 // Buat variabel untuk get id element
@@ -169,84 +145,132 @@ inputProvinsi.addEventListener("input", async () => {
   }
 });
 
-// // Get Data Kota JSCroot
-// function fetchDataKota() {
-//     get(UrlGetKota, populateDropdownKota);
-// }
-// // Membuat fungsi dropdown data kota
-// function populateDropdownKota(data) {
-//     const selectDropdown = document.getElementById('selectkotakab');
-//     selectDropdown.innerHTML = '';
-
-//     const defaultOption = document.createElement('option');
-//     defaultOption.value = '';
-//     defaultOption.text = 'Pilih Kota';
-//     selectDropdown.appendChild(defaultOption);
-
-//     data.data.forEach(item => {
-//         const option = document.createElement('option');
-//         option.value = item.nama_kota;
-//         option.text = item.nama_kota;
-//         selectDropdown.appendChild(option);
-//     })
-// }
-// fetchDataKota();
-// console.log(fetchDataKota);
-
-// Get Data Kota/Kabupaten Untuk Dropdown
+// Get Data Kota Untuk Dropdown
 // Buat variabel untuk get id element
 const kotaSuggestion = document.getElementById('kota-suggestions');
 const inputKota = document.getElementById("kota-biodata");
+let selectedKecamatanId;
 
-// Membuat Listener untuk suggestions
+// Listener untuk suggestion
 inputKota.addEventListener("input", async () => {
+  const kotaValue = inputKota.value;
+  const body = {
+    nama_kota: kotaValue
+  };
+
   try {
-    const inputValue = inputKota.value.trim(); // Mendapatkan nilai input dan menghapus spasi
+    const inputValue = inputKota.value.trim();
+
     if (inputValue === '') {
-      kotaSuggestion.innerHTML = ''; // Kosongkan saran jika input kosong
-      kotaSuggestion.style.display = 'none'; // Sembunyikan daftar saran
-    } else if (inputValue.length < 3) {
-      kotaSuggestion.textContent = 'Masukkan setidaknya 3 karakter untuk mencari asal kota.';
+      kotaSuggestion.innerHTML = '';
+      kotaSuggestion.style.display = 'none';
+      inputKota.disabled = false;
+    } else if (inputValue.length < 2) {
+      kotaSuggestion.textContent = 'Masukkan setidaknya 2 karakter';
       kotaSuggestion.style.display = 'block';
     } else {
-      const body = {
-        id_provinsi: selectedProvinsiId, // Menggunakan ID provinsi yang dipilih
-        nama_kota: inputValue
-      };
       const data = await CihuyPost(UrlGetKotaByIdProvNmKota, body);
 
-      // Untuk Cek di console
-      console.log("Data yang diterima setelah GET:", data);
       if (data.success == false) {
-        // Tampilkan pesan kesalahan
         kotaSuggestion.textContent = data.status;
         kotaSuggestion.style.display = 'block';
       } else {
-        // kotaSuggestion.textContent = JSON.stringify(data);
         kotaSuggestion.textContent = '';
-        const cityNames = data.data.map(kota => kota.nama_kota);
+        const kotaNames = data.data.map(kota => kota.nama_kota);
         kotaSuggestion.innerHTML = "";
-        
-        cityNames.forEach(cityName => {
+
+        kotaNames.forEach(kotaNames => {
           const elementKota = document.createElement("div");
           elementKota.className = "kota";
-          elementKota.textContent = cityName;
+          elementKota.textContent = kotaNames;
 
-          elementKota.addEventListener("click", () => {
-            inputKota.value = cityName; // Mengatur nilai input saat suggestion di klik
-            kotaSuggestion.innerHTML = "";
-          });
+          const selectedKota = data.data.find(kota => kota.nama_kota === kotaNames);
+          if (selectedKota) {
+            elementKota.addEventListener("click", () => {
+              inputKota.value = kotaNames;  // Mengatur nilai input saat suggestion di klik
+              kotaSuggestion.innerHTML = "";
+              selectedKecamatanId = selectedKota.id_kota; // Menyimpan ID provinsi yang dipilih
+              inputKota.disabled = false;
+            });
+          }
 
           kotaSuggestion.appendChild(elementKota);
-        });
 
-        if (cityNames.length > 0) {
-          kotaSuggestion.style.display = "block";
-        } else {
-          kotaSuggestion.style.display = "none";
-        }
+          if (kotaNames.length > 0) {
+            kotaSuggestion.style.display = "block";
+          } else {
+            kotaSuggestion.style.display = "none";
+          }
+        });
       }
+
       kotaSuggestion.classList.add('dropdown');
+    }
+  } catch (error) {
+    console.error("Terjadi kesalahan saat melakukan GET:", error);
+  }
+});
+
+// Get Data Kecamatan Untuk Dropdown
+// Buat variabel untuk get id element
+const kecamatanSuggestion = document.getElementById('kecamatan-suggestions');
+const inputKecamatan = document.getElementById("kecamatan-biodata");
+let selectedKeluarahanId;
+
+// Listener untuk suggestion
+inputKecamatan.addEventListener("input", async () => {
+  const kecamatanValue = inputKecamatan.value;
+  const body = {
+    nama_kecamatan: kecamatanValue
+  };
+
+  try {
+    const inputValue = inputKecamatan.value.trim();
+
+    if (inputValue === '') {
+      kecamatanSuggestion.innerHTML = '';
+      kecamatanSuggestion.style.display = 'none';
+      inputKecamatan.disabled = false;
+    } else if (inputValue.length < 2) {
+      kecamatanSuggestion.textContent = 'Masukkan setidaknya 2 karakter';
+      kecamatanSuggestion.style.display = 'block';
+    } else {
+      const data = await CihuyPost(UrlGetKecamatanByIdKotaNmKec, body);
+
+      if (data.success == false) {
+        kecamatanSuggestion.textContent = data.status;
+        kecamatanSuggestion.style.display = 'block';
+      } else {
+        kecamatanSuggestion.textContent = '';
+        const kecamatanNames = data.data.map(kecamatan => kecamatan.nama_kecamatan);
+        kecamatanSuggestion.innerHTML = "";
+
+        kecamatanNames.forEach(kecamatanNames => {
+          const elementKecamatan = document.createElement("div");
+          elementKecamatan.className = "kecamatan";
+          elementKecamatan.textContent = kecamatanNames;
+
+          const selectedKecamatan = data.data.find(kecamatan => kecamatan.nama_kecamatan === kecamatanNames);
+          if (selectedKecamatan) {
+            elementKecamatan.addEventListener("click", () => {
+              inputKecamatan.value = kecamatanNames;  // Mengatur nilai input saat suggestion di klik
+              kecamatanSuggestion.innerHTML = "";
+              selectedKeluarahanId = selectedKecamatan.id_kota; // Menyimpan ID provinsi yang dipilih
+              inputKecamatan.disabled = false;
+            });
+          }
+
+          kecamatanSuggestion.appendChild(elementKecamatan);
+
+          if (kecamatanNames.length > 0) {
+            kecamatanSuggestion.style.display = "block";
+          } else {
+            kecamatanSuggestion.style.display = "none";
+          }
+        });
+      }
+
+      kecamatanSuggestion.classList.add('dropdown');
     }
   } catch (error) {
     console.error("Terjadi kesalahan saat melakukan GET:", error);
