@@ -11,6 +11,24 @@ header.append("Content-Type", "application/json");
 function fetchDataKecamatan() {
     get(UrlGetKecamatan, populateDropdownKecamatan);
 }
+// Membuat fungsi dropdown data kecamatan
+function populateDropdownKecamatan(data) {
+    const selectDropdown = document.getElementById('selectkec');
+    selectDropdown.innerHTML = '';
+
+    const defaultOption = document.createElement('option');
+    defaultOption.value = '';
+    defaultOption.text = 'Pilih Kecamatan';
+    selectDropdown.appendChild(defaultOption);
+
+    data.data.forEach(item => {
+        const option = document.createElement('option');
+        option.value = item.nama_kecamatan;
+        option.text = item.nama_kecamatan;
+        selectDropdown.appendChild(option);
+    })
+}
+fetchDataKecamatan();
 
 // Get Data Provinsi JSCroot
 function fetchDataProvinsi() {
