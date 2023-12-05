@@ -1,4 +1,4 @@
-import { UrlGetKelurahan, UrlGetKecamatan, UrlGetKota, UrlGetKotaByIdProvNmKota, UrlGetProvinsi, UrlPostDatadiri, UrlGetKecamatanByIdKotaNmKec } from "../static/js/controller/template.js";
+import { UrlGetKelurahan, UrlGetKecamatan, UrlGetKota, UrlGetKotaByIdProvNmKota, UrlGetProvinsi, UrlPostDatadiri, UrlGetKecamatanByIdKotaNmKec, UrlGetKelurahanByIdKecNmKel } from "../static/js/controller/template.js";
 // import { CihuyPostApi } from "https://c-craftjs.github.io/simpelbi/api.js";
 import { CihuyPost } from "https://c-craftjs.github.io/api/api.js";
 import { get } from "https://jscroot.github.io/api/croot.js";
@@ -30,54 +30,6 @@ function getCookieData(name) {
     }
     return null;
 }
-
-// Get Data Kelurahan JSCroot
-function fetchDataKelurahan() {
-    get(UrlGetKelurahan, populateDropdownKelurahan);
-}
-// Membuat fungsi dropdown data kelurahan
-function populateDropdownKelurahan(data) {
-    const selectDropdown = document.getElementById('selectkel');
-    selectDropdown.innerHTML = '';
-
-    const defaultOption = document.createElement('option');
-    defaultOption.value = '';
-    defaultOption.text = 'Pilih Kelurahan';
-    selectDropdown.appendChild(defaultOption);
-
-    data.data.forEach(item => {
-        const option = document.createElement('option');
-        option.value = item.nama_kelurahan;
-        option.text = item.nama_kelurahan;
-        selectDropdown.appendChild(option);
-    })
-}
-fetchDataKelurahan();
-console.log(fetchDataKelurahan);
-
-// // Get Data Kecamatan JSCroot
-// function fetchDataKecamatan() {
-//     get(UrlGetKecamatan, populateDropdownKecamatan);
-// }
-// // Membuat fungsi dropdown data kecamatan
-// function populateDropdownKecamatan(data) {
-//     const selectDropdown = document.getElementById('selectkec');
-//     selectDropdown.innerHTML = '';
-
-//     const defaultOption = document.createElement('option');
-//     defaultOption.value = '';
-//     defaultOption.text = 'Pilih Kecamatan';
-//     selectDropdown.appendChild(defaultOption);
-
-//     data.data.forEach(item => {
-//         const option = document.createElement('option');
-//         option.value = item.nama_kecamatan;
-//         option.text = item.nama_kecamatan;
-//         selectDropdown.appendChild(option);
-//     })
-// }
-// fetchDataKecamatan();
-// console.log(fetchDataKecamatan);
 
 // Get Data Provinsi Untuk Dropdown
 // Buat variabel untuk get id element
@@ -271,6 +223,62 @@ inputKecamatan.addEventListener("input", async () => {
       }
 
       kecamatanSuggestion.classList.add('dropdown');
+    }
+  } catch (error) {
+    console.error("Terjadi kesalahan saat melakukan GET:", error);
+  }
+});
+
+// Get Data Kelurahan di Form
+// Membuat Variabel untuk mendapatkan id element
+const kelurahanSuggestion = document.getElementById('kelurahan-suggestions');
+const inputKelurahan = document.getElementById("kelurahan-biodata");
+
+// Membuat Listener untuk suggestions
+inputKelurahan.addEventListener("input", async () => {
+  try {
+    const inputValue = inputKelurahan.value.trim(); // Mendapatkan nilai input dan menghapus spasi
+    if (inputValue === '') {
+      kelurahanSuggestion.innerHTML = ''; // Kosongkan saran jika input kosong
+      kelurahanSuggestion.style.display = 'none'; // Sembunyikan daftar saran
+    } else if (inputValue.length < 3) {
+      kelurahanSuggestion.textContent = 'Masukkan setidaknya 3 karakter';
+      kelurahanSuggestion.style.display = 'block';
+    } else {
+      const body = {
+        id_kecamatan: selectedKecamatanId, // Menggunakan ID kecamatan yang dipilih
+        nama_kelurahan: inputValue
+      };
+      const data = await CihuyPost(UrlGetKelurahanByIdKecNmKel, body);
+      // Untuk Cek di console
+      console.log("Data yang diterima setelah GET:", data);
+      if (data.success === false) { // Mengganti operator equality
+        // Tampilkan pesan kesalahan
+        kelurahanSuggestion.textContent = data.status;
+        kelurahanSuggestion.style.display = 'block';
+      } else {
+        // kelurahanSuggestion.textContent = JSON.stringify(data);
+        kelurahanSuggestion.textContent = '';
+        const kelurahanNames = data.data.map(kelurahan => kelurahan.nama_kelurahan);
+        kelurahanSuggestion.innerHTML = "";
+        kelurahanNames.forEach(kelurahanName => {
+          const elementKelurahan = document.createElement("div");
+          elementKelurahan.className = "kelurahan";
+          elementKelurahan.textContent = kelurahanName;
+          elementKelurahan.addEventListener("click", () => {
+            inputKelurahan.value = kelurahanName;
+            kelurahanSuggestion.innerHTML = "";
+          });
+          kelurahanSuggestion.appendChild(elementKelurahan);
+        });
+
+        if (kelurahanNames.length > 0) {
+          kelurahanSuggestion.style.display = "block";
+        } else {
+          kelurahanSuggestion.style.display = "none";
+        }
+      }
+      kelurahanSuggestion.classList.add('dropdown');
     }
   } catch (error) {
     console.error("Terjadi kesalahan saat melakukan GET:", error);
