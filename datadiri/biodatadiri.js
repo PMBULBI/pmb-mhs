@@ -1,4 +1,6 @@
 import { UrlGetKelurahan, UrlGetKecamatan, UrlGetKota, UrlGetProvinsi, UrlPostDatadiri } from "../static/js/controller/template.js";
+// import { CihuyPostApi } from "https://c-craftjs.github.io/simpelbi/api.js";
+import { CihuyPost } from "https://c-craftjs.github.io/api/api.js";
 import { get } from "https://jscroot.github.io/api/croot.js";
 import { getValue } from "https://jscroot.github.io/element/croot.js";
 import { token } from "../static/js/controller/cookies.js";
@@ -100,6 +102,67 @@ function populateDropdownProvinsi(data) {
 }
 fetchDataProvinsi();
 console.log(fetchDataProvinsi);
+
+// // Get Data Provinsi Untuk Dropdown
+// // Buat variabel untuk get id element
+// const provinsiSuggestion = document.getElementById('provinsi-suggestions');
+// const inputKota = document.getElementById("provinsi-biodata");
+// let selectedProvinsiId;
+// // Listener untuk suggestion
+// inputKota.addEventListener("input", async () => {
+//     const provinsiValue = inputKota.value;
+//     const body = {
+//         nama_provinsi : provinsiValue
+//     };
+//     try {
+//     const inputValue = inputKota.value.trim(); // Mendapatkan nilai input dan menghapus spasi
+//     if (inputValue === '') {
+//       provinsiSuggestion.innerHTML = ''; // Kosongkan saran jika input kosong
+//       provinsiSuggestion.style.display = 'none'; // Sembunyikan daftar saran
+//       inputKota.disabled = true;
+//     } else if (inputValue.length < 2) {
+//       provinsiSuggestion.textContent = 'Masukkan setidaknya 2 karakter';
+//       provinsiSuggestion.style.display = 'block';
+//     } else {
+//       const data = await CihuyPost(UrlGetProvinsi, body);
+//       // Untuk Cek di console
+//       console.log("Data yang diterima setelah POST:", data);
+//       if (data.success == false) {
+//         // Tampilkan pesan kesalahan
+//         provinsiSuggestion.textContent = data.status;
+//         provinsiSuggestion.style.display = 'block';
+//       } else {
+//         // provinsiSuggestion.textContent = JSON.stringify(data);
+//         provinsiSuggestion.textContent = '';
+//         const provinceNames = data.data.map(provinsi => provinsi.nama_provinsi);
+//         provinsiSuggestion.innerHTML = "";
+//         provinceNames.forEach(provinceNames => {
+//           const elementProvinsi = document.createElement("div");
+//           elementProvinsi.className = "provinsi"
+//           elementProvinsi.textContent = provinceNames;
+//           const selectedProvinsi = data.data.find(provinsi => provinsi.nama_provinsi === provinceNames);
+//           if (selectedProvinsi) {
+//             elementProvinsi.addEventListener("click", () => {
+//               provinsiSekolahInput.value = provinceNames;
+//               provinsiSuggestion.innerHTML = "";
+//               selectedProvinsiId = selectedProvinsi.id_provinsi; // Menyimpan ID provinsi yang dipilih
+//               inputKota.disabled = false;
+//             });
+//           }
+//           provinsiSuggestion.appendChild(elementProvinsi);
+//           if (provinceNames.length > 0) {
+//             provinsiSuggestion.style.display = "block";
+//           } else {
+//             provinsiSuggestion.style.display = "none";
+//           }
+//         })
+//       }
+//       provinsiSuggestion.classList.add('dropdown');
+//     }
+//   } catch (error) {
+//     console.error("Terjadi kesalahan saat melakukan GET:", error);
+//   }
+// })
 
 // Get Data Kota JSCroot
 function fetchDataKota() {
