@@ -1,4 +1,4 @@
-import { UrlGetKecamatan, UrlGetKota, UrlGetProvinsi, UrlPostDataOrtu, UrlPostDataSekolah, UrlPostDatadiri } from "./template.js";
+import { UrlGetKelurahan, UrlGetKecamatan, UrlGetKota, UrlGetProvinsi, UrlPostDataOrtu, UrlPostDataSekolah, UrlPostDatadiri } from "./template.js";
 import { get } from "https://jscroot.github.io/api/croot.js";
 import { getValue } from "https://jscroot.github.io/element/croot.js";
 import { token } from "./cookies.js";
@@ -6,6 +6,29 @@ import { token } from "./cookies.js";
 var header = new Headers();
 header.append("login", token);
 header.append("Content-Type", "application/json");
+
+// Get Data Kelurahan JSCroot
+function fetchDataKelurahan() {
+    get(UrlGetKelurahan, populateDropdownKelurahan);
+}
+// Membuat fungsi dropdown data kelurahan
+function populateDropdownKelurahan(data) {
+    const selectDropdown = document.getElementById('selectkec');
+    selectDropdown.innerHTML = '';
+
+    const defaultOption = document.createElement('option');
+    defaultOption.value = '';
+    defaultOption.text = 'Pilih Kelurahan';
+    selectDropdown.appendChild(defaultOption);
+
+    data.data.forEach(item => {
+        const option = document.createElement('option');
+        option.value = item.nama_kelurahan;
+        option.text = item.nama_kelurahan;
+        selectDropdown.appendChild(option);
+    })
+}
+fetchDataKelurahan();
 
 // Get Data Kecamatan JSCroot
 function fetchDataKecamatan() {
