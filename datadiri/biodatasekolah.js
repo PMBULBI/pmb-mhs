@@ -95,6 +95,72 @@ inputProvinsi.addEventListener("input", async () => {
   }
 });
 
+// Get Data Kota Untuk Dropdown
+// Buat variabel untuk get id element
+const kotaSuggestion = document.getElementById('kota-suggestions');
+const inputKota = document.getElementById("kota-biodata");
+let selectedKecamatanId;
+
+// Listener untuk suggestion
+inputKota.addEventListener("input", async () => {
+  const kotaValue = inputKota.value;
+  const body = {
+    nama_kota: kotaValue
+  };
+
+  try {
+    const inputValue = inputKota.value.trim();
+
+    if (inputValue === '') {
+      kotaSuggestion.innerHTML = '';
+      kotaSuggestion.style.display = 'none';
+      inputKota.disabled = false;
+    } else if (inputValue.length < 2) {
+      kotaSuggestion.textContent = 'Masukkan setidaknya 2 karakter';
+      kotaSuggestion.style.display = 'block';
+    } else {
+      const data = await CihuyPost(UrlGetKotaByIdProvNmKota, body);
+
+      if (data.success == false) {
+        kotaSuggestion.textContent = data.status;
+        kotaSuggestion.style.display = 'block';
+      } else {
+        kotaSuggestion.textContent = '';
+        const kotaNames = data.data.map(kota => kota.nama_kota);
+        kotaSuggestion.innerHTML = "";
+
+        kotaNames.forEach(kotaNames => {
+          const elementKota = document.createElement("div");
+          elementKota.className = "kota";
+          elementKota.textContent = kotaNames;
+
+          const selectedKota = data.data.find(kota => kota.nama_kota === kotaNames);
+          if (selectedKota) {
+            elementKota.addEventListener("click", () => {
+              inputKota.value = kotaNames;  // Mengatur nilai input saat suggestion di klik
+              kotaSuggestion.innerHTML = "";
+              selectedKecamatanId = selectedKota.id_kota; // Menyimpan ID provinsi yang dipilih
+              inputKota.disabled = false;
+            });
+          }
+
+          kotaSuggestion.appendChild(elementKota);
+
+          if (kotaNames.length > 0) {
+            kotaSuggestion.style.display = "block";
+          } else {
+            kotaSuggestion.style.display = "none";
+          }
+        });
+      }
+
+      kotaSuggestion.classList.add('dropdown');
+    }
+  } catch (error) {
+    console.error("Terjadi kesalahan saat melakukan GET:", error);
+  }
+});
+
 // Untuk POST prodi & fakultas
 // Membuat fungsi untuk mengirimkan data pilih prodi ke API
 function SubmitBiodataOrtu() {
