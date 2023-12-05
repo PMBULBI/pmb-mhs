@@ -55,8 +55,6 @@ function populateDropdownKecamatan(data) {
 fetchDataKecamatan();
 console.log(fetchDataKecamatan);
 
-
-
 // Get Data Provinsi JSCroot
 function fetchDataProvinsi() {
     get(UrlGetProvinsi, populateDropdownProvinsi);
