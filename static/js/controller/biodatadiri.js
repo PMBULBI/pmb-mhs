@@ -7,6 +7,11 @@ var header = new Headers();
 header.append("login", token);
 header.append("Content-Type", "application/json");
 
+// Get Data Kelurahan JSCroot
+function fetchDataKelurahan() {
+    get(UrlGetKelurahan, populateDropdownKelurahan);
+}
+
 // Get Data Kecamatan JSCroot
 function fetchDataKecamatan() {
     get(UrlGetKecamatan, populateDropdownKecamatan);
@@ -31,11 +36,13 @@ function populateDropdownKecamatan(data) {
 fetchDataKecamatan();
 console.log(fetchDataKecamatan);
 
-//get data provinsi pake jscroot dong
+
+
+// Get Data Provinsi JSCroot
 function fetchDataProvinsi() {
     get(UrlGetProvinsi, populateDropdownProvinsi);
 }
-// Membuat fungsi dropdown jalur pendaftaran
+// Membuat fungsi dropdown data provinsi
 function populateDropdownProvinsi(data) {
     const selectDropdown = document.getElementById('selectprovince');
     selectDropdown.innerHTML = '';
@@ -55,11 +62,11 @@ function populateDropdownProvinsi(data) {
 fetchDataProvinsi();
 console.log(fetchDataProvinsi);
 
-//get data provinsi pake jscroot dong
+// Get Data Kota JSCroot
 function fetchDataKota() {
     get(UrlGetKota, populateDropdownKota);
 }
-// Membuat fungsi dropdown jalur pendaftaran
+// Membuat fungsi dropdown data kota
 function populateDropdownKota(data) {
     const selectDropdown = document.getElementById('selectkotakab');
     selectDropdown.innerHTML = '';
