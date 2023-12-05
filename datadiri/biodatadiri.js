@@ -1,4 +1,4 @@
-import { UrlGetKelurahan, UrlGetKecamatan, UrlGetKota, UrlGetProvinsi, UrlPostDatadiri } from "../static/js/controller/template.js";
+import { UrlGetKelurahan, UrlGetKecamatan, UrlGetKota, UrlGetKotaByIdProvNmKota, UrlGetProvinsi, UrlPostDatadiri } from "../static/js/controller/template.js";
 // import { CihuyPostApi } from "https://c-craftjs.github.io/simpelbi/api.js";
 import { CihuyPost } from "https://c-craftjs.github.io/api/api.js";
 import { get } from "https://jscroot.github.io/api/croot.js";
@@ -106,87 +106,152 @@ console.log(fetchDataKecamatan);
 // Get Data Provinsi Untuk Dropdown
 // Buat variabel untuk get id element
 const provinsiSuggestion = document.getElementById('provinsi-suggestions');
-const inputKota = document.getElementById("provinsi-biodata");
+const inputProvinsi = document.getElementById("provinsi-biodata");
 let selectedProvinsiId;
+
 // Listener untuk suggestion
-inputKota.addEventListener("input", async () => {
-    const provinsiValue = inputKota.value;
-    const body = {
-        nama_provinsi : provinsiValue
-    };
-    try {
-    const inputValue = inputKota.value.trim(); // Mendapatkan nilai input dan menghapus spasi
+inputProvinsi.addEventListener("input", async () => {
+  const provinsiValue = inputProvinsi.value;
+  const body = {
+    nama_provinsi: provinsiValue
+  };
+
+  try {
+    const inputValue = inputProvinsi.value.trim();
+
     if (inputValue === '') {
-      provinsiSuggestion.innerHTML = ''; // Kosongkan saran jika input kosong
-      provinsiSuggestion.style.display = 'none'; // Sembunyikan daftar saran
-      inputKota.disabled = false;
+      provinsiSuggestion.innerHTML = '';
+      provinsiSuggestion.style.display = 'none';
+      inputProvinsi.disabled = false;
     } else if (inputValue.length < 2) {
       provinsiSuggestion.textContent = 'Masukkan setidaknya 2 karakter';
       provinsiSuggestion.style.display = 'block';
     } else {
       const data = await CihuyPost(UrlGetProvinsi, body);
-      // Untuk Cek di console
-      console.log("Data yang diterima setelah POST:", data);
+
       if (data.success == false) {
-        // Tampilkan pesan kesalahan
         provinsiSuggestion.textContent = data.status;
         provinsiSuggestion.style.display = 'block';
       } else {
-        // provinsiSuggestion.textContent = JSON.stringify(data);
         provinsiSuggestion.textContent = '';
         const provinceNames = data.data.map(provinsi => provinsi.nama_provinsi);
         provinsiSuggestion.innerHTML = "";
+
         provinceNames.forEach(provinceNames => {
           const elementProvinsi = document.createElement("div");
-          elementProvinsi.className = "provinsi"
+          elementProvinsi.className = "provinsi";
           elementProvinsi.textContent = provinceNames;
+
           const selectedProvinsi = data.data.find(provinsi => provinsi.nama_provinsi === provinceNames);
           if (selectedProvinsi) {
             elementProvinsi.addEventListener("click", () => {
-              provinsiSekolahInput.value = provinceNames;
+              inputProvinsi.value = provinceNames;  // Mengatur nilai input saat suggestion di klik
               provinsiSuggestion.innerHTML = "";
               selectedProvinsiId = selectedProvinsi.id_provinsi; // Menyimpan ID provinsi yang dipilih
-              inputKota.disabled = false;
+              inputProvinsi.disabled = false;
             });
           }
+
           provinsiSuggestion.appendChild(elementProvinsi);
+
           if (provinceNames.length > 0) {
             provinsiSuggestion.style.display = "block";
           } else {
             provinsiSuggestion.style.display = "none";
           }
-        })
+        });
       }
+
       provinsiSuggestion.classList.add('dropdown');
     }
   } catch (error) {
     console.error("Terjadi kesalahan saat melakukan GET:", error);
   }
-})
+});
 
-// Get Data Kota JSCroot
-function fetchDataKota() {
-    get(UrlGetKota, populateDropdownKota);
-}
-// Membuat fungsi dropdown data kota
-function populateDropdownKota(data) {
-    const selectDropdown = document.getElementById('selectkotakab');
-    selectDropdown.innerHTML = '';
+// // Get Data Kota JSCroot
+// function fetchDataKota() {
+//     get(UrlGetKota, populateDropdownKota);
+// }
+// // Membuat fungsi dropdown data kota
+// function populateDropdownKota(data) {
+//     const selectDropdown = document.getElementById('selectkotakab');
+//     selectDropdown.innerHTML = '';
 
-    const defaultOption = document.createElement('option');
-    defaultOption.value = '';
-    defaultOption.text = 'Pilih Kota';
-    selectDropdown.appendChild(defaultOption);
+//     const defaultOption = document.createElement('option');
+//     defaultOption.value = '';
+//     defaultOption.text = 'Pilih Kota';
+//     selectDropdown.appendChild(defaultOption);
 
-    data.data.forEach(item => {
-        const option = document.createElement('option');
-        option.value = item.nama_kota;
-        option.text = item.nama_kota;
-        selectDropdown.appendChild(option);
-    })
-}
-fetchDataKota();
-console.log(fetchDataKota);
+//     data.data.forEach(item => {
+//         const option = document.createElement('option');
+//         option.value = item.nama_kota;
+//         option.text = item.nama_kota;
+//         selectDropdown.appendChild(option);
+//     })
+// }
+// fetchDataKota();
+// console.log(fetchDataKota);
+
+// Get Data Kota/Kabupaten Untuk Dropdown
+// Buat variabel untuk get id element
+const kotaSuggestion = document.getElementById('kota-suggestions');
+const inputKota = document.getElementById("kota-biodata");
+
+// Membuat Listener untuk suggestions
+inputKota.addEventListener("input", async () => {
+  try {
+    const inputValue = inputKota.value.trim(); // Mendapatkan nilai input dan menghapus spasi
+    if (inputValue === '') {
+      kotaSuggestion.innerHTML = ''; // Kosongkan saran jika input kosong
+      kotaSuggestion.style.display = 'none'; // Sembunyikan daftar saran
+    } else if (inputValue.length < 3) {
+      kotaSuggestion.textContent = 'Masukkan setidaknya 3 karakter untuk mencari asal kota.';
+      kotaSuggestion.style.display = 'block';
+    } else {
+      const body = {
+        id_provinsi: selectedProvinsiId, // Menggunakan ID provinsi yang dipilih
+        nama_kota: inputValue
+      };
+      const data = await CihuyPost(UrlGetKotaByIdProvNmKota, body);
+
+      // Untuk Cek di console
+      console.log("Data yang diterima setelah GET:", data);
+      if (data.success == false) {
+        // Tampilkan pesan kesalahan
+        kotaSuggestion.textContent = data.status;
+        kotaSuggestion.style.display = 'block';
+      } else {
+        // kotaSuggestion.textContent = JSON.stringify(data);
+        kotaSuggestion.textContent = '';
+        const cityNames = data.data.map(kota => kota.nama_kota);
+        kotaSuggestion.innerHTML = "";
+        
+        cityNames.forEach(cityName => {
+          const elementKota = document.createElement("div");
+          elementKota.className = "kota";
+          elementKota.textContent = cityName;
+
+          elementKota.addEventListener("click", () => {
+            inputKota.value = cityName; // Mengatur nilai input saat suggestion di klik
+            kotaSuggestion.innerHTML = "";
+          });
+
+          kotaSuggestion.appendChild(elementKota);
+        });
+
+        if (cityNames.length > 0) {
+          kotaSuggestion.style.display = "block";
+        } else {
+          kotaSuggestion.style.display = "none";
+        }
+      }
+      kotaSuggestion.classList.add('dropdown');
+    }
+  } catch (error) {
+    console.error("Terjadi kesalahan saat melakukan GET:", error);
+  }
+});
 
 // Untuk POST prodi & fakultas
 // Membuat fungsi untuk mengirimkan data pilih prodi ke API
