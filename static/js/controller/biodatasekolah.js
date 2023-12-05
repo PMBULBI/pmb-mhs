@@ -13,7 +13,7 @@ function fetchDataKelurahan() {
 }
 // Membuat fungsi dropdown data kelurahan
 function populateDropdownKelurahan(data) {
-    const selectDropdown = document.getElementById('selectkec');
+    const selectDropdown = document.getElementById('selectkel');
     selectDropdown.innerHTML = '';
 
     const defaultOption = document.createElement('option');
