@@ -5,7 +5,7 @@ export let UrlGetProgramStudi = 'https://komarbe.ulbi.ac.id/prodi';
 export let UrlGetProvinsi = 'https://komarbe.ulbi.ac.id/wilayah-provinsi/getnama';
 export let UrlGetKota = 'https://komarbe.ulbi.ac.id/wilayah-kota/get';
 export let UrlGetKecamatan = 'https://komarbe.ulbi.ac.id/wilayah-kecamatan/get';
-export let UrlGetKelurahan = 'https://komarbe.ulbi.ac.id/wilayah-kelurahan/get'
+export let UrlGetKelurahan = 'https://komarbe.ulbi.ac.id/wilayah-kelurahan/get';
 
 // Endpoint POST
 export let UrlPostDatadiri = 'https://komarbe.ulbi.ac.id/biodata/data_diri';
