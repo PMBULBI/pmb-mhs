@@ -1,6 +1,6 @@
 // Import function or library
 import { UrlGetJalurPendaftaran } from "../static/js/controller/template.js";
-import {getCookie} from "https://jscroot.github.io/cookie/croot.js";
+import { getCookie } from "https://jscroot.github.io/cookie/croot.js";
 import {setValue} from "https://jscroot.github.io/element/croot.js";
 import { token } from "../static/js/controller/cookies.js";
 
@@ -15,6 +15,28 @@ header.append("Content-Type", "application/json");
 
 let referal = getCookie("referal");
 setValue("referral", referal);
+
+// Get Data untuk Navbar
+document.addEventListener("DOMContentLoaded", function() {
+    // Ambil nilai dari cookie dengan nama 'namaMhs'
+    var namaMhsCookie = getCookieData('namaMhs');
+    // Cek apakah cookie ada
+    if (namaMhsCookie) {
+        // Set nilai cookie ke dalam elemen dengan ID 'nama_mhs_span'
+        document.getElementById('nama_mhs_span').innerText = namaMhsCookie;
+    }
+});
+// Fungsi untuk mendapatkan nilai cookie berdasarkan nama
+function getCookieData(name) {
+    var cookies = document.cookie.split(';');
+    for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i].trim();
+        if (cookie.indexOf(name + '=') === 0) {
+            return cookie.substring(name.length + 1);
+        }
+    }
+    return null;
+}
 
 // Jalur Pendaftaran
 // Membuat fungsi untuk fetch data ke dropdown jalur
