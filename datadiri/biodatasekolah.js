@@ -1,4 +1,5 @@
-import { UrlGetKecamatanByIdKotaNmKec, UrlGetKotaByIdProvNmKota, UrlGetProvinsi, UrlPostDataSekolah } from "../static/js/controller/template.js";
+import { UrlGetKecamatanByIdKotaNmKec, UrlGetKotaByIdProvNmKota, UrlGetKelurahanByIdKecNmKel, UrlGetProvinsi, UrlPostDataSekolah } from "../static/js/controller/template.js";
+import { CihuyPost } from "https://c-craftjs.github.io/api/api.js";
 import { get } from "https://jscroot.github.io/api/croot.js";
 import { getValue } from "https://jscroot.github.io/element/croot.js";
 import { token } from "../static/js/controller/cookies.js";
