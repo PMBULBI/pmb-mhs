@@ -1,7 +1,7 @@
-import { UrlGetKelurahan, UrlGetKecamatan, UrlGetKota, UrlGetProvinsi, UrlPostDataOrtu, UrlPostDataSekolah, UrlPostDatadiri } from "./template.js";
+import { UrlGetKelurahan, UrlGetKecamatan, UrlGetKota, UrlGetProvinsi, UrlPostDatadiri } from "../static/js/controller/template.js";
 import { get } from "https://jscroot.github.io/api/croot.js";
 import { getValue } from "https://jscroot.github.io/element/croot.js";
-import { token } from "./cookies.js";
+import { token } from "../static/js/controller/cookies.js";
 
 var header = new Headers();
 header.append("login", token);
@@ -29,6 +29,7 @@ function populateDropdownKelurahan(data) {
     })
 }
 fetchDataKelurahan();
+console.log(fetchDataKelurahan);
 
 // Get Data Kecamatan JSCroot
 function fetchDataKecamatan() {
@@ -52,14 +53,15 @@ function populateDropdownKecamatan(data) {
     })
 }
 fetchDataKecamatan();
+console.log(fetchDataKecamatan);
 
 // Get Data Provinsi JSCroot
 function fetchDataProvinsi() {
     get(UrlGetProvinsi, populateDropdownProvinsi);
 }
-// Membuat fungsi dropdown jalur pendaftaran
+// Membuat fungsi dropdown data provinsi
 function populateDropdownProvinsi(data) {
-    const selectDropdown = document.getElementById('selectprov');
+    const selectDropdown = document.getElementById('selectprovince');
     selectDropdown.innerHTML = '';
 
     const defaultOption = document.createElement('option');
@@ -75,14 +77,15 @@ function populateDropdownProvinsi(data) {
     })
 }
 fetchDataProvinsi();
+console.log(fetchDataProvinsi);
 
-
+// Get Data Kota JSCroot
 function fetchDataKota() {
     get(UrlGetKota, populateDropdownKota);
 }
-// Membuat fungsi dropdown jalur pendaftaran
+// Membuat fungsi dropdown data kota
 function populateDropdownKota(data) {
-    const selectDropdown = document.getElementById('selectkota');
+    const selectDropdown = document.getElementById('selectkotakab');
     selectDropdown.innerHTML = '';
 
     const defaultOption = document.createElement('option');
@@ -98,46 +101,44 @@ function populateDropdownKota(data) {
     })
 }
 fetchDataKota();
+console.log(fetchDataKota);
 
 // Untuk POST prodi & fakultas
 // Membuat fungsi untuk mengirimkan data pilih prodi ke API
-function SubmitBiodataOrtu() {
-    const nisn = getValue('nisn');
-    const asal_jurusan = getValue('jurusan');
-    const asal_sekolah = "SMA";
+function SubmitBiodatadiri() {
+    const provinsi = getValue('selectprovince');
+    const religion = getValue('selectreligion');
+    const kotakab = getValue('selectkotakab');
+    const nik = getValue('nik');
+    const tanggal_lahir = getValue('date');
+    const tempat_lahir = getValue('tempat');
     const alamat = getValue('alamat');
-    const provinsi_sekolah = getValue('selectprov');
-    const kota_sekolah = getValue('selectkota');
-    const kode_pos_sekolah = getValue('kodepos');
-    const jenis_sekolah = getValue('selectjenis');
-    // const jurusan = getValue('jurusan');
-    const akreditasi_sekolah = getValue('akred');
-    const tahun_lulus = getValue('tahun');
+    const kecamatan = getValue('kecamatan');
+    const kelurahan = getValue('kelurahan');
+    const kodepos = getValue('kodepos');
 
-    const studentData = {
-        "nisn": nisn,
-        "asal_jurusan": asal_jurusan,
-        "asal_sekolah": asal_sekolah,
-        "alamat_sekolah": alamat,
-        "provinsi_sekolah": provinsi_sekolah,
-        "kota_sekolah": kota_sekolah,
-        "kode_pos_sekolah": kode_pos_sekolah,
-        "jenis_sekolah": jenis_sekolah,
-        "jurusan": "jurusan",
-        "akreditasi_sekolah": akreditasi_sekolah,
-        "tahun_lulus": parseInt(tahun_lulus),
-        "guru_bk": "Nama BK",
-        "hp_guru_bk": "0981381283122"
+    const myData = {
+        "jenis_kelamin": getRadioValue(),
+        "nik": nik,
+        "tanggal_lahir": tanggal_lahir,
+        "tempat_lahir": tempat_lahir,
+        "agama": religion,
+        "alamat": alamat,
+        "provinsi": provinsi,
+        "kota": kotakab,
+        "kecamatan": kecamatan,
+        "kelurahan": kelurahan,
+        "kode_pos": kodepos
     };
     
-    // Now 'studentData' is a constant containing the given JSON object
-    console.log(studentData);
+    // Now 'myData' is a constant containing the given JSON object
+    console.log(myData);
     
 
-    fetch(UrlPostDataSekolah, {
+    fetch(UrlPostDatadiri, {
         method : "POST",
         headers : header,
-        body : JSON.stringify(studentData)
+        body : JSON.stringify(myData)
     })
     .then(response => response.json())
     .then(data => {
@@ -149,7 +150,7 @@ function SubmitBiodataOrtu() {
                 showConfirmButton : false,
                 timer : 1500
             }).then(() => {
-                window.location.href = 'persyaratan.html';
+                window.location.href = 'biodataorangtua.html';
             });
         } else {
             Swal.fire({
@@ -167,18 +168,18 @@ function SubmitBiodataOrtu() {
 // Event listener untuk tombol "Submit"
 const submitButton = document.getElementById('submitButton');
 submitButton.addEventListener('click', () => {
-    // const provinsi = getValue('selectprovince');
-    // const religion = getValue('selectreligion');
-    // const kotakab = getValue('selectkotakab');
+    const provinsi = getValue('selectprovince');
+    const religion = getValue('selectreligion');
+    const kotakab = getValue('selectkotakab');
 
-    // if (!provinsi || !religion || !kotakab ) {
-    //     Swal.fire({
-    //         icon: 'warning',
-    //         title: 'Oops...',
-    //         text: 'Semua field harus diisi!',
-    //     });
-    //     return;
-    // }
+    if (!provinsi || !religion || !kotakab ) {
+        Swal.fire({
+            icon: 'warning',
+            title: 'Oops...',
+            text: 'Semua field harus diisi!',
+        });
+        return;
+    }
     // Add additional validation if needed
     Swal.fire({
         title: 'Submit Jalur Pendaftaran?',
@@ -191,7 +192,25 @@ submitButton.addEventListener('click', () => {
         cancelButtonText: 'No',
     }).then((result) => {
         if (result.isConfirmed) {
-            SubmitBiodataOrtu();
+            SubmitBiodatadiri();
         }
     });
 });
+
+
+function getRadioValue() {
+    // Use document.querySelector to get the selected radio button
+    const selectedRadioButton = document.querySelector('input[name="basicradios"]:checked');
+
+    // Check if a radio button is selected
+    if (selectedRadioButton) {
+      // Access the value property to get the selected value
+      const selectedValue = selectedRadioButton.value;
+
+      // Log or use the selected value as needed
+      console.log(selectedValue);
+    } else {
+      // Handle the case where no radio button is selected
+      console.log("No radio button selected");
+    }
+  }

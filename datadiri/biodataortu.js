@@ -1,6 +1,6 @@
-import { UrlGetKota, UrlGetProvinsi, UrlPostDataOrtu, UrlPostDatadiri } from "./template.js";
+import { UrlGetKota, UrlGetProvinsi, UrlPostDataOrtu, UrlPostDatadiri } from "../static/js/controller/template.js";
 import {getValue} from "https://jscroot.github.io/element/croot.js";
-import { token } from "./cookies.js";
+import { token } from "../static/js/controller/cookies.js";
 
 var header = new Headers();
 header.append("login", token);

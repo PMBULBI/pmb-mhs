@@ -1,6 +1,6 @@
-import { UrlFilePost } from "./template.js";
+import { UrlFilePost } from "../static/js/controller/template.js";
 import { getValue } from "https://jscroot.github.io/element/croot.js";
-import { token } from "./cookies.js";
+import { token } from "../static/js/controller/cookies.js";
 
 // Event listener for the "Submit" button
 const submitButton = document.getElementById('submitButton');
