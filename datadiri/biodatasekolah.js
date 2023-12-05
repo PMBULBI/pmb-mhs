@@ -1,4 +1,4 @@
-import { UrlGetKelurahan, UrlGetKecamatan, UrlGetKota, UrlGetProvinsi, UrlPostDataOrtu, UrlPostDataSekolah, UrlPostDatadiri } from "../static/js/controller/template.js";
+import { UrlGetKecamatanByIdKotaNmKec, UrlGetKotaByIdProvNmKota, UrlGetProvinsi, UrlPostDataSekolah } from "../static/js/controller/template.js";
 import { get } from "https://jscroot.github.io/api/croot.js";
 import { getValue } from "https://jscroot.github.io/element/croot.js";
 import { token } from "../static/js/controller/cookies.js";
@@ -155,6 +155,72 @@ inputKota.addEventListener("input", async () => {
       }
 
       kotaSuggestion.classList.add('dropdown');
+    }
+  } catch (error) {
+    console.error("Terjadi kesalahan saat melakukan GET:", error);
+  }
+});
+
+// Get Data Kecamatan Untuk Dropdown
+// Buat variabel untuk get id element
+const kecamatanSuggestion = document.getElementById('kecamatan-suggestions');
+const inputKecamatan = document.getElementById("kecamatan-biodata");
+let selectedKeluarahanId;
+
+// Listener untuk suggestion
+inputKecamatan.addEventListener("input", async () => {
+  const kecamatanValue = inputKecamatan.value;
+  const body = {
+    nama_kecamatan: kecamatanValue
+  };
+
+  try {
+    const inputValue = inputKecamatan.value.trim();
+
+    if (inputValue === '') {
+      kecamatanSuggestion.innerHTML = '';
+      kecamatanSuggestion.style.display = 'none';
+      inputKecamatan.disabled = false;
+    } else if (inputValue.length < 2) {
+      kecamatanSuggestion.textContent = 'Masukkan setidaknya 2 karakter';
+      kecamatanSuggestion.style.display = 'block';
+    } else {
+      const data = await CihuyPost(UrlGetKecamatanByIdKotaNmKec, body);
+
+      if (data.success == false) {
+        kecamatanSuggestion.textContent = data.status;
+        kecamatanSuggestion.style.display = 'block';
+      } else {
+        kecamatanSuggestion.textContent = '';
+        const kecamatanNames = data.data.map(kecamatan => kecamatan.nama_kecamatan);
+        kecamatanSuggestion.innerHTML = "";
+
+        kecamatanNames.forEach(kecamatanNames => {
+          const elementKecamatan = document.createElement("div");
+          elementKecamatan.className = "kecamatan";
+          elementKecamatan.textContent = kecamatanNames;
+
+          const selectedKecamatan = data.data.find(kecamatan => kecamatan.nama_kecamatan === kecamatanNames);
+          if (selectedKecamatan) {
+            elementKecamatan.addEventListener("click", () => {
+              inputKecamatan.value = kecamatanNames;  // Mengatur nilai input saat suggestion di klik
+              kecamatanSuggestion.innerHTML = "";
+              selectedKeluarahanId = selectedKecamatan.id_kota; // Menyimpan ID provinsi yang dipilih
+              inputKecamatan.disabled = false;
+            });
+          }
+
+          kecamatanSuggestion.appendChild(elementKecamatan);
+
+          if (kecamatanNames.length > 0) {
+            kecamatanSuggestion.style.display = "block";
+          } else {
+            kecamatanSuggestion.style.display = "none";
+          }
+        });
+      }
+
+      kecamatanSuggestion.classList.add('dropdown');
     }
   } catch (error) {
     console.error("Terjadi kesalahan saat melakukan GET:", error);
