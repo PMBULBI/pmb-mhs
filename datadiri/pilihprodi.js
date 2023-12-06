@@ -87,7 +87,7 @@ let dataJalur;
 // Get Data untuk Navbar
 document.addEventListener("DOMContentLoaded", function() {
     // Ambil nilai dari cookie dengan nama 'namaMhs'
-    var namaMhsCookie = getCookieData('namaMhs');
+    var namaMhsCookie = getCookie('namaMhs');
     // Cek apakah cookie ada
     if (namaMhsCookie) {
         // Set nilai cookie ke dalam elemen dengan ID 'nama_mhs_span'
@@ -95,16 +95,16 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 // Fungsi untuk mendapatkan nilai cookie berdasarkan nama
-function getCookieData(name) {
-    var cookies = document.cookie.split(';');
-    for (var i = 0; i < cookies.length; i++) {
-        var cookie = cookies[i].trim();
-        if (cookie.indexOf(name + '=') === 0) {
-            return cookie.substring(name.length + 1);
-        }
-    }
-    return null;
-}
+// function getCookieData(name) {
+//     var cookies = document.cookie.split(';');
+//     for (var i = 0; i < cookies.length; i++) {
+//         var cookie = cookies[i].trim();
+//         if (cookie.indexOf(name + '=') === 0) {
+//             return cookie.substring(name.length + 1);
+//         }
+//     }
+//     return null;
+// }
 
 // Get Fakultas
 // Membuat fungsi untuk fetch data fakultas

@@ -1,5 +1,6 @@
 import { UrlGetKotaByIdProvNmKota, UrlGetProvinsi, UrlPostDatadiri, UrlGetKecamatanByIdKotaNmKec, UrlGetKelurahanByIdKecNmKel } from "../static/js/controller/template.js";
 import { CihuyPost } from "https://c-craftjs.github.io/api/api.js";
+import { getCookie } from "https://jscroot.github.io/cookie/croot.js";
 import { get } from "https://jscroot.github.io/api/croot.js";
 import { getValue } from "https://jscroot.github.io/element/croot.js";
 import { token } from "../static/js/controller/cookies.js";
@@ -114,7 +115,7 @@ const gender = selectedGender;
 // Get Data untuk Navbar
 document.addEventListener("DOMContentLoaded", function() {
     // Ambil nilai dari cookie dengan nama 'namaMhs'
-    var namaMhsCookie = getCookieData('namaMhs');
+    var namaMhsCookie = getCookie('namaMhs');
     // Cek apakah cookie ada
     if (namaMhsCookie) {
         // Set nilai cookie ke dalam elemen dengan ID 'nama_mhs_span'
@@ -122,16 +123,16 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 // Fungsi untuk mendapatkan nilai cookie berdasarkan nama
-function getCookieData(name) {
-    var cookies = document.cookie.split(';');
-    for (var i = 0; i < cookies.length; i++) {
-        var cookie = cookies[i].trim();
-        if (cookie.indexOf(name + '=') === 0) {
-            return cookie.substring(name.length + 1);
-        }
-    }
-    return null;
-}
+// function getCookieData(name) {
+//     var cookies = document.cookie.split(';');
+//     for (var i = 0; i < cookies.length; i++) {
+//         var cookie = cookies[i].trim();
+//         if (cookie.indexOf(name + '=') === 0) {
+//             return cookie.substring(name.length + 1);
+//         }
+//     }
+//     return null;
+// }
 
 
 // function getRadioValue() {
