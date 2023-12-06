@@ -13,6 +13,7 @@ var header = new Headers();
 header.append("login", token);
 header.append("Content-Type", "application/json");
 
+var referral = getCookie("referal")
 if (referral === undefined || referral === null || referral === "") {
     setValue("referral", "none");
 } else {
