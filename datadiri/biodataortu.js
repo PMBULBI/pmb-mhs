@@ -29,30 +29,6 @@ function getCookieData(name) {
     return null;
 }
 
-// Get Pekerjaan Orang Tua
-function fetchDataPekerjaan() {
-    get(UrlGetPekerjaan, populateDropdownPekerjaan);
-}
-// Membuat fungsi dropdown jalur pendaftaran
-function populateDropdownPekerjaan(data) {
-    const selectDropdown = document.getElementById('selectpekerjaan');
-    selectDropdown.innerHTML = '';
-
-    const defaultOption = document.createElement('option');
-    defaultOption.value = '';
-    defaultOption.text = 'Pilih Pekerjaan';
-    selectDropdown.appendChild(defaultOption);
-
-    data.data.forEach(item => {
-        const option = document.createElement('option');
-        option.value = item.nama_pekerjaan;
-        option.text = item.nama_pekerjaan;
-        selectDropdown.appendChild(option);
-    })
-}
-fetchDataPekerjaan();
-console.log(fetchDataPekerjaan);
-
 // Untuk POST prodi & fakultas
 // Membuat fungsi untuk mengirimkan data pilih prodi ke API
 function SubmitBiodataOrtu() {
@@ -141,3 +117,28 @@ submitButton.addEventListener('click', () => {
         }
     });
 });
+
+// Get Pekerjaan Orang Tua
+function fetchDataPekerjaan() {
+    get(UrlGetPekerjaan, populateDropdownPekerjaan);
+}
+// Membuat fungsi dropdown jalur pendaftaran
+function populateDropdownPekerjaan(data) {
+    const selectDropdown = document.getElementById('selectpekerjaan');
+    selectDropdown.innerHTML = '';
+
+    const defaultOption = document.createElement('option');
+    defaultOption.value = '';
+    defaultOption.text = 'Pilih Pekerjaan';
+    selectDropdown.appendChild(defaultOption);
+
+    data.data.forEach(item => {
+        const option = document.createElement('option');
+        option.value = item.nama_pekerjaan;
+        option.text = item.nama_pekerjaan;
+        selectDropdown.appendChild(option);
+    })
+}
+fetchDataPekerjaan();
+console.log(fetchDataPekerjaan);
+
