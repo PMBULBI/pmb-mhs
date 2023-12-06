@@ -1,7 +1,15 @@
 // Membuat fungsi logout
 function logout() {
-    // Hapus cookie dengan nama "login"
-    document.cookie = "login=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    // Dapatkan semua cookie yang ada
+    var cookies = document.cookie.split(";");
+
+    // Loop melalui setiap cookie dan hapus
+    for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i];
+        var eqPos = cookie.indexOf("=");
+        var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    }
 
     // Arahkan ke halaman https://pmb.ulbi.ac.id
     window.location.href = "https://pmb.ulbi.ac.id";
