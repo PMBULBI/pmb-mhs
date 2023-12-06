@@ -40,7 +40,7 @@ function populateDropdownPekerjaan(data) {
 
     const defaultOption = document.createElement('option');
     defaultOption.value = '';
-    defaultOption.text = 'Pilih Pekerjaan Orang Tua';
+    defaultOption.text = 'Pilih Pekerjaan';
     selectDropdown.appendChild(defaultOption);
 
     data.data.forEach(item => {
@@ -51,6 +51,7 @@ function populateDropdownPekerjaan(data) {
     })
 }
 fetchDataPekerjaan();
+console.log(fetchDataPekerjaan);
 
 // Untuk POST prodi & fakultas
 // Membuat fungsi untuk mengirimkan data pilih prodi ke API
@@ -59,7 +60,7 @@ function SubmitBiodataOrtu() {
     const hp_ayah_kandung = getValue('hpayah');
     const nama_ibu_kandung = getValue('ibukandung');
     const hp_ibu_kandung = getValue('hpibu');
-    const pekerjaan_orang_tua_wali = getValue('pekerjaanortu');
+    const pekerjaan_orang_tua_wali = getValue('selectpekerjaan');
     const alamat_orang_tua_wali = getValue('alamatortu');
     const penghasilan_orang_tua_wali = getValue('selectpenghasilan');
     const sumber_dana = getValue('selectsumberdana');
