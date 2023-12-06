@@ -112,16 +112,16 @@ const gender = selectedGender;
   });
 });
 
-// Get Data untuk Navbar
-document.addEventListener("DOMContentLoaded", function() {
-    // Ambil nilai dari cookie dengan nama 'namaMhs'
-    var namaMhsCookie = getCookie('namaMhs');
-    // Cek apakah cookie ada
-    if (namaMhsCookie) {
-        // Set nilai cookie ke dalam elemen dengan ID 'nama_mhs_span'
-        document.getElementById('nama_mhs_span').innerText = namaMhsCookie;
-    }
-});
+// // Get Data untuk Navbar
+// document.addEventListener("DOMContentLoaded", function() {
+//     // Ambil nilai dari cookie dengan nama 'namaMhs'
+//     var namaMhsCookie = getCookie('namaMhs');
+//     // Cek apakah cookie ada
+//     if (namaMhsCookie) {
+//         // Set nilai cookie ke dalam elemen dengan ID 'nama_mhs_span'
+//         document.getElementById('nama_mhs_span').innerText = namaMhsCookie;
+//     }
+// });
 // Fungsi untuk mendapatkan nilai cookie berdasarkan nama
 // function getCookieData(name) {
 //     var cookies = document.cookie.split(';');
