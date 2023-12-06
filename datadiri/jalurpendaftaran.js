@@ -13,67 +13,6 @@ var header = new Headers();
 header.append("login", token);
 header.append("Content-Type", "application/json");
 
-var referral = getCookie("referal")
-if (referral === undefined || referral === null || referral === "") {
-    setValue("referral", "none");
-} else {
-    setValue("referral", referral);
-}
-
-// Get Data untuk Navbar
-document.addEventListener("DOMContentLoaded", function() {
-    // Ambil nilai dari cookie dengan nama 'namaMhs'
-    var namaMhsCookie = getCookieData('namaMhs');
-    // Cek apakah cookie ada
-    if (namaMhsCookie) {
-        // Set nilai cookie ke dalam elemen dengan ID 'nama_mhs_span'
-        document.getElementById('nama_mhs_span').innerText = namaMhsCookie;
-    }
-});
-// Fungsi untuk mendapatkan nilai cookie berdasarkan nama
-function getCookieData(name) {
-    var cookies = document.cookie.split(';');
-    for (var i = 0; i < cookies.length; i++) {
-        var cookie = cookies[i].trim();
-        if (cookie.indexOf(name + '=') === 0) {
-            return cookie.substring(name.length + 1);
-        }
-    }
-    return null;
-}
-
-// Jalur Pendaftaran
-// Membuat fungsi untuk fetch data ke dropdown jalur
-function fetchData() {
-    fetch(UrlGetJalurPendaftaran)
-        .then(response => response.json())
-        .then(data => {
-            populateDropdown(data.data);
-        })
-        .catch(error => {
-            console.error('Error fetching data:', error);
-        });
-}
-
-// Membuat fungsi dropdown jalur pendaftaran
-function populateDropdown(data) {
-    const selectDropdown = document.getElementById('selectjalur');
-    selectDropdown.innerHTML = '';
-
-    const defaultOption = document.createElement('option');
-    defaultOption.value = '';
-    defaultOption.text = 'Pilih Jalur';
-    selectDropdown.appendChild(defaultOption);
-
-    data.forEach(item => {
-        const option = document.createElement('option');
-        option.value = item.id_jalur;
-        option.text = item.nama_jalur;
-        selectDropdown.appendChild(option);
-    });
-}
-fetchData();
-
 // Untuk POST Jalur Pendaftaran
 // Membuat fungsi untuk mengirimkan data jalur pendaftaran ke API
 function submitJalurPendaftaran() {
@@ -150,3 +89,65 @@ submitButton.addEventListener('click', () => {
         }
     });
 });
+
+var referral = getCookie("referal")
+if (referral === undefined || referral === null || referral === "") {
+    setValue("referral", "none");
+} else {
+    setValue("referral", referral);
+}
+
+// Get Data untuk Navbar
+document.addEventListener("DOMContentLoaded", function() {
+    // Ambil nilai dari cookie dengan nama 'namaMhs'
+    var namaMhsCookie = getCookieData('namaMhs');
+    // Cek apakah cookie ada
+    if (namaMhsCookie) {
+        // Set nilai cookie ke dalam elemen dengan ID 'nama_mhs_span'
+        document.getElementById('nama_mhs_span').innerText = namaMhsCookie;
+    }
+});
+// Fungsi untuk mendapatkan nilai cookie berdasarkan nama
+function getCookieData(name) {
+    var cookies = document.cookie.split(';');
+    for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i].trim();
+        if (cookie.indexOf(name + '=') === 0) {
+            return cookie.substring(name.length + 1);
+        }
+    }
+    return null;
+}
+
+// Jalur Pendaftaran
+// Membuat fungsi untuk fetch data ke dropdown jalur
+function fetchData() {
+    fetch(UrlGetJalurPendaftaran)
+        .then(response => response.json())
+        .then(data => {
+            populateDropdown(data.data);
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        });
+}
+
+// Membuat fungsi dropdown jalur pendaftaran
+function populateDropdown(data) {
+    const selectDropdown = document.getElementById('selectjalur');
+    selectDropdown.innerHTML = '';
+
+    const defaultOption = document.createElement('option');
+    defaultOption.value = '';
+    defaultOption.text = 'Pilih Jalur';
+    selectDropdown.appendChild(defaultOption);
+
+    data.forEach(item => {
+        const option = document.createElement('option');
+        option.value = item.id_jalur;
+        option.text = item.nama_jalur;
+        selectDropdown.appendChild(option);
+    });
+}
+fetchData();
+
