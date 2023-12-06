@@ -13,11 +13,10 @@ var header = new Headers();
 header.append("login", token);
 header.append("Content-Type", "application/json");
 
-let referal = getCookie("referal");
-if (referal === null) {
-    setValue("referal", "none")
+if (referral === undefined || referral === null || referral === "") {
+    setValue("referral", "none");
 } else {
-    setValue("referal", referal);
+    setValue("referral", referral);
 }
 
 // Get Data untuk Navbar
