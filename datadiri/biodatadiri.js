@@ -105,9 +105,10 @@ const alamat = getValue('alamat');
 const kecamatan = getValue('kecamatan-biodata');
 const kelurahan = getValue('kelurahan-biodata');
 const kodepos = getValue('kodepos');
+const gender = selectedGender;
 
   if (!provinsi || !religion || !kotakab || !nik || !tanggal_lahir || 
-    !tempat_lahir || !alamat || !kecamatan || !kelurahan || !kodepos) {
+    !tempat_lahir || !alamat || !kecamatan || !kelurahan || !kodepos || !gender) {
       Swal.fire({
           icon: 'warning',
           title: 'Oops...',

@@ -89,18 +89,23 @@ function SubmitBiodataOrtu() {
 // Event listener untuk tombol "Submit"
 const submitButton = document.getElementById('submitButton');
 submitButton.addEventListener('click', () => {
-    // const provinsi = getValue('selectprovince');
-    // const religion = getValue('selectreligion');
-    // const kotakab = getValue('selectkotakab');
+    const ayahkandung = getValue('ayahkandung');
+    const ibukandung = getValue('ibukandung');
+    const nohpayah = getValue('hpayah');
+    const nohpibu = getValue('hpibu');
+    const pekerjaanortu = getValue('selectpekerjaan');
+    const penghasilanortu = getValue('selectpenghasilan');
+    const sumberdana = getValue('selectsumberdana');
+    const alamatortu = getValue('alamatortu');
 
-    // if (!provinsi || !religion || !kotakab ) {
-    //     Swal.fire({
-    //         icon: 'warning',
-    //         title: 'Oops...',
-    //         text: 'Semua field harus diisi!',
-    //     });
-    //     return;
-    // }
+    if (!ayahkandung || !ibukandung || !nohpayah || !nohpibu || !pekerjaanortu || !penghasilanortu || !sumberdana || !alamatortu ) {
+        Swal.fire({
+            icon: 'warning',
+            title: 'Oops...',
+            text: 'Semua field harus diisi!',
+        });
+        return;
+    }
     // Add additional validation if needed
     Swal.fire({
         title: 'Submit Jalur Pendaftaran?',
