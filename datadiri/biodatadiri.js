@@ -9,6 +9,19 @@ var header = new Headers();
 header.append("login", token);
 header.append("Content-Type", "application/json");
 
+// Get the radio buttons by name
+const genderRadioButtons = document.getElementsByName("basicradios");
+let selectedGender;
+
+genderRadioButtons.forEach(radioButton => {
+radioButton.addEventListener("change", () => {
+  if (radioButton.checked) {
+    selectedGender = radioButton.value;
+    console.log("Selected Gender:", selectedGender);
+  }
+});
+});
+
 // Untuk POST prodi & fakultas
 // Membuat fungsi untuk mengirimkan data pilih prodi ke API
 function SubmitBiodatadiri() {
@@ -112,28 +125,6 @@ const gender = selectedGender;
   });
 });
 
-// // Get Data untuk Navbar
-// document.addEventListener("DOMContentLoaded", function() {
-//     // Ambil nilai dari cookie dengan nama 'namaMhs'
-//     var namaMhsCookie = getCookie('namaMhs');
-//     // Cek apakah cookie ada
-//     if (namaMhsCookie) {
-//         // Set nilai cookie ke dalam elemen dengan ID 'nama_mhs_span'
-//         document.getElementById('nama_mhs_span').innerText = namaMhsCookie;
-//     }
-// });
-// Fungsi untuk mendapatkan nilai cookie berdasarkan nama
-// function getCookieData(name) {
-//     var cookies = document.cookie.split(';');
-//     for (var i = 0; i < cookies.length; i++) {
-//         var cookie = cookies[i].trim();
-//         if (cookie.indexOf(name + '=') === 0) {
-//             return cookie.substring(name.length + 1);
-//         }
-//     }
-//     return null;
-// }
-
 
 // function getRadioValue() {
 //     // Use document.querySelector to get the selected radio button
@@ -152,18 +143,7 @@ const gender = selectedGender;
 //     }
 //   }
 
-// Get the radio buttons by name
-const genderRadioButtons = document.getElementsByName("basicradios");
-let selectedGender;
 
-genderRadioButtons.forEach(radioButton => {
-radioButton.addEventListener("change", () => {
-  if (radioButton.checked) {
-    selectedGender = radioButton.value;
-    console.log("Selected Gender:", selectedGender);
-  }
-});
-});
 
 // Get Data Provinsi Untuk Dropdown
 // Buat variabel untuk get id element
