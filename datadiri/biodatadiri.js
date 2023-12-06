@@ -287,15 +287,15 @@ inputKelurahan.addEventListener("input", async () => {
 // Untuk POST prodi & fakultas
 // Membuat fungsi untuk mengirimkan data pilih prodi ke API
 function SubmitBiodatadiri() {
-    const provinsi = getValue('selectprovince');
+    const provinsi = getValue('provinsi-biodata');
     const religion = getValue('selectreligion');
-    const kotakab = getValue('selectkotakab');
+    const kotakab = getValue('kota-biodata');
     const nik = getValue('nik');
     const tanggal_lahir = getValue('date');
     const tempat_lahir = getValue('tempat');
     const alamat = getValue('alamat');
-    const kecamatan = getValue('kecamatan');
-    const kelurahan = getValue('kelurahan');
+    const kecamatan = getValue('kecamatan-biodata');
+    const kelurahan = getValue('kelurahan-biodata');
     const kodepos = getValue('kodepos');
 
     const myData = {
