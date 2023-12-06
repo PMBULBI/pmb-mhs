@@ -299,7 +299,7 @@ function SubmitBiodatadiri() {
     const kodepos = getValue('kodepos');
 
     const myData = {
-        "jenis_kelamin": getRadioValue(),
+        "jenis_kelamin": selectedGender,
         "nik": nik,
         "tanggal_lahir": tanggal_lahir,
         "tempat_lahir": tempat_lahir,
@@ -387,19 +387,32 @@ submitButton.addEventListener('click', () => {
 });
 
 
-function getRadioValue() {
-    // Use document.querySelector to get the selected radio button
-    const selectedRadioButton = document.querySelector('input[name="basicradios"]:checked');
+// function getRadioValue() {
+//     // Use document.querySelector to get the selected radio button
+//     const selectedRadioButton = document.querySelector('input[name="basicradios"]:checked');
 
-    // Check if a radio button is selected
-    if (selectedRadioButton) {
-      // Access the value property to get the selected value
-      const selectedValue = selectedRadioButton.value;
+//     // Check if a radio button is selected
+//     if (selectedRadioButton) {
+//       // Access the value property to get the selected value
+//       const selectedValue = selectedRadioButton.value;
 
-      // Log or use the selected value as needed
-      console.log(selectedValue);
-    } else {
-      // Handle the case where no radio button is selected
-      console.log("No radio button selected");
+//       // Log or use the selected value as needed
+//       console.log(selectedValue);
+//     } else {
+//       // Handle the case where no radio button is selected
+//       console.log("No radio button selected");
+//     }
+//   }
+
+// Get the radio buttons by name
+const genderRadioButtons = document.getElementsByName("basicradios");
+let selectedGender;
+
+genderRadioButtons.forEach(radioButton => {
+  radioButton.addEventListener("change", () => {
+    if (radioButton.checked) {
+      selectedGender = radioButton.value;
+      console.log("Selected Gender:", selectedGender);
     }
-  }
+  });
+});
