@@ -48,34 +48,34 @@ function fetchDataBiodataJalur(){
 
 fetchDataBiodataJalur();
 
-function fetchDataFakultas() {
-    fetch(UrlGetFakultas)
-        .then(response => response.json())
-        .then(data => {
-            populateDropdownFakultas(data.data);
-        })
-        .catch(error => {
-            console.error('Error fetching data:', error);
-        });
-}
-// Membuat fungsi dropdown jalur pendaftaran
-function populateDropdownFakultas(data) {
-    const selectDropdown = document.getElementById('selectfak');
-    selectDropdown.innerHTML = '';
+// function fetchDataFakultas() {
+//     fetch(UrlGetFakultas)
+//         .then(response => response.json())
+//         .then(data => {
+//             populateDropdownFakultas(data.data);
+//         })
+//         .catch(error => {
+//             console.error('Error fetching data:', error);
+//         });
+// }
+// // Membuat fungsi dropdown jalur pendaftaran
+// function populateDropdownFakultas(data) {
+//     const selectDropdown = document.getElementById('selectfak');
+//     selectDropdown.innerHTML = '';
 
-    const defaultOption = document.createElement('option');
-    defaultOption.value = '';
-    defaultOption.text = 'Pilih Fakultas';
-    selectDropdown.appendChild(defaultOption);
+//     const defaultOption = document.createElement('option');
+//     defaultOption.value = '';
+//     defaultOption.text = 'Pilih Fakultas';
+//     selectDropdown.appendChild(defaultOption);
 
-    data.forEach(item => {
-        const option = document.createElement('option');
-        option.value = item.nama_fakultas;
-        option.text = item.nama_fakultas;
-        selectDropdown.appendChild(option);
-    })
-}
-fetchDataFakultas();
+//     data.forEach(item => {
+//         const option = document.createElement('option');
+//         option.value = item.nama_fakultas;
+//         option.text = item.nama_fakultas;
+//         selectDropdown.appendChild(option);
+//     })
+// }
+// fetchDataFakultas();
 
 // Get Program Studi 1
 // Membuat fungsi untuk fetch data prodi
