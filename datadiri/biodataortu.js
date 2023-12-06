@@ -1,6 +1,6 @@
 import { UrlGetKota, UrlGetPekerjaan, UrlGetProvinsi, UrlPostDataOrtu, UrlPostDatadiri } from "../static/js/controller/template.js";
+import { get } from "https://jscroot.github.io/api/croot.js";
 import { getValue } from "https://jscroot.github.io/element/croot.js";
-import { CihuyPost } from "https://c-craftjs.github.io/api/api.js";
 import { token } from "../static/js/controller/cookies.js";
 
 var header = new Headers();
@@ -29,62 +29,28 @@ function getCookieData(name) {
     return null;
 }
 
-// Get Data Pekerjaan Orang Tua
-// Buat variabel untuk get id element
-const pekerjaanSuggestion = getValue('pekerjaan-suggestions');
-const inputPekerjaan = getValue('pekerjaan');
-const pekerjaanInput = document.getElementById("pekerjaan-biodata");
+// Get Pekerjaan Orang Tua
+function fetchDataPekerjaan() {
+    get(UrlGetPekerjaan, populateDropdownPekerjaan);
+}
+// Membuat fungsi dropdown jalur pendaftaran
+function populateDropdownPekerjaan(data) {
+    const selectDropdown = document.getElementById('selectpekerjaan');
+    selectDropdown.innerHTML = '';
 
-document.addEventListener('click', function (event) {
-    const dropdown = getValue('pekerjaan-suggestions');
+    const defaultOption = document.createElement('option');
+    defaultOption.value = '';
+    defaultOption.text = 'Pilih Pekerjaan Orang Tua';
+    selectDropdown.appendChild(defaultOption);
 
-    if (!dropdown.contains(event.target)) {
-        dropdown.style.display = 'none';
-    }
-});
-// Buat listener untuk suggestions
-inputPekerjaan.addEventListener("input", async () => {
-    const pekerjaanValue = inputPekerjaan.value;
-    const body = {
-        nama_pekerjaan: pekerjaanValue
-    };
-    try {
-        const inputValue = inputPekerjaan.value.trim();
-        if (inputValue === '') {
-            pekerjaanSuggestion.innerHTML = '';
-            pekerjaanSuggestion.style.display = 'none';
-        } else if (inputValue.length < 3) {
-            pekerjaanSuggestion.textContent = data.status;
-            pekerjaanSuggestion.style.display = 'block';
-        } else {
-            const data = await CihuyPost(UrlGetPekerjaan, body);
-            console.log("Data yang diterima setelah POST : ", data);
-            if (data.success == false) {
-                pekerjaanSuggestion.textContent = '';
-                const pekerjaanNames = data.data.map(pekerjaan => pekerjaan.nama_pekerjaan);
-                pekerjaanSuggestion.innerHTML = "";
-                pekerjaanNames.forEach(pekerjaanNames => {
-                    const elementPekerjaan = document.createElement("div");
-                    elementPekerjaan.className = 'pekerjaan';
-                    elementPekerjaan.textContent = pekerjaanNames;
-                    elementPekerjaan.addEventListener("click", () => {
-                        pekerjaanInput.value = pekerjaanNames;
-                        pekerjaanSuggestion.innerHTML = "";
-                    })
-                    pekerjaanSuggestion.appendChild(elementPekerjaan);
-                    if (pekerjaanNames.length > 0) {
-                        pekerjaanSuggestion.style.display = "block";
-                    } else {
-                        pekerjaanSuggestion.style.display = "none";
-                    }
-                })
-                pekerjaanSuggestion.classList.add('dropdown');
-            }
-        }
-    } catch (error) {
-        console.error("Terjadi kesalahan saat melakukan POST:", error);
-    }
-})
+    data.data.forEach(item => {
+        const option = document.createElement('option');
+        option.value = item.nama_pekerjaan;
+        option.text = item.nama_pekerjaan;
+        selectDropdown.appendChild(option);
+    })
+}
+fetchDataPekerjaan();
 
 // Untuk POST prodi & fakultas
 // Membuat fungsi untuk mengirimkan data pilih prodi ke API
