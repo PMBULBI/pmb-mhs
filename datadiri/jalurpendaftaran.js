@@ -1,7 +1,7 @@
 // Import function or library
 import { UrlGetJalurPendaftaran } from "../static/js/controller/template.js";
 import { getCookie } from "https://jscroot.github.io/cookie/croot.js";
-import {setValue} from "https://jscroot.github.io/element/croot.js";
+import {setValue, getValue} from "https://jscroot.github.io/element/croot.js";
 import { token } from "../static/js/controller/cookies.js";
 
 let cookielog = getCookie("login");
@@ -83,7 +83,7 @@ function submitJalurPendaftaran() {
     // Ambil Jalur Pendaftaran
     const jalurPendaftaran = document.querySelector("#selectjalur");
     const statusJalur = jalurPendaftaran ? jalurPendaftaran.value : "";
-    const referralInput = document.querySelector("#referral");
+    const referralInput = getValue("referral");
     
     const postData = {
         id_jalur : parseInt(statusJalur),
@@ -126,8 +126,6 @@ const submitButton = document.getElementById('submitButton');
 submitButton.addEventListener('click', () => {
     const tahunLulus = document.getElementById('selecttahunlulus').value;
     const jalurPendaftaran = document.getElementById('selectjalur').value;
-    const referralInput = document.getElementById('referral').value;
-
     if (!tahunLulus || !jalurPendaftaran) {
         Swal.fire({
             icon: 'warning',
