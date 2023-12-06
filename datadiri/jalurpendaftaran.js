@@ -88,7 +88,7 @@ function submitJalurPendaftaran() {
     const postData = {
         id_jalur : parseInt(statusJalur),
         tahun_lulus : parseInt(statusLulus),
-        kode_ref : referal
+        kode_ref : referralInput
     };
 
     fetch(`https://komarbe.ulbi.ac.id/biodata/jalur`, {
