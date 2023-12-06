@@ -32,7 +32,7 @@ function getCookieData(name) {
 // Membuat fungsi untuk mengirimkan data pilih prodi ke API
 function SubmitBiodataOrtu() {
     const nama_ayah_kandung = getValue('ayahkandung');
-    const hp_ayah_kandung = getValue('nohp');
+    const hp_ayah_kandung = getValue('hpayah');
     const nama_ibu_kandung = getValue('ibukandung');
     const hp_ibu_kandung = getValue('hpibu');
     const pekerjaan_orang_tua_wali = getValue('pekerjaanortu');
