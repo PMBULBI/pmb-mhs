@@ -15,9 +15,9 @@ header.append("Content-Type", "application/json");
 
 let referal = getCookie("referal");
 if (referal === null) {
-    setValue("referral", "none")
+    setValue("referal", "none")
 } else {
-    setValue("referral", referal);
+    setValue("referal", referal);
 }
 
 // Get Data untuk Navbar
