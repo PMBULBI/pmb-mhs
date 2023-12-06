@@ -291,11 +291,10 @@ function SubmitBiodataOrtu() {
     const asal_jurusan = getValue('jurusan');
     const asal_sekolah = "SMA";
     const alamat = getValue('alamat');
-    const provinsi_sekolah = getValue('selectprov');
-    const kota_sekolah = getValue('selectkota');
+    const provinsi_sekolah = getValue('provinsi-biodata');
+    const kota_sekolah = getValue('kota-biodata');
     const kode_pos_sekolah = getValue('kodepos');
     const jenis_sekolah = getValue('selectjenis');
-    // const jurusan = getValue('jurusan');
     const akreditasi_sekolah = getValue('akred');
     const tahun_lulus = getValue('tahun');
 
