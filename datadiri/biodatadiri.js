@@ -349,11 +349,19 @@ function SubmitBiodatadiri() {
 // Event listener untuk tombol "Submit"
 const submitButton = document.getElementById('submitButton');
 submitButton.addEventListener('click', () => {
-    const provinsi = getValue('selectprovince');
-    const religion = getValue('selectreligion');
-    const kotakab = getValue('selectkotakab');
+  const provinsi = getValue('provinsi-biodata');
+  const religion = getValue('selectreligion');
+  const kotakab = getValue('kota-biodata');
+  const nik = getValue('nik');
+  const tanggal_lahir = getValue('date');
+  const tempat_lahir = getValue('tempat');
+  const alamat = getValue('alamat');
+  const kecamatan = getValue('kecamatan-biodata');
+  const kelurahan = getValue('kelurahan-biodata');
+  const kodepos = getValue('kodepos');
 
-    if (!provinsi || !religion || !kotakab ) {
+    if (!provinsi || !religion || !kotakab || !nik || !tanggal_lahir || 
+      !tempat_lahir || !alamat || !kecamatan || !kelurahan || !kodepos) {
         Swal.fire({
             icon: 'warning',
             title: 'Oops...',
