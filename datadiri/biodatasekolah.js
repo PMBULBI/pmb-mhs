@@ -107,7 +107,7 @@ submitButton.addEventListener('click', () => {
   const kota = getValue('kota-biodata');
   const kodepos = getValue('kodepos');
 
-  if (!nisn || !namasekolah || !jenissekolah || !jurusan || !tahunlulus || !alamatsekolah || !provinsi || !kota || !!kodepos ) {
+  if (!nisn || !namasekolah || !jenissekolah || !jurusan || !tahunlulus || !alamatsekolah || !provinsi || !kota || !kodepos ) {
       Swal.fire({
           icon: 'warning',
           title: 'Oops...',
