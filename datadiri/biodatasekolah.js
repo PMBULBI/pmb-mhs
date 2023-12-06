@@ -1,5 +1,5 @@
-import { UrlGetKecamatanByIdKotaNmKec, UrlGetKotaByIdProvNmKota, UrlGetKelurahanByIdKecNmKel, UrlGetProvinsi, UrlPostDataSekolah } from "../static/js/controller/template.js";
-import { CihuyPost } from "https://c-craftjs.github.io/api/api.js";
+import { UrlGetKecamatanByIdKotaNmKec, UrlGetKotaByIdProvNmKota, UrlGetKelurahanByIdKecNmKel, UrlGetProvinsi, UrlPostDataSekolah, UrlGetJenisSekolah } from "../static/js/controller/template.js";
+import { CihuyPost, CihuyGet } from "https://c-craftjs.github.io/api/api.js";
 import { get } from "https://jscroot.github.io/api/croot.js";
 import { getValue } from "https://jscroot.github.io/element/croot.js";
 import { token } from "../static/js/controller/cookies.js";
@@ -29,6 +29,96 @@ function getCookieData(name) {
     }
     return null;
 }
+
+// Get Pekerjaan Orang Tua
+function fecthDataJenisSekolah() {
+  get(UrlGetJenisSekolah, populateDropdownJenisSekolah);
+}
+// Membuat fungsi dropdown jalur pendaftaran
+function populateDropdownJenisSekolah(data) {
+  const selectDropdown = document.getElementById('selectjenis');
+  selectDropdown.innerHTML = '';
+
+  const defaultOption = document.createElement('option');
+  defaultOption.value = '';
+  defaultOption.text = 'Pilih Jenis Sekolah';
+  selectDropdown.appendChild(defaultOption);
+
+  data.data.forEach(item => {
+      const option = document.createElement('option');
+      option.value = item.nama_jenis_sekolah;
+      option.text = item.nama_jenis_sekolah;
+      selectDropdown.appendChild(option);
+  })
+}
+fecthDataJenisSekolah();
+console.log(fecthDataJenisSekolah);
+
+// // Get Data Jenis Sekolah untuk Dropdown
+// // Buat variabel untuk get id element
+// const jenisSekolahSuggestion = document.getElementById('jenissekolah-suggestions');
+// const inputJenisSekolah = document.getElementById("jenissekolah-biodata");
+// let selectedJenisSekolahId;
+
+// // Listener untuk suggestion
+// inputJenisSekolah.addEventListener("input", async () => {
+//   const jenisSekolahValue = inputJenisSekolah.value;
+//   const body = {
+//     nama_jenis_sekolah: jenisSekolahValue
+//   };
+
+//   try {
+//     const inputValue = inputJenisSekolah.value.trim();
+
+//     if (inputValue === '') {
+//       jenisSekolahSuggestion.innerHTML = '';
+//       jenisSekolahSuggestion.style.display = 'none';
+//       inputJenisSekolah.disabled = false;
+//     } else if (inputValue.length < 2) {
+//       jenisSekolahSuggestion.textContent = 'Masukkan setidaknya 2 karakter';
+//       jenisSekolahSuggestion.style.display = 'block';
+//     } else {
+//       const data = await CihuyGet(UrlGetJenisSekolah, body);
+
+//       if (data.success == false) {
+//         jenisSekolahSuggestion.textContent = data.status;
+//         jenisSekolahSuggestion.style.display = 'block';
+//       } else {
+//         jenisSekolahSuggestion.textContent = '';
+//         const jenisSekolahNames = data.data.map(jenis_sekolah => jenis_sekolah.nama_jenis_sekolah);
+//         jenisSekolahSuggestion.innerHTML = "";
+
+//         jenisSekolahNames.forEach(jenisSekolahNames => {
+//           const elementJenisSekolah = document.createElement("div");
+//           elementJenisSekolah.className = "jenis-sekolah";
+//           elementJenisSekolah.textContent = jenisSekolahNames;
+
+//           const selectedProvinsi = data.data.find(provinsi => provinsi.nama_jenis_sekolah === jenisSekolahNames);
+//           if (selectedProvinsi) {
+//             elementJenisSekolah.addEventListener("click", () => {
+//               inputJenisSekolah.value = jenisSekolahNames;  // Mengatur nilai input saat suggestion di klik
+//               jenisSekolahSuggestion.innerHTML = "";
+//               selectedJenisSekolahId = selectedProvinsi.id_provinsi; // Menyimpan ID provinsi yang dipilih
+//               inputJenisSekolah.disabled = false;
+//             });
+//           }
+
+//           jenisSekolahSuggestion.appendChild(elementJenisSekolah);
+
+//           if (jenisSekolahNames.length > 0) {
+//             jenisSekolahSuggestion.style.display = "block";
+//           } else {
+//             jenisSekolahSuggestion.style.display = "none";
+//           }
+//         });
+//       }
+
+//       jenisSekolahSuggestion.classList.add('dropdown');
+//     }
+//   } catch (error) {
+//     console.error("Terjadi kesalahan saat melakukan GET:", error);
+//   }
+// });
 
 // Get Data Provinsi Untuk Dropdown
 // Buat variabel untuk get id element
