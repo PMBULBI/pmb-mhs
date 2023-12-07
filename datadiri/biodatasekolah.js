@@ -2,7 +2,7 @@ import { UrlGetKecamatanByIdKotaNmKec, UrlGetKotaByIdProvNmKota, UrlGetKelurahan
 import { CihuyPost, CihuyGet } from "https://c-craftjs.github.io/api/api.js";
 import { get } from "https://jscroot.github.io/api/croot.js";
 import { getCookie } from "https://jscroot.github.io/cookie/croot.js";
-import { getValue } from "https://jscroot.github.io/element/croot.js";
+import { getValue, setValue } from "https://jscroot.github.io/element/croot.js";
 import { token } from "../static/js/controller/cookies.js";
 
 var header = new Headers();
@@ -111,27 +111,17 @@ submitButton.addEventListener('click', () => {
   });
 });
 
-// Get Data untuk Navbar
-// document.addEventListener("DOMContentLoaded", function() {
-//     // Ambil nilai dari cookie dengan nama 'namaMhs'
-//     var namaMhsCookie = getCookie('namaMhs');
-//     // Cek apakah cookie ada
-//     if (namaMhsCookie) {
-//         // Set nilai cookie ke dalam elemen dengan ID 'nama_mhs_span'
-//         document.getElementById('nama_mhs_span').innerText = namaMhsCookie;
-//     }
-// });
-// Fungsi untuk mendapatkan nilai cookie berdasarkan nama
-// function getCookieData(name) {
-//     var cookies = document.cookie.split(';');
-//     for (var i = 0; i < cookies.length; i++) {
-//         var cookie = cookies[i].trim();
-//         if (cookie.indexOf(name + '=') === 0) {
-//             return cookie.substring(name.length + 1);
-//         }
-//     }
-//     return null;
-// }
+// Get Data Cookies
+// Get Untuk Data di Navbar dan Form
+document.addEventListener("DOMContentLoaded", function() {
+  // Ambil nilai dari cookie dengan nama 'namaMhs'
+  var asalSekolah = getCookie('asalSekolah');
+
+  if (asalSekolah) {
+      setValue('akred', asalSekolah);
+      document.getElementById('nama_mhs_span').innerText = namaMhs;
+  }
+});
 
 // Get Pekerjaan Jenis Sekolah
 function fecthDataJenisSekolah() {
