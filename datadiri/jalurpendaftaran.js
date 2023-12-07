@@ -84,6 +84,10 @@ function submitJalurPendaftaran() {
                 showConfirmButton : false,
                 timer : 1500
             }).then(() => {
+                // // Menangkap data dari respons JSON
+                // const jalurPendaftar = data.id_jalur;
+                // // Simpan data dalam cookie
+                // document.cookie = `id_jalur=${jalurPendaftar}; path=/`;
                 window.location.href = 'pilihprodi.html';
             });
         } else {
