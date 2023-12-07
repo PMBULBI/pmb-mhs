@@ -1,7 +1,7 @@
 // Import function or library
 import { UrlGetJalurPendaftaran } from "../static/js/controller/template.js";
 import { getCookie } from "https://jscroot.github.io/cookie/croot.js";
-import {setValue, getValue} from "https://jscroot.github.io/element/croot.js";
+import { setValue, getValue, setInnerText} from "https://cdn.jsdelivr.net/gh/jscroot/element@0.0.2/croot.js";
 import { token } from "../static/js/controller/cookies.js";
 
 // let cookielog = getCookie("login");

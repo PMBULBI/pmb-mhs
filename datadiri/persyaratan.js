@@ -1,5 +1,5 @@
 import { UrlFilePost } from "../static/js/controller/template.js";
-import { getValue } from "https://jscroot.github.io/element/croot.js";
+import { getValue, setInnerText } from "https://cdn.jsdelivr.net/gh/jscroot/element@0.0.2/croot.js";
 import { token } from "../static/js/controller/cookies.js";
 
 // Get Data Cookies
