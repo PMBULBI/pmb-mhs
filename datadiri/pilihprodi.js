@@ -8,6 +8,21 @@ var header = new Headers();
 header.append("login", token);
 header.append("Content-Type", "application/json");
 
+// Untuk Get Data Jalur kalau udah pernah daftar
+let dataJalur;
+const setValue = ( res ) =>{
+    if (res.data == null){
+        return;
+    };
+    dataJalur = res;
+    return
+} 
+
+function fetchDataBiodataJalur(){
+    getWithHeader(UrlBiodataJalur, TokenHeader, getCookie(CookieName), setValue);
+}
+fetchDataBiodataJalur();
+
 // Untuk POST prodi & fakultas
 // Membuat fungsi untuk mengirimkan data pilih prodi ke API
 function submitPilihProdi() {
@@ -82,8 +97,6 @@ submitButton.addEventListener('click', () => {
     });
 })
 
-let dataJalur;
-
 // Get Data untuk Navbar
 // document.addEventListener("DOMContentLoaded", function() {
 //     // Ambil nilai dari cookie dengan nama 'namaMhs'
@@ -105,24 +118,6 @@ let dataJalur;
 //     }
 //     return null;
 // }
-
-// Get Fakultas
-// Membuat fungsi untuk fetch data fakultas
-const setValue = ( res ) =>{
-    if (res.data == null){
-        return;
-    };
-    dataJalur = res;
-    return
-} 
-
-function fetchDataBiodataJalur(){
-    getWithHeader(UrlBiodataJalur, TokenHeader, getCookie(CookieName), setValue);
-}
-
-fetchDataBiodataJalur();
-
-
 
 // Get Program Studi 1
 // Membuat fungsi untuk fetch data prodi
