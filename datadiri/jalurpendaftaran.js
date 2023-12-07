@@ -111,7 +111,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 // Jalur Pendaftaran
 // Membuat fungsi untuk fetch data ke dropdown jalur
-function fetchData() {
+function fetchDataJalur() {
     fetch(UrlGetJalurPendaftaran)
         .then(response => response.json())
         .then(data => {
@@ -139,7 +139,7 @@ function populateDropdown(data) {
         selectDropdown.appendChild(option);
     });
 }
-fetchData();
+fetchDataJalur();
 
 // Get Tahun Lulusan
 function fetchDataTahunLulusan() {
