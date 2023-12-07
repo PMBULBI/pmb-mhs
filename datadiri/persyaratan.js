@@ -34,14 +34,19 @@ submitButton.addEventListener('click', () => {
                     'login': token,
                 },
                 body: formData,
-            }).then(window.location.replace("https://pmb.ulbi.ac.id/pmb-mhs/VAPage.html"));
+            })
 
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
 
             const data = await response.json();
+            if (!data.success){
+                throw new Error(`HTTP error! Status: ${data.status}`);
+            }
+
             console.log("Response data:", data);
+            window.location.replace("https://pmb.ulbi.ac.id/pmb-mhs/VAPage.html");
         } catch (error) {
             console.error("Error saat melakukan POST Data:", error);
         }
