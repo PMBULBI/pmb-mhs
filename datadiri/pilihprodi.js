@@ -9,31 +9,6 @@ header.append("login", token);
 header.append("Content-Type", "application/json");
 
 let dataJalur;
-
-// Get Data untuk Navbar
-document.addEventListener("DOMContentLoaded", function() {
-    // Ambil nilai dari cookie dengan nama 'namaMhs'
-    var namaMhsCookie = getCookieData('namaMhs');
-    // Cek apakah cookie ada
-    if (namaMhsCookie) {
-        // Set nilai cookie ke dalam elemen dengan ID 'nama_mhs_span'
-        document.getElementById('nama_mhs_span').innerText = namaMhsCookie;
-    }
-});
-// Fungsi untuk mendapatkan nilai cookie berdasarkan nama
-function getCookieData(name) {
-    var cookies = document.cookie.split(';');
-    for (var i = 0; i < cookies.length; i++) {
-        var cookie = cookies[i].trim();
-        if (cookie.indexOf(name + '=') === 0) {
-            return cookie.substring(name.length + 1);
-        }
-    }
-    return null;
-}
-
-// Get Fakultas
-// Membuat fungsi untuk fetch data fakultas
 const setValue = ( res ) =>{
     if (res.data == null){
         return;
@@ -41,7 +16,6 @@ const setValue = ( res ) =>{
     dataJalur = res;
     return
 } 
-
 function fetchDataBiodataJalur(){
     getWithHeader(UrlBiodataJalur, TokenHeader, getCookie(CookieName), setValue);
 }
