@@ -34,7 +34,7 @@ submitButton.addEventListener('click', () => {
                     'login': token,
                 },
                 body: formData,
-            }).then(window.location.replace("https://pmb.ulbi.ac.id/pmb-mhs/VAPage.html"));
+            }).then(window.location.replace("https://pmb.ulbi.ac.id/pmb-mhs/pembayaran/bayarregistrasi.html"));
 
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
