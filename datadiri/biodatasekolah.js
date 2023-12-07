@@ -116,8 +116,9 @@ submitButton.addEventListener('click', () => {
 document.addEventListener("DOMContentLoaded", function() {
   // Ambil nilai dari cookie dengan nama 'namaMhs'
   var asalSekolah = getCookie('asalSekolah');
+  var namaMhs = getCookie('namaMhs');
 
-  if (asalSekolah) {
+  if (namaMhs && asalSekolah) {
       setValue('akred', asalSekolah);
       document.getElementById('nama_mhs_span').innerText = namaMhs;
   }
