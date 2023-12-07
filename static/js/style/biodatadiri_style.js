@@ -6,8 +6,8 @@ nikInput.addEventListener("input", function() {
   // Menghapus karakter selain angka dari input
   const sanitizedInput = nikInput.value.replace(/[^0-9]/g, '');
   // Membatasi panjang input menjadi maksimal 13 angka
-  if (sanitizedInput.length > 13) {
-    nikInput.value = sanitizedInput.slice(0, 13);
+  if (sanitizedInput.length > 16) {
+    nikInput.value = sanitizedInput.slice(0, 16);
   } else {
     nikInput.value = sanitizedInput;
   }
