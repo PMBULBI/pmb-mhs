@@ -4,11 +4,12 @@ import { getCookie } from "https://jscroot.github.io/cookie/croot.js";
 import {setValue, getValue} from "https://jscroot.github.io/element/croot.js";
 import { token } from "../static/js/controller/cookies.js";
 
-let cookielog = getCookie("login");
-if (cookielog === "") {
-    window.location.replace("https://pmb.ulbi.ac.id/");
-}
+// let cookielog = getCookie("login");
+// if (cookielog === "") {
+//     window.location.replace("https://pmb.ulbi.ac.id/");
+// }
 
+// Untuk Get Referal
 var referral = getCookie("referal")
 if (referral === undefined || referral === null || referral === "") {
     setValue("referral", "none");
@@ -19,6 +20,36 @@ if (referral === undefined || referral === null || referral === "") {
 var header = new Headers();
 header.append("login", token);
 header.append("Content-Type", "application/json");
+
+// Event listener untuk tombol "Submit"
+const submitButton = document.getElementById('submitButton');
+submitButton.addEventListener('click', () => {
+    const tahunLulus = document.getElementById('selecttahunlulus').value;
+    const jalurPendaftaran = document.getElementById('selectjalur').value;
+    if (!tahunLulus || !jalurPendaftaran) {
+        Swal.fire({
+            icon: 'warning',
+            title: 'Oops...',
+            text: 'Semua field harus diisi!',
+        });
+        return;
+    }
+    // Add additional validation if needed
+    Swal.fire({
+        title: 'Submit Jalur Pendaftaran?',
+        text: 'Apakah anda yakin ingin submit jalur pendaftaran?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'No',
+    }).then((result) => {
+        if (result.isConfirmed) {
+            submitJalurPendaftaran();
+        }
+    });
+});
 
 // Untuk POST Jalur Pendaftaran
 // Membuat fungsi untuk mengirimkan data jalur pendaftaran ke API
@@ -66,38 +97,6 @@ function submitJalurPendaftaran() {
         console.error("Error saat melakukan POST Data : ", error);
     });
 }
-
-// Event listener untuk tombol "Submit"
-const submitButton = document.getElementById('submitButton');
-submitButton.addEventListener('click', () => {
-    const tahunLulus = document.getElementById('selecttahunlulus').value;
-    const jalurPendaftaran = document.getElementById('selectjalur').value;
-    if (!tahunLulus || !jalurPendaftaran) {
-        Swal.fire({
-            icon: 'warning',
-            title: 'Oops...',
-            text: 'Semua field harus diisi!',
-        });
-        return;
-    }
-    // Add additional validation if needed
-    Swal.fire({
-        title: 'Submit Jalur Pendaftaran?',
-        text: 'Apakah anda yakin ingin submit jalur pendaftaran?',
-        icon: 'question',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes',
-        cancelButtonText: 'No',
-    }).then((result) => {
-        if (result.isConfirmed) {
-            submitJalurPendaftaran();
-        }
-    });
-});
-
-
 
 // Get Data untuk Navbar
 // document.addEventListener("DOMContentLoaded", function() {
