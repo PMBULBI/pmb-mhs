@@ -2,7 +2,7 @@ import { UrlGetKotaByIdProvNmKota, UrlGetProvinsi, UrlPostDatadiri, UrlGetKecama
 import { CihuyPost } from "https://c-craftjs.github.io/api/api.js";
 import { getCookie } from "https://jscroot.github.io/cookie/croot.js";
 // import { get } from "https://jscroot.github.io/api/croot.js";
-import { getValue, setValue } from "https://jscroot.github.io/element/croot.js";
+import { getValue, setValue, setInnerText } from "https://cdn.jsdelivr.net/gh/jscroot/element@0.0.2/croot.js";
 import { token } from "../static/js/controller/cookies.js";
 
 var header = new Headers();
@@ -136,7 +136,7 @@ document.addEventListener("DOMContentLoaded", function() {
         setValue('nama', namaMhs);
         setValue('email', emailMhs);
         setValue('hp', noHp);
-        document.getElementById('nama_mhs_span').innerText = namaMhs;
+        setInnerText('nama_mhs_span', namaMhs);
     }
 });
 

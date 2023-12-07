@@ -82,6 +82,16 @@ submitButton.addEventListener('click', () => {
     });
 })
 
+// Get Data Cookies
+// Get Untuk Data di Navbar dan Form
+document.addEventListener("DOMContentLoaded", function() {
+    var namaMhs = getCookie('namaMhs');
+  
+    if (namaMhs) {
+        setInnerText('nama_mhs_span', namaMhs);
+    }
+});
+
 // Untuk Get Data Biodata Jalur
 let dataJalur;
 const setValue = ( res ) =>{
