@@ -5,7 +5,7 @@ const nikInput = document.getElementById("nik");
 nikInput.addEventListener("input", function() {
   // Menghapus karakter selain angka dari input
   const sanitizedInput = nikInput.value.replace(/[^0-9]/g, '');
-  // Membatasi panjang input menjadi maksimal 13 angka
+  // Membatasi panjang input menjadi maksimal 16 angka
   if (sanitizedInput.length > 16) {
     nikInput.value = sanitizedInput.slice(0, 16);
   } else {
@@ -24,5 +24,19 @@ noHpInput.addEventListener("input", function() {
     noHpInput.value = sanitizedInput.slice(0, 13);
   } else {
     noHpInput.value = sanitizedInput;
+  }
+});
+
+// Inputkan untuk No Handphone
+const kodePosInput = document.getElementById("kodepos");
+// Menambahkan event listener untuk memvalidasi input
+kodePosInput.addEventListener("input", function() {
+  // Menghapus karakter selain angka dari input
+  const sanitizedInput = kodePosInput.value.replace(/[^0-9]/g, '');
+  // Membatasi panjang input menjadi maksimal 5 angka
+  if (sanitizedInput.length > 5) {
+    kodePosInput.value = sanitizedInput.slice(0, 5);
+  } else {
+    kodePosInput.value = sanitizedInput;
   }
 });
