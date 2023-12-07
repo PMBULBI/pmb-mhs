@@ -1,4 +1,4 @@
-import { UrlGetKecamatanByIdKotaNmKec, UrlGetKotaByIdProvNmKota, UrlGetKelurahanByIdKecNmKel, UrlGetProvinsi, UrlPostDataSekolah, UrlGetJenisSekolah, UrlGetAsalJurusan } from "../static/js/controller/template.js";
+import { UrlGetTahunLulusan, UrlGetKotaByIdProvNmKota, UrlGetProvinsi, UrlPostDataSekolah, UrlGetJenisSekolah, UrlGetAsalJurusan } from "../static/js/controller/template.js";
 import { CihuyPost, CihuyGet } from "https://c-craftjs.github.io/api/api.js";
 import { get } from "https://jscroot.github.io/api/croot.js";
 import { getCookie } from "https://jscroot.github.io/cookie/croot.js";
@@ -370,6 +370,29 @@ inputKota.addEventListener("input", async () => {
     console.error("Terjadi kesalahan saat melakukan GET:", error);
   }
 });
+
+// Get Tahun Lulusan
+function fetchDataTahunLulusan() {
+  get(UrlGetTahunLulusan, populateDropdownTahunLulusan);
+}
+// Membuat fungsi dropdown jalur pendaftaran
+function populateDropdownTahunLulusan(data) {
+  const selectDropdown = document.getElementById('selecttahunlulus');
+  selectDropdown.innerHTML = '';
+
+  const defaultOption = document.createElement('option');
+  defaultOption.value = '';
+  defaultOption.text = 'Pilih Tahun Lulusan';
+  selectDropdown.appendChild(defaultOption);
+
+  data.data.forEach(item => {
+      const option = document.createElement('option');
+      option.value = item.tahun;
+      option.text = item.tahun;
+      selectDropdown.appendChild(option);
+  })
+}
+fetchDataTahunLulusan();
 
 // // Get Data Kecamatan Untuk Dropdown
 // // Buat variabel untuk get id element
