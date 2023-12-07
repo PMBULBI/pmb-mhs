@@ -1,8 +1,8 @@
 import { UrlGetKotaByIdProvNmKota, UrlGetProvinsi, UrlPostDatadiri, UrlGetKecamatanByIdKotaNmKec, UrlGetKelurahanByIdKecNmKel } from "../static/js/controller/template.js";
 import { CihuyPost } from "https://c-craftjs.github.io/api/api.js";
 import { getCookie } from "https://jscroot.github.io/cookie/croot.js";
-import { get } from "https://jscroot.github.io/api/croot.js";
-import { getValue } from "https://jscroot.github.io/element/croot.js";
+// import { get } from "https://jscroot.github.io/api/croot.js";
+import { getValue, setValue } from "https://jscroot.github.io/element/croot.js";
 import { token } from "../static/js/controller/cookies.js";
 
 var header = new Headers();
@@ -14,12 +14,12 @@ const genderRadioButtons = document.getElementsByName("basicradios");
 let selectedGender;
 
 genderRadioButtons.forEach(radioButton => {
-radioButton.addEventListener("change", () => {
-  if (radioButton.checked) {
-    selectedGender = radioButton.value;
-    console.log("Selected Gender:", selectedGender);
-  }
-});
+  radioButton.addEventListener("change", () => {
+    if (radioButton.checked) {
+      selectedGender = radioButton.value;
+      console.log("Selected Gender:", selectedGender);
+    }
+  });
 });
 
 // Untuk POST prodi & fakultas
@@ -125,25 +125,20 @@ const gender = selectedGender;
   });
 });
 
+// Get Untuk Data di Navbar dan Form
+document.addEventListener("DOMContentLoaded", function() {
+    // Ambil nilai dari cookie dengan nama 'namaMhs'
+    var namaMhs = getCookie('namaMhs');
+    var noHp = getCookie('noHp');
+    var emailMhs = getCookie('emailMhs');
 
-// function getRadioValue() {
-//     // Use document.querySelector to get the selected radio button
-//     const selectedRadioButton = document.querySelector('input[name="basicradios"]:checked');
-
-//     // Check if a radio button is selected
-//     if (selectedRadioButton) {
-//       // Access the value property to get the selected value
-//       const selectedValue = selectedRadioButton.value;
-
-//       // Log or use the selected value as needed
-//       console.log(selectedValue);
-//     } else {
-//       // Handle the case where no radio button is selected
-//       console.log("No radio button selected");
-//     }
-//   }
-
-
+    if (namaMhs && noHp && emailMhs) {
+        setValue('nama', namaMhs);
+        setValue('email', emailMhs);
+        setValue('hp', noHp);
+        document.getElementById('nama_mhs_span').innerText = namaMhs;
+    }
+});
 
 // Get Data Provinsi Untuk Dropdown
 // Buat variabel untuk get id element
