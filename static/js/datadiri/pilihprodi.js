@@ -1,8 +1,8 @@
 // Import function or library
-import { CookieName, UrlGetFakultas, UrlGetProgramStudi, UrlBiodataJalur, TokenHeader } from "../controller/template.js";
+import { CookieName, UrlGetFakultas, UrlGetProgramStudi, UrlBiodataJalur, TokenHeader } from "../static/js/controller/template.js";
 import { getWithHeader } from "https://jscroot.github.io/api/croot.js";
 import { getCookie } from "https://jscroot.github.io/cookie/croot.js";
-import { token } from "../controller/cookies.js";
+import { token } from "../static/js/controller/cookies.js";
 import { setInnerText } from "https://cdn.jsdelivr.net/gh/jscroot/element@0.0.2/croot.js";
 
 var header = new Headers();
