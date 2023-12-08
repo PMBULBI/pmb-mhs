@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="../assets/css/app.css">
   <!-- End : Theme CSS-->
   <script src="../assets/js/settings.js" sync></script>
+  
 </head>
 
 <body class=" font-inter dashcode-app" id="body_class">
@@ -367,16 +368,19 @@
                               </div>
                               <div class="input-area">
                                 <label for="fullname" class="form-label">Jalur Pendaftaran*</label>
-                                <select name="select2basic" id="selectjalur" class="select2 form-control w-full mt-2 py-2">
+                                <select name="select2basic" id="selectjalur" class="select2 form-control w-full mt-2 py-2" onchange="showJalurInput()">
                                   <option selected  value="" class=" inline-block font-Inter font-normal text-sm text-slate-600">Pilih Jalur</option>
-                                  <option value="option1" class=" inline-block font-Inter font-normal text-sm text-slate-600">Option 1</option>
-                                  <option value="option2" class=" inline-block font-Inter font-normal text-sm text-slate-600">Option 2</option>
-                                  <option value="option3" class=" inline-block font-Inter font-normal text-sm text-slate-600">Option 3</option>
                                 </select>
                               </div>
                               <div class="input-area">
                                 <label for="referral" class="form-label">Referral</label>
                                 <input id="referral" type="text" class="form-control" placeholder="Referral" disabled>
+                              </div>
+                              <div class="input-area" id="jalurPendaftarNew" style="display: none;">
+                                <label for="fullname" class="form-label">Jalur Pendaftaran*</label>
+                                <select name="select2basic" id="selectjalur2" class="select2 form-control w-full mt-2 py-2">
+                                  <option selected  value="" class=" inline-block font-Inter font-normal text-sm text-slate-600">Pilih Jalur</option>
+                                </select>
                               </div>
                             </div>
                             </div>
@@ -457,6 +461,7 @@
     </div>
   </main>
   <!-- scripts -->
+  <script src="../static/js/style/jalurpendaftar_style.js"></script>
   <script src="../static/js/datadiri/jalurpendaftaran.js" type="module"></script>
   <script src="../static/js/controller/logout.js" type="module"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
