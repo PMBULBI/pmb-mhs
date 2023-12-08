@@ -167,3 +167,31 @@ function populateDropdownTahunLulusan(data) {
     })
 }
 fetchDataTahunLulusan();
+
+// Get Jalur Pendaftaran Baru
+function fetchDataJalurBaru() {
+    get(UrlGetJalurPendaftaran, populateDropdownJalurBaru);
+}
+// Membuat fungsi dropdown jalur pendaftaran
+function populateDropdownJalurBaru(data) {
+    const selectDropdown = document.getElementById('selectjalur2');
+    selectDropdown.innerHTML = '';
+
+    const defaultOption = document.createElement('option');
+    defaultOption.value = '';
+    defaultOption.text = 'Pilih Jalur Pendaftaran';
+    selectDropdown.appendChild(defaultOption);
+
+    // Filter jalur yang tidak sama dengan "Ikatan Dinas"
+    const filteredJalur = data.data.filter(item => item.nama_jalur !== 'Ikatan Dinas');
+
+    // Tambahkan opsi untuk setiap jalur yang tidak sama dengan "Ikatan Dinas"
+    filteredJalur.forEach(item => {
+        const option = document.createElement('option');
+        option.value = item.id_jalur;
+        option.text = item.nama_jalur;
+        selectDropdown.appendChild(option);
+    });
+}
+
+fetchDataJalurBaru();
