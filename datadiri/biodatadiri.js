@@ -118,7 +118,7 @@ function renderDataPendaftar(result){
   if (result.success){
     setValue('nama', result.data.nama_mhs);
     setValue('email', result.data.email_mhs);
-    setValue('hp', result.data.email_mhs.hp_mhs);
+    setValue('hp', result.data.hp_mhs);
     setInnerText('nama_mhs_span', result.data.nama_mhs);
   }
 }
