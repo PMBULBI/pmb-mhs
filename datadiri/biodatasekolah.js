@@ -1,8 +1,7 @@
-import { UrlGetTahunLulusan, UrlGetKotaByIdProvNmKota, UrlGetProvinsi, UrlPostDataSekolah, UrlGetJenisSekolah, UrlGetAsalJurusan } from "../static/js/controller/template.js";
+import { UrlGetTahunLulusan, UrlGetKotaByIdProvNmKota, UrlGetProvinsi, UrlPostDataSekolah, UrlGetJenisSekolah, UrlGetAsalJurusan,UrlGetDataPendaftar } from "../static/js/controller/template.js";
 import { CihuyPost, CihuyGet } from "https://c-craftjs.github.io/api/api.js";
-import { get } from "https://jscroot.github.io/api/croot.js";
-import { getCookie } from "https://jscroot.github.io/cookie/croot.js";
 import { getValue, setValue, setInnerText } from "https://cdn.jsdelivr.net/gh/jscroot/element@0.0.2/croot.js";
+import {get,getWithHeader} from "https://cdn.jsdelivr.net/gh/jscroot/api@0.0.1/croot.js";
 import { token } from "../static/js/controller/cookies.js";
 
 var header = new Headers();
@@ -113,16 +112,13 @@ submitButton.addEventListener('click', () => {
 
 // Get Data Cookies
 // Get Untuk Data di Navbar dan Form
-document.addEventListener("DOMContentLoaded", function() {
-  // Ambil nilai dari cookie dengan nama 'namaMhs'
-  var asalSekolah = getCookie('asalSekolah');
-  var namaMhs = getCookie('namaMhs');
-
-  if (namaMhs && asalSekolah) {
-      setValue('akred', asalSekolah);
-      setInnerText('nama_mhs_span', namaMhs);
+getWithHeader(UrlGetDataPendaftar,"login",token,renderDataPendaftar);
+function renderDataPendaftar(result){
+  if (result.success){
+    setValue('akred', result.data.asal_sekolah);
+    setInnerText('nama_mhs_span', result.data.nama_mhs);
   }
-});
+}
 
 // Get Pekerjaan Jenis Sekolah
 function fecthDataJenisSekolah() {

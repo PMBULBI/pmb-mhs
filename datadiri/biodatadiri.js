@@ -1,7 +1,5 @@
 import { UrlGetKotaByIdProvNmKota, UrlGetProvinsi, UrlPostDatadiri, UrlGetKecamatanByIdKotaNmKec, UrlGetKelurahanByIdKecNmKel, UrlGetDataPendaftar } from "../static/js/controller/template.js";
 import { CihuyPost } from "https://c-craftjs.github.io/api/api.js";
-import { getCookie } from "https://jscroot.github.io/cookie/croot.js";
-// import { get } from "https://jscroot.github.io/api/croot.js";
 import { getValue, setValue, setInnerText, getValueRadio } from "https://cdn.jsdelivr.net/gh/jscroot/element@0.0.5/croot.js";
 import {getWithHeader} from "https://cdn.jsdelivr.net/gh/jscroot/api@0.0.1/croot.js";
 import { token } from "../static/js/controller/cookies.js";
@@ -9,18 +7,6 @@ import { token } from "../static/js/controller/cookies.js";
 var header = new Headers();
 header.append("login", token);
 header.append("Content-Type", "application/json");
-
-//ambil data pendaftar dan render ke html
-getWithHeader(UrlGetDataPendaftar,"login",token,renderDataPendaftar);
-
-function renderDataPendaftar(result){
-  if (result.success){
-    setValue('nama', result.data.nama_mhs);
-    setValue('email', result.data.email_mhs);
-    setValue('hp', result.data.email_mhs.hp_mhs);
-    setInnerText('nama_mhs_span', result.data.nama_mhs);
-  }
-}
 
 // Untuk POST prodi & fakultas
 // Membuat fungsi untuk mengirimkan data pilih prodi ke API
@@ -127,20 +113,15 @@ const gender = getValueRadio('basicradios');
 });
 
 // Get Untuk Data di Navbar dan Form
-// document.addEventListener("DOMContentLoaded", function() {
-//     // Ambil nilai dari cookie dengan nama 'namaMhs'
-
-//     var namaMhs = getCookie('namaMhs');
-//     var noHp = getCookie('noHp');
-//     var emailMhs = getCookie('emailMhs');
-
-//     if (namaMhs && noHp && emailMhs) {
-//         setValue('nama', namaMhs);
-//         setValue('email', emailMhs);
-//         setValue('hp', noHp);
-//         setInnerText('nama_mhs_span', namaMhs);
-//     }
-// });
+getWithHeader(UrlGetDataPendaftar,"login",token,renderDataPendaftar);
+function renderDataPendaftar(result){
+  if (result.success){
+    setValue('nama', result.data.nama_mhs);
+    setValue('email', result.data.email_mhs);
+    setValue('hp', result.data.email_mhs.hp_mhs);
+    setInnerText('nama_mhs_span', result.data.nama_mhs);
+  }
+}
 
 // Get Data Provinsi Untuk Dropdown
 // Buat variabel untuk get id element
