@@ -1,8 +1,8 @@
-import { UrlGetKotaByIdProvNmKota, UrlGetProvinsi, UrlPostDatadiri, UrlGetKecamatanByIdKotaNmKec, UrlGetKelurahanByIdKecNmKel, UrlGetDataPendaftar } from "../static/js/controller/template.js";
+import { UrlGetKotaByIdProvNmKota, UrlGetProvinsi, UrlPostDatadiri, UrlGetKecamatanByIdKotaNmKec, UrlGetKelurahanByIdKecNmKel, UrlGetDataPendaftar } from "../controller/template.js";
 import { CihuyPost } from "https://c-craftjs.github.io/api/api.js";
 import { getValue, setValue, setInnerText, getValueRadio } from "https://cdn.jsdelivr.net/gh/jscroot/element@0.0.5/croot.js";
 import {getWithHeader} from "https://cdn.jsdelivr.net/gh/jscroot/api@0.0.1/croot.js";
-import { token } from "../static/js/controller/cookies.js";
+import { token } from "../controller/cookies.js";
 
 var header = new Headers();
 header.append("login", token);
