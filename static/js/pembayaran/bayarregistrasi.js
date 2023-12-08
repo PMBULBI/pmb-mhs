@@ -1,6 +1,6 @@
 import { postWithToken} from "https://jscroot.github.io/api/croot.js";
 import {getValue, addChild} from "https://jscroot.github.io/element/croot.js";
-import { token } from "../static/js/controller/cookies.js";
+import { token } from "../controller/cookies.js";
   
 function fetchVA() {
     postWithToken("https://komarbe.ulbi.ac.id/va/create", "LOGIN", token,  "test" ,Response)
