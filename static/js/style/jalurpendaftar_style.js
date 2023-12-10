@@ -1,10 +1,8 @@
-function showJalurInput() {
-    var selectJalur = document.getElementById("selectjalur");
-    var jalurInputArea = document.getElementById("jalurPendaftarNew");
+// Seleksi jalur untuk form ikatan dinas 
+function showHideForm() {
+    var selectedValue = document.getElementById("selectjalur").value;
+    var formInput = document.getElementById("jalurPendaftarNew");
 
-    if (selectJalur.value === "Ikatan Dinas") {
-        jalurInputArea.style.display = "none";
-    } else {
-        jalurInputArea.style.display = "block";
-    }
+    // Tampilkan form input jika opsi "Ikatan Dinas" dipilih, sembunyikan jika opsi lainnya dipilih
+    formInput.style.display = (selectedValue === "Ikatan Dinas") ? "block" : "none";
 }
