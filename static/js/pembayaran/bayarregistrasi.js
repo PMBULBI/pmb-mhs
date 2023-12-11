@@ -1,10 +1,19 @@
-import { postWithToken} from "https://jscroot.github.io/api/croot.js";
-import { getValue, addChild } from "https://jscroot.github.io/element/croot.js";
+import { UrlGetDataPendaftar, UrlPostVA } from "../controller/template.js";
+import { postWithToken}  from "https://jscroot.github.io/api/croot.js";
+// import { getValue, addChild } from "https://jscroot.github.io/element/croot.js";
 import { token } from "../controller/cookies.js";
 import { setValue, setInnerText } from "https://cdn.jsdelivr.net/gh/jscroot/element@0.0.5/croot.js";
-  
+
+// Get Untuk Data di Navbar dan Form
+getWithHeader(UrlGetDataPendaftar,"login",token,renderDataPendaftar);
+function renderDataPendaftar(result){
+  if (result.success){
+    setInnerText('nama_mhs_span', result.data.nama_mhs);
+  }
+}
+
 function fetchVA() {
-    postWithToken("https://komarbe.ulbi.ac.id/va/create", "LOGIN", token,  "test" ,Response)
+    postWithToken(UrlPostVA, "LOGIN", token,  "test" ,Response)
 }
 
 function Response(value){
