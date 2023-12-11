@@ -54,5 +54,5 @@ submitButton.addEventListener('click', () => {
     };
 
     // Event listener for form submission
-    form.addEventListener("submit", handleSubmit);
+    //form.addEventListener("submit", handleSubmit);
 });
