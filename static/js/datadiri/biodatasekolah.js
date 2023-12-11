@@ -2,7 +2,7 @@ import { UrlGetTahunLulusan, UrlGetKotaByIdProvNmKota, UrlGetProvinsi, UrlPostDa
 import { CihuyPost, CihuyGet } from "https://c-craftjs.github.io/api/api.js";
 import { getValue, setValue, setInnerText } from "https://cdn.jsdelivr.net/gh/jscroot/element@0.0.2/croot.js";
 import {get,getWithHeader} from "https://cdn.jsdelivr.net/gh/jscroot/api@0.0.1/croot.js";
-import { token } from "../static/js/controller/cookies.js";
+import { token } from "../controller/cookies.js";
 
 var header = new Headers();
 header.append("login", token);
