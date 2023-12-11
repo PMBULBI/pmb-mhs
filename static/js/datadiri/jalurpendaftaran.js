@@ -21,6 +21,11 @@ if (referral === undefined || referral === null || referral === "") {
 var header = new Headers();
 header.append("login", token);
 header.append("Content-Type", "application/json");
+// Event listener untuk select "tahun lulus"
+const selecttahunlulus = document.getElementById('selecttahunlulus');
+selecttahunlulus.addEventListener('change', () => {
+    console.log(selecttahunlulus.options[selecttahunlulus.selectedIndex].value);
+});
 
 // Event listener untuk tombol "Submit"
 const submitButton = document.getElementById('submitButton');
