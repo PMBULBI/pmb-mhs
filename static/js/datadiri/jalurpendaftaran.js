@@ -24,6 +24,7 @@ header.append("Content-Type", "application/json");
 // Event listener untuk select "tahun lulus"
 const selecttahunlulus = document.getElementById('selecttahunlulus');
 selecttahunlulus.addEventListener('change', () => {
+    console.log("terpilih tahun lulus");
     console.log(selecttahunlulus.options[selecttahunlulus.selectedIndex].value);
 });
 
