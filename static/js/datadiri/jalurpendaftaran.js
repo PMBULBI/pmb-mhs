@@ -1,9 +1,11 @@
 // Import function or library
-import { UrlGetJalurPendaftaran, UrlGetTahunLulusan } from "../controller/template.js";
-import { get } from "https://jscroot.github.io/api/croot.js";
+import { UrlGetJalurPendaftaran, UrlGetTahunLulusan,UrlGetJalurByTahun } from "../controller/template.js";
+import { get,postWithToken } from "https://cdn.jsdelivr.net/gh/jscroot/api@0.0.2/croot.js";
 import { getCookie } from "https://jscroot.github.io/cookie/croot.js";
 import { setValue, getValue, setInnerText} from "https://cdn.jsdelivr.net/gh/jscroot/element@0.0.2/croot.js";
 import { token } from "../controller/cookies.js";
+
+window.onChangeTahunLulus=onChangeTahunLulus;
 
 // let cookielog = getCookie("login");
 // if (cookielog === "") {
@@ -21,12 +23,15 @@ if (referral === undefined || referral === null || referral === "") {
 var header = new Headers();
 header.append("login", token);
 header.append("Content-Type", "application/json");
-// Event listener untuk select "tahun lulus"
-const selecttahunlulus = document.getElementById('selecttahunlulus');
-selecttahunlulus.addEventListener('change', () => {
-    console.log("terpilih tahun lulus");
-    console.log(selecttahunlulus.options[selecttahunlulus.selectedIndex].value);
-});
+
+function onChangeTahunLulus(sel) {
+    let tahunllulus={
+    "tahun":parseInt(sel.options[sel.selectedIndex].text)
+}
+postWithToken(UrlGetJalurByTahun,"login",token,tahunllulus,populateDropdown);
+  console.log(sel.options[sel.selectedIndex].text);
+}
+
 
 // Event listener untuk tombol "Submit"
 const submitButton = document.getElementById('submitButton');
@@ -121,19 +126,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
 // Jalur Pendaftaran
 // Membuat fungsi untuk fetch data ke dropdown jalur
-function fetchDataJalur() {
-    fetch(UrlGetJalurPendaftaran)
-        .then(response => response.json())
-        .then(data => {
-            populateDropdown(data.data);
-        })
-        .catch(error => {
-            console.error('Error fetching data:', error);
-        });
-}
 
 // Membuat fungsi dropdown jalur pendaftaran
-function populateDropdown(data) {
+function populateDropdown(response) {
     const selectDropdown = document.getElementById('selectjalur');
     selectDropdown.innerHTML = '';
 
@@ -142,14 +137,13 @@ function populateDropdown(data) {
     defaultOption.text = 'Pilih Jalur';
     selectDropdown.appendChild(defaultOption);
 
-    data.forEach(item => {
+    response.data.forEach(item => {
         const option = document.createElement('option');
         option.value = item.id_jalur;
         option.text = item.nama_jalur;
         selectDropdown.appendChild(option);
     });
 }
-fetchDataJalur();
 
 // Get Tahun Lulusan
 function fetchDataTahunLulusan() {
