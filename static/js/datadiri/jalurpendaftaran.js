@@ -139,7 +139,7 @@ function populateDropdown(response) {
 
     response.data.forEach(item => {
         const option = document.createElement('option');
-        option.value = item.id_jalur;
+        option.value = item.id;
         option.text = item.nama_jalur;
         selectDropdown.appendChild(option);
     });
