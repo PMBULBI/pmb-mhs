@@ -14,7 +14,8 @@ function Response(value){
     setValue('emailInput', value.data.email),
     setValue('nohpInput', value.data.phone)
     setValue('vaInput', value.data.virtual_account);
-    setInnerText('nominalRegis', value.data.amount);
+    setInnerText('nominalRegis1', value.data.amount);
+    setInnerText('nominalRegis2', value.data.amount);
     setInnerText('expiredDateInput', value.data.datetime_expired);
   } else {
     Swal.fire({ 
