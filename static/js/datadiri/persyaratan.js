@@ -1,6 +1,7 @@
 import { UrlFilePost } from "../controller/template.js";
 import { getValue, setInnerText } from "https://cdn.jsdelivr.net/gh/jscroot/element@0.0.2/croot.js";
 import { token } from "../controller/cookies.js";
+import { getCookie } from "https://jscroot.github.io/cookie/croot.js";
 
 // Get Data Cookies
 // Get Untuk Data di Navbar dan Form
