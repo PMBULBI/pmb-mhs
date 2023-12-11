@@ -23,43 +23,52 @@ function renderDataPendaftar(result){
 // Event listener for the "Submit" button
 const submitButton = document.getElementById('submitButton');
 submitButton.addEventListener('click', () => {
-    const form = document.getElementById("form");
-    const inputFile = document.getElementById("file_input");
-
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-
-        const formData = new FormData();
-
-        for (const file of inputFile.files) {
-            formData.append("file", file);
-        }
-
-        try {
-            const response = await fetch(UrlFilePost, {
-                method: "POST",
-                headers: {
-                    'login': token,
-                },
-                body: formData,
-            })
-
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-
-            const data = await response.json();
-            if (!data.success){
-                throw new Error(`HTTP error! Status: ${data.status}`);
-            }
-
-            console.log("Response data:", data);
-            window.location.replace("https://pmb.ulbi.ac.id/pmb-mhs/VAPage.html");
-        } catch (error) {
-            console.error("Error saat melakukan POST Data:", error);
-        }
-    };
-
-    // Event listener for form submission
-    form.addEventListener("submit", handleSubmit);
+    postFileWithHeader(UrlFilePost, "login", token, "file_input", "file", renderToHtml);
 });
+
+function renderToHtml(result) {
+    console.log(result);
+};
+
+// const submitButton = document.getElementById('submitButton');
+// submitButton.addEventListener('click', () => {
+//     const form = document.getElementById("form");
+//     const inputFile = document.getElementById("file_input");
+
+//     const handleSubmit = async (event) => {
+//         event.preventDefault();
+
+//         const formData = new FormData();
+
+//         for (const file of inputFile.files) {
+//             formData.append("file", file);
+//         }
+
+//         try {
+//             const response = await fetch(UrlFilePost, {
+//                 method: "POST",
+//                 headers: {
+//                     'login': token,
+//                 },
+//                 body: formData,
+//             })
+
+//             if (!response.ok) {
+//                 throw new Error(`HTTP error! Status: ${response.status}`);
+//             }
+
+//             const data = await response.json();
+//             if (!data.success){
+//                 throw new Error(`HTTP error! Status: ${data.status}`);
+//             }
+
+//             console.log("Response data:", data);
+//             window.location.replace("https://pmb.ulbi.ac.id/pmb-mhs/VAPage.html");
+//         } catch (error) {
+//             console.error("Error saat melakukan POST Data:", error);
+//         }
+//     };
+
+//     // Event listener for form submission
+//     form.addEventListener("submit", handleSubmit);
+// });
