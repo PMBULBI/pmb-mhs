@@ -1,4 +1,4 @@
-import { UrlGetKota, UrlGetPekerjaan, UrlGetProvinsi, UrlPostDataOrtu, UrlPostDatadiri } from "../static/js/controller/template.js";
+import { UrlGetKota, UrlGetPekerjaan, UrlGetProvinsi, UrlPostDataOrtu, UrlPostDatadiri } from "../controller/template.js";
 import { get } from "https://jscroot.github.io/api/croot.js";
 import { getValue, setInnerText } from "https://cdn.jsdelivr.net/gh/jscroot/element@0.0.2/croot.js";
 import { token } from "../controller/cookies.js";
