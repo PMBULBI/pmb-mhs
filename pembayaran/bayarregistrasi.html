@@ -360,28 +360,40 @@
                         </header>
                         <div class="card-text h-full space-y-4">
                           <div class="input-area relative pl-28">
-                            <label for="defaultInput" class="mb-2 absolute left-0 top-1/2 -translate-y-1/2 block cursor-pointer font-Inter font-medium capitalize
+                            <label for="nameInput" class="mb-2 absolute left-0 top-1/2 -translate-y-1/2 block cursor-pointer font-Inter font-medium capitalize
                                                                 text-slate-700 dark:text-slate-50 leading-6">
                               Nama Lengkap</label>
-                            <input id="defaultInput" type="text" class="form-control" placeholder="">
+                            <input id="nameInput" type="text" class="form-control" placeholder="">
                           </div>
-                          <div class="input-area relative pl-28">
+                          <!-- <div class="input-area relative pl-28">
                             <label for="defaultInput" class="mb-2 absolute left-0 top-1/2 -translate-y-1/2 block cursor-pointer font-Inter font-medium capitalize
                                                                 text-slate-700 dark:text-slate-50 leading-6">
                               Program Studi</label>
                             <input id="defaultInput" type="text" class="form-control" placeholder="">
-                          </div>
+                          </div> -->
                           <div class="input-area relative pl-28">
-                            <label for="defaultInput" class="mb-2 absolute left-0 top-1/2 -translate-y-1/2 block cursor-pointer font-Inter font-medium capitalize
+                            <label for="jalurInput" class="mb-2 absolute left-0 top-1/2 -translate-y-1/2 block cursor-pointer font-Inter font-medium capitalize
                                                                 text-slate-700 dark:text-slate-50 leading-6">
                               Jalur</label>
-                            <input id="defaultInput" type="text" class="form-control" placeholder="">
+                            <input id="jalurInput" type="text" class="form-control" placeholder="">
                           </div>
                           <div class="input-area relative pl-28">
-                            <label for="defaultInput" class="mb-2 absolute left-0 top-1/2 -translate-y-1/2 block cursor-pointer font-Inter font-medium capitalize
+                            <label for="emailInput" class="mb-2 absolute left-0 top-1/2 -translate-y-1/2 block cursor-pointer font-Inter font-medium capitalize
+                                                                text-slate-700 dark:text-slate-50 leading-6">
+                              Email</label>
+                            <input id="emailInput" type="text" class="form-control" placeholder="">
+                          </div>
+                          <div class="input-area relative pl-28">
+                            <label for="nohpInput" class="mb-2 absolute left-0 top-1/2 -translate-y-1/2 block cursor-pointer font-Inter font-medium capitalize
+                                                                text-slate-700 dark:text-slate-50 leading-6">
+                              No Handphone</label>
+                            <input id="nohpInput" type="text" class="form-control" placeholder="">
+                          </div>
+                          <div class="input-area relative pl-28">
+                            <label for="vaInput" class="mb-2 absolute left-0 top-1/2 -translate-y-1/2 block cursor-pointer font-Inter font-medium capitalize
                                                                 text-slate-700 dark:text-slate-50 leading-6">
                               No VA (BNI)</label>
-                            <input id="defaultInput" type="text" class="form-control" placeholder="">
+                            <input id="vaInput" type="text" class="form-control" placeholder="">
                           </div>
                         </div>
                       </div>
@@ -411,8 +423,8 @@
                                           rtl:last:text-left px-6 py-4">
                                     Pembayaran Pendaftaran</td>
                                   <td class="text-slate-900 dark:text-slate-300 text-sm font-normal ltr:text-left ltr:last:text-right rtl:text-right
-                                          rtl:last:text-left px-6 py-4">
-                                    </td>
+                                          rtl:last:text-left px-6 py-4" id="expiredDateInput">
+                                    16 November 2023 | 09:43:41 WIB</td>
                                   <td class="text-slate-900 dark:text-slate-300 text-sm font-normal ltr:text-left ltr:last:text-right rtl:text-right
                                           rtl:last:text-left px-6 py-4">
                                     Rp 0</td>
@@ -427,11 +439,11 @@
                                   </div>
                                   <div class="flex justify-between">
                                     <span class="font-medium text-slate-600 text-xs dark:text-slate-300 uppercase">Sisa Tagihan :</span>
-                                    <span class="text-slate-900 dark:text-slate-300">Rp. 300.000</span>
+                                    <span class="text-slate-900 dark:text-slate-300" id="nominalRegis">Rp. 300.000</span>
                                   </div>
                                   <div class="flex justify-between">
                                     <span class="font-medium text-slate-600 text-xs dark:text-slate-300 uppercase">Jumlah Tagihan :</span>
-                                    <span class="text-slate-900 dark:text-slate-300 font-bold">Rp. 300.000</span>
+                                    <span class="text-slate-900 dark:text-slate-300 font-bold" id="nominalRegis">Rp. 300.000</span>
                                   </div>
                                 </div>
                               </div>

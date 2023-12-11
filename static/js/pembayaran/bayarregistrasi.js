@@ -1,17 +1,28 @@
 import { postWithToken} from "https://jscroot.github.io/api/croot.js";
-import {getValue, addChild} from "https://jscroot.github.io/element/croot.js";
+import { getValue, addChild } from "https://jscroot.github.io/element/croot.js";
 import { token } from "../controller/cookies.js";
+import { setValue, setInnerText } from "https://cdn.jsdelivr.net/gh/jscroot/element@0.0.5/croot.js";
   
 function fetchVA() {
     postWithToken("https://komarbe.ulbi.ac.id/va/create", "LOGIN", token,  "test" ,Response)
 }
 
 function Response(value){
-  // console.log(value)
-  if (value.success === false){
-    addChild("cek", "h4", "text-3xl font-medium text-slate-900 dark:text-white mb-2", value.status)
+  if (value.success){
+    setValue('nameInput', value.data.name);
+    setValue('jalurInput', value.data.description);
+    setValue('emailInput', value.data.email),
+    setValue('nohpInput', value.data.phone)
+    setValue('vaInput', value.data.virtual_account);
+    setInnerText('nominalRegis', value.data.amount);
+    setInnerText('expiredDateInput', value.data.datetime_expired);
   } else {
-    addChild("cek", "h4", "text-3xl font-medium text-slate-900 dark:text-white mb-2", value.status)
+    Swal.fire({ 
+      icon : 'error',
+      title : 'Oops...',
+      text : value.status
+    })
+    console.log(value);
   }
 }
 

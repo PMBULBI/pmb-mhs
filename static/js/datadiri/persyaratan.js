@@ -28,7 +28,7 @@ function renderToHtml(result) {
               showConfirmButton : false,
               timer : 1500
           }).then(() => {
-              window.location.replace("https://pmb.ulbi.ac.id/pmb-mhs/VAPage.html");
+              window.location.replace("https://pmb.ulbi.ac.id/pmb-mhs/pembayaran/bayarregistrasi.html");
           });
       } else {
           Swal.fire({
