@@ -20,5 +20,22 @@ submitButton.addEventListener('click', () => {
 });
 
 function renderToHtml(result) {
+    if (result.success) {
+          Swal.fire({
+              icon : 'success',
+              title : 'Sukses!',
+              text : result.status,
+              showConfirmButton : false,
+              timer : 1500
+          }).then(() => {
+              window.location.replace("https://pmb.ulbi.ac.id/pmb-mhs/VAPage.html");
+          });
+      } else {
+          Swal.fire({
+              icon : 'error',
+              title : 'Oops...',
+              text : result.status
+          })
+      }
     console.log(result);
 };
