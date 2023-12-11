@@ -47,7 +47,7 @@ function SubmitBiodataOrtu() {
             Swal.fire({
                 icon : 'success',
                 title : 'Sukses!',
-                text : 'Program studi berhasil disubmit.',
+                text : 'Biodata orang tua berhasil disubmit.',
                 showConfirmButton : false,
                 timer : 1500
             }).then(() => {
@@ -57,7 +57,7 @@ function SubmitBiodataOrtu() {
             Swal.fire({
                 icon : 'error',
                 title : 'Oops...',
-                text : 'Jalur pendaftaran gagal disubmit.'
+                text : 'Biodata orang tua gagal disubmit.'
             })
         }
     })
