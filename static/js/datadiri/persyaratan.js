@@ -9,12 +9,12 @@ import { postFile} from "https://cdn.jsdelivr.net/gh/jscroot/api@0.0.2/croot.js"
 window.uploadFile = uploadFile;
 
 function uploadFile() {
-    if (!getValue("imageInput")) {
+    if (!getValue("file_input")) {
         alert('Please select an image file');
         return;
     }
     hide("inputfile");
-    let besar=getFileSize("imageInput");
+    let besar=getFileSize("file_input");
     setInner("isi",besar);
     postFileWithHeader(UrlFilePost, "login", token,"file_input","file",renderToHtml);
 }
