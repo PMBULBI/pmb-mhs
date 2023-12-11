@@ -6,24 +6,24 @@ import { token } from "../controller/cookies.js";
 import {setInner, show,hide,getValue,getFileSize} from "https://cdn.jsdelivr.net/gh/jscroot/element@0.0.5/croot.js";
 import { postFile} from "https://cdn.jsdelivr.net/gh/jscroot/api@0.0.2/croot.js";
 
-window.uploadFile = uploadFile;
+// window.uploadFile = uploadFile;
 
-function uploadFile() {
-    if (!getValue("file_input")) {
-        alert('Please select an image file');
-        return;
-    }
-    hide("inputfile");
-    let besar=getFileSize("file_input");
-    setInner("isi",besar);
-    postFileWithHeader(UrlFilePost, "login", token,"file_input","file",renderToHtml);
-}
+// function uploadFile() {
+//     if (!getValue("file_input")) {
+//         alert('Please select an image file');
+//         return;
+//     }
+//     hide("inputfile");
+//     let besar=getFileSize("file_input");
+//     setInner("isi",besar);
+//     postFileWithHeader(UrlFilePost, "login", token,"file_input","file",renderToHtml);
+// }
 
-function renderToHtml(result){
-    console.log(result);
-    // setInner("isi",result.content);
-    // show("inputfile");
-}
+// function renderToHtml(result){
+//     console.log(result);
+//     // setInner("isi",result.content);
+//     // show("inputfile");
+// }
 
 // Get Data Cookies
 // Get Untuk Data di Navbar dan Form
