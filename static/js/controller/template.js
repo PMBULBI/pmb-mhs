@@ -14,6 +14,7 @@ export let UrlGetJenisSekolah = 'https://komarbe.ulbi.ac.id/jenis_sekolah';
 export let UrlGetAsalJurusan = 'https://komarbe.ulbi.ac.id/jurusan_sekolah';
 export let UrlGetTahunLulusan = "https://komarbe.ulbi.ac.id/tahun_lulusan";
 export let UrlGetDataPendaftar = "https://komarbe.ulbi.ac.id/pendaftar/pendaftar/token";
+export let UrlGetJalurByTahun = "https://komarbe.ulbi.ac.id/jalurtahun";
 
 // Endpoint POST
 export let UrlPostDatadiri = 'https://komarbe.ulbi.ac.id/biodata/data_diri';
