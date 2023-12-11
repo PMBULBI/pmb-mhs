@@ -105,7 +105,7 @@ function submitJalurPendaftaran() {
             Swal.fire({
                 icon : 'error',
                 title : 'Oops...',
-                text : 'Jalur pendaftaran gagal disubmit.'
+                text : data.status
             })
         }
     })
