@@ -3,6 +3,7 @@ import { getValue, setInnerText } from "https://cdn.jsdelivr.net/gh/jscroot/elem
 import { token } from "../controller/cookies.js";
 // import { getCookie } from "https://jscroot.github.io/cookie/croot.js";
 import { getWithHeader } from "https://cdn.jsdelivr.net/gh/jscroot/api@0.0.1/croot.js";
+import { postFileWithHeader } from "https://cdn.jsdelivr.net/gh/jscroot/api@0.0.2/croot.js";
 
 // Get Data Cookies
 // Get Untuk Data di Navbar dan Form
