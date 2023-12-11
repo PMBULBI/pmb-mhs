@@ -7,7 +7,7 @@ function fetchVA() {
 }
 
 function Response(value){
-  // console.log(value)
+  console.log(value);
   if (value.success === false){
     addChild("cek", "h4", "text-3xl font-medium text-slate-900 dark:text-white mb-2", value.status)
   } else {
