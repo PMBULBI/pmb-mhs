@@ -189,7 +189,7 @@ inputProvinsiAsal.addEventListener("input", async () => {
 // Buat variabel untuk get id element
 const kotaAsalsuggestion = document.getElementById('kota-suggestions')
 const inputKotaAsal = document.getElementById("kota-biodata");
-let selectedKecamatanId;
+let selectedKotaId;
 
 // Membuat Listener untuk suggestions
 inputKotaAsal.addEventListener("input", async () => {
@@ -222,10 +222,15 @@ inputKotaAsal.addEventListener("input", async () => {
           const elementKota = document.createElement("div");
           elementKota.className = "kota"
           elementKota.textContent = cityNames;
-          elementKota.addEventListener("click", () => {
-            inputKotaAsal.value = cityNames;
-            kotaAsalsuggestion.innerHTML = "";
-          })
+          const selectedKota = data.data.find(kota => kota.nama_kota === cityNames);
+          if (selectedKota) {
+            elementKota.addEventListener("click", () => {
+              inputKotaAsal.value = cityNames;
+              kotaAsalsuggestion.innerHTML = "";
+              selectedKotaId = selectedKota.id_kota; // Menyimpan ID provinsi yang dipilih
+              inputKotaAsal.disabled = false;
+            });
+          }
           kotaAsalsuggestion.appendChild(elementKota);
           if (cityNames.length > 0) {
             kotaAsalsuggestion.style.display = "block";
@@ -245,13 +250,14 @@ inputKotaAsal.addEventListener("input", async () => {
 // Buat variabel untuk get id element
 const kecamatanSuggestion = document.getElementById('kecamatan-suggestions');
 const inputKecamatan = document.getElementById("kecamatan-biodata");
-let selectedKeluarahanId;
+let selectedKecamatanId;
 
 // Listener untuk suggestion
 inputKecamatan.addEventListener("input", async () => {
   const kecamatanValue = inputKecamatan.value;
   const body = {
-    nama_kecamatan: kecamatanValue
+    nama_kecamatan: kecamatanValue,
+    id_kota: selectedKotaId  // Pass the selected kota ID when fetching kecamatan
   };
 
   try {
@@ -283,9 +289,9 @@ inputKecamatan.addEventListener("input", async () => {
           const selectedKecamatan = data.data.find(kecamatan => kecamatan.nama_kecamatan === kecamatanNames);
           if (selectedKecamatan) {
             elementKecamatan.addEventListener("click", () => {
-              inputKecamatan.value = kecamatanNames;  // Mengatur nilai input saat suggestion di klik
+              inputKecamatan.value = kecamatanNames;
               kecamatanSuggestion.innerHTML = "";
-              selectedKeluarahanId = selectedKecamatan.id_kota; // Menyimpan ID provinsi yang dipilih
+              selectedKecamatanId = selectedKecamatan.id_kecamatan;
               inputKecamatan.disabled = false;
             });
           }
