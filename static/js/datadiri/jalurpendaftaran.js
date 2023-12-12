@@ -99,7 +99,7 @@ function submitJalurPendaftaran() {
     if (parseInt(statusJalur) === 4){
         const jalurPendaftaran2 = document.querySelector("#selectjalur2");
         const statusJalur2 = jalurPendaftaran2 ? jalurPendaftaran2.value : "";
-        setCookieWithExpireHour("jalur2",statusJalur2,16);
+        setCookieWithExpireHour("jalurreguler2",statusJalur2,16);
     }
 
     
