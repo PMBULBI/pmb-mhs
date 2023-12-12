@@ -355,7 +355,7 @@
                               </div>
                               <div class="input-area">
                                 <label for="username" class="form-label">Tahun Lulus*</label>
-                                <select name="select2basic" id="selecttahunlulus" class="select2 form-control w-full mt-2 py-2">
+                                <select name="select2basic" id="selecttahunlulus" class="select2 form-control w-full mt-2 py-2" onChange="onChangeTahunLulus(this);">
                                   <option selected  value="" class=" inline-block font-Inter font-normal text-sm text-slate-600">Pilih Tahun</option>
                                   <!-- <option value="2023" class=" inline-block font-Inter font-normal text-sm text-slate-600">2024</option>
                                   <option value="2024" class=" inline-block font-Inter font-normal text-sm text-slate-600">2023</option>
@@ -389,6 +389,19 @@
                                   <option selected  value="" class=" inline-block font-Inter font-normal text-sm text-slate-600">Pilih Jalur</option>
                                 </select>
                               </div>
+                              <div class="input-area" hidden>
+                                <label for="fullname" class="form-label">Pilihan Jalur Reguler*</label>
+                                <select name="select2basic" id="selectjalur2" class="select2 form-control w-full mt-2 py-2">
+                                  <option selected  value="" class=" inline-block font-Inter font-normal text-sm text-slate-600">Pilih Jalur</option>
+                                  <!-- <option value="Undangan" class=" inline-block font-Inter font-normal text-sm text-slate-600">Undangan</option>
+                                  <option value="Jalur Rapor Gelombang 1" class=" inline-block font-Inter font-normal text-sm text-slate-600">Jalur Rapor Gelombang 1</option>
+                                  <option value="CBT" class=" inline-block font-Inter font-normal text-sm text-slate-600">CBT</option>
+                                  <option value="S2 Reguler" class=" inline-block font-Inter font-normal text-sm text-slate-600">S2 Reguler</option>
+                                  <option value="S2 Fast Track" class=" inline-block font-Inter font-normal text-sm text-slate-600">S2 Fast Track</option>
+                                  <option value="RPL" class=" inline-block font-Inter font-normal text-sm text-slate-600">RPL</option>
+                                  <option value="Ikatan Dinas" class=" inline-block font-Inter font-normal text-sm text-slate-600">Ikatan Dinas</option> -->
+                                </select>
+                              </div>
                             </div>
                             </div>
                           </div>
@@ -413,12 +426,12 @@
             <div class="text-center ltr:md:text-start rtl:md:text-right text-sm">
               COPYRIGHT ©
               <span id="thisYear"></span>
-              DashCode, All rights Reserved
+              DTI, All rights Reserved
             </div>
             <div class="ltr:md:text-right rtl:md:text-end text-center text-sm">
               Hand-crafted &amp; Made by
-              <a href="https://codeshaper.net" target="_blank" class="text-primary-500 font-semibold">
-                Codeshaper
+              <a href="https://dti.ulbi.ac.id" target="_blank" class="text-primary-500 font-semibold">
+                DTI
               </a>
             </div>
           </div>
@@ -474,7 +487,7 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://cdn.jsdelivr.net/gh/PMBULBI/javascript-fe@0.0.7/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/PMBULBI/javascript-fe@0.0.7/rt-plugins.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/PMBULBI/javascript-fe@0.2.9/bar/sidebar.js
+  <script src="https://cdn.jsdelivr.net/gh/PMBULBI/javascript-fe@0.3.4/bar/sidebar.js
 "></script>
   <script src="https://cdn.jsdelivr.net/gh/PMBULBI/javascript-fe@0.1.3/app/app.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/PMBULBI/javascript-fe@0.0.7/theme.js"></script>
