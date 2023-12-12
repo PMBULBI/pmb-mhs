@@ -50,69 +50,6 @@ function SubmitBiodatadiri() {
       "kelurahan": kelurahan,
       "kode_pos": kodepos
   };
-
-  // Now 'myData' is a constant containing the given JSON object
-  console.log(myData);
-
-
-  fetch(UrlPostDatadiri, {
-      method : "POST",
-      headers : header,
-      body : JSON.stringify(myData)
-  })
-  .then(response => response.json())
-  .then(data => {
-      if (data.success) {
-          Swal.fire({
-              icon : 'success',
-              title : 'Sukses!',
-              text : 'Biodata diri berhasil disubmit.',
-              showConfirmButton : false,
-              timer : 1500
-          }).then(() => {
-              window.location.href = 'biodataorangtua.html';
-          });
-      } else {
-          Swal.fire({
-              icon : 'error',
-              title : 'Oops...',
-              text : 'Biodata diri gagal disubmit.'
-          })
-      }
-  })
-  .catch(error => {
-      console.error("Error saat melakukan POST Data : ", error);
-  });
-}
-
-// Untuk POST prodi & fakultas
-// Membuat fungsi untuk mengirimkan data pilih prodi ke API
-function SubmitBiodatadiri() {
-  const provinsi = getValue('provinsi-biodata');
-  const religion = getValue('selectreligion');
-  const kotakab = getValue('kota-biodata');
-  const nik = getValue('nik');
-  const tanggal_lahir = getValue('date');
-  const tempat_lahir = getValue('tempat');
-  const alamat = getValue('alamat');
-  const kecamatan = getValue('kecamatan-biodata');
-  const kelurahan = getValue('kelurahan-biodata');
-  const kodepos = getValue('kodepos');
-  const selectedGender=getValueRadio('basicradios');
-
-  const myData = {
-      "jenis_kelamin": selectedGender,
-      "nik": nik,
-      "tanggal_lahir": tanggal_lahir,
-      "tempat_lahir": tempat_lahir,
-      "agama": religion,
-      "alamat": alamat,
-      "provinsi": provinsi,
-      "kota": kotakab,
-      "kecamatan": kecamatan,
-      "kelurahan": kelurahan,
-      "kode_pos": kodepos
-  };
   
   // Now 'myData' is a constant containing the given JSON object
   console.log(myData);
@@ -187,72 +124,6 @@ const gender = getValueRadio('basicradios');
           SubmitBiodatadiri();
       }
   });
-});
-
-// Get Data Provinsi Untuk Dropdown
-// Buat variabel untuk get id element
-const provinsiSuggestion = document.getElementById('provinsi-suggestions');
-const inputProvinsi = document.getElementById("provinsi-biodata");
-let selectedProvinsiId;
-
-// Listener untuk suggestion
-inputProvinsi.addEventListener("input", async () => {
-  const provinsiValue = inputProvinsi.value;
-  const body = {
-    nama_provinsi: provinsiValue
-  };
-
-  try {
-    const inputValue = inputProvinsi.value.trim();
-
-    if (inputValue === '') {
-      provinsiSuggestion.innerHTML = '';
-      provinsiSuggestion.style.display = 'none';
-      inputProvinsi.disabled = false;
-    } else if (inputValue.length < 2) {
-      provinsiSuggestion.textContent = 'Masukkan setidaknya 2 karakter';
-      provinsiSuggestion.style.display = 'block';
-    } else {
-      const data = await CihuyPost(UrlGetProvinsi, body);
-
-      if (data.success == false) {
-        provinsiSuggestion.textContent = data.status;
-        provinsiSuggestion.style.display = 'block';
-      } else {
-        provinsiSuggestion.textContent = '';
-        const provinceNames = data.data.map(provinsi => provinsi.nama_provinsi);
-        provinsiSuggestion.innerHTML = "";
-
-        provinceNames.forEach(provinceNames => {
-          const elementProvinsi = document.createElement("div");
-          elementProvinsi.className = "provinsi";
-          elementProvinsi.textContent = provinceNames;
-
-          const selectedProvinsi = data.data.find(provinsi => provinsi.nama_provinsi === provinceNames);
-          if (selectedProvinsi) {
-            elementProvinsi.addEventListener("click", () => {
-              inputProvinsi.value = provinceNames;  // Mengatur nilai input saat suggestion di klik
-              provinsiSuggestion.innerHTML = "";
-              selectedProvinsiId = selectedProvinsi.id_provinsi; // Menyimpan ID provinsi yang dipilih
-              inputProvinsi.disabled = false;
-            });
-          }
-
-          provinsiSuggestion.appendChild(elementProvinsi);
-
-          if (provinceNames.length > 0) {
-            provinsiSuggestion.style.display = "block";
-          } else {
-            provinsiSuggestion.style.display = "none";
-          }
-        });
-      }
-
-      provinsiSuggestion.classList.add('dropdown');
-    }
-  } catch (error) {
-    console.error("Terjadi kesalahan saat melakukan GET:", error);
-  }
 });
 
 // Get Data Kota Untuk Dropdown
@@ -448,7 +319,7 @@ inputKotaAsal.addEventListener("input", async () => {
 // Buat variabel untuk get id element
 const kecamatanSuggestion = document.getElementById('kecamatan-suggestions');
 const inputKecamatan = document.getElementById("kecamatan-biodata");
-let selectedKecamatanId;
+//let selectedKecamatanId;
 
 // Listener untuk suggestion
 inputKecamatan.addEventListener("input", async () => {
