@@ -8,10 +8,15 @@ import { token } from "../controller/cookies.js";
 window.onChangeTahunLulus=onChangeTahunLulus;
 window.onChangeSelectJalur=onChangeSelectJalur;
 
-// let cookielog = getCookie("login");
-// if (cookielog === "") {
-//     window.location.replace("https://pmb.ulbi.ac.id/");
-// }
+// Get Untuk Data di Navbar dan Form
+getWithHeader(UrlGetDataPendaftar,"login",token,renderDataPendaftar);
+function renderDataPendaftar(result){
+  if (result.success){
+    setInnerText('nama_mhs_span', result.data.nama_mhs);
+  }else{
+    window.location.replace("https://pmb.ulbi.ac.id/");
+  }
+}
 
 // Untuk Get Referal
 var referral = getCookie("referal");
@@ -142,15 +147,6 @@ function submitJalurPendaftaran() {
     .catch(error => {
         console.error("Error saat melakukan POST Data : ", error);
     });
-}
-
-// Get Data Cookies
-// Get Untuk Data di Navbar dan Form
-getWithHeader(UrlGetDataPendaftar,"login",token,renderDataPendaftar);
-function renderDataPendaftar(result){
-  if (result.success){
-    setInnerText('nama_mhs_span', result.data.nama_mhs);
-  }
 }
 
 
