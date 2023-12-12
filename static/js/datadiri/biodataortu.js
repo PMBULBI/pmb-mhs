@@ -1,13 +1,37 @@
-import { UrlGetKota, UrlGetPekerjaan, UrlGetProvinsi, UrlPostDataOrtu, UrlPostDatadiri } from "../controller/template.js";
-import { get } from "https://jscroot.github.io/api/croot.js";
-import { getValue, setInnerText } from "https://cdn.jsdelivr.net/gh/jscroot/element@0.0.2/croot.js";
+import { UrlGetKota, UrlGetPekerjaan, UrlGetProvinsi, UrlPostDataOrtu, UrlPostDatadiri,UrlGetDataPendaftar,UrlGetBiodataByHash } from "../controller/template.js";
+import { getValue,setValue, setInnerText } from "https://cdn.jsdelivr.net/gh/jscroot/element@0.0.2/croot.js";
 import { token } from "../controller/cookies.js";
 import { getCookie } from "https://jscroot.github.io/cookie/croot.js";
+import { get,getWithHeader } from "https://cdn.jsdelivr.net/gh/jscroot/api@0.0.1/croot.js";
 
 
 var header = new Headers();
 header.append("login", token);
 header.append("Content-Type", "application/json");
+
+//untuk alamat sama
+window.onChangeSetAlamat=onChangeSetAlamat;
+
+function onChangeSetAlamat(checkbox) {
+    if(checkbox.checked){
+        console.log("udah cek");
+        let urlgdt=UrlGetBiodataByHash+getCookie("id_hash");
+        getWithHeader(urlgdt,"login",token,renderAlamatOrtu);
+        
+    }else{
+        console.log("ilangcek");
+        setValue("alamatortu","");
+    }
+    
+}
+function renderAlamatOrtu(res) {
+    console.log(res)
+    if (res.success){
+        let alamatlengkap = res.data.alamat+" "+res.data.kelurahan+" "+res.data.kecamatan+" "+res.data.kota+" "+res.data.provinsi;
+        console.log(alamatlengkap);
+        setValue("alamatortu",alamatlengkap);
+    }
+}
 
 // Untuk POST prodi & fakultas
 // Membuat fungsi untuk mengirimkan data pilih prodi ke API
@@ -105,13 +129,12 @@ submitButton.addEventListener('click', () => {
 
 // Get Data Cookies
 // Get Untuk Data di Navbar dan Form
-document.addEventListener("DOMContentLoaded", function() {
-    var namaMhs = getCookie('namaMhs');
-  
-    if (namaMhs) {
-        setInnerText('nama_mhs_span', namaMhs);
-    }
-});
+getWithHeader(UrlGetDataPendaftar,"login",token,renderDataPendaftar);
+function renderDataPendaftar(result){
+  if (result.success){
+    setInnerText('nama_mhs_span', result.data.nama_mhs);
+  }
+}
 
 // Get Pekerjaan Orang Tua
 function fetchDataPekerjaan() {
