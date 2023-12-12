@@ -9,6 +9,17 @@ var header = new Headers();
 header.append("login", token);
 header.append("Content-Type", "application/json");
 
+// Get Data Cookies
+// Get Untuk Data di Navbar dan Form
+getWithHeader(UrlGetDataPendaftar,"login",token,renderDataPendaftar);
+function renderDataPendaftar(result){
+  if (result.success){
+    setInnerText('nama_mhs_span', result.data.nama_mhs);
+  }else{
+    window.location.replace("https://pmb.ulbi.ac.id/");
+  }
+}
+
 //untuk alamat sama
 window.onChangeSetAlamat=onChangeSetAlamat;
 
@@ -126,15 +137,6 @@ submitButton.addEventListener('click', () => {
         }
     });
 });
-
-// Get Data Cookies
-// Get Untuk Data di Navbar dan Form
-getWithHeader(UrlGetDataPendaftar,"login",token,renderDataPendaftar);
-function renderDataPendaftar(result){
-  if (result.success){
-    setInnerText('nama_mhs_span', result.data.nama_mhs);
-  }
-}
 
 // Get Pekerjaan Orang Tua
 function fetchDataPekerjaan() {
