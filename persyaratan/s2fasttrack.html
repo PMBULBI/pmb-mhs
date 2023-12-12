@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="../assets/css/app.css">
   <!-- End : Theme CSS-->
   <script src="../assets/js/settings.js" sync></script>
-  
+  <!-- <base href="https://pmb.ulbi.ac.id/pmb-mhs/"> -->
 </head>
 
 <body class=" font-inter dashcode-app" id="body_class">
@@ -314,7 +314,7 @@
               <div id="content_layout">
                 <div>
                   <div class="flex justify-between flex-wrap items-center mb-6">
-                    <h4 class="font-medium lg:text-2xl text-xl capitalize text-slate-900 inline-block ltr:pr-4 rtl:pl-4 mb-4 sm:mb-0 flex space-x-3 rtl:space-x-reverse">Pengumuman Kelulusan</h4>
+                    <h4 class="font-medium lg:text-2xl text-xl capitalize text-slate-900 inline-block ltr:pr-4 rtl:pl-4 mb-4 sm:mb-0 flex space-x-3 rtl:space-x-reverse">Data Pribadi Calon Mahasiswa Baru</h4>
                   </div>
                     <!-- BEGIN: Breadcrumb -->
                     <div class="mb-5">
@@ -326,150 +326,61 @@
                         </a>
                         </li>
                         <li class="inline-block relative text-sm text-primary-500 font-Inter ">
-                        Check Kelulusan
+                        Informasi Pribadi
+                        <iconify-icon icon="heroicons-outline:chevron-right" class="relative top-[3px] text-slate-500 rtl:rotate-180"></iconify-icon>
+                        </li>
+                        <li class="inline-block relative text-sm text-primary-500 font-Inter ">
+                        Biodata
                         <iconify-icon icon="heroicons-outline:chevron-right" class="relative top-[3px] text-slate-500 rtl:rotate-180"></iconify-icon>
                         </li>
                         <li class="inline-block relative text-sm text-slate-500 font-Inter dark:text-white">
-                        Pengumuman Kelulusan</li>
+                        Persyaratan</li>
                     </ul>
                     
                     </div>
                     <!-- END: BreadCrumb -->
-                    <!-- Alert Start -->
-                    <div class="py-[18px] px-6 font-normal text-sm rounded-md bg-primary-500 text-white mb-3" style="background-color: #00277F;">
-                      <div class="flex items-center space-x-3 rtl:space-x-reverse">
-                        <iconify-icon class="text-2xl flex-0" icon="heroicons:exclamation-triangle"></iconify-icon>
-                        <p class="flex-1 font-Inter">
-                          Cek Email Kamu untuk mendapatkan Bukti Kelulusan!
-                        </p>
-                      </div>
-                    </div>
-                    <!-- Alert End -->
-                    <!-- Pengumuman Kelulusan Start -->
-                    <div class="space-y-5 profile-page">
-                      <div class="profiel-wrap px-[35px] pb-10 md:pt-[84px] pt-10 rounded-lg bg-white dark:bg-slate-800 lg:flex lg:space-y-0
-                    space-y-6 justify-between items-end relative z-[1]">
-                        <div class="bg-slate-900 dark:bg-slate-700 absolute left-0 top-0 md:h-1/2 h-[150px] w-full z-[-1] rounded-t-lg"></div>
-                        <div class="profile-box flex-none md:text-start text-center">
-                          <div class="md:flex items-end md:space-x-6 rtl:space-x-reverse">
-                            <div class="flex-none">
-                              <div class="md:h-[186px] md:w-[186px] h-[140px] w-[140px] md:ml-0 md:mr-0 ml-auto mr-auto md:mb-0 mb-4 rounded-full ring-4
-                                    ring-slate-100 relative">
-                                <img src="../assets/images/users/user-1.jpg" alt="" class="w-full h-full object-cover rounded-full">
-                                <a href="profile-setting" class="absolute right-2 h-8 w-8 bg-slate-50 text-slate-600 rounded-full shadow-sm flex flex-col items-center
-                                        justify-center md:top-[140px] top-[100px]">
-                                  <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
-                                </a>
-                              </div>
-                            </div>
+
+                    <!-- Biodata Diri Start -->
+                    <div class="card mt-3">
+                        <div class="card-body flex flex-col p-6">
+                          <header class="flex mb-5 items-center border-b border-slate-100 dark:border-slate-700 pb-5 -mx-6 px-6">
                             <div class="flex-1">
-                              <div class="text font-medium text-slate-900 dark:text-slate-200 mb-[3px]">
-                                Bachtiar Ramadhan
-                              </div>
-                              <div class="text-sm font-light text-slate-600 dark:text-slate-400">
-                                Nama Lengkap
-                              </div>
+                              <div class="card-title text-slate-900 dark:text-white">Biodata Calon Mahasiswa</div>
                             </div>
-                          </div>
-                        </div>
-                        <!-- end profile box -->
-                        <div class="profile-info-500 md:flex md:text-start text-center flex-1 max-w-[516px] md:space-y-0 space-y-4">
-                          <div class="flex-1">
-                            <div class="text-base text-slate-900 dark:text-slate-300 font-medium mb-1">
-                              6285213921331
+                            <hr>
+                          </header>
+                          <div class="grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-5">
+                            <div class="lg:col-span-2 md:col-span-2 col-span-1">
+                              <h4 class="text-base text-slate-800 dark:text-slate-300">Upload Persyaratan</h4>
                             </div>
-                            <div class="text-sm text-slate-600 font-light dark:text-slate-300">
-                              Nomor Handphone
+                            <div class="input-area">                                   
+                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="pasfoto_input">Pas Foto (Latar Merah)</label>
+                              <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="pasfoto_input" type="file" multiple />
                             </div>
-                          </div>
-                          <!-- end single -->
-                          <div class="flex-1">
-                            <div class="text-base text-slate-900 dark:text-slate-300 font-medium mb-1">
-                              Undangan
+                            <div class="input-area">                                   
+                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="ijazahs1_input">Ijazah S1 *</label>
+                              <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="ijazahs1_input" type="file" multiple />
                             </div>
-                            <div class="text-sm text-slate-600 font-light dark:text-slate-300">
-                              Jalur Pendaftaran
+                            <div class="input-area">                                   
+                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="transkrip_input">Transkrip Nilai *</label>
+                              <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="transkrip_input" type="file" multiple />
                             </div>
-                          </div>
-                          <!-- end single -->
-                          <div class="flex-1">
-                            <div class="text-base text-slate-900 dark:text-slate-300 font-medium mb-1">
-                              1204077
+                            <div class="input-area">                                   
+                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="dokumen_input">Dokumen Pendukung (Pengalaman Kerja/Sertifikat/Dll)</label>
+                              <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="dokumen_input" type="file" multiple />
                             </div>
-                            <div class="text-sm text-slate-600 font-light dark:text-slate-300">
-                              NPM
+                            <div class="input-area">                                   
+                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="dokumen_input">Surat Rekomendasi Kaprodi <a href="https://bit.ly/S2Rekomendasi" style="color: blue; font-size: smaller;"><i>*contoh surat rekomendasi</i></a></label>
+                              <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="dokumen_input" type="file" multiple />
                             </div>
-                          </div>
-                          <!-- end single -->
-                        </div>
-                        <!-- profile info-500 -->
-                      </div>
-                      <div class="grid grid-cols-12 gap-6">
-                        <div class="lg:col-span-8 col-span-12">
-                          <div class="card rounded-md bg-white dark:bg-slate-800 shadow-base p-6">
-                            <div class="card-body flex flex-col p-6">
-                              <header class="flex mb-3 items-center">
-                                <div class="flex-1">
-                                  <div class="card-title font-Inter text-slate-900 dark:text-white text-center" style="font-size: 20px;">
-                                    <b>Selamat, Anda dinyatakan lulus seleksi ULBI 2024/2025</b>
-                                  </div>
-                                </div>
-                              </header>
-                              <div class="card-body flex flex-col items-center"> <!-- Tambahkan class items-center -->
-                                <div class="image-box mb-2">
-                                  <img src="../assets/images/icon/lulus.png" style="width: 100%;" class="block w-full h-full object-cover rounded-md">
-                                </div>
-                              </div>
-                              <div class="card-text h-full text-center mt-5">
-                                <p><b>Anda diterima pada program studi berikut :</b></p>
-                              </div>
-                              <div class="flex-1">
-                                <div class="card-title font-Inter text-slate-900 dark:text-white text-center mt-4" style="font-size: 20px;">
-                                  <b>Sekolah Vokasi</b>
-                                </div>
-                                <div class="card-title font-Inter text-slate-900 dark:text-white text-center mt-1" style="font-size: 30px;">
-                                  <b>S1 Terapan - Teknik Informatika</b>
-                                </div>
-                              </div>
-                            </div>                            
-                          </div>
-                          <div class="card rounded-md bg-white dark:bg-slate-800 shadow-base mt-6">
-                            <div class="card-body flex flex-col">
-                              <header class="card-header">
-                                <h4 class="card-title"><b>Info Daftar Ulang</b></h4>
-                                <button class="btn inline-flex justify-center btn-warning">Bayar Sekarang</button>
-                              </header>
-                              <div class="card-text h-full mt-2 p-6">
-                                <p>Selanjutnya anda harus melakukan Proses Daftar Ulang. Panduan lebih lengkap dapat diunduh <a href=""><b><u>disini</u></b></a>.</p>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="lg:col-span-4 col-span-12">
-                          <div class="card">
-                            <header class="card-header">
-                              <iconify-icon class="text-2xl flex-0" icon="heroicons:arrow-up-tray"></iconify-icon>
-                              <p class="card-title flex-1 font-Inter ml-2">
-                                <b>Share Your Moment</b>
-                              </p>
-                            </header>
-                            <div class="card rounded-md bg-white dark:bg-slate-800 lg:h-full shadow-base">
-                              <div class="card-body flex flex-col p-6 items-center"> <!-- Tambahkan class items-center -->
-                                <div class="image-box mb-6">
-                                  <img src="../assets/images/all-img/twibbon ulbi.png" style="width: 100%;" class="block w-full h-full object-cover rounded-md">
-                                </div>
-                                <div class="card-text h-full"> <!-- Tambahkan class text-center -->
-                                  <p>Selamat atas Kelulusan Seleksi <b>PMB ULBI</b>. Abadikan dan bagikan momen anda di media sosial kamu ya.</p>
-                                  <br>
-                                  <p>Jangan lupa tag kita di Instagram <a href="https://instagram.com/ulbi.official"><b>@ulbi.official</b></a> dan <a href="https://instagram.com/admission.ulbi"><b>@admission.ulbi</b></a>.</p>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
+                          </div>                          
                         </div>
                       </div>
+                    <!-- Biodata Diri End -->
+                    <div class="flex justify-between items-center">
+                        <a href="biodatasekolah.html" class="btn inline-flex justify-center btn-info shadow-base2 mt-2 ml-auto mr-1">Kembali</a>
+                        <button class="btn inline-flex justify-center btn-warning shadow-base2 mt-2" id="submitButton">Submit Data</button>
                     </div>
-                    <!-- Pengumuman Kelulusan End -->
                   </div>
               </div>
             </div>
@@ -485,12 +396,12 @@
             <div class="text-center ltr:md:text-start rtl:md:text-right text-sm">
               COPYRIGHT ©
               <span id="thisYear"></span>
-              DTI, All rights Reserved
+              DashCode, All rights Reserved
             </div>
             <div class="ltr:md:text-right rtl:md:text-end text-center text-sm">
               Hand-crafted &amp; Made by
-              <a href="https://dti.ulbi.ac.id" target="_blank" class="text-primary-500 font-semibold">
-                DTI
+              <a href="https://codeshaper.net" target="_blank" class="text-primary-500 font-semibold">
+                Codeshaper
               </a>
             </div>
           </div>
@@ -540,11 +451,11 @@
     </div>
   </main>
   <!-- scripts -->
+  <script src="../static/js/controller/logout.js" type="module"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://cdn.jsdelivr.net/gh/PMBULBI/javascript-fe@0.0.7/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/PMBULBI/javascript-fe@0.0.7/rt-plugins.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/PMBULBI/javascript-fe@0.3.4/bar/sidebar.js
-"></script>
+  <script src="https://cdn.jsdelivr.net/gh/PMBULBI/javascript-fe@0.3.4/bar/sidebar.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/PMBULBI/javascript-fe@0.1.3/app/app.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/PMBULBI/javascript-fe@0.0.7/theme.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/PMBULBI/javascript-fe@0.1.7/bar/footer.js"></script>
