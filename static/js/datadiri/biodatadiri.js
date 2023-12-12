@@ -3,6 +3,7 @@ import { CihuyPost } from "https://c-craftjs.github.io/api/api.js";
 import { getValue, setValue, setInnerText, getValueRadio } from "https://cdn.jsdelivr.net/gh/jscroot/element@0.0.5/croot.js";
 import { getWithHeader } from "https://cdn.jsdelivr.net/gh/jscroot/api@0.0.1/croot.js";
 import { token } from "../controller/cookies.js";
+import {setCookieWithExpireHour} from "https://cdn.jsdelivr.net/gh/jscroot/cookie@0.0.1/croot.js";
 
 var header = new Headers();
 header.append("login", token);
@@ -56,6 +57,7 @@ function SubmitBiodatadiri() {
               showConfirmButton : false,
               timer : 1500
           }).then(() => {
+              setCookieWithExpireHour('id_hash', data.data.id_hash, 18);
               window.location.href = 'biodataorangtua.html';
           });
       } else {
