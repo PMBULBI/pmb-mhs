@@ -9,7 +9,15 @@ var header = new Headers();
 header.append("login", token);
 header.append("Content-Type", "application/json");
 
-// Untuk POST prodi & fakultas
+
+//jika ikatan dinas maka judulnya di replace
+if(getCookie("jalur2")==="4"){
+    console.log("ikatan dinas");
+    setInnerText("pil1","Program Studi Ikatan Dinas*");
+    setInnerText("pil2","Program Studi Jalur Reguler*");
+}
+
+// Untuk POST data pilihan prodi
 // Membuat fungsi untuk mengirimkan data pilih prodi ke API
 function submitPilihProdi() {
     const prodiSatu = document.querySelector('#selectprog');
