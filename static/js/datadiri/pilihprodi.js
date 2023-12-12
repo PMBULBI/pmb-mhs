@@ -111,7 +111,7 @@ function populateDropdownProdi1(res) {
 
     res.data.forEach(item => {
         const option = document.createElement('option');
-        option.value = item.kode_program_studi;
+        option.value = item.prodi;
         option.text = item.program_studi;
         selectDropdown.appendChild(option);
     })
@@ -142,7 +142,7 @@ function populateDropdownProdi2(res) {
 
     res.data.forEach(item => {
         const option = document.createElement('option');
-        option.value = item.kode_program_studi;
+        option.value = item.prodi;
         option.text = item.program_studi;
         selectDropdown.appendChild(option);
     })
