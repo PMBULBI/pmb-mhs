@@ -1,11 +1,12 @@
 // Import function or library
 import { UrlGetJalurPendaftaran, UrlGetTahunLulusan,UrlGetJalurByTahun,UrlGetDataPendaftar } from "../controller/template.js";
 import { get,postWithToken,getWithHeader } from "https://cdn.jsdelivr.net/gh/jscroot/api@0.0.2/croot.js";
-import { getCookie } from "https://jscroot.github.io/cookie/croot.js";
-import { setValue, getValue, setInnerText} from "https://cdn.jsdelivr.net/gh/jscroot/element@0.0.2/croot.js";
+import { getCookie, setCookieWithExpireHour } from "https://cdn.jsdelivr.net/gh/jscroot/cookie@0.0.1/croot.js";
+import { setValue, getValue, setInnerText,show,hide,getTextSelect} from "https://cdn.jsdelivr.net/gh/jscroot/element@0.0.8/croot.js";
 import { token } from "../controller/cookies.js";
 
 window.onChangeTahunLulus=onChangeTahunLulus;
+window.onChangeSelectJalur=onChangeSelectJalur;
 
 // let cookielog = getCookie("login");
 // if (cookielog === "") {
@@ -13,7 +14,7 @@ window.onChangeTahunLulus=onChangeTahunLulus;
 // }
 
 // Untuk Get Referal
-var referral = getCookie("referal")
+var referral = getCookie("referal");
 if (referral === undefined || referral === null || referral === "") {
     setValue("referral", "none");
 } else {
@@ -25,13 +26,34 @@ header.append("login", token);
 header.append("Content-Type", "application/json");
 
 function onChangeTahunLulus(sel) {
+    let thnstr=sel.options[sel.selectedIndex].text;
+    
     let tahunllulus={
-    "tahun":parseInt(sel.options[sel.selectedIndex].text)
-}
-postWithToken(UrlGetJalurByTahun,"login",token,tahunllulus,populateDropdown);
-  console.log(sel.options[sel.selectedIndex].text);
+    "tahun":parseInt(thnstr)
+    }
+    postWithToken(UrlGetJalurByTahun,"login",token,tahunllulus,populateDropdown);
+    setCookieWithExpireHour("lulusantahun",thnstr,16);
+    console.log(thnstr);
 }
 
+function onChangeSelectJalur(sel) {
+    let thn=getCookie("lulusantahun");
+    let tahunllulus={
+    "tahun":parseInt(thn)
+    }
+    
+    let pilihan=parseInt(sel.options[sel.selectedIndex].value);
+    console.log(sel.options[sel.selectedIndex].value);
+    console.log("onChangeSelectJalur");
+    if (pilihan ===4){
+        show("jalur2");
+        postWithToken(UrlGetJalurByTahun,"login",token,tahunllulus,populateDropdown2);
+    } else{
+        hide("jalur2");
+    }
+    setCookieWithExpireHour("jalur2",sel.options[sel.selectedIndex].value,16);
+    
+}
 
 // Event listener untuk tombol "Submit"
 const submitButton = document.getElementById('submitButton');
@@ -73,6 +95,12 @@ function submitJalurPendaftaran() {
     const jalurPendaftaran = document.querySelector("#selectjalur");
     const statusJalur = jalurPendaftaran ? jalurPendaftaran.value : "";
     const referralInput = getValue("referral");
+    // jika ambil jalur ikatan dinas simpan cookies untuk langkah selanjutnya
+    if (parseInt(statusJalur) === 4){
+        setCookieWithExpireHour("jalur2","4",16);
+    }
+
+    
     
     const postData = {
         id_jalur : parseInt(statusJalur),
@@ -142,6 +170,24 @@ function populateDropdown(response) {
         option.value = item.id_jalur;
         option.text = item.nama_jalur;
         selectDropdown.appendChild(option);
+    });
+}
+function populateDropdown2(response) {
+    const selectDropdown = document.getElementById('selectjalur2');
+    selectDropdown.innerHTML = '';
+
+    const defaultOption = document.createElement('option');
+    defaultOption.value = '';
+    defaultOption.text = 'Pilih Jalur';
+    selectDropdown.appendChild(defaultOption);
+
+    response.data.forEach(item => {
+        if (item.id_jalur!==4){
+            const option = document.createElement('option');
+            option.value = item.id_jalur;
+            option.text = item.nama_jalur;
+            selectDropdown.appendChild(option);
+        }
     });
 }
 
