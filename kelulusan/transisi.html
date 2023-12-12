@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="../assets/css/app.css">
   <!-- End : Theme CSS-->
   <script src="../assets/js/settings.js" sync></script>
+  
 </head>
 
 <body class=" font-inter dashcode-app" id="body_class">
@@ -23,115 +24,8 @@
   <main class="app-wrapper">
     <!-- BEGIN: Sidebar -->
     <!-- BEGIN: Sidebar -->
-    <div class="sidebar-wrapper group">
-      <div id="bodyOverlay" class="w-screen h-screen fixed top-0 bg-slate-900 bg-opacity-50 backdrop-blur-sm z-10 hidden"></div>
-      <div class="logo-segment">
-        <a class="flex items-center" href="index.html">
-          <img src="../assets/images/all-img/bungaoren.png" class="black_logo" alt="logo" width="40" height="40">
-          <img src="../assets/images/all-img/bungaputih.png" class="white_logo" alt="logo" width="40" height="40">
-          <span class="ltr:ml-3 rtl:mr-3 text-xl font-Inter font-bold text-slate-900 dark:text-white">PMB ULBI</span>
-        </a>
-        <!-- Sidebar Type Button -->
-        <div id="sidebar_type" class="cursor-pointer text-slate-900 dark:text-white text-lg">
-          <span class="sidebarDotIcon extend-icon cursor-pointer text-slate-900 dark:text-white text-2xl">
-        <div class="h-4 w-4 border-[1.5px] border-slate-900 dark:border-slate-700 rounded-full transition-all duration-150 ring-2 ring-inset ring-offset-4 ring-black-900 dark:ring-slate-400 bg-slate-900 dark:bg-slate-400 dark:ring-offset-slate-700"></div>
-      </span>
-          <span class="sidebarDotIcon collapsed-icon cursor-pointer text-slate-900 dark:text-white text-2xl">
-        <div class="h-4 w-4 border-[1.5px] border-slate-900 dark:border-slate-700 rounded-full transition-all duration-150"></div>
-      </span>
-        </div>
-        <button class="sidebarCloseIcon text-2xl">
-          <iconify-icon class="text-slate-900 dark:text-slate-200" icon="clarity:window-close-line"></iconify-icon>
-        </button>
-      </div>
-      <div id="nav_shadow" class="nav_shadow h-[60px] absolute top-[80px] nav-shadow z-[1] w-full transition-all duration-200 pointer-events-none
-      opacity-0"></div>
-      <div class="sidebar-menus bg-white dark:bg-slate-800 py-2 px-4 h-[calc(100%-80px)] overflow-y-auto z-50" id="sidebar_menus">
-        <ul class="sidebar-menu">
-          <li class="sidebar-menu-title">Menu Utama</li>
-          <li class="">
-            <a href="../index.html" class="navItem">
-              <span class="flex items-center">
-            <iconify-icon class=" nav-icon" icon="heroicons-outline:home"></iconify-icon>
-            <span>Dashboard</span>
-              </span>
-            </a>
-          </li>
-
-          <!-- Informartion Area -->
-          <li class="sidebar-menu-title">Informasi Pribadi</li>
-          <li class="">
-            <a href="../datadiri/datapribadi.html" class="navItem">
-              <span class="flex items-center">
-            <iconify-icon class=" nav-icon" icon="heroicons-outline:user"></iconify-icon>
-            <span>Biodata</span>
-              </span>
-            </a>
-          </li>
-          <li class="">
-            <a href="../kuesioner.html" class="navItem">
-              <span class="flex items-center">
-            <iconify-icon class=" nav-icon" icon="heroicons-outline:archive"></iconify-icon>
-            <span>Isi Kuesioner</span>
-              </span>
-            </a>
-          </li>
-          <li>
-            <a href="chat.html" class="navItem">
-              <span class="flex items-center">
-            <iconify-icon class="nav-icon" icon="heroicons-outline:clipboard-list"></iconify-icon>
-            <span>General Test Online</span>
-              </span>
-            </a>
-          </li>
-          <li class="">
-            <a href="../404belumregistrasi.html" class="navItem active">
-              <span class="flex items-center">
-            <iconify-icon class=" nav-icon" icon="heroicons-outline:speakerphone"></iconify-icon>
-            <span>Check Kelulusan</span>
-              </span>
-            </a>
-          </li>
-          <li class="">
-            <a href="kanban.html" class="navItem">
-              <span class="flex items-center">
-            <iconify-icon class=" nav-icon" icon="heroicons-outline:credit-card"></iconify-icon>
-            <span>Pembayaran</span>
-              </span>
-            </a>
-          </li>
-          <li class="">
-            <a href="../under-maintanance.html" class="navItem">
-              <span class="flex items-center">
-            <iconify-icon class=" nav-icon" icon="heroicons-outline:cloud-upload"></iconify-icon>
-            <span>Daftar Ulang</span>
-              </span>
-            </a>
-          </li>
-        <!-- Upgrade Your Business Plan Card Start -->
-        <div class="bg-slate-900 mb-10 mt-24 p-4 relative text-center rounded-2xl text-white" id="sidebar_bottom_wizard">
-          <img src="../assets/images/svg/rabit.svg" alt="" class="mx-auto relative -mt-[73px]">
-          <div class="max-w-[160px] mx-auto mt-6">
-            <div class="widget-title font-Inter mb-1">PMB ULBI</div>
-            <div class="text-xs font-light font-Inter">
-              Kunjungi Website Kami
-            </div>
-          </div>
-          <div class="mt-6">
-            <a href="https://www.ulbi.ac.id/" target="_blank">
-            <button class="bg-white hover:bg-opacity-80 text-slate-900 text-sm font-Inter rounded-md w-full block py-2 font-medium">
-              ULBI
-            </button>
-          </a>
-          </div>
-        </div>
-        <!-- Upgrade Your Business Plan Card Start -->
-      </div>
-    </div>
-    <!-- End: Sidebar -->
-    <!-- End: Sidebar -->
+    <div id="sidebar-container"></div>
     <!-- BEGIN: Settings -->
-
     <!-- BEGIN: Settings -->
     <!-- Settings Toggle Button -->
     <button class="fixed ltr:md:right-[-29px] ltr:right-0 rtl:left-0 rtl:md:left-[-29px] top-1/2 z-[888] translate-y-1/2 bg-slate-800 text-slate-50 dark:bg-slate-700 dark:text-slate-300 cursor-pointer transform rotate-90 flex items-center text-sm font-medium px-2 py-2 shadow-deep ltr:rounded-b rtl:rounded-t" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" aria-controls="offcanvas">
@@ -268,36 +162,37 @@
       <div>
         <!-- BEGIN: Header -->
         <!-- BEGIN: Header -->
+        <!-- BEGIN: Settings -->
         <div class="z-[9]" id="app_header">
           <div class="app-header z-[999] ltr:ml-[248px] rtl:mr-[248px] bg-white dark:bg-slate-800 shadow-sm dark:shadow-slate-700">
             <div class="flex justify-between items-center h-full">
               <div class="flex items-center md:space-x-4 space-x-2 xl:space-x-0 rtl:space-x-reverse vertical-box">
                 <a href="index.html" class="mobile-logo xl:hidden inline-block">
-                  <img src="../assets/images/all-img/bungaoren.png" class="black_logo" alt="logo" width="40" height="40">
-                  <img src="../assets/images/all-img/bungaputih.png" class="white_logo" alt="logo" alt="logo" width="40" height="40">
+                  <img src="https://cdn.jsdelivr.net/gh/PMBULBI/pmb-mhs@0.0.1/assets/images/all-img/bungaoren.png" class="black_logo" alt="logo" width="40" height="40">
+                  <img src="https://cdn.jsdelivr.net/gh/PMBULBI/pmb-mhs@0.0.1/assets/images/all-img/bungaputih.png" class="white_logo" alt="logo" alt="logo" width="40" height="40">
                 </a>
                 <button class="smallDeviceMenuController hidden md:inline-block xl:hidden">
                   <iconify-icon class="leading-none bg-transparent relative text-xl top-[2px] text-slate-900 dark:text-white" icon="heroicons-outline:menu-alt-3"></iconify-icon>
                 </button>
-                <button class="flex items-center xl:text-sm text-lg xl:text-slate-400 text-slate-800 dark:text-slate-300 px-1
+                <!-- <button class="flex items-center xl:text-sm text-lg xl:text-slate-400 text-slate-800 dark:text-slate-300 px-1
         rtl:space-x-reverse search-modal" data-bs-toggle="modal" data-bs-target="#searchModal">
                   <iconify-icon icon="heroicons-outline:search"></iconify-icon>
                   <span class="xl:inline-block hidden ml-3">Search...
-    </span>
-                </button>
+                  </span>
+                </button> -->
 
               </div>
               <!-- end vertcial -->
               <div class="items-center space-x-4 rtl:space-x-reverse horizental-box">
                 <a href="index.html">
                   <span class="xl:inline-block hidden">
-        <img src="../assets/images/all-img/bungaoren.png" class="black_logo " alt="logo"width="40" height="40">
-        <img src="../assets/images/all-img/bungaputih.png" class="white_logo" alt="logo" width="40" height="40">
-    </span>
-                  <span class="xl:hidden inline-block">
-        <img src="../assets/images/all-img/bungaoren.png" class="black_logo " alt="logo" width="40" height="40">
-        <img src="../assets/images/all-img/bungaputih.png" class="white_logo " alt="logo" width="40" height="40">
-    </span>
+                <img src="https://cdn.jsdelivr.net/gh/PMBULBI/pmb-mhs@0.0.1/assets/images/all-img/bungaoren.png" class="black_logo " alt="logo"width="40" height="40">
+                <img src="https://cdn.jsdelivr.net/gh/PMBULBI/pmb-mhs@0.0.1/assets/images/all-img/bungaputih.png" class="white_logo" alt="logo" width="40" height="40">
+            </span>
+                          <span class="xl:hidden inline-block">
+                <img src="https://cdn.jsdelivr.net/gh/PMBULBI/pmb-mhs@0.0.1/assets/images/all-img/bungaoren.png" class="black_logo " alt="logo" width="40" height="40">
+                <img src="https://cdn.jsdelivr.net/gh/PMBULBI/pmb-mhs@0.0.1/assets/images/all-img/bungaputih.png" class="white_logo " alt="logo" width="40" height="40">
+            </span>
                 </a>
                 <button class="smallDeviceMenuController  open-sdiebar-controller xl:hidden inline-block">
                   <iconify-icon class="leading-none bg-transparent relative text-xl top-[2px] text-slate-900 dark:text-white" icon="heroicons-outline:menu-alt-3"></iconify-icon>
@@ -328,56 +223,56 @@
                 <!-- Profile DropDown Area -->
                 <div class="md:block hidden w-full">
                   <button class="text-slate-800 dark:text-white focus:ring-0 focus:outline-none font-medium rounded-lg text-sm text-center
-      inline-flex items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        inline-flex items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <div class="lg:h-8 lg:w-8 h-7 w-7 rounded-full flex-1 ltr:mr-[10px] rtl:ml-[10px]">
-                      <img src="../assets/images/all-img/user.png" alt="user" class="block w-full h-full object-cover rounded-full">
+                      <img src="https://cdn.jsdelivr.net/gh/PMBULBI/pmb-mhs@0.0.1/assets/images/all-img/user.png" alt="user" class="block w-full h-full object-cover rounded-full">
                     </div>
-                    <span class="flex-none text-slate-600 dark:text-white text-sm font-normal items-center lg:flex hidden overflow-hidden text-ellipsis whitespace-nowrap">Albert Flores</span>
+                    <span class="flex-none text-slate-600 dark:text-white text-sm font-normal items-center lg:flex hidden overflow-hidden text-ellipsis whitespace-nowrap" id="nama_mhs_span"></span>
                     <svg class="w-[16px] h-[16px] dark:text-white hidden lg:inline-block text-base inline-block ml-[10px] rtl:mr-[10px]" aria-hidden="true" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                     </svg>
                   </button>
                   <!-- Dropdown menu -->
                   <div class="dropdown-menu z-10 hidden bg-white divide-y divide-slate-100 shadow w-44 dark:bg-slate-800 border dark:border-slate-700 !top-[23px] rounded-md
-      overflow-hidden">
+        overflow-hidden">
                     <ul class="py-1 text-sm text-slate-800 dark:text-slate-200">
                       <li>
-                        <a href="index.html" class="block px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-600 dark:hover:text-white font-inter text-sm text-slate-600
+                        <a href="https://pmb.ulbi.ac.id/pmb-mhs/index" class="block px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-600 dark:hover:text-white font-inter text-sm text-slate-600
             dark:text-white font-normal">
                           <iconify-icon icon="heroicons-outline:home" class="relative top-[2px] text-lg ltr:mr-1 rtl:ml-1"></iconify-icon>
                           <span class="font-Inter">Dashboard</span>
                         </a>
                       </li>
                       <li>
-                        <a href="chat.html" class="block px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-600 dark:hover:text-white font-inter text-sm text-slate-600
+                        <a href="https://pmb.ulbi.ac.id/pmb-mhs/kuesioner/kuesioner.html" class="block px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-600 dark:hover:text-white font-inter text-sm text-slate-600
             dark:text-white font-normal">
                           <iconify-icon icon="heroicons-outline:archive" class="relative top-[2px] text-lg ltr:mr-1 rtl:ml-1"></iconify-icon>
                           <span class="font-Inter">Kuesioner</span>
                         </a>
                       </li>
                       <li>
-                        <a href="email.html" class="block px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-600 dark:hover:text-white font-inter text-sm text-slate-600
+                        <a href="#" class="block px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-600 dark:hover:text-white font-inter text-sm text-slate-600
             dark:text-white font-normal">
                           <iconify-icon icon="heroicons-outline:speakerphone" class="relative top-[2px] text-lg ltr:mr-1 rtl:ml-1"></iconify-icon>
                           <span class="font-Inter">Cek Kelulusan</span>
                         </a>
                       </li>
                       <li>
-                        <a href="todo.html" class="block px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-600 dark:hover:text-white font-inter text-sm text-slate-600
+                        <a href="#" class="block px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-600 dark:hover:text-white font-inter text-sm text-slate-600
             dark:text-white font-normal">
                           <iconify-icon icon="heroicons-outline:credit-card" class="relative top-[2px] text-lg ltr:mr-1 rtl:ml-1"></iconify-icon>
                           <span class="font-Inter">Pembayaran</span>
                         </a>
                       </li>
                       <li>
-                        <a href="settings.html" class="block px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-600 dark:hover:text-white font-inter text-sm text-slate-600
+                        <a href="#" class="block px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-600 dark:hover:text-white font-inter text-sm text-slate-600
             dark:text-white font-normal">
                           <iconify-icon icon="heroicons-outline:cloud-upload" class="relative top-[2px] text-lg ltr:mr-1 rtl:ml-1"></iconify-icon>
                           <span class="font-Inter">Daftar Ulang</span>
                         </a>
                       </li>
                       <li>
-                        <a href="signin-one.html" class="block px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-600 dark:hover:text-white font-inter text-sm text-slate-600
+                        <a href="#" id="logoutBtn" class="block px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-600 dark:hover:text-white font-inter text-sm text-slate-600
             dark:text-white font-normal">
                           <iconify-icon icon="heroicons-outline:login" class="relative top-[2px] text-lg ltr:mr-1 rtl:ml-1"></iconify-icon>
                           <span class="font-Inter">Logout</span>
@@ -396,7 +291,6 @@
             </div>
           </div>
         </div>
-
         <!-- BEGIN: Search Modal -->
         <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
           <div class="modal-dialog relative w-auto pointer-events-none top-1/4">
@@ -412,7 +306,6 @@
             </div>
           </div>
         </div>
-        <!-- END: Search Modal -->
         <!-- END: Header -->
         <!-- END: Header -->
         <div class="content-wrapper transition-all duration-150 ltr:ml-[248px] rtl:mr-[248px]" id="content_wrapper">
@@ -421,52 +314,177 @@
               <div id="content_layout">
                 <div>
                   <div class="flex justify-between flex-wrap items-center mb-6">
-                    <h4 class="font-medium lg:text-2xl text-xl capitalize text-slate-900 inline-block ltr:pr-4 rtl:pl-4 mb-4 sm:mb-0 flex space-x-3 rtl:space-x-reverse">Check Kelulusan</h4>
+                    <h4 class="font-medium lg:text-2xl text-xl capitalize text-slate-900 inline-block ltr:pr-4 rtl:pl-4 mb-4 sm:mb-0 flex space-x-3 rtl:space-x-reverse">Pengumuman Kelulusan</h4>
                   </div>
                     <!-- BEGIN: Breadcrumb -->
                     <div class="mb-5">
                     <ul class="m-0 p-0 list-none">
                         <li class="inline-block relative top-[3px] text-base text-primary-500 font-Inter ">
-                        <a href="index.html">
-                            <iconify-icon icon="heroicons-outline:speakerphone"></iconify-icon>
+                        <a href="../index.html">
+                            <iconify-icon icon="heroicons-outline:user"></iconify-icon>
                             <iconify-icon icon="heroicons-outline:chevron-right" class="relative text-slate-500 text-sm rtl:rotate-180"></iconify-icon>
                         </a>
                         </li>
                         <li class="inline-block relative text-sm text-primary-500 font-Inter ">
-                        Menu Utama
+                        Check Kelulusan
                         <iconify-icon icon="heroicons-outline:chevron-right" class="relative top-[3px] text-slate-500 rtl:rotate-180"></iconify-icon>
                         </li>
                         <li class="inline-block relative text-sm text-slate-500 font-Inter dark:text-white">
-                        Check Kelulusan</li>
+                        Pengumuman Kelulusan</li>
                     </ul>
+                    
                     </div>
                     <!-- END: BreadCrumb -->
-                    <!-- Card Peringatan Start -->
-                    <div class="card rounded-md bg-white dark:bg-slate-800 lg:h-full  shadow-base">
-                      <div class="card-body flex flex-col p-6">
-                        <header class="flex mb-3 items-center">
-                          <div class="flex-1">
-                            <div class="card-title font-Inter text-slate-900 dark:text-white text-center mb-7 mt-4" style="font-size: 30px; color: red;"><b>PENGUMUMAN</b></div>
-                            <div class="card-subtitle font-Inter text-center" style="font-size: larger;">Maaf, Pengumuman kelulusan belum ada silahkan cek kembali nanti.</div>
+                    <!-- Alert Start -->
+                    <div class="py-[18px] px-6 font-normal text-sm rounded-md bg-warning-500 text-white mb-3"">
+                      <div class="flex items-center space-x-3 rtl:space-x-reverse">
+                        <iconify-icon class="text-2xl flex-0" icon="heroicons:exclamation-triangle"></iconify-icon>
+                        <p class="flex-1 font-Inter">
+                          Segera Lakukan Pembayaran Pendaftaran kamu ya sebelum <b>14 Desember 2023</b>!
+                        </p>
+                      </div>
+                    </div>
+                    <!-- Alert End -->
+                    <!-- Pengumuman Kelulusan Start -->
+                    <div class="space-y-5 profile-page">
+                      <div class="profiel-wrap px-[35px] pb-10 md:pt-[84px] pt-10 rounded-lg bg-white dark:bg-slate-800 lg:flex lg:space-y-0
+                    space-y-6 justify-between items-end relative z-[1]">
+                        <div class="bg-slate-900 dark:bg-slate-700 absolute left-0 top-0 md:h-1/2 h-[150px] w-full z-[-1] rounded-t-lg"></div>
+                        <div class="profile-box flex-none md:text-start text-center">
+                          <div class="md:flex items-end md:space-x-6 rtl:space-x-reverse">
+                            <div class="flex-none">
+                              <div class="md:h-[186px] md:w-[186px] h-[140px] w-[140px] md:ml-0 md:mr-0 ml-auto mr-auto md:mb-0 mb-4 rounded-full ring-4
+                                    ring-slate-100 relative">
+                                <img src="../assets/images/users/user-1.jpg" alt="" class="w-full h-full object-cover rounded-full">
+                                <a href="profile-setting" class="absolute right-2 h-8 w-8 bg-slate-50 text-slate-600 rounded-full shadow-sm flex flex-col items-center
+                                        justify-center md:top-[140px] top-[100px]">
+                                  <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
+                                </a>
+                              </div>
+                            </div>
+                            <div class="flex-1">
+                              <div class="text font-medium text-slate-900 dark:text-slate-200 mb-[3px]">
+                                Bachtiar Ramadhan
+                              </div>
+                              <div class="text-sm font-light text-slate-600 dark:text-slate-400">
+                                Nama Lengkap
+                              </div>
+                            </div>
                           </div>
-                        </header>
-                        <div class="image-box">
-                          <img src="/assets/images/all-img/sorry.png" alt="" class="block w-full h-full object-cover rounded-md" style="width: 20%; margin-left: 400px;">
                         </div>
-                        <div class="card-text h-full text-center mt-5">
-                          <p style="color: red;"><b>Mohon Bersabar Untuk Menunggu.</b></p>
+                        <!-- end profile box -->
+                        <div class="profile-info-500 md:flex md:text-start text-center flex-1 max-w-[516px] md:space-y-0 space-y-4">
+                          <div class="flex-1">
+                            <div class="text-base text-slate-900 dark:text-slate-300 font-medium mb-1">
+                              6285213921331
+                            </div>
+                            <div class="text-sm text-slate-600 font-light dark:text-slate-300">
+                              Nomor Handphone
+                            </div>
+                          </div>
+                          <!-- end single -->
+                          <div class="flex-1">
+                            <div class="text-base text-slate-900 dark:text-slate-300 font-medium mb-1">
+                              Undangan
+                            </div>
+                            <div class="text-sm text-slate-600 font-light dark:text-slate-300">
+                              Jalur Pendaftaran
+                            </div>
+                          </div>
+                          <!-- end single -->
+                          <div class="flex-1">
+                            <div class="text-base text-slate-900 dark:text-slate-300 font-medium mb-1">
+                              1204077
+                            </div>
+                            <div class="text-sm text-slate-600 font-light dark:text-slate-300">
+                              NPM
+                            </div>
+                          </div>
+                          <!-- end single -->
+                        </div>
+                        <!-- profile info-500 -->
+                      </div>
+                      <div class="grid grid-cols-12 gap-6">
+                        <div class="lg:col-span-8 col-span-12">
+                          <div class="card rounded-md bg-white dark:bg-slate-800 shadow-base p-6">
+                            <div class="card-body flex flex-col p-6">
+                              <header class="flex mb-3 items-center">
+                                <div class="flex-1">
+                                  <div class="card-title font-Inter text-slate-900 dark:text-white text-center" style="font-size: 20px;">
+                                    <b>Pengumuman PMB ULBI 2024/2025</b>
+                                  </div>
+                                </div>
+                              </header>
+                              <div class="card-body flex flex-col items-center"> <!-- Tambahkan class items-center -->
+                                <div class="image-box mb-2">
+                                  <img src="../assets/images/icon/maaf.png" style="size: 40px;" class="block w-full h-full object-cover rounded-md">
+                                </div>
+                              </div>
+                              <div class="flex-1">
+                                <div class="card-title font-Inter text-slate-900 dark:text-white text-center mt-4" style="font-size: 20px;">
+                                  <b>Pengumuman kelulusan belum bisa dilihat</b>
+                                </div>
+                                <div class="card-title font-Inter text-slate-900 dark:text-white text-center mt-1" style="font-size: 15px;">
+                                  <p>Segera lakukan pembayaran Pendaftaran sesuai dengan informasi di bawah ini untuk mengetahui hasil kelulusan seleksi kamu.</p>
+                                </div>
+                              </div>
+                            </div>                            
+                          </div>
+                          <div class="card rounded-md bg-white dark:bg-slate-800 shadow-base mt-6">
+                            <div class="card-body flex flex-col">
+                              <header class="card-header">
+                                <h4 class="card-title"><b>Status Pembayaran</b></h4>
+                                <button class="btn inline-flex justify-center btn-warning">Panduan Pembayaran</button>
+                              </header>
+                              <div class="flex">
+                                <div class="card-text h-full mt-2 p-6 flex-1">
+                                  <div class="input-area relative pl-28 mb-3">
+                                    <label for="defaultInput" class="mb-2 absolute left-0 top-1/2 -translate-y-1/2 block cursor-pointer font-Inter font-medium capitalize text-slate-700 dark:text-slate-50 leading-6">
+                                      Biaya Daftar</label>
+                                    <input id="defaultInput" type="text" class="form-control" value="300000" disabled>
+                                  </div>
+                                  <div class="input-area relative pl-28">
+                                    <label for="defaultInput" class="mb-2 absolute left-0 top-1/2 -translate-y-1/2 block cursor-pointer font-Inter font-medium capitalize text-slate-700 dark:text-slate-50 leading-6">
+                                      No VA</label>
+                                    <input id="defaultInput" type="text" class="form-control" value="9885454222200223" disabled>
+                                  </div>
+                                  <p class="mt-3">Segera lakukan pembayaran Pendaftaran sesuai dengan nominal di atas untuk mengetahui hasil kelulusan seleksi kamu. Nomor Virtual Account <b>Expired 14 Desember 2023 23.59.59</b></p>
+                                </div>
+                                <div class="card-text h-full mt-2 p-6 flex-1">
+                                  <p><b>Status Pembayaran</b></p>
+                                  <p>Belum dibayarkan</p>
+                                </div>
+                              </div>                              
+                            </div>
+                          </div>
+                        </div>
+                        <div class="lg:col-span-4 col-span-12">
+                          <div class="card">
+                            <header class="card-header">
+                              <iconify-icon class="text-2xl flex-0" icon="heroicons:arrow-up-tray"></iconify-icon>
+                              <p class="card-title flex-1 font-Inter ml-2">
+                                <b>Share Your Moment</b>
+                              </p>
+                            </header>
+                            <div class="card rounded-md bg-white dark:bg-slate-800 lg:h-full shadow-base">
+                              <div class="card-body flex flex-col p-6 items-center"> <!-- Tambahkan class items-center -->
+                                <div class="image-box mb-6">
+                                  <img src="../assets/images/all-img/twibbon ulbi.png" style="width: 100%;" class="block w-full h-full object-cover rounded-md">
+                                </div>
+                                <div class="card-text h-full"> <!-- Tambahkan class text-center -->
+                                  <p>Selamat atas Kelulusan Seleksi <b>PMB ULBI</b>. Abadikan dan bagikan momen anda di media sosial kamu ya.</p>
+                                  <br>
+                                  <p>Jangan lupa tag kita di Instagram <a href="https://instagram.com/ulbi.official"><b>@ulbi.official</b></a> dan <a href="https://instagram.com/admission.ulbi"><b>@admission.ulbi</b></a>.</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
-                    <!-- Card Peringatan End -->
-                    </div>
-                    <div class="flex justify-between items-center">
-                      <button class="btn inline-flex justify-center btn-primary shadow-base2 ml-auto mt-2">Cek Pembayaran Registrasi</button>
-                    </div>
-                    </div>
+                    <!-- Pengumuman Kelulusan End -->
                   </div>
-                  
-                 </div>
+              </div>
             </div>
           </div>
         </div>
@@ -480,12 +498,12 @@
             <div class="text-center ltr:md:text-start rtl:md:text-right text-sm">
               COPYRIGHT ©
               <span id="thisYear"></span>
-              Marketing And Admission Directorate
+              DTI, All rights Reserved
             </div>
             <div class="ltr:md:text-right rtl:md:text-end text-center text-sm">
               Hand-crafted &amp; Made by
-              <a href="#" target="_blank" class="text-primary-500 font-semibold">
-                DTI ULBI
+              <a href="https://dti.ulbi.ac.id" target="_blank" class="text-primary-500 font-semibold">
+                DTI
               </a>
             </div>
           </div>
@@ -535,8 +553,13 @@
     </div>
   </main>
   <!-- scripts -->
-  <script src="../assets/js/jquery-3.6.0.min.js"></script>
-  <script src="../assets/js/rt-plugins.js"></script>
-  <script src="../assets/js/app.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/gh/PMBULBI/javascript-fe@0.0.7/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/PMBULBI/javascript-fe@0.0.7/rt-plugins.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/PMBULBI/javascript-fe@0.3.4/bar/sidebar.js
+"></script>
+  <script src="https://cdn.jsdelivr.net/gh/PMBULBI/javascript-fe@0.1.3/app/app.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/PMBULBI/javascript-fe@0.0.7/theme.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/PMBULBI/javascript-fe@0.1.7/bar/footer.js"></script>
 </body>
 </html>
