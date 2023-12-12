@@ -1,6 +1,6 @@
 // Import function or library
-import { UrlGetJalurPendaftaran, UrlGetTahunLulusan,UrlGetJalurByTahun } from "../controller/template.js";
-import { get,postWithToken } from "https://cdn.jsdelivr.net/gh/jscroot/api@0.0.2/croot.js";
+import { UrlGetJalurPendaftaran, UrlGetTahunLulusan,UrlGetJalurByTahun,UrlGetDataPendaftar } from "../controller/template.js";
+import { get,postWithToken,getWithHeader } from "https://cdn.jsdelivr.net/gh/jscroot/api@0.0.2/croot.js";
 import { getCookie } from "https://jscroot.github.io/cookie/croot.js";
 import { setValue, getValue, setInnerText} from "https://cdn.jsdelivr.net/gh/jscroot/element@0.0.2/croot.js";
 import { token } from "../controller/cookies.js";
@@ -116,13 +116,13 @@ function submitJalurPendaftaran() {
 
 // Get Data Cookies
 // Get Untuk Data di Navbar dan Form
-document.addEventListener("DOMContentLoaded", function() {
-    var namaMhs = getCookie('namaMhs');
-  
-    if (namaMhs) {
-        setInnerText('nama_mhs_span', namaMhs);
-    }
-});
+getWithHeader(UrlGetDataPendaftar,"login",token,renderDataPendaftar);
+function renderDataPendaftar(result){
+  if (result.success){
+    setInnerText('nama_mhs_span', result.data.nama_mhs);
+  }
+}
+
 
 // Jalur Pendaftaran
 // Membuat fungsi untuk fetch data ke dropdown jalur
@@ -139,7 +139,7 @@ function populateDropdown(response) {
 
     response.data.forEach(item => {
         const option = document.createElement('option');
-        option.value = item.id;
+        option.value = item.id_jalur;
         option.text = item.nama_jalur;
         selectDropdown.appendChild(option);
     });
