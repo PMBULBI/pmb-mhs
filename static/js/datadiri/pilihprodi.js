@@ -3,18 +3,28 @@ import { CookieName, UrlGetFakultas, UrlGetProgramStudi, UrlBiodataJalur, TokenH
 import { get,postWithToken,getWithHeader } from "https://cdn.jsdelivr.net/gh/jscroot/api@0.0.2/croot.js";
 import { getCookie } from "https://jscroot.github.io/cookie/croot.js";
 import { token } from "../controller/cookies.js";
-import { setInnerText } from "https://cdn.jsdelivr.net/gh/jscroot/element@0.0.2/croot.js";
+import { setInner,setInnerText } from "https://cdn.jsdelivr.net/gh/jscroot/element@0.0.2/croot.js";
 
 var header = new Headers();
 header.append("login", token);
 header.append("Content-Type", "application/json");
 
+// Get Data Cookies
+// Get Untuk Data di Navbar dan Form
+getWithHeader(UrlGetDataPendaftar,"login",token,renderDataPendaftar);
+function renderDataPendaftar(result){
+  if (result.success){
+    setInnerText('nama_mhs_span', result.data.nama_mhs);
+  }else{
+    window.location.replace("https://pmb.ulbi.ac.id/");
+  }
+}
 
 //jika ikatan dinas maka judulnya di replace
 if(getCookie("jalur2")==="4"){
     console.log("ikatan dinas");
-    setInnerText("pil1","Program Studi Ikatan Dinas*");
-    setInnerText("pil2","Program Studi Jalur Reguler*");
+    setInner("pil1","Program Studi Ikatan Dinas*");
+    setInner("pil2","Program Studi Jalur Reguler*");
 }
 
 // Untuk POST data pilihan prodi
@@ -90,15 +100,6 @@ submitButton.addEventListener('click', () => {
         }
     });
 })
-
-// Get Data Cookies
-// Get Untuk Data di Navbar dan Form
-getWithHeader(UrlGetDataPendaftar,"login",token,renderDataPendaftar);
-function renderDataPendaftar(result){
-  if (result.success){
-    setInnerText('nama_mhs_span', result.data.nama_mhs);
-  }
-}
 
 // Get Program Studi 1
 // Membuat fungsi untuk fetch data prodi
