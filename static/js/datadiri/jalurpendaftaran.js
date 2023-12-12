@@ -97,7 +97,9 @@ function submitJalurPendaftaran() {
     const referralInput = getValue("referral");
     // jika ambil jalur ikatan dinas simpan cookies untuk langkah selanjutnya
     if (parseInt(statusJalur) === 4){
-        setCookieWithExpireHour("jalur2","4",16);
+        const jalurPendaftaran2 = document.querySelector("#selectjalur2");
+        const statusJalur2 = jalurPendaftaran2 ? jalurPendaftaran2.value : "";
+        setCookieWithExpireHour("jalurreguler2",statusJalur2,16);
     }
 
     
