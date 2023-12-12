@@ -9,6 +9,20 @@ var header = new Headers();
 header.append("login", token);
 header.append("Content-Type", "application/json");
 
+// Get Untuk Data di Navbar dan Form
+getWithHeader(UrlGetDataPendaftar,"login",token,renderDataPendaftar);
+function renderDataPendaftar(result){
+  if (result.success){
+    setValue('nama', result.data.nama_mhs);
+    setValue('email', result.data.email_mhs);
+    setValue('hp', result.data.hp_mhs);
+    setInnerText('nama_mhs_span', result.data.nama_mhs);
+  }else{
+    window.location.replace("https://pmb.ulbi.ac.id/");
+  }
+}
+
+
 // Untuk POST prodi & fakultas
 // Membuat fungsi untuk mengirimkan data pilih prodi ke API
 function SubmitBiodatadiri() {
@@ -113,17 +127,6 @@ const gender = getValueRadio('basicradios');
       }
   });
 });
-
-// Get Untuk Data di Navbar dan Form
-getWithHeader(UrlGetDataPendaftar,"login",token,renderDataPendaftar);
-function renderDataPendaftar(result){
-  if (result.success){
-    setValue('nama', result.data.nama_mhs);
-    setValue('email', result.data.email_mhs);
-    setValue('hp', result.data.hp_mhs);
-    setInnerText('nama_mhs_span', result.data.nama_mhs);
-  }
-}
 
 // Get Data Provinsi Untuk Dropdown
 // Buat variabel untuk get id element
