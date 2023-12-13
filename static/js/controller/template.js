@@ -23,6 +23,7 @@ export let UrlPostDatadiri = 'https://komarbe.ulbi.ac.id/biodata/data_diri';
 export let UrlPostDataOrtu = 'https://komarbe.ulbi.ac.id/biodata/data_ortu';
 export let UrlPostDataSekolah = 'https://komarbe.ulbi.ac.id/biodata/data_sekolah';
 export let UrlFilePost = 'https://komarbe.ulbi.ac.id/files/upload';
+export let UrlFileServicePost = 'https://mrt.ulbi.ac.id/notif/upload';
 export let UrlPostVA = 'https://komarbe.ulbi.ac.id/va/create';
 
 export const UrlBiodataJalur = 'https://komarbe.ulbi.ac.id/biodata/jalur';
