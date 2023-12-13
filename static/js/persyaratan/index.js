@@ -28,8 +28,12 @@ switch(jalurdipilih){
     case "7"://Kelas Karyawan
         window.location.replace(dpath+"nonrpl.html");
         break;
+    case "9"://utbk
+        window.location.replace(dpath+"utbk.html");
+        break;
     default:
-        setInner("demo","Jalur Tidak Dibuka");
+        window.location.replace("https://pmb.ulbi.ac.id/pmb-mhs/");
+        setInner("demo","Jalur Tidak Ditemukan");
 }
 
 const jalur={
