@@ -26,6 +26,7 @@ function Response(value){
     setInnerText('nominalRegis1', value.data.amount);
     setInnerText('nominalRegis2', value.data.amount);
     setInnerText('expiredDateInput', value.data.datetime_expired);
+    setInnerText('nominalAlert', value.data.amount)
   } else {
     Swal.fire({ 
       icon : 'error',
