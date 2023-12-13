@@ -1,6 +1,6 @@
-import { UrlGetDataPendaftar,UrlFileServicePost } from "../controller/template.js";
+import { UrlGetDataPendaftar,UrlFileServicePost,UrlFileServiceMerge } from "../controller/template.js";
 import { getValue, setValue, setInnerText, getValueRadio } from "https://cdn.jsdelivr.net/gh/jscroot/element@0.0.5/croot.js";
-import { getWithHeader,postFileWithHeader } from "https://cdn.jsdelivr.net/gh/jscroot/api@0.0.2/croot.js";
+import { getWithHeader,postFileWithHeader,postWithToken } from "https://cdn.jsdelivr.net/gh/jscroot/api@0.0.2/croot.js";
 import { token } from "../controller/cookies.js";
 
 var header = new Headers();
@@ -17,18 +17,51 @@ function renderDataPendaftar(result){
   }
 }
 
+let jumlahinput=2;
+
+//upload otomatis setiap pilih file 
+const inputFile1 = document.getElementById('pasfoto_input');
+inputFile1.addEventListener('change', () => {
+  console.log("onchange jalan nih");
+    postFileWithHeader(UrlFileServicePost, "login", token, "pasfoto_input", "image", inputRender);
+});
+const inputFile2 = document.getElementById('ijazahskl_input');
+inputFile2.addEventListener('change', () => {
+  console.log("onchange jalan nih");
+    postFileWithHeader(UrlFileServicePost, "login", token, "ijazahskl_input", "image", inputRender);
+});
+function inputRender(result) {
+  console.log(result);
+  if (result.status) {
+    jumlahinput--;
+  }else{
+    Swal.fire({
+            icon : 'error',
+            title : 'Berkas Tidak Valid',
+            text : 'Pastikan berukuran kurang dari 2MB dengan format gambar'
+        });
+  }
+}
 
 // Event listener for the "Submit" button
 //pasfoto_input dan ijazahskl_input
 const submitButton = document.getElementById('submitButton');
 submitButton.addEventListener('click', () => {
-    postFileWithHeader(UrlFileServicePost, "login", token, "pasfoto_input", "image", renderToHtml);
-    //postFileWithHeader(UrlFileServicePost, "login", token, "ijazahskl_input", "image", renderToHtml);
+  console.log("klik tombol submit");
+  if(jumlahinput===0){
+    postWithToken(UrlFileServiceMerge,"login",token,"",renderToHtml);
+  }else{
+    Swal.fire({
+            icon : 'error',
+            title : 'Berkas Sedang Upload',
+            text : 'silahkan klik beberapa detik lagi'
+        });
+  }
 });
 
 
 function renderToHtml(result) {
-  if (result.status) {
+  if (result.success) {
         Swal.fire({
             icon : 'success',
             title : 'Sukses!',
@@ -36,15 +69,14 @@ function renderToHtml(result) {
             showConfirmButton : false,
             timer : 1500
         }).then(() => {
-            //window.location.replace("https://pmb.ulbi.ac.id/pmb-mhs/pembayaran/bayarregistrasi.html");
-            console.log(result)
+            window.location.replace("https://pmb.ulbi.ac.id/pmb-mhs/pembayaran/bayarregistrasi.html");
         });
     } else {
         Swal.fire({
             icon : 'error',
             title : 'Oops...',
             text : result.status
-        })
+        });
     }
-  console.log(result);
+
 };
