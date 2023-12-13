@@ -17,7 +17,7 @@ function renderDataPendaftar(result){
   }
 }
 
-let jumlahinput=2;
+let jumlahinput=3;
 
 //upload otomatis setiap pilih file 
 const inputFile1 = document.getElementById('pasfoto_input');
