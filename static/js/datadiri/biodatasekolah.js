@@ -74,7 +74,7 @@ function SubmitBiodataOrtu() {
               showConfirmButton : false,
               timer : 1500
           }).then(() => {
-              window.location.href = 'persyaratan.html';
+              window.location.href = 'https://pmb.ulbi.ac.id/pmb-mhs/persyaratan/';
           });
       } else {
           Swal.fire({
