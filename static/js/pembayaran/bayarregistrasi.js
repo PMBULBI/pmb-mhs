@@ -19,7 +19,7 @@ function fetchVA() {
 function Response(value){
   if (value.success){
     setValue('nameInput', value.data.name);
-    setValue('jalurInput', value.data.description);
+    setValue('jalurInput', value.data.jalur);
     setValue('emailInput', value.data.email),
     setValue('nohpInput', value.data.phone)
     setValue('vaInput', value.data.virtual_account);
