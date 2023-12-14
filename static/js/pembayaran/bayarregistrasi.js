@@ -8,17 +8,11 @@ import { setValue, setInnerText, setInner } from "https://cdn.jsdelivr.net/gh/js
 postWithToken(UrlCekPembayaranVAReg, "LOGIN", token, "test", ResponseVAReg)
 
 function ResponseVAReg(value) {
-  const alertElement = document.getElementById('alertPembayaran');
-  const flexElement = document.querySelector('.flex');
-
   if (value.success) {
-    setInner(alertElement, 'Pembayaran Registrasi Anda Telah Lunas');
-    flexElement.classList.remove('hidden');
-    alertElement.classList.replace('bg-warning-500', 'bg-success-500');
+    setInner('alertPembayaran', 'Pembayaran Registrasi Anda Telah Lunas');
+    document.getElementById('buttonCetakInvoice').classList.remove('hidden');
   } else {
-    setInner(alertElement, 'Silahkan Selesaikan Pembayaran Registrasi Anda');
-    flexElement.classList.add('hidden');
-    alertElement.classList.replace('bg-success-500', 'bg-warning-500');
+    setInner('alertPembayaran', 'Silahkan Selesaikan Pembayaran Registrasi Anda');
   }
 }
 
