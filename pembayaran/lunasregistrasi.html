@@ -7,15 +7,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
   <title>Dashboard Mahasiswa - PMB ULBI</title>
-  <link rel="icon" type="image/png" href="../../assets/images/all-img/bungaoren.png">
+  <link rel="icon" type="image/png" href="../assets/images/all-img/bungaoren.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <!-- BEGIN: Theme CSS-->
-  <link rel="stylesheet" href="../../assets/css/rt-plugins.css">
-  <link rel="stylesheet" href="../../assets/css/app.css">
+  <link rel="stylesheet" href="../assets/css/rt-plugins.css">
+  <link rel="stylesheet" href="../assets/css/app.css">
   <!-- End : Theme CSS-->
-  <script src="../../assets/js/settings.js" sync></script>
+  <script src="../assets/js/settings.js" sync></script>
 </head>
 
 <body class=" font-inter dashcode-app" id="body_class">
@@ -339,16 +339,6 @@
                     </ul>
                     </div>
                     <!-- END: BreadCrumb -->
-                    <!-- Alert Pembayaran Start -->
-                    <div class="py-[18px] px-6 font-normal font-Inter text-sm rounded-md bg-success-500 text-white dark:bg-success-500
-                                    dark:text-slate-300 mb-2">
-                            <div class="flex items-start space-x-3 rtl:space-x-reverse">
-                              <div class="flex-1">
-                                <b>Sudah Lunas!</b> Terima kasih kamu telah melakukan pembayaran registrasi sebesar <b>Rp.300.000.</b>
-                              </div>
-                            </div>
-                    </div>
-                    <!-- Alert Pembayaran End -->
                     <!-- Card Peringatan Start -->
                       <div class="card ">
                         <main class="card-body p-0">
@@ -370,18 +360,18 @@
                             </div>
                             <div>
                               <span class="block text-slate-900 dark:text-slate-300 font-medium leading-5 text-xl">Calon Mahasiswa :</span>
-                              <div class="text-slate-500 dark:text-slate-300 font-normal leading-5 mt-4 text-sm">Bachtiar Ramadhan<br>JALUR REGULER<br>NIK (3208072102000006)<div class="flex space-x-2 mt-2 leading-[1] rtl:space-x-reverse">
+                              <div class="text-slate-500 dark:text-slate-300 font-normal leading-5 mt-4 text-sm">Bachtiar Ramadhan<div class="flex space-x-2 mt-2 leading-[1] rtl:space-x-reverse">
                                   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--heroicons-outline" width="1em" height="1em" viewbox="0 0 24 24">
                                     <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 0 1 2-2h3.28a1 1 0 0 1 .948.684l1.498 4.493a1 1 0 0 1-.502 1.21l-2.257 1.13a11.042 11.042 0 0 0 5.516
                                               5.516l1.13-2.257a1 1 0 0 1 1.21-.502l4.493 1.498a1 1 0 0 1 .684.949V19a2 2 0 0 1-2 2h-1C9.716 21 3 14.284 3 6V5Z"></path>
                                   </svg>
-                                  <span>WhatsApp (085213921331)</span>
+                                  <span>WhatsApp (<span id="nomorHpKet"></span>)</span>
                                 </div>
                                 <div class="mt-[6px] flex space-x-2 leading-[1] rtl:space-x-reverse">
                                   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--heroicons-outline" width="1em" height="1em" viewbox="0 0 24 24">
                                     <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m3 8l7.89 5.26a2 2 0 0 0 2.22 0L21 8M5 19h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2Z"></path>
                                   </svg>
-                                  <span>bachtiarramadhan26@gmail.com</span>
+                                  <span id="emailKet"></span>
                                 </div>
                               </div>
                             </div>
@@ -423,15 +413,15 @@
                                 </tr>
                               </table>
                               <div class="md:flex px-6 py-6 items-center">
-                                <div class="flex-1 text-slate-500 dark:text-slate-300 text-sm">Terbilang : <b>Tiga Ratus Ribu Rupiah.</b></div>
+                                <div class="flex-1 text-slate-500 dark:text-slate-300 text-sm"></div>
                                 <div class="flex-none min-w-[270px] space-y-3">
                                   <div class="flex justify-between">
                                     <span class="font-medium text-slate-600 text-xs dark:text-slate-300 uppercase">Jumlah Yang Dibayarkan :</span>
-                                    <span class="text-slate-900 dark:text-slate-300">Rp. 300.000</span>
+                                    <span class="text-slate-900 dark:text-slate-300">Rp. <span id="nominalReg"></span></span>
                                   </div>
                                   <div class="flex justify-between">
                                     <span class="font-medium text-slate-600 text-xs dark:text-slate-300 uppercase">Sisa Tagihan :</span>
-                                    <span class="text-slate-900 dark:text-slate-300">Rp. 0</span>
+                                    <span class="text-slate-900 dark:text-slate-300">Rp. <span id="sisaNominalReg"></span></span>
                                   </div>
                                   <div class="flex justify-between">
                                     <span class="font-medium text-slate-600 text-xs dark:text-slate-300 uppercase">Jumlah Tagihan :</span>
