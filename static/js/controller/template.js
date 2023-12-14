@@ -26,6 +26,7 @@ export let UrlFilePost = 'https://komarbe.ulbi.ac.id/files/upload';
 export let UrlFileServicePost = 'https://mrt.ulbi.ac.id/notif/upload';
 export let UrlFileServiceMerge = 'https://mrt.ulbi.ac.id/notif/merge';
 export let UrlPostVA = 'https://komarbe.ulbi.ac.id/va/create';
+export let UrlCekPembayaranVAReg = 'https://komarbe.ulbi.ac.id/va/verif/reg';
 
 export const UrlBiodataJalur = 'https://komarbe.ulbi.ac.id/biodata/jalur';
 
