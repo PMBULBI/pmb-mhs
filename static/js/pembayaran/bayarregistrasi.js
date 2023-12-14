@@ -6,19 +6,20 @@ import { setValue, setInnerText, setInner } from "https://cdn.jsdelivr.net/gh/js
 
 // Cek Pembayaran VA Registrasi
 postWithToken(UrlCekPembayaranVAReg, "LOGIN", token, "test", ResponseVAReg)
+postWithToken(UrlPostVA, "LOGIN", token,  "test" ,ResponseVAReg); // Untuk Ambil Biaya Registrasi
 
 function ResponseVAReg(value) {
   const bgWarning = 'py-[18px] px-6 font-normal font-Inter text-sm rounded-md bg-warning-500 text-white dark:bg-warning-500 dark:text-slate-300 mb-2';
   const bgSuccess = 'py-[18px] px-6 font-normal font-Inter text-sm rounded-md bg-success-500 text-white dark:bg-success-500 dark:text-slate-300 mb-2';
 
   if (value.success) {
-    setInner('alertPembayaran', 'Pembayaran Registrasi Anda Telah Lunas');
+    setInner('alertPembayaran', 'Silahkan lakukan pembayaran registrasi sebesar <b>Rp.'+value.data.amount+'</b></span>');
     // Show the hidden button
     document.getElementById("colorAlert").className = bgSuccess;
     document.getElementById('buttonCetakInvoice').classList.remove('hidden');
     console.log("masuk ke success value");
   } else {
-    setInner('alertPembayaran', 'Silahkan Selesaikan Pembayaran Registrasi Anda');
+    setInner('alertPembayaran', '<b>Sudah Lunas!</b> Terima kasih kamu telah melakukan pembayaran registrasi sebesar <b>Rp.'+value.data.amount+'</b>');
     document.getElementById("colorAlert").className = bgWarning;
   }
 }
@@ -31,9 +32,8 @@ function renderDataPendaftar(result){
   }
 }
 
-
+// Untuk Create Virtual Account Registrasi
 postWithToken(UrlPostVA, "LOGIN", token,  "test" ,Response)
-
 
 function Response(value){
   if (value.success){
