@@ -1,3 +1,15 @@
+import { UrlCekPembayaranVAReg } from "../controller/template.js";
+import { postWithToken}  from "https://jscroot.github.io/api/croot.js";
+
+// Cek Pembayaran VA Registrasi
+postWithToken(UrlCekPembayaranVAReg, "LOGIN", token, "test", ResponseVAReg)
+
+function ResponseVAReg(value) {
+  if (!value.success) {
+    window.location.replace("bayarregistrasi.html");
+  }
+}
+
 // Event listener untuk tombol "Saya Setuju"
 document.getElementById('buttonSetujuPembayaran').addEventListener('click', function() {
     // Tampilkan SweetAlert dengan opsi konfirmasi
