@@ -14,12 +14,12 @@ function ResponseVAReg(value) {
   if (value.success) {
     setInner('alertPembayaran', 'Pembayaran Registrasi Anda Telah Lunas');
     // Show the hidden button
-    document.getElementById('alertPembayaran').classList.replace(bgWarning, bgSuccess);
+    document.getElementById("colorAlert").className = bgSuccess;
     document.getElementById('buttonCetakInvoice').classList.remove('hidden');
+    console.log("masuk ke success value");
   } else {
     setInner('alertPembayaran', 'Silahkan Selesaikan Pembayaran Registrasi Anda');
-    document.getElementById('alertPembayaran').classList.replace(bgSuccess, bgWarning);
-
+    document.getElementById("colorAlert").className = bgWarning;
   }
 }
 
