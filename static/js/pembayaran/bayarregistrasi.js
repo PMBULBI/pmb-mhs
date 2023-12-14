@@ -12,6 +12,7 @@ function ResponseVAReg(value) {
     setInner('alertPembayaran', 'Pembayaran Registrasi Anda Telah Lunas');
     // Show the hidden button
     document.getElementById('buttonCetakInvoice').classList.remove('hidden');
+    alertElement.classList.replace('bg-warning-500', 'bg-success-500');
   } else {
     setInner('alertPembayaran', 'Silahkan Selesaikan Pembayaran Registrasi Anda');
   }
