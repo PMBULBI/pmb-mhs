@@ -112,6 +112,7 @@ function submitJalurPendaftaran() {
     const postData = {
         id_jalur : parseInt(statusJalur),
         tahun_lulus : parseInt(statusLulus),
+        id_jalur2: parseInt(selectjalur2),
         kode_ref : referralInput
     };
 
