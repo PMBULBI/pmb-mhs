@@ -8,14 +8,21 @@ import { setValue, setInnerText, setInner } from "https://cdn.jsdelivr.net/gh/js
 postWithToken(UrlCekPembayaranVAReg, "LOGIN", token, "test", ResponseVAReg)
 
 function ResponseVAReg(value) {
+  const alertElement = document.getElementById('alertPembayaran');
+  const flexElement = document.querySelector('.flex');
+  const bgWarning = 'py-[18px] px-6 font-normal font-Inter text-sm rounded-md bg-warning-500 text-white dark:bg-warning-500 dark:text-slate-300 mb-2';
+  const bgSuccess = 'py-[18px] px-6 font-normal font-Inter text-sm rounded-md bg-success-500 text-white dark:bg-success-500 dark:text-slate-300 mb-2';
+
   if (value.success) {
-    setInner('alertPembayaran', 'Pembayaran Registrasi Anda Telah Lunas');
-    document.getElementById('buttonCetakInvoice').classList.remove('hidden');
+    setInner(alertElement, 'Pembayaran Registrasi Anda Telah Lunas');
+    flexElement.classList.remove('hidden');
+    alertElement.classList.replace(bgWarning, bgSuccess);
   } else {
-    setInner('alertPembayaran', 'Silahkan Selesaikan Pembayaran Registrasi Anda');
+    setInner(alertElement, 'Silahkan Selesaikan Pembayaran Registrasi Anda');
+    flexElement.classList.add('hidden');
+    alertElement.classList.replace(bgSuccess, bgWarning);
   }
 }
-
 // Get Untuk Data di Navbar dan Form
 getWithHeader(UrlGetDataPendaftar,"login",token,renderDataPendaftar);
 function renderDataPendaftar(result){
