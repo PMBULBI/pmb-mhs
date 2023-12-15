@@ -24,7 +24,6 @@ function inputDataJalur(result) {
     }
 }
 
-
 // Get Untuk Data di Navbar dan Form
 getWithHeader(UrlGetDataPendaftar,"login",token,renderDataPendaftar);
 function renderDataPendaftar(result){
