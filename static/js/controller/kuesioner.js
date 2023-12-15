@@ -5,7 +5,7 @@ import { token } from "./cookies.js";
 
 
 const main = async () =>{
-    postWithToken("https://komarbe.ulbi.ac.id/postDataKue", "LOGIN", token, "test", responseKuesioner)
+    postWithToken("https://komarbe.ulbi.ac.id/kuesioner", "LOGIN", token, "test", responseKuesioner)
 }
 
 
