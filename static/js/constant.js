@@ -1,0 +1,1 @@
+export const BaseUrl = "https://komarbe.ulbi.ac.id";
