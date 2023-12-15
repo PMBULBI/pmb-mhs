@@ -14,9 +14,9 @@ await getWithHeader(UrlGetBiodataDiriWithToken, "login", token, inputDataDiri);
 
 async function inputDataDiri(result) {
     if (result.success) {
+        await setValue('selectreligion', result.data.agama);
         setValue('nik', result.data.nik);
         setValue('tempat', result.data.tempat_lahir);
-        setValue('selectreligion', result.data.agama);
         setValue('alamat', result.data.alamat);
         setValue('provinsi-biodata', result.data.provinsi);
         setValue('kota-biodata', result.data.kota);

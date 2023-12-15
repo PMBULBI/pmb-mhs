@@ -14,10 +14,10 @@ await getWithHeader(UrlGetBiodataSekolahWithToken, "login", token, inputDataSeko
 
 async function inputDataSekolah(result) {
     if (result.success) {
+        await setValue('selectjenis', result.data.jenis_sekolah);
+        await setValue('selectjurusan', result.data.asal_jurusan);
+        await setValue('tahun', result.data.tahun_lulus);
         setValue('nisn', result.data.nisn);
-        setValue('selectjenis', result.data.jenis_sekolah);
-        setValue('selectjurusan', result.data.asal_jurusan);
-        setValue('tahun', result.data.tahun_lulus);
         setValue('alamat', result.data.alamat_sekolah);
         setValue('provinsi-biodata', result.data.provinsi_sekolah);
         setValue('kota-biodata', result.data.kota_sekolah);
