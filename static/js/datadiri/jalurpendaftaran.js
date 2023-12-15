@@ -15,10 +15,12 @@ function inputDataJalur(result) {
     if (result.success) {
         setValue('selecttahunlulus', result.data.tahun_lulus);
         setValue('selectjalur', result.data.id_jalur);
+        console.log(result)
     } else if (result.success && result.data.id_jalur === 4) {
         setValue('selecttahunlulus', result.data.tahun_lulus);
         setValue('selectjalur', result.data.id_jalur);
         setValue('selectjalur2', result.data.id_jalur2);
+        console.log(result)
     } else {
         console.log(result)
     }

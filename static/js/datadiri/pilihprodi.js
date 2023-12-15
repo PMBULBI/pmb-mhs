@@ -16,6 +16,7 @@ function inputDataJalur(result) {
     if (result.success) {
         setValue('selectprog', result.data.prodi);
         setValue('selectprog2', result.data.id_jalur);
+        console.log(result)
     } else {
         console.log(result)
     }
