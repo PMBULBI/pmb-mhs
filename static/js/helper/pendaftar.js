@@ -6,6 +6,6 @@ import { BaseUrl } from "../constant.js";
 
 export const GetPendaftarByToken = async (token) => {
     let data_json;
-    getWithHeader(UrlGetDataPendaftar, "LOGIN", token, "", (res) => { data_json = res})
+    getWithHeader(UrlGetDataPendaftar, "LOGIN", token, (res) => {return res})
     return data_json;
 };

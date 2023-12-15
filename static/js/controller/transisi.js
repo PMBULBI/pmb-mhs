@@ -1,13 +1,19 @@
-import { GetPendaftarByToken } from "../helper/pendaftar.js";
-import { token } from "./cookies.js";
+import { postWithToken, getWithHeader } from "https://jscroot.github.io/api/croot.js";
+import { getValue, getValueRadio, onClick } from "https://jscroot.github.io/element/croot.js";
+import { UrlGetDataPendaftar } from "../controller/template.js";
+import { BaseUrl } from "../constant.js";
+
 
 const main = async () => {
-
     if (token === "") {
         return;
     }
 
-    const data_pendaftar = await GetPendaftarByToken(token);
+    await getWithHeader(UrlGetDataPendaftar, "LOGIN", token, set_data)
+    // setInner("emailadmin", res.data.email);
+}
+
+const set_data = async (res) =>{
 
     if (!data_pendaftar.success){
         window.location.replace("../");
@@ -15,7 +21,5 @@ const main = async () => {
     
     setInner("nama_mhs", res.data.nama_mhs);
     setInner("hp_mhs", res.data.hp_mhs);
-    // setInner("emailadmin", res.data.email);
 }
-
 main();
