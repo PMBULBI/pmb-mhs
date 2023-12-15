@@ -1,5 +1,5 @@
-import { postWithToken} from "https://jscroot.github.io/api/croot.js";
-import {getValue, addChild} from "https://jscroot.github.io/element/croot.js";
+import { postWithToken } from "https://jscroot.github.io/api/croot.js";
+import { getValue, getValueRadio } from "https://jscroot.github.io/element/croot.js";
 import { BaseUrl } from "../constant.js";
 import { token } from "./cookies.js";
 
@@ -23,17 +23,17 @@ const responseKuesioner = (res) => {
 }
 
 
-const getValue = async () => {
+const getValueRadio = async () => {
     const data = {
-        "pertanyaan_1": getValue(""),
-        "pertanyaan_2": getValue(""),
-        "pertanyaan_3": getValue(""),
-        "pertanyaan_4": getValue(""),
-        "pertanyaan_5": getValue(""),
-        "pertanyaan_6": getValue(""),
-        "pertanyaan_7": getValue(""),
-        "pertanyaan_8": getValue(""),
-        "pertanyaan_9": getValue(""),
+        "pertanyaan_1": getValueRadio("basicradios1"),
+        "pertanyaan_2": getValueRadio("basicradios2"),
+        "pertanyaan_3": getValueRadio("basicradios3"),
+        "pertanyaan_4": getValueRadio("basicradios4"),
+        "pertanyaan_5": getValueRadio("basicradios5"),
+        "pertanyaan_6": getValueRadio(""),
+        "pertanyaan_7": getValueRadio(""),
+        "pertanyaan_8": getValueRadio(""),
+        "pertanyaan_9": getValueRadio("basicradios6"),
     }    
     return data;
 }
