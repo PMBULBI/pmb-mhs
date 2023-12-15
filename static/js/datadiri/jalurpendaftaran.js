@@ -1,12 +1,15 @@
 // Import function or library
 import { UrlGetJalurPendaftaran, UrlGetTahunLulusan,UrlGetJalurByTahun,UrlGetDataPendaftar } from "../controller/template.js";
-import { get,postWithToken,getWithHeader } from "https://cdn.jsdelivr.net/gh/jscroot/api@0.0.2/croot.js";
+import { get, postWithToken, getWithHeader } from "https://cdn.jsdelivr.net/gh/jscroot/api@0.0.2/croot.js";
 import { getCookie, setCookieWithExpireHour } from "https://cdn.jsdelivr.net/gh/jscroot/cookie@0.0.1/croot.js";
 import { setValue, getValue, setInnerText,show,hide,getTextSelect} from "https://cdn.jsdelivr.net/gh/jscroot/element@0.0.8/croot.js";
 import { token } from "../controller/cookies.js";
 
 window.onChangeTahunLulus=onChangeTahunLulus;
 window.onChangeSelectJalur=onChangeSelectJalur;
+
+// // Get Data dan Simpan di Form ketika sudah isi
+// getWithHeader()
 
 // Get Untuk Data di Navbar dan Form
 getWithHeader(UrlGetDataPendaftar,"login",token,renderDataPendaftar);
