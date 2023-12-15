@@ -26,7 +26,8 @@ const set_data_diri = async (res) =>{
 }
 
 const set_data_va = async (res) => {
-    setInner("tglEXpire", FormatDate(res.data.datetime_expired))
+    setInner("tglEXpire", FormatDate(res.data.datetime_expired));
+    setInner("tglEXpire1", FormatDate(res.data.datetime_expired));
     setValue("jumlahVa", res.data.total_amount);
     setValue("vaNumber", res.data.virtual_account);
 }

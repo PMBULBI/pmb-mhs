@@ -22,7 +22,7 @@ const main = () => {
 const runAll = async () =>{
     const data_json = await getData();
     console.log(data_json);
-    await postWithToken(`${BaseUrl}/kuesioner`, "LOGIN", token, data_json, responseKuesioner);
+    await postWithToken(`${BaseUrl}/kuesioner/`, "LOGIN", token, data_json, responseKuesioner);
     return;
 }
 

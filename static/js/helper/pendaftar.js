@@ -17,9 +17,9 @@ export const FormatDate = (inputDate) => {
 
     // Define a JSON object with month names
     const monthNames = {
-        1: 'Januari', 2: 'Februari', 3: 'Maret', 4: 'April',
-        5: 'Mei', 6: 'Juni', 7: 'Juli', 8: 'Agustus',
-        9: 'September', 10: 'Oktober', 11: 'November', 12: 'Desember'
+        0: 'Januari', 1: 'Februari', 2: 'Maret', 3: 'April',
+        4: 'Mei', 5: 'Juni', 6: 'Juli', 7: 'Agustus',
+        8: 'September', 9: 'Oktober', 10: 'November', 11: 'Desember'
     };
 
     // Get the day, month, and year from the input date
