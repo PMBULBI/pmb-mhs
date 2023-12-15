@@ -1,4 +1,4 @@
-import { UrlGetKotaByIdProvNmKota, UrlGetProvinsi, UrlPostDatadiri, UrlGetKecamatanByIdKotaNmKec, UrlGetKelurahanByIdKecNmKel, UrlGetDataPendaftar } from "../controller/template.js";
+import { UrlGetKotaByIdProvNmKota, UrlGetProvinsi, UrlPostDatadiri, UrlGetKecamatanByIdKotaNmKec, UrlGetKelurahanByIdKecNmKel, UrlGetDataPendaftar, UrlGetBiodataDiriWithToken } from "../controller/template.js";
 import { CihuyPost } from "https://c-craftjs.github.io/api/api.js";
 import { getValue, setValue, setInnerText, getValueRadio } from "https://cdn.jsdelivr.net/gh/jscroot/element@0.0.5/croot.js";
 import { getWithHeader } from "https://cdn.jsdelivr.net/gh/jscroot/api@0.0.1/croot.js";
@@ -8,6 +8,26 @@ import {setCookieWithExpireHour} from "https://cdn.jsdelivr.net/gh/jscroot/cooki
 var header = new Headers();
 header.append("login", token);
 header.append("Content-Type", "application/json");
+
+// Get Data dan Simpan di Form ketika sudah isi
+await getWithHeader(UrlGetBiodataDiriWithToken, "login", token, inputDataDiri);
+
+async function inputDataDiri(result) {
+    if (result.success) {
+        setValue('nik', result.data.nik);
+        setValue('tempat', result.data.tempat_lahir);
+        setValue('selectreligion', result.data.agama);
+        setValue('alamat', result.data.tempat);
+        setValue('provinsi-biodata', result.data.provinsi);
+        setValue('kota-biodata', result.data.kota);
+        setValue('kecamatan-biodata', result.data.kecamatan);
+        setValue('kelurahan-biodata', result.data.kelurahan);
+        setValue('kodepos', result.data.kode_pos);
+        console.log(result)
+    } else {
+        console.log(result)
+    }
+}
 
 // Get Untuk Data di Navbar dan Form
 getWithHeader(UrlGetDataPendaftar,"login",token,renderDataPendaftar);
