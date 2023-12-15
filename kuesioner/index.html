@@ -1,11 +1,73 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Plesae Wait</title>
-     <meta charset="UTF-8" />
-     <meta http-equiv="refresh" content="0; URL=https://pmb.ulbi.ac.id/pmb-mhs/kuesioner/kuesioner.html" />
-   </head>
-   <body>
-     <p>Please Wait... If you are not redirected within 3 seconds, click <a href="https://pmb.ulbi.ac.id/pmb-mhs/kuesioner/kuesioner.html">here</a> to go to the homepage.</p>
-   </body>
+<html lang="en">
+<head>
+    <style>
+        :root {
+  --border-width: 7px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #eb4a62;
+}
+
+.sec-loading {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sec-loading .one {
+  height: 80px;
+  width: 80px;
+  border: var(--border-width) solid white;
+  transform: rotate(45deg);
+  border-radius: 0 50% 50% 50%;
+  position: relative;
+  animation: move 0.5s linear infinite alternate-reverse;
+}
+.sec-loading .one::before {
+  content: "";
+  position: absolute;
+  height: 55%;
+  width: 55%;
+  border-radius: 50%;
+  border: var(--border-width) solid transparent;
+  border-top-color: white;
+  border-bottom-color: white;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+@keyframes move {
+  to {
+    transform: translateY(15px) rotate(45deg);
+  }
+}
+
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="0; URL=https://pmb.ulbi.ac.id/pmb-mhs/kuesioner/kuesioner.html" />
+    <title>Loading...</title>
+</head>
+<body>
+    <section class="sec-loading">
+        <div class="one">
+        </div>
+      </section>
+</body>
 </html>
