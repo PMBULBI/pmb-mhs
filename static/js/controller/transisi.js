@@ -15,7 +15,7 @@ const main = async () => {
 
 const set_data = async (res) =>{
 
-    if (!data_pendaftar.success){
+    if (!res.success){
         window.location.replace("../");
     }
     
