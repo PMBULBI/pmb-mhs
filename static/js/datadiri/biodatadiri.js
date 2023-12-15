@@ -17,7 +17,7 @@ async function inputDataDiri(result) {
         setValue('nik', result.data.nik);
         setValue('tempat', result.data.tempat_lahir);
         setValue('selectreligion', result.data.agama);
-        setValue('alamat', result.data.tempat);
+        setValue('alamat', result.data.alamat);
         setValue('provinsi-biodata', result.data.provinsi);
         setValue('kota-biodata', result.data.kota);
         setValue('kecamatan-biodata', result.data.kecamatan);
