@@ -3,7 +3,16 @@ import { getValue, getValueRadio } from "https://jscroot.github.io/element/croot
 import { BaseUrl } from "../constant.js";
 import { token } from "./cookies.js";
 
-
+// Get Untuk Data di Navbar dan Form
+getWithHeader(UrlGetDataPendaftar,"login",token,renderDataPendaftar);
+function renderDataPendaftar(result){
+  if (result.success){
+    setInnerText('nama_mhs_span', result.data.nama_mhs);
+  }
+//   else{
+//     window.location.replace("https://pmb.ulbi.ac.id/");
+//   }
+}
 
 const main = async () =>{
     const data_json = await getValue();
