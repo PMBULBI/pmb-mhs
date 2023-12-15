@@ -2,6 +2,7 @@ import { postWithToken, getWithHeader } from "https://jscroot.github.io/api/croo
 import { setValue, setInner } from "https://jscroot.github.io/element/croot.js";
 import { UrlGetDataPendaftar, UrlCekPembayaranVAReg } from "../controller/template.js";
 import { token } from "./cookies.js";
+import { FormatDate } from "../helper/pendaftar.js";
 
 
 const main = async () => {
@@ -25,7 +26,7 @@ const set_data_diri = async (res) =>{
 }
 
 const set_data_va = async (res) => {
-    console.log(res);    
+    setInner("tglEXpire", FormatDate(res.data.datetime_expired))
     setValue("jumlahVa", res.data.total_amount);
     setValue("vaNumber", res.data.virtual_account);
 }
