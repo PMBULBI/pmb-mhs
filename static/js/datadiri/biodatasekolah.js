@@ -1,5 +1,5 @@
 
-import { UrlGetKecamatanByIdKotaNmKec, UrlGetKelurahanByIdKecNmKel, UrlGetTahunLulusan, UrlGetKotaByIdProvNmKota, UrlGetProvinsi, UrlPostDataSekolah, UrlGetJenisSekolah, UrlGetAsalJurusan,UrlGetDataPendaftar } from "../controller/template.js";
+import { UrlGetKecamatanByIdKotaNmKec, UrlGetKelurahanByIdKecNmKel, UrlGetTahunLulusan, UrlGetKotaByIdProvNmKota, UrlGetProvinsi, UrlPostDataSekolah, UrlGetJenisSekolah, UrlGetAsalJurusan,UrlGetDataPendaftar, UrlGetBiodataSekolahWithToken } from "../controller/template.js";
 import { CihuyPost, CihuyGet } from "https://c-craftjs.github.io/api/api.js";
 import { getValue, setValue, setInnerText } from "https://cdn.jsdelivr.net/gh/jscroot/element@0.0.2/croot.js";
 import {get,getWithHeader} from "https://cdn.jsdelivr.net/gh/jscroot/api@0.0.1/croot.js";
@@ -8,6 +8,27 @@ import { token } from "../controller/cookies.js";
 var header = new Headers();
 header.append("login", token);
 header.append("Content-Type", "application/json");
+
+// Get Data dan Simpan di Form ketika sudah isi
+await getWithHeader(UrlGetBiodataSekolahWithToken, "login", token, inputDataSekolah);
+
+async function inputDataSekolah(result) {
+    if (result.success) {
+        setValue('nisn', result.data.nisn);
+        setValue('selectjenis', result.data.jenis_sekolah);
+        setValue('selectjurusan', result.data.asal_jurusan);
+        setValue('tahun', result.data.tahun_lulus);
+        setValue('alamat', result.data.alamat_sekolah);
+        setValue('provinsi-biodata', result.data.provinsi_sekolah);
+        setValue('kota-biodata', result.data.kota_sekolah);
+        setValue('kecamatan-biodata', result.data.kecamatan_sekolah);
+        setValue('kelurahan-biodata', result.data.kelurahan_sekolah);
+        setValue('kodepos', result.data.kode_pos_sekolah);
+        console.log(result)
+    } else {
+        console.log(result)
+    }
+}
 
 // Get Data Cookies
 // Get Untuk Data di Navbar dan Form
