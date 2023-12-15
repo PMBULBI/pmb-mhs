@@ -6,7 +6,8 @@ import { token } from "./cookies.js";
 
 
 const main = async () =>{
-    postWithToken(`${BaseUrl}/kuesioner`, "LOGIN", token, "test", responseKuesioner)
+    const data_json = await getValue();
+    postWithToken(`${BaseUrl}/kuesioner`, "LOGIN", token, data_json, responseKuesioner)
 }
 
 
@@ -21,5 +22,20 @@ const responseKuesioner = (res) => {
     return;
 }
 
+
+const getValue = async () => {
+    const data = {
+        "pertanyaan_1": getValue(""),
+        "pertanyaan_2": getValue(""),
+        "pertanyaan_3": getValue(""),
+        "pertanyaan_4": getValue(""),
+        "pertanyaan_5": getValue(""),
+        "pertanyaan_6": getValue(""),
+        "pertanyaan_7": getValue(""),
+        "pertanyaan_8": getValue(""),
+        "pertanyaan_9": getValue(""),
+    }    
+    return data;
+}
 
 main();
