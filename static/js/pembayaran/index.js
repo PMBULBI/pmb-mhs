@@ -7,8 +7,8 @@ await postWithToken(UrlCekPembayaranVAReg, "LOGIN", token, "test", ResponseVAReg
 
 function ResponseVAReg(value) {
   if (!value.success) {
-    window.location.replace("bayarregistrasi.html");
+    window.location.replace("https://pmb.ulbi.ac.id/pmb-mhs/pembayaran/bayarregistrasi.html");
   }else{
-    window.location.replace("lunasregistrasi.html");
+    window.location.replace("https://pmb.ulbi.ac.id/pmb-mhs/pembayaran/lunasregistrasi.html");
   }
 }
