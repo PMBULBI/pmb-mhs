@@ -1,15 +1,29 @@
 // Import function or library
-import { UrlGetJalurPendaftaran, UrlGetTahunLulusan,UrlGetJalurByTahun,UrlGetDataPendaftar } from "../controller/template.js";
+import { UrlGetJalurPendaftaran, UrlGetTahunLulusan,UrlGetJalurByTahun,UrlGetDataPendaftar, UrlGetBiodataJalurWithToken } from "../controller/template.js";
 import { get, postWithToken, getWithHeader } from "https://cdn.jsdelivr.net/gh/jscroot/api@0.0.2/croot.js";
 import { getCookie, setCookieWithExpireHour } from "https://cdn.jsdelivr.net/gh/jscroot/cookie@0.0.1/croot.js";
-import { setValue, getValue, setInnerText,show,hide,getTextSelect} from "https://cdn.jsdelivr.net/gh/jscroot/element@0.0.8/croot.js";
+import { setValue, getValue, setInnerText, show, hide, getTextSelect} from "https://cdn.jsdelivr.net/gh/jscroot/element@0.0.8/croot.js";
 import { token } from "../controller/cookies.js";
 
 window.onChangeTahunLulus=onChangeTahunLulus;
 window.onChangeSelectJalur=onChangeSelectJalur;
 
-// // Get Data dan Simpan di Form ketika sudah isi
-// getWithHeader()
+// Get Data dan Simpan di Form ketika sudah isi
+getWithHeader(UrlGetBiodataJalurWithToken, "login", token, inputDataJalur);
+
+function inputDataJalur(result) {
+    if (result.success) {
+        setValue('selecttahunlulus', result.data.tahun_lulus);
+        setValue('selectjalur', result.data.id_jalur);
+    } else if (result.success && result.data.id_jalur === 4) {
+        setValue('selecttahunlulus', result.data.tahun_lulus);
+        setValue('selectjalur', result.data.id_jalur);
+        setValue('selectjalur2', result.data.id_jalur2);
+    } else {
+        console.log(result)
+    }
+}
+
 
 // Get Untuk Data di Navbar dan Form
 getWithHeader(UrlGetDataPendaftar,"login",token,renderDataPendaftar);
