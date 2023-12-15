@@ -1,5 +1,5 @@
 // Import function or library
-import { CookieName, UrlGetFakultas, UrlGetProgramStudi, UrlBiodataJalur, TokenHeader ,UrlGetDataPendaftar,UrlGetProdiByJalur} from "../controller/template.js";
+import { CookieName, UrlGetFakultas, UrlGetProgramStudi, UrlBiodataJalur, TokenHeader ,UrlGetDataPendaftar,UrlGetProdiByJalur, UrlGetBiodataProdiWithToken} from "../controller/template.js";
 import { get,postWithToken,getWithHeader } from "https://cdn.jsdelivr.net/gh/jscroot/api@0.0.2/croot.js";
 import { getCookie } from "https://jscroot.github.io/cookie/croot.js";
 import { token } from "../controller/cookies.js";
@@ -8,6 +8,18 @@ import { setInner,setInnerText } from "https://cdn.jsdelivr.net/gh/jscroot/eleme
 var header = new Headers();
 header.append("login", token);
 header.append("Content-Type", "application/json");
+
+// Get Data dan Simpan di Form ketika sudah isi
+getWithHeader(UrlGetBiodataProdiWithToken, "login", token, inputDataJalur);
+
+function inputDataJalur(result) {
+    if (result.success) {
+        setValue('selectprog', result.data.prodi);
+        setValue('selectprog2', result.data.id_jalur);
+    } else {
+        console.log(result)
+    }
+}
 
 // Get Data Cookies
 // Get Untuk Data di Navbar dan Form
