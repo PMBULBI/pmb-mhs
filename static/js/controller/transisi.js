@@ -1,7 +1,7 @@
 import { postWithToken, getWithHeader } from "https://jscroot.github.io/api/croot.js";
 import { getValue, getValueRadio, onClick } from "https://jscroot.github.io/element/croot.js";
 import { UrlGetDataPendaftar } from "../controller/template.js";
-import { BaseUrl } from "../constant.js";
+import { token } from "./cookies.js";
 
 
 const main = async () => {
