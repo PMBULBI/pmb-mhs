@@ -19,7 +19,7 @@ async function inputDataDiri(result) {
         setValue('ibukandung', result.data.nama_ibu_kandung);
         setValue('hpibu', result.data.hp_ibu_kandung);
         setValue('selectpekerjaan', result.data.pekerjaan_orang_tua_wali);
-        setValue('selectpenghasilan', result.data.kota);
+        setValue('selectpenghasilan', result.data.penghasilan_orang_tua_wali);
         setValue('selectsumberdana', result.data.sumber_dana);
         setValue('alamatortu', result.data.alamat_orang_tua_wali);
         console.log(result)
