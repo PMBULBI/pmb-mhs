@@ -17,6 +17,7 @@ export let UrlGetDataPendaftar = "https://komarbe.ulbi.ac.id/pendaftar/pendaftar
 export let UrlGetJalurByTahun = "https://komarbe.ulbi.ac.id/jalurtahun";
 export let UrlGetProdiByJalur = "https://komarbe.ulbi.ac.id/jalurprodi";
 export let UrlGetBiodataByHash = "https://komarbe.ulbi.ac.id/biodata/data_diri/get/id?id_hash=";
+export let UrlGetBiodataJalurWithToken = 'https://komarbe.ulbi.ac.id/biodata/jalur/get/token';
 
 // Endpoint POST
 export let UrlPostDatadiri = 'https://komarbe.ulbi.ac.id/biodata/data_diri';
