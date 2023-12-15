@@ -25,10 +25,7 @@ const set_data_diri = async (res) =>{
 }
 
 const set_data_va = async (res) => {
-    if (!res.success){
-        window.location.replace("../");
-    }
-    
+    console.log(res);    
     setValue("jumlahVa", res.data.total_amount);
     setValue("vaNumber", res.data.virtual_account);
 }
