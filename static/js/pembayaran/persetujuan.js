@@ -1,5 +1,6 @@
 import { UrlCekPembayaranVAReg } from "../controller/template.js";
-import { postWithToken}  from "https://jscroot.github.io/api/croot.js";
+import { postWithToken }  from "https://jscroot.github.io/api/croot.js";
+import { token } from "../controller/cookies.js";
 
 // Cek Pembayaran VA Registrasi
 postWithToken(UrlCekPembayaranVAReg, "LOGIN", token, "test", ResponseVAReg)
