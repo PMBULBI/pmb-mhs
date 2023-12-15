@@ -123,8 +123,8 @@ submitButton.addEventListener('click', () => {
     }
     // Add additional validation if needed
     Swal.fire({
-        title: 'Submit Jalur Pendaftaran?',
-        text: 'Apakah anda yakin ingin submit jalur pendaftaran?',
+        title: 'Submit Biodata Orang Tua?',
+        text: 'Apakah anda yakin ingin submit biodata orang tua?',
         icon: 'question',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',

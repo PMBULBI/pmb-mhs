@@ -111,8 +111,8 @@ const gender = getValueRadio('basicradios');
   }
   // Add additional validation if needed
   Swal.fire({
-      title: 'Submit Jalur Pendaftaran?',
-      text: 'Apakah anda yakin ingin submit jalur pendaftaran?',
+      title: 'Submit Biodata Diri?',
+      text: 'Apakah anda yakin ingin submit biodata diri?',
       icon: 'question',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
