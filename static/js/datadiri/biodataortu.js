@@ -1,4 +1,4 @@
-import { UrlGetKota, UrlGetPekerjaan, UrlGetProvinsi, UrlPostDataOrtu, UrlPostDatadiri,UrlGetDataPendaftar,UrlGetBiodataByHash } from "../controller/template.js";
+import { UrlGetKota, UrlGetPekerjaan, UrlGetProvinsi, UrlPostDataOrtu, UrlPostDatadiri,UrlGetDataPendaftar,UrlGetBiodataByHash, UrlGetBiodataOrtuWithToken } from "../controller/template.js";
 import { getValue,setValue, setInnerText } from "https://cdn.jsdelivr.net/gh/jscroot/element@0.0.2/croot.js";
 import { token } from "../controller/cookies.js";
 import { getCookie } from "https://jscroot.github.io/cookie/croot.js";
@@ -8,6 +8,25 @@ import { get,getWithHeader } from "https://cdn.jsdelivr.net/gh/jscroot/api@0.0.1
 var header = new Headers();
 header.append("login", token);
 header.append("Content-Type", "application/json");
+
+// Get Data dan Simpan di Form ketika sudah isi
+await getWithHeader(UrlGetBiodataOrtuWithToken, "login", token, inputDataDiri);
+
+async function inputDataDiri(result) {
+    if (result.success) {
+        setValue('ayahkandung', result.data.nama_ayah_kandung);
+        setValue('hpayah', result.data.hp_ayah_kandung);
+        setValue('ibukandung', result.data.nama_ibu_kandung);
+        setValue('hpibu', result.data.hp_ibu_kandung);
+        setValue('selectpekerjaan', result.data.pekerjaan_orang_tua_wali);
+        setValue('selectpenghasilan', result.data.kota);
+        setValue('selectsumberdana', result.data.sumber_dana);
+        setValue('alamatortu', result.data.alamat_orang_tua_wali);
+        console.log(result)
+    } else {
+        console.log(result)
+    }
+}
 
 // Get Data Cookies
 // Get Untuk Data di Navbar dan Form
