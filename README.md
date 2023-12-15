@@ -2,6 +2,15 @@
 
 ## Sidebar dan footer
 
+menambahkan beberapa baris ini ke dalam html
+
+```html
+<script src="../static/theme/bar/sidebar.js"></script>
+<script src="../static/theme/app/app.js"></script>
+<script src="../static/theme/theme.js"></script>
+<script scr="../static/theme/bar/footer.js"></script>
+```
+
 edit di folder static/theme/bar
 
 Repo js : <https://github.com/PMBULBI/javascript-fe>
