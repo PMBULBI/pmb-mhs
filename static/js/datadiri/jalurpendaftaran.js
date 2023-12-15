@@ -9,12 +9,17 @@ window.onChangeTahunLulus=onChangeTahunLulus;
 window.onChangeSelectJalur=onChangeSelectJalur;
 
 // Get Data dan Simpan di Form ketika sudah isi
-getWithHeader(UrlGetBiodataJalurWithToken, "login", token, inputDataJalur);
+await getWithHeader(UrlGetBiodataJalurWithToken, "login", token, inputDataJalur);
 
-function inputDataJalur(result) {
+async function inputDataJalur(result) {
     if (result.success) {
-        setValue('selecttahunlulus', result.data.tahun_lulus);
-        setValue('selectjalur', result.data.id_jalur);
+        await setValue('selecttahunlulus', result.data.tahun_lulus);
+        let tahunllulus={
+            "tahun":parseInt(result.data.tahun_lulus)
+            }
+        await postWithToken(UrlGetJalurByTahun,"login",token,tahunllulus,populateDropdown);
+        console.log(result.data.id_jalur);
+        setValue('selectjalur', result.data.id_jalur.toString());
         console.log(result)
     } else if (result.success && result.data.id_jalur === 4) {
         setValue('selecttahunlulus', result.data.tahun_lulus);
