@@ -6,7 +6,7 @@ import { token } from "../controller/cookies.js";
 await postWithToken(UrlCekPembayaranVAReg, "LOGIN", token, "test", ResponseVAReg);
 
 function ResponseVAReg(value) {
-  if (!value.success) {
+  if (!value.data.lunas) {
     window.location.replace("https://pmb.ulbi.ac.id/pmb-mhs/pembayaran/bayarregistrasi.html");
   }else{
     window.location.replace("https://pmb.ulbi.ac.id/pmb-mhs/pembayaran/lunasregistrasi.html");
