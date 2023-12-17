@@ -12,16 +12,14 @@ header.append("Content-Type", "application/json");
 
 // Jalankan ketia page html sudah di load semua
 document.addEventListener('DOMContentLoaded', function() {
+    // Get Data dan Simpan di Form ketika sudah isi
     getWithHeader(UrlGetBiodataProdiWithToken, "login", token, inputDataJalur);
 }, false);
 
-// Get Data dan Simpan di Form ketika sudah isi
-getWithHeader(UrlGetBiodataProdiWithToken, "login", token, inputDataJalur);
-
 function inputDataJalur(result) {
     if (result.success) {
-        setValue('selectprog', result.data.prodi);
-        setValue('selectprog2', result.data.id_jalur);
+        $('#selectprog').val(result.data.prodi1).trigger('change');
+        $('#selectprog2').val(result.data.prodi2).trigger('change');
         console.log(result)
     } else {
         console.log(result)
