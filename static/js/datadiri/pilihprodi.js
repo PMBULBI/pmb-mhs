@@ -9,6 +9,12 @@ var header = new Headers();
 header.append("login", token);
 header.append("Content-Type", "application/json");
 
+
+// Jalankan ketia page html sudah di load semua
+document.addEventListener('DOMContentLoaded', function() {
+    getWithHeader(UrlGetBiodataProdiWithToken, "login", token, inputDataJalur);
+}, false);
+
 // Get Data dan Simpan di Form ketika sudah isi
 getWithHeader(UrlGetBiodataProdiWithToken, "login", token, inputDataJalur);
 
