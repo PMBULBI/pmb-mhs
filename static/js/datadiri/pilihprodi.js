@@ -3,7 +3,7 @@ import { CookieName, UrlGetFakultas, UrlGetProgramStudi, UrlBiodataJalur, TokenH
 import { get,postWithToken,getWithHeader } from "https://cdn.jsdelivr.net/gh/jscroot/api@0.0.2/croot.js";
 import { getCookie } from "https://jscroot.github.io/cookie/croot.js";
 import { token } from "../controller/cookies.js";
-import { setInner,setInnerText } from "https://cdn.jsdelivr.net/gh/jscroot/element@0.0.2/croot.js";
+import { setInner,setInnerText,setValue } from "https://cdn.jsdelivr.net/gh/jscroot/element@0.0.2/croot.js";
 
 var header = new Headers();
 header.append("login", token);
