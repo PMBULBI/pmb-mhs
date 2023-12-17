@@ -3,7 +3,7 @@ import { getCookie } from "https://cdn.jsdelivr.net/gh/jscroot/cookie@0.0.1/croo
 
 
 const jalurdipilih= await getCookie("jalur2");
-const dpath ="https://pmb.ulbi.ac.id/pmb-mhs/persyaratan/"
+const dpath ="https://pmb.ulbi.ac.id/pmb-mhs/persyaratan/";
 
 switch(jalurdipilih){
     case "1"://undangan
