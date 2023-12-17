@@ -6,33 +6,44 @@ import { setValue, getValue, setInnerText, show, hide, getTextSelect} from "http
 import { token } from "../controller/cookies.js";
 
 window.onChangeTahunLulus=onChangeTahunLulus;
-window.onChangeSelectJalur=onChangeSelectJalur;
+//window.onChangeSelectJalur=onChangeSelectJalur;
+//onchange select2 pilihan jalur
+$('#selectjalur').on('select2:select', function (e) {
+    var selectedValue = e.params.data.id;
+    console.log("terjadi pilihan select jalur");
+    console.log(selectedValue);
+    onChangeSelectJalurByPilihan(selectedValue);
+    // Your code here to handle the selected value
+});
 
-// Get Data dan Simpan di Form ketika sudah isi
-await getWithHeader(UrlGetBiodataJalurWithToken, "login", token, inputDataJalur);
 
-async function inputDataJalur(result) {
+// Jalankan ketia page html sudah di load semua
+document.addEventListener('DOMContentLoaded', function() {
+    setRefferal();
+    fetchDataTahunLulusan();
+    getWithHeader(UrlGetDataPendaftar,"login",token,renderDataPendaftar);
+    getWithHeader(UrlGetBiodataJalurWithToken, "login", token, renderDataJalurFromDB);
+}, false);
+//jalankan setelah semua script dijalankan
+window.addEventListener('load', (event) => {
+    const jalur2=getCookie("jalur2");
+    $('#selectjalur').val(jalur2).trigger('change');
+    onChangeSelectJalurByPilihan(jalur2);
+});
+
+async function renderDataJalurFromDB(result) {
     if (result.success) {
-        await setValue('selecttahunlulus', result.data.tahun_lulus);
+        //await setValue('selecttahunlulus', result.data.tahun_lulus);
+        await $('#selecttahunlulus').val(result.data.tahun_lulus).trigger('change');
         let tahunllulus={
             "tahun":parseInt(result.data.tahun_lulus)
             }
         await postWithToken(UrlGetJalurByTahun,"login",token,tahunllulus,populateDropdown);
-        console.log(result.data.id_jalur);
-        setValue('selectjalur', result.data.id_jalur.toString());
-        console.log(result)
-    } else if (result.success && result.data.id_jalur === 4) {
-        setValue('selecttahunlulus', result.data.tahun_lulus);
-        setValue('selectjalur', result.data.id_jalur);
-        setValue('selectjalur2', result.data.id_jalur2);
-        console.log(result)
-    } else {
-        console.log(result)
+        await setCookieWithExpireHour("jalur2",result.data.id_jalur,16);
     }
 }
 
 // Get Untuk Data di Navbar dan Form
-getWithHeader(UrlGetDataPendaftar,"login",token,renderDataPendaftar);
 function renderDataPendaftar(result){
   if (result.success){
     setInnerText('nama_mhs_span', result.data.nama_mhs);
@@ -42,16 +53,15 @@ function renderDataPendaftar(result){
 }
 
 // Untuk Get Referal
-var referral = getCookie("referal");
-if (referral === undefined || referral === null || referral === "") {
-    setValue("referral", "none");
-} else {
-    setValue("referral", referral);
+function setRefferal() {
+    var referral = getCookie("referal");
+    if (referral === undefined || referral === null || referral === "") {
+        setValue("referral", "none");
+    } else {
+        setValue("referral", referral);
+    }
 }
 
-var header = new Headers();
-header.append("login", token);
-header.append("Content-Type", "application/json");
 
 function onChangeTahunLulus(sel) {
     let thnstr=sel.options[sel.selectedIndex].text;
@@ -80,6 +90,23 @@ function onChangeSelectJalur(sel) {
         hide("jalur2");
     }
     setCookieWithExpireHour("jalur2",sel.options[sel.selectedIndex].value,16);
+    
+}
+
+function onChangeSelectJalurByPilihan(pilihan) {
+    let thn=getCookie("lulusantahun");
+    let tahunllulus={
+    "tahun":parseInt(thn)
+    }
+    console.log("masuk ke dalam onChangeSelectJalurByPilihan");
+    console.log(pilihan);
+    if (pilihan === "4"){
+        show("jalur2");
+        postWithToken(UrlGetJalurByTahun,"login",token,tahunllulus,populateDropdown2);
+    } else{
+        hide("jalur2");
+    }
+    setCookieWithExpireHour("jalur2",pilihan,16);
     
 }
 
@@ -131,7 +158,9 @@ function submitJalurPendaftaran() {
     }
 
     
-    
+    var header = new Headers();
+    header.append("login", token);
+    header.append("Content-Type", "application/json");
     const postData = {
         id_jalur : parseInt(statusJalur),
         tahun_lulus : parseInt(statusLulus),
@@ -234,32 +263,3 @@ function populateDropdownTahunLulusan(data) {
         selectDropdown.appendChild(option);
     })
 }
-fetchDataTahunLulusan();
-
-// Get Jalur Pendaftaran Baru
-function fetchDataJalurBaru() {
-    get(UrlGetJalurPendaftaran, populateDropdownJalurBaru);
-}
-// Membuat fungsi dropdown jalur pendaftaran
-function populateDropdownJalurBaru(data) {
-    const selectDropdown = document.getElementById('selectjalur2');
-    selectDropdown.innerHTML = '';
-
-    const defaultOption = document.createElement('option');
-    defaultOption.value = '';
-    defaultOption.text = 'Pilih Jalur Pendaftaran';
-    selectDropdown.appendChild(defaultOption);
-
-    // Filter jalur yang tidak sama dengan "Ikatan Dinas"
-    const filteredJalur = data.data.filter(item => item.nama_jalur !== 'Ikatan Dinas');
-
-    // Tambahkan opsi untuk setiap jalur yang tidak sama dengan "Ikatan Dinas"
-    filteredJalur.forEach(item => {
-        const option = document.createElement('option');
-        option.value = item.id_jalur;
-        option.text = item.nama_jalur;
-        selectDropdown.appendChild(option);
-    });
-}
-
-fetchDataJalurBaru();
