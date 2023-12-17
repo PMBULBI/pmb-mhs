@@ -18,8 +18,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function inputDataJalur(result) {
     if (result.success) {
-        $('#selectprog').val(result.data.prodi1).trigger('change');
-        $('#selectprog2').val(result.data.prodi2).trigger('change');
+        $('#selectprog').val(result.data.prodi2).trigger('change');
+        $('#selectprog2').val(result.data.prodi1).trigger('change');
         console.log(result)
     } else {
         console.log(result)
