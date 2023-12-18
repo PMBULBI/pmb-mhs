@@ -1,5 +1,5 @@
 
-import { UrlGetKecamatanByIdKotaNmKec, UrlGetKelurahanByIdKecNmKel, UrlGetTahunLulusan, UrlGetKotaByIdProvNmKota, UrlGetProvinsi, UrlPostDataSekolah, UrlGetJenisSekolah, UrlGetAsalJurusan,UrlGetDataPendaftar, UrlGetBiodataSekolahWithToken } from "../controller/template.js";
+import { UrlGetKecamatanByIdKotaNmKec, UrlGetKelurahanByIdKecNmKel, UrlGetTahunLulusan, UrlGetKotaByIdProvNmKota, UrlGetProvinsi, UrlPostDataSekolah, UrlGetJenisSekolah, UrlGetAsalJurusan,UrlGetDataPendaftar, UrlGetBiodataSekolahWithToken, UrlGetBiodataJalurWithToken } from "../controller/template.js";
 import { CihuyPost, CihuyGet } from "https://c-craftjs.github.io/api/api.js";
 import { getValue, setValue, setInnerText } from "https://cdn.jsdelivr.net/gh/jscroot/element@0.0.2/croot.js";
 import {get,getWithHeader} from "https://cdn.jsdelivr.net/gh/jscroot/api@0.0.1/croot.js";
@@ -28,6 +28,15 @@ async function inputDataSekolah(result) {
     } else {
         console.log(result)
     }
+}
+
+// Get Data dan Simpan di Form ketika sudah isi
+await getWithHeader(UrlGetBiodataJalurWithToken, "login", token, inputTahunLulus);
+
+async function inputTahunLulus(result) {
+  if (result.success) {
+    setValue('tahun', result.data.tahun_lulus);
+  }
 }
 
 // Get Data Cookies
@@ -443,26 +452,3 @@ inputKelurahan.addEventListener("input", async () => {
       console.error("Terjadi kesalahan saat melakukan GET:", error);
     }
   });
-
-// Get Tahun Lulusan
-function fetchDataTahunLulusan() {
-  get(UrlGetTahunLulusan, populateDropdownTahunLulusan);
-}
-// Membuat fungsi dropdown jalur pendaftaran
-function populateDropdownTahunLulusan(data) {
-  const selectDropdown = document.getElementById('tahun');
-  selectDropdown.innerHTML = '';
-
-  const defaultOption = document.createElement('option');
-  defaultOption.value = '';
-  defaultOption.text = 'Pilih Tahun Lulusan';
-  selectDropdown.appendChild(defaultOption);
-
-  data.data.forEach(item => {
-      const option = document.createElement('option');
-      option.value = item.tahun;
-      option.text = item.tahun;
-      selectDropdown.appendChild(option);
-  })
-}
-fetchDataTahunLulusan();
