@@ -9,8 +9,8 @@ header.append("Content-Type", "application/json");
 getWithHeader(UrlGetBiodataJalurWithToken, "login", token, responseData);
 function responseData(result){
   if (result.success){
-    window.location.replace("https://pmb.ulbi.ac.id/datadiri/jalurpendaftaran.html");
+    window.location.replace("https://pmb.ulbi.ac.id/pmb-mhs/index_backup.html");
   } else {
-    window.location.replace("https://pmb.ulbi.ac.id/index_backup.html");
+    window.location.replace("https://pmb.ulbi.ac.id/pmb-mhs/datadiri/jalurpendaftaran.html");
   }
 }
