@@ -5,7 +5,7 @@ import { getCookie, setCookieWithExpireHour } from "https://cdn.jsdelivr.net/gh/
 import { setValue, getValue, setInnerText, show, hide, getTextSelect} from "https://cdn.jsdelivr.net/gh/jscroot/element@0.0.8/croot.js";
 import { token } from "../controller/cookies.js";
 
-window.onChangeTahunLulus=onChangeTahunLulus;
+
 // Get Untuk Data di Navbar dan 
 function renderDataPendaftarforNavbar(result){
     if (result.success){
@@ -14,30 +14,6 @@ function renderDataPendaftarforNavbar(result){
       window.location.replace("https://pmb.ulbi.ac.id/");
     }
 }
-
-//window.onChangeSelectJalur=onChangeSelectJalur;
-//onchange select2 pilihan jalur
-$('#selectjalur').on('select2:select', function (e) {
-    var selectedValue = e.params.data.id;
-    console.log("terjadi pilihan select jalur");
-    console.log(selectedValue);
-    onChangeSelectJalurByPilihan(selectedValue);
-    // Your code here to handle the selected value
-});
-
-// Jalankan ketia page html sudah di load semua
-document.addEventListener('DOMContentLoaded', function() {
-    getWithHeader(UrlGetDataPendaftar,"login",token,renderDataPendaftarforNavbar);
-    setRefferal();
-    fetchDataTahunLulusan();
-    getWithHeader(UrlGetBiodataJalurWithToken, "login", token, renderDataJalurFromDB);
-}, false);
-//jalankan setelah semua script dijalankan
-window.addEventListener('load', (event) => {
-    const jalur2=getCookie("jalur2");
-    $('#selectjalur').val(jalur2).trigger('change');
-    onChangeSelectJalurByPilihan(jalur2);
-});
 
 async function renderDataJalurFromDB(result) {
     if (result.success) {
@@ -51,9 +27,6 @@ async function renderDataJalurFromDB(result) {
     }
 }
 
-
-
-// Untuk Get Referal
 function setRefferal() {
     var referral = getCookie("referal");
     if (referral === undefined || referral === null || referral === "") {
