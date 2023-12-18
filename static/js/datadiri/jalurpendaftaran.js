@@ -40,6 +40,7 @@ async function renderDataJalurFromDB(result) {
             }
         await postWithToken(UrlGetJalurByTahun,"login",token,tahunllulus,populateDropdown);
         await setCookieWithExpireHour("jalur2",result.data.id_jalur,16);
+        await setCookieWithExpireHour("jalur3",result.data.id_jalur2,16);
     }
 }
 
@@ -93,7 +94,7 @@ function onChangeSelectJalur(sel) {
     
 }
 
-function onChangeSelectJalurByPilihan(pilihan) {
+async function onChangeSelectJalurByPilihan(pilihan) {
     let thn=getCookie("lulusantahun");
     let tahunllulus={
     "tahun":parseInt(thn)
@@ -102,7 +103,9 @@ function onChangeSelectJalurByPilihan(pilihan) {
     console.log(pilihan);
     if (pilihan === "4"){
         show("jalur2");
-        postWithToken(UrlGetJalurByTahun,"login",token,tahunllulus,populateDropdown2);
+        await postWithToken(UrlGetJalurByTahun,"login",token,tahunllulus,populateDropdown2);
+        const jalur3=getCookie("jalur3");
+        $('#selectjalur2').val(jalur3).trigger('change');
     } else{
         hide("jalur2");
     }
