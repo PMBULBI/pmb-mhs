@@ -9,10 +9,9 @@ getWithHeader(UrlGetDataPendaftar,"login",token,renderDataPendaftar);
 function renderDataPendaftar(result){
   if (result.success){
     setInnerText('nama_mhs_span', result.data.nama_mhs);
+  }else{
+    window.location.replace("https://pmb.ulbi.ac.id/");
   }
-//   else{
-//     window.location.replace("https://pmb.ulbi.ac.id/");
-//   }
 }
 
 const main = () => {
