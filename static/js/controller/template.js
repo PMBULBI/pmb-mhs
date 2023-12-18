@@ -22,6 +22,7 @@ export let UrlGetBiodataProdiWithToken = 'https://komarbe.ulbi.ac.id/biodata/pro
 export let UrlGetBiodataDiriWithToken = 'https://komarbe.ulbi.ac.id/biodata/data_diri/get/token';
 export let UrlGetBiodataOrtuWithToken = 'https://komarbe.ulbi.ac.id/biodata/data_ortu/get/token';
 export let UrlGetBiodataSekolahWithToken = 'https://komarbe.ulbi.ac.id/biodata/data_sekolah/get/token';
+export let UrlGetKuesionerWithToken = "https://komarbe.ulbi.ac.id/kuesioner/get";
 
 // Endpoint POST
 export let UrlPostDatadiri = 'https://komarbe.ulbi.ac.id/biodata/data_diri';
