@@ -13,6 +13,7 @@ function ResponseGetKuesioner(value) {
     if (value.success) {
         setInner('alertKuesioner', '<b>Sudah Isi Kuesioner!</b> Terima kasih kamu mengisi kuesioner dengan baik dan benar.');
         document.getElementById("colorAlert").className = bgSuccess;
+        console.log(value);
     } else {
         setInner('alertKuesioner', 'Silahkan <b>isi kuesioner</b> dengan baik dan benar.');
     document.getElementById("colorAlert").className = bgWarning;
