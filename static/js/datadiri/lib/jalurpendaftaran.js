@@ -7,7 +7,7 @@ import { token } from "../controller/cookies.js";
 
 
 // Get Untuk Data di Navbar dan 
-function renderDataPendaftarforNavbar(result){
+export function renderDataPendaftarforNavbar(result){
     if (result.success){
       setInnerText('nama_mhs_span', result.data.nama_mhs);
     }else{
@@ -15,7 +15,7 @@ function renderDataPendaftarforNavbar(result){
     }
 }
 
-async function renderDataJalurFromDB(result) {
+export async function renderDataJalurFromDB(result) {
     if (result.success) {
         //await setValue('selecttahunlulus', result.data.tahun_lulus);
         await $('#selecttahunlulus').val(result.data.tahun_lulus).trigger('change');
@@ -27,7 +27,7 @@ async function renderDataJalurFromDB(result) {
     }
 }
 
-function setRefferal() {
+export function setRefferal() {
     var referral = getCookie("referal");
     if (referral === undefined || referral === null || referral === "") {
         setValue("referral", "none");
@@ -37,7 +37,7 @@ function setRefferal() {
 }
 
 
-function onChangeTahunLulus(sel) {
+export function onChangeTahunLulus(sel) {
     let thnstr=sel.options[sel.selectedIndex].text;
     
     let tahunllulus={
@@ -48,7 +48,7 @@ function onChangeTahunLulus(sel) {
     console.log(thnstr);
 }
 
-function onChangeSelectJalur(sel) {
+export function onChangeSelectJalur(sel) {
     let thn=getCookie("lulusantahun");
     let tahunllulus={
     "tahun":parseInt(thn)
@@ -67,7 +67,7 @@ function onChangeSelectJalur(sel) {
     
 }
 
-function onChangeSelectJalurByPilihan(pilihan) {
+export function onChangeSelectJalurByPilihan(pilihan) {
     let thn=getCookie("lulusantahun");
     let tahunllulus={
     "tahun":parseInt(thn)
@@ -85,8 +85,7 @@ function onChangeSelectJalurByPilihan(pilihan) {
 }
 
 // Event listener untuk tombol "Submit"
-const submitButton = document.getElementById('submitButton');
-submitButton.addEventListener('click', () => {
+export function onClickSubmitButton() {
     const tahunLulus = getValue('selecttahunlulus');
     const jalurPendaftaran = getValue('selectjalur');
     if (!tahunLulus || !jalurPendaftaran) {
@@ -112,11 +111,11 @@ submitButton.addEventListener('click', () => {
             submitJalurPendaftaran();
         }
     });
-});
+}
 
 // Untuk POST Jalur Pendaftaran
 // Membuat fungsi untuk mengirimkan data jalur pendaftaran ke API
-function submitJalurPendaftaran() {
+export function submitJalurPendaftaran() {
     // Ambil Tahun Lulus
     const tahunLulus = getValue('selecttahunlulus');
     // Ambil Jalur Pendaftaran
@@ -177,7 +176,7 @@ function submitJalurPendaftaran() {
 // Membuat fungsi untuk fetch data ke dropdown jalur
 
 // Membuat fungsi dropdown jalur pendaftaran
-function populateDropdown(response) {
+export function populateDropdown(response) {
     const selectDropdown = document.getElementById('selectjalur');
     selectDropdown.innerHTML = '';
 
@@ -193,7 +192,7 @@ function populateDropdown(response) {
         selectDropdown.appendChild(option);
     });
 }
-function populateDropdown2(response) {
+export function populateDropdown2(response) {
     const selectDropdown = document.getElementById('selectjalur2');
     selectDropdown.innerHTML = '';
 

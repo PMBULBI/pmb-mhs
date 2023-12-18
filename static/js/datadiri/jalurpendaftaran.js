@@ -27,16 +27,18 @@ $('#selectjalur').on('select2:select', function (e) {
 
 // Jalankan ketia page html sudah di load semua
 document.addEventListener('DOMContentLoaded', function() {
-    getWithHeader(UrlGetDataPendaftar,"login",token,renderDataPendaftarforNavbar);
-    setRefferal();
-    fetchDataTahunLulusan();
-    getWithHeader(UrlGetBiodataJalurWithToken, "login", token, renderDataJalurFromDB);
+    getWithHeader(UrlGetDataPendaftar,"login",token,renderDataPendaftarforNavbar);//navbar nama
+    setRefferal();//set referel kode
+    fetchDataTahunLulusan();//mengambil data lulusan
+    getWithHeader(UrlGetBiodataJalurWithToken, "login", token, renderDataJalurFromDB);//ambil isian dari db data sebelumnya untuk di update
 }, false);
 //jalankan setelah semua script dijalankan
-window.addEventListener('load', (event) => {
+window.addEventListener('load', async (event) => {
     const jalur2=getCookie("jalur2");
+    const jalur3=getCookie("jalur3");
     $('#selectjalur').val(jalur2).trigger('change');
-    onChangeSelectJalurByPilihan(jalur2);
+    await onChangeSelectJalurByPilihan(jalur2);
+    $('#selectjalur2').val(jalur3).trigger('change');
 });
 
 async function renderDataJalurFromDB(result) {
@@ -48,6 +50,7 @@ async function renderDataJalurFromDB(result) {
             }
         await postWithToken(UrlGetJalurByTahun,"login",token,tahunllulus,populateDropdown);
         await setCookieWithExpireHour("jalur2",result.data.id_jalur,16);
+        await setCookieWithExpireHour("jalur3",result.data.id_jalur2,16);
     }
 }
 
