@@ -46,6 +46,7 @@ function responseDataJalur(result) {
         break;
       case 3:
         namaJalur = "CBT";
+        document.getElementById('onlineTestCard').removeAttribute('hidden');
         break;
       case 4:
         namaJalur = "Ikatan Dinas";
@@ -64,7 +65,6 @@ function responseDataJalur(result) {
         break;
       case 9:
         namaJalur = "UTBK";
-        document.getElementById('onlineTestCard').removeAttribute('hidden');
         break;
       case 10:
         namaJalur = "RPL";
