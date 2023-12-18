@@ -150,10 +150,11 @@ function submitJalurPendaftaran() {
     const jalurPendaftaran = document.querySelector("#selectjalur");
     const statusJalur = jalurPendaftaran ? jalurPendaftaran.value : "";
     const referralInput = getValue("referral");
-    // jika ambil jalur ikatan dinas simpan cookies untuk langkah selanjutnya
+    // jika ambil jalur ikatan dinas simpan cookies untuk langkah 
+    let statusJalur2="";
     if (parseInt(statusJalur) === 4){
         const jalurPendaftaran2 = document.querySelector("#selectjalur2");
-        const statusJalur2 = jalurPendaftaran2 ? jalurPendaftaran2.value : "";
+        statusJalur2 = jalurPendaftaran2 ? jalurPendaftaran2.value : "";
         setCookieWithExpireHour("jalurreguler2",statusJalur2,16);
     }
 
