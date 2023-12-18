@@ -33,11 +33,11 @@ document.addEventListener('DOMContentLoaded', function() {
     getWithHeader(UrlGetBiodataJalurWithToken, "login", token, renderDataJalurFromDB);//ambil isian dari db data sebelumnya untuk di update
 }, false);
 //jalankan setelah semua script dijalankan
-window.addEventListener('load', async (event) => {
+window.addEventListener('load', (event) => {
     const jalur2=getCookie("jalur2");
     const jalur3=getCookie("jalur3");
     $('#selectjalur').val(jalur2).trigger('change');
-    await onChangeSelectJalurByPilihan(jalur2);
+    onChangeSelectJalurByPilihan(jalur2);
     $('#selectjalur2').val(jalur3).trigger('change');
 });
 
@@ -97,7 +97,7 @@ function onChangeSelectJalur(sel) {
     
 }
 
-function onChangeSelectJalurByPilihan(pilihan) {
+async function onChangeSelectJalurByPilihan(pilihan) {
     let thn=getCookie("lulusantahun");
     let tahunllulus={
     "tahun":parseInt(thn)
@@ -106,7 +106,7 @@ function onChangeSelectJalurByPilihan(pilihan) {
     console.log(pilihan);
     if (pilihan === "4"){
         show("jalur2");
-        postWithToken(UrlGetJalurByTahun,"login",token,tahunllulus,populateDropdown2);
+        await postWithToken(UrlGetJalurByTahun,"login",token,tahunllulus,populateDropdown2);
     } else{
         hide("jalur2");
     }
