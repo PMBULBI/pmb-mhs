@@ -5,7 +5,7 @@ import { BaseUrl } from "../constant.js";
 import { token } from "./cookies.js";
 
 // Cek Pengisian Kuesioner
-getWithHeader(UrlGetKuesionerWithToken, "LOGIN", token, "test", ResponseGetKuesioner)
+getWithHeader(UrlGetKuesionerWithToken, "login", token, ResponseGetKuesioner)
 
 function ResponseGetKuesioner(value) {
     const bgWarning = "py-[18px] px-6 font-normal font-Inter text-sm rounded-md bg-warning-500 text-white dark:bg-warning-500 dark:text-slate-300 mb-2";
