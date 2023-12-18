@@ -29,10 +29,20 @@ const runAll = async () =>{
 
 const responseKuesioner = (res) => {
     if (!res.success){
-        // error state
+        Swal.fire({
+            icon: 'error',
+            title: 'Penyimpanan Gagal',
+            text: res.status
+          });
         return;
     }
-    
+    Swal.fire({
+        icon: 'success',
+        title: 'Kuisoner Tersimpan',
+        text: 'Anda berhasil menyimpan kuisioner!',
+        showConfirmButton: false,
+        timer: 1500
+      });
 
     // success state
     return;
