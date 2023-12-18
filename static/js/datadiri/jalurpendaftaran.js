@@ -6,15 +6,6 @@ import { setValue, getValue, setInnerText, show, hide, getTextSelect} from "http
 import { token } from "../controller/cookies.js";
 
 window.onChangeTahunLulus=onChangeTahunLulus;
-// Get Untuk Data di Navbar dan 
-function renderDataPendaftarforNavbar(result){
-    if (result.success){
-      setInnerText('nama_mhs_span', result.data.nama_mhs);
-    }else{
-      window.location.replace("https://pmb.ulbi.ac.id/");
-    }
-}
-
 //window.onChangeSelectJalur=onChangeSelectJalur;
 //onchange select2 pilihan jalur
 $('#selectjalur').on('select2:select', function (e) {
@@ -25,20 +16,19 @@ $('#selectjalur').on('select2:select', function (e) {
     // Your code here to handle the selected value
 });
 
+
 // Jalankan ketia page html sudah di load semua
 document.addEventListener('DOMContentLoaded', function() {
-    getWithHeader(UrlGetDataPendaftar,"login",token,renderDataPendaftarforNavbar);//navbar nama
-    setRefferal();//set referel kode
-    fetchDataTahunLulusan();//mengambil data lulusan
-    getWithHeader(UrlGetBiodataJalurWithToken, "login", token, renderDataJalurFromDB);//ambil isian dari db data sebelumnya untuk di update
+    setRefferal();
+    fetchDataTahunLulusan();
+    getWithHeader(UrlGetDataPendaftar,"login",token,renderDataPendaftar);
+    getWithHeader(UrlGetBiodataJalurWithToken, "login", token, renderDataJalurFromDB);
 }, false);
 //jalankan setelah semua script dijalankan
 window.addEventListener('load', (event) => {
     const jalur2=getCookie("jalur2");
-    const jalur3=getCookie("jalur3");
     $('#selectjalur').val(jalur2).trigger('change');
     onChangeSelectJalurByPilihan(jalur2);
-    $('#selectjalur2').val(jalur3).trigger('change');
 });
 
 async function renderDataJalurFromDB(result) {
@@ -50,11 +40,17 @@ async function renderDataJalurFromDB(result) {
             }
         await postWithToken(UrlGetJalurByTahun,"login",token,tahunllulus,populateDropdown);
         await setCookieWithExpireHour("jalur2",result.data.id_jalur,16);
-        await setCookieWithExpireHour("jalur3",result.data.id_jalur2,16);
     }
 }
 
-
+// Get Untuk Data di Navbar dan Form
+function renderDataPendaftar(result){
+  if (result.success){
+    setInnerText('nama_mhs_span', result.data.nama_mhs);
+  }else{
+    window.location.replace("https://pmb.ulbi.ac.id/");
+  }
+}
 
 // Untuk Get Referal
 function setRefferal() {
@@ -97,7 +93,7 @@ function onChangeSelectJalur(sel) {
     
 }
 
-async function onChangeSelectJalurByPilihan(pilihan) {
+function onChangeSelectJalurByPilihan(pilihan) {
     let thn=getCookie("lulusantahun");
     let tahunllulus={
     "tahun":parseInt(thn)
@@ -106,7 +102,7 @@ async function onChangeSelectJalurByPilihan(pilihan) {
     console.log(pilihan);
     if (pilihan === "4"){
         show("jalur2");
-        await postWithToken(UrlGetJalurByTahun,"login",token,tahunllulus,populateDropdown2);
+        postWithToken(UrlGetJalurByTahun,"login",token,tahunllulus,populateDropdown2);
     } else{
         hide("jalur2");
     }
@@ -117,8 +113,8 @@ async function onChangeSelectJalurByPilihan(pilihan) {
 // Event listener untuk tombol "Submit"
 const submitButton = document.getElementById('submitButton');
 submitButton.addEventListener('click', () => {
-    const tahunLulus = getValue('selecttahunlulus');
-    const jalurPendaftaran = getValue('selectjalur');
+    const tahunLulus = document.getElementById('selecttahunlulus').value;
+    const jalurPendaftaran = document.getElementById('selectjalur').value;
     if (!tahunLulus || !jalurPendaftaran) {
         Swal.fire({
             icon: 'warning',
@@ -148,23 +144,27 @@ submitButton.addEventListener('click', () => {
 // Membuat fungsi untuk mengirimkan data jalur pendaftaran ke API
 function submitJalurPendaftaran() {
     // Ambil Tahun Lulus
-    const tahunLulus = getValue('selecttahunlulus');
+    const tahunLulus = document.querySelector("#selecttahunlulus");
+    const statusLulus = tahunLulus ? tahunLulus.value : "";
     // Ambil Jalur Pendaftaran
-    const jalurPendaftaran = getValue('selectjalur');
+    const jalurPendaftaran = document.querySelector("#selectjalur");
+    const statusJalur = jalurPendaftaran ? jalurPendaftaran.value : "";
     const referralInput = getValue("referral");
     // jika ambil jalur ikatan dinas simpan cookies untuk langkah selanjutnya
-    let jalurPendaftaran2 ="";
     if (parseInt(statusJalur) === 4){
-        jalurPendaftaran2 = getValue('selectjalur2');
+        const jalurPendaftaran2 = document.querySelector("#selectjalur2");
+        const statusJalur2 = jalurPendaftaran2 ? jalurPendaftaran2.value : "";
         setCookieWithExpireHour("jalurreguler2",statusJalur2,16);
     }
+
+    
     var header = new Headers();
     header.append("login", token);
     header.append("Content-Type", "application/json");
     const postData = {
-        id_jalur : parseInt(jalurPendaftaran),
-        tahun_lulus : parseInt(tahunLulus),
-        id_jalur2: parseInt(jalurPendaftaran2),
+        id_jalur : parseInt(statusJalur),
+        tahun_lulus : parseInt(statusLulus),
+        id_jalur2: parseInt(selectjalur2),
         kode_ref : referralInput
     };
 
