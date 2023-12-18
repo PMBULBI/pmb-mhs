@@ -1,6 +1,6 @@
 import { UrlGetBiodataJalurWithToken } from "./controller/template.js";
 import { getWithHeader } from "https://cdn.jsdelivr.net/gh/jscroot/api@0.0.1/croot.js";
-import { token } from "../controller/cookies.js";
+import { token } from "./controller/cookies.js";
 
 var header = new Headers();
 header.append("login", token);
