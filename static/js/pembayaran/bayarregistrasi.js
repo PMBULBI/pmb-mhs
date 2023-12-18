@@ -5,7 +5,7 @@ import { getWithHeader } from "https://cdn.jsdelivr.net/gh/jscroot/api@0.0.1/cro
 import { setValue, setInnerText, setInner } from "https://cdn.jsdelivr.net/gh/jscroot/element@0.0.5/croot.js";
 
 // Cek Pembayaran VA Registrasi
-postWithToken(UrlCekPembayaranVAReg, "LOGIN", token, "test", ResponseVAReg)
+getWithHeader(UrlCekPembayaranVAReg, "LOGIN", token, "test", ResponseVAReg)
 
 function ResponseVAReg(value) {
   const bgWarning = 'py-[18px] px-6 font-normal font-Inter text-sm rounded-md bg-warning-500 text-white dark:bg-warning-500 dark:text-slate-300 mb-2';
