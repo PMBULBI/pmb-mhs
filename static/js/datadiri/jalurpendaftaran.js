@@ -33,7 +33,7 @@ window.addEventListener('load', (event) => {
 
 async function renderDataJalurFromDB(result) {
     if (result.success) {
-        //await setValue('selecttahunlulus', result.data.tahun_lulus);
+        await setValue('selecttahunlulus', result.data.tahun_lulus);
         await $('#selecttahunlulus').val(result.data.tahun_lulus).trigger('change');
         let tahunllulus={
             "tahun":parseInt(result.data.tahun_lulus)
@@ -209,7 +209,7 @@ function submitJalurPendaftaran() {
 // Membuat fungsi untuk fetch data ke dropdown jalur
 
 // Membuat fungsi dropdown jalur pendaftaran
-function populateDropdown(response) {
+async function populateDropdown(response) {
     const selectDropdown = document.getElementById('selectjalur');
     selectDropdown.innerHTML = '';
 
@@ -218,12 +218,14 @@ function populateDropdown(response) {
     defaultOption.text = 'Pilih Jalur';
     selectDropdown.appendChild(defaultOption);
 
-    response.data.forEach(item => {
+    await response.data.forEach(item => {
         const option = document.createElement('option');
         option.value = item.id_jalur;
         option.text = item.nama_jalur;
         selectDropdown.appendChild(option);
     });
+    const jalur2=getCookie("jalur2");
+    $('#selectjalur').val(jalur2).trigger('change');
 }
 async function populateDropdown2(response) {
     const selectDropdown = document.getElementById('selectjalur2');
