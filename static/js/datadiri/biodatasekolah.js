@@ -46,9 +46,10 @@ function renderDataPendaftar(result){
   if (result.success){
     setValue('akred', result.data.asal_sekolah);
     setInnerText('nama_mhs_span', result.data.nama_mhs);
-  }else{
-    window.location.replace("https://pmb.ulbi.ac.id/");
   }
+  // else{
+  //   window.location.replace("https://pmb.ulbi.ac.id/");
+  // }
 }
 
 // Untuk POST prodi & fakultas
@@ -207,69 +208,65 @@ console.log(fecthDataAsalJurusan);
 
 // Get Data Provinsi Untuk Dropdown
 // Buat variabel untuk get id element
-const provinsiAsalsuggestion = document.getElementById('provinsi-suggestions');
+const provinsiAsalsuggestion = document.getElementById('provinsi-suggestions'); // Perubahan di sini
 const inputProvinsiAsal = document.getElementById("provinsi-biodata");
-
 let selectedProvinsiId;
 
+// Membuat Listener untuk suggestions
 inputProvinsiAsal.addEventListener("input", async () => {
   const provinsiAsalValue = inputProvinsiAsal.value;
   const body = {
     nama_provinsi: provinsiAsalValue
   };
-
   try {
-    const inputValue = inputProvinsiAsal.value.trim();
-
+    const inputValue = inputProvinsiAsal.value.trim(); // Mendapatkan nilai input dan menghapus spasi
     if (inputValue === '') {
-      provinsiAsalsuggestion.innerHTML = '';
-      provinsiAsalsuggestion.style.display = 'none';
-      // Disable kota input jika provinsi kosong
+      provinsiAsalsuggestion.innerHTML = ''; // Kosongkan saran jika input kosong
+      provinsiAsalsuggestion.style.display = 'none'; // Sembunyikan daftar saran
       inputKotaAsal.disabled = true;
     } else if (inputValue.length < 2) {
       provinsiAsalsuggestion.textContent = 'Masukkan setidaknya 2 karakter';
       provinsiAsalsuggestion.style.display = 'block';
     } else {
       const data = await CihuyPost(UrlGetProvinsi, body);
-      
+      // Untuk Cek di console
       console.log("Data yang diterima setelah POST:", data);
-
       if (data.success == false) {
+        // Tampilkan pesan kesalahan
         provinsiAsalsuggestion.textContent = data.status;
         provinsiAsalsuggestion.style.display = 'block';
       } else {
+        // provinsiAsalsuggestion.textContent = JSON.stringify(data);
         provinsiAsalsuggestion.textContent = '';
         const provinceNames = data.data.map(provinsi => provinsi.nama_provinsi);
-
-        provinceNames.forEach(provinceName => {
-          const option = document.createElement("option");
-          option.value = provinceName;
-          inputProvinsiAsal.appendChild(option);
-          
+        provinsiAsalsuggestion.innerHTML = "";
+        provinceNames.forEach(provinceNames => {
           const elementProvinsi = document.createElement("div");
-          elementProvinsi.className = "provinsi";
-          elementProvinsi.textContent = provinceName;
-
-          elementProvinsi.addEventListener("click", () => {
-            inputProvinsiAsal.value = provinceName;
-            provinsiAsalsuggestion.innerHTML = '';
-            selectedProvinsiId = data.data.find(provinsi => provinsi.nama_provinsi === provinceName).id_provinsi;
-            inputKotaAsal.disabled = false;
-          });
-
+          elementProvinsi.className = "provinsi"
+          elementProvinsi.textContent = provinceNames;
+          const selectedProvinsi = data.data.find(provinsi => provinsi.nama_provinsi === provinceNames);
+          if (selectedProvinsi) {
+            elementProvinsi.addEventListener("click", () => {
+              inputProvinsiAsal.value = provinceNames;
+              provinsiAsalsuggestion.innerHTML = "";
+              selectedProvinsiId = selectedProvinsi.id_provinsi; // Menyimpan ID provinsi yang dipilih
+              inputKotaAsal.disabled = false;
+            });
+          }
           provinsiAsalsuggestion.appendChild(elementProvinsi);
-        });
-
-        provinsiAsalsuggestion.style.display = "block";
+          if (provinceNames.length > 0) {
+            provinsiAsalsuggestion.style.display = "block";
+          } else {
+            provinsiAsalsuggestion.style.display = "none";
+          }
+        })
       }
-
-      // Menambahkan class 'dropdown' pada div suggestions
       provinsiAsalsuggestion.classList.add('dropdown');
     }
   } catch (error) {
     console.error("Terjadi kesalahan saat melakukan GET:", error);
   }
-});
+})
 
 // Get Data Kota Untuk Dropdown
 // Buat variabel untuk get id element
