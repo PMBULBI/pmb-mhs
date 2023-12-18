@@ -26,8 +26,8 @@ document.addEventListener('DOMContentLoaded', function() {
 }, false);
 //jalankan setelah semua script dijalankan
 window.addEventListener('load', (event) => {
-    const jalur2=getCookie("jalur2");
-    $('#selectjalur').val(jalur2).trigger('change');
+    const jalur2=getCookie("jalurreguler2");
+    $('#selectjalur2').val(jalur2).trigger('change');
     onChangeSelectJalurByPilihan(jalur2);
 });
 
@@ -151,9 +151,11 @@ function submitJalurPendaftaran() {
     const statusJalur = jalurPendaftaran ? jalurPendaftaran.value : "";
     const referralInput = getValue("referral");
     // jika ambil jalur ikatan dinas simpan cookies untuk langkah selanjutnya
+
+    const statusJalur2 = getValue("selectjalur2");
     if (parseInt(statusJalur) === 4){
-        const jalurPendaftaran2 = document.querySelector("#selectjalur2");
-        const statusJalur2 = jalurPendaftaran2 ? jalurPendaftaran2.value : "";
+        // const jalurPendaftaran2 = document.querySelector("#selectjalur2");
+        // statusJalur2 = jalurPendaftaran2 ? jalurPendaftaran2.value : "";
         setCookieWithExpireHour("jalurreguler2",statusJalur2,16);
     }
 
