@@ -19,7 +19,7 @@ function responseData(result){
 getWithHeader(UrlGetDataPendaftar,"login", token, responseDataPendaftar);
 function responseDataPendaftar(result) {
   if (result.success){
-    setInnerText('nama_mhs_header', result.data.nama_mhs);
+    setInnerText('nama_mhs_header', result.data.nama_mhs)
     setInnerText('nama_mhs_span', result.data.nama_mhs);
     setInnerText('nama_mhs', result.data.nama_mhs);
     setInnerText('email_mhs', result.data.email_mhs);
@@ -64,6 +64,7 @@ function responseDataJalur(result) {
         break;
       case 9:
         namaJalur = "UTBK";
+        document.getElementById('onlineTestCard').classList.remove('hidden');
         break;
       case 10:
         namaJalur = "RPL";
