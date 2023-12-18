@@ -104,8 +104,6 @@ async function onChangeSelectJalurByPilihan(pilihan) {
     if (pilihan === "4"){
         show("jalur2");
         await postWithToken(UrlGetJalurByTahun,"login",token,tahunllulus,populateDropdown2);
-        const jalur3=getCookie("jalur3");
-        $('#selectjalur2').val(jalur3).trigger('change');
     } else{
         hide("jalur2");
     }
@@ -227,7 +225,7 @@ function populateDropdown(response) {
         selectDropdown.appendChild(option);
     });
 }
-function populateDropdown2(response) {
+async function populateDropdown2(response) {
     const selectDropdown = document.getElementById('selectjalur2');
     selectDropdown.innerHTML = '';
 
@@ -236,7 +234,7 @@ function populateDropdown2(response) {
     defaultOption.text = 'Pilih Jalur';
     selectDropdown.appendChild(defaultOption);
 
-    response.data.forEach(item => {
+    await response.data.forEach(item => {
         if (item.id_jalur!==4){
             const option = document.createElement('option');
             option.value = item.id_jalur;
@@ -244,6 +242,8 @@ function populateDropdown2(response) {
             selectDropdown.appendChild(option);
         }
     });
+    const jalur3=getCookie("jalur3");
+    $('#selectjalur2').val(jalur3).trigger('change');
 }
 
 // Get Tahun Lulusan
