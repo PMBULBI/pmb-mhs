@@ -1,5 +1,5 @@
 import { postWithToken, getWithHeader } from "https://cdn.jsdelivr.net/gh/jscroot/api@0.0.2/croot.js";
-import { getValue, getValueRadio, onClick } from "https://cdn.jsdelivr.net/gh/jscroot/element@0.1.0/croot.js";
+import { setInnerText, getValueRadio, onClick } from "https://cdn.jsdelivr.net/gh/jscroot/element@0.1.0/croot.js";
 import { UrlGetDataPendaftar } from "./template.js";
 import { BaseUrl } from "../constant.js";
 import { token } from "./cookies.js";
