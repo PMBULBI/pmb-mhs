@@ -8,9 +8,7 @@ header.append("Content-Type", "application/json");
 // Get Untuk Data di Navbar dan Form
 getWithHeader(UrlGetBiodataJalurWithToken, "login", token, responseData);
 function responseData(result){
-  if (result.success){
-    window.location.replace("https://pmb.ulbi.ac.id/pmb-mhs/index_backup.html");
-  } else {
+  if (!result.success){
     window.location.replace("https://pmb.ulbi.ac.id/pmb-mhs/datadiri/jalurpendaftaran.html");
   }
 }
