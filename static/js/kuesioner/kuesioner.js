@@ -1,8 +1,8 @@
 import { postWithToken, getWithHeader } from "https://cdn.jsdelivr.net/gh/jscroot/api@0.0.2/croot.js";
 import { setInnerText, getValueRadio, onClick, setInner } from "https://cdn.jsdelivr.net/gh/jscroot/element@0.1.0/croot.js";
-import { UrlGetDataPendaftar, UrlGetKuesionerWithToken } from "./template.js";
+import { UrlGetDataPendaftar, UrlGetKuesionerWithToken } from "../controller/template.js";
 import { BaseUrl } from "../constant.js";
-import { token } from "./cookies.js";
+import { token } from "../controller/cookies.js";
 
 // Cek Pengisian Kuesioner
 getWithHeader(UrlGetKuesionerWithToken, "login", token, ResponseGetKuesioner)
