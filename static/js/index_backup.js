@@ -1,4 +1,4 @@
-import { UrlGetBiodataJalurWithToken, UrlGetDataPendaftar, UrlGetKuesionerWithToken, UrlCekPembayaranVAReg } from "./controller/template.js";
+import { UrlGetBiodataJalurWithToken, UrlGetDataPendaftar, UrlGetKuesionerWithToken, UrlCekPembayaranVAReg, UrlGetBiodataSekolahWithToken } from "./controller/template.js";
 import { getWithHeader } from "https://cdn.jsdelivr.net/gh/jscroot/api@0.0.1/croot.js";
 import { postWithToken}  from "https://jscroot.github.io/api/croot.js";
 import { setInnerText, setInner } from "https://cdn.jsdelivr.net/gh/jscroot/element@0.0.5/croot.js";
@@ -98,7 +98,7 @@ function responseBadgesKuesioner(value) {
 }
 
 // Pengkondisian Badges Biodata
-getWithHeader(UrlGetBiodataJalurWithToken, "LOGIN", token, responseBadgesBiodata)
+getWithHeader(UrlGetBiodataSekolahWithToken, "LOGIN", token, responseBadgesBiodata)
 
 function responseBadgesBiodata(value) {
   const bgWarning = 'badge bg-warning-500 absolute text-white capitalize top-0 right-0 mt-1 mr-1';
