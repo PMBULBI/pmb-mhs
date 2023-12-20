@@ -1,4 +1,4 @@
-import { UrlGetBiodataJalurWithToken, UrlGetDataPendaftar } from "./controller/template.js";
+import { UrlGetBiodataJalurWithToken, UrlGetDataPendaftar, UrlGetKuesionerWithToken } from "./controller/template.js";
 import { getWithHeader } from "https://cdn.jsdelivr.net/gh/jscroot/api@0.0.1/croot.js";
 import { setInnerText } from "https://cdn.jsdelivr.net/gh/jscroot/element@0.0.5/croot.js";
 import { token } from "./controller/cookies.js";
@@ -80,3 +80,50 @@ function responseDataJalur(result) {
   }
 }
 
+// Pengkondisian Badges Kuesioner
+getWithHeader(UrlGetKuesionerWithToken, "LOGIN", token, "test", responseBadges)
+
+function responseBadges(value) {
+  const bgWarning = 'badge bg-warning-500 absolute text-white capitalize top-0 right-0 mt-1 mr-1';
+  const bgSuccess = 'badge bg-success-500 absolute text-white capitalize top-0 right-0 mt-1 mr-1';
+  if (value.success) {
+    setInner('badgeProses1', 'Sudah Diisi');
+    // Show the hidden button 
+    document.getElementById("badgeProses1").className = bgSuccess;
+  } else {
+    setInner('badgeProses1', 'Belum Diisi');
+    document.getElementById("badgeProses1").className = bgWarning;
+  }
+}
+
+// Pengkondisian Badges Biodata
+getWithHeader(UrlGetBiodataJalurWithToken, "LOGIN", token, "test", responseBadges)
+
+function responseBadges(value) {
+  const bgWarning = 'badge bg-warning-500 absolute text-white capitalize top-0 right-0 mt-1 mr-1';
+  const bgSuccess = 'badge bg-success-500 absolute text-white capitalize top-0 right-0 mt-1 mr-1';
+  if (value.success) {
+    setInner('badgeProses2', 'Sudah Diisi');
+    // Show the hidden button 
+    document.getElementById("badgeProses2").className = bgSuccess;
+  } else {
+    setInner('badgeProses2', 'Belum Diisi');
+    document.getElementById("badgeProses2").className = bgWarning;
+  }
+}
+
+// Pengkondisian Badges Pengumuman
+postWithToken(UrlCekPembayaranVAReg, "LOGIN", token, "test", responseBadges)
+
+function responseBadges(value) {
+  const bgWarning = 'badge bg-warning-500 absolute text-white capitalize top-0 right-0 mt-1 mr-1';
+  const bgSuccess = 'badge bg-success-500 absolute text-white capitalize top-0 right-0 mt-1 mr-1';
+  if (value.data.lunas) {
+    setInner('badgeProses4', 'Sudah Ada');
+    // Show the hidden button 
+    document.getElementById("badgeProses4").className = bgSuccess;
+  } else {
+    setInner('badgeProses4', 'Belum Ada');
+    document.getElementById("badgeProses4").className = bgWarning;
+  }
+}
