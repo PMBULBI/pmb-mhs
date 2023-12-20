@@ -57,7 +57,10 @@ const responseKuesioner = (res) => {
         text: 'Anda berhasil menyimpan kuisioner!',
         showConfirmButton: false,
         timer: 1500
-      });
+      })
+      .then(() => {
+        window.location.replace("https://pmb.ulbi.ac.id/pmb-mhs/index_backup.html");
+      })
 
     // success state
     return;
