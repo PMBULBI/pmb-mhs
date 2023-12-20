@@ -81,9 +81,9 @@ function responseDataJalur(result) {
 }
 
 // Pengkondisian Badges Kuesioner
-getWithHeader(UrlGetKuesionerWithToken, "LOGIN", token, "test", responseBadges)
+getWithHeader(UrlGetKuesionerWithToken, "LOGIN", token, "test", responseBadgesKuesioner)
 
-function responseBadges(value) {
+function responseBadgesKuesioner(value) {
   const bgWarning = 'badge bg-warning-500 absolute text-white capitalize top-0 right-0 mt-1 mr-1';
   const bgSuccess = 'badge bg-success-500 absolute text-white capitalize top-0 right-0 mt-1 mr-1';
   if (value.success) {
@@ -97,9 +97,9 @@ function responseBadges(value) {
 }
 
 // Pengkondisian Badges Biodata
-getWithHeader(UrlGetBiodataJalurWithToken, "LOGIN", token, "test", responseBadges)
+getWithHeader(UrlGetBiodataJalurWithToken, "LOGIN", token, "test", responseBadgesBiodata)
 
-function responseBadges(value) {
+function responseBadgesBiodata(value) {
   const bgWarning = 'badge bg-warning-500 absolute text-white capitalize top-0 right-0 mt-1 mr-1';
   const bgSuccess = 'badge bg-success-500 absolute text-white capitalize top-0 right-0 mt-1 mr-1';
   if (value.success) {
@@ -113,9 +113,9 @@ function responseBadges(value) {
 }
 
 // Pengkondisian Badges Pengumuman
-postWithToken(UrlCekPembayaranVAReg, "LOGIN", token, "test", responseBadges)
+postWithToken(UrlCekPembayaranVAReg, "LOGIN", token, "test", responseBadgesPengumuman)
 
-function responseBadges(value) {
+function responseBadgesPengumuman(value) {
   const bgWarning = 'badge bg-warning-500 absolute text-white capitalize top-0 right-0 mt-1 mr-1';
   const bgSuccess = 'badge bg-success-500 absolute text-white capitalize top-0 right-0 mt-1 mr-1';
   if (value.data.lunas) {
