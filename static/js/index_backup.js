@@ -8,14 +8,6 @@ var header = new Headers();
 header.append("login", token);
 header.append("Content-Type", "application/json");
 
-// Get Untuk Data di Navbar dan Form
-getWithHeader(UrlGetBiodataJalurWithToken, "login", token, responseData);
-function responseData(result){
-  if (!result.success){
-    window.location.replace("https://pmb.ulbi.ac.id/pmb-mhs/datadiri/jalurpendaftaran.html");
-  }
-}
-
 // Get Data untuk Tampilan Di Dashboard
 getWithHeader(UrlGetDataPendaftar,"login", token, responseDataPendaftar);
 function responseDataPendaftar(result) {
