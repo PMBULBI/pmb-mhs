@@ -7,6 +7,7 @@ import { setValue } from "https://cdn.jsdelivr.net/gh/jscroot/element@0.0.5/croo
 getWithHeader(UrlGetDataPendaftar,"login",token,responseDataDiri);
 function responseDataDiri(result){
   if (result.success){
+    setInnerText('nama_mhs_span', result.data.nama_mhs);
     setValue('nama', result.data.nama_mhs);
     setValue('no_hp', result.data.hp_mhs);
     setValue('email', result.data.email_mhs);
