@@ -273,7 +273,7 @@ inputKotaAsal.addEventListener("input", async () => {
 // Buat variabel untuk get id element
 const kecamatanSuggestion = document.getElementById('kecamatan-suggestions');
 const inputKecamatan = document.getElementById("kecamatan-biodata");
-//let selectedKecamatanId;
+let selectedKecamatanId;
 
 // Listener untuk suggestion
 inputKecamatan.addEventListener("input", async () => {
