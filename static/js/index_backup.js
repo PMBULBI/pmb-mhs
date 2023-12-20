@@ -1,7 +1,7 @@
 import { UrlGetBiodataJalurWithToken, UrlGetDataPendaftar, UrlGetKuesionerWithToken, UrlCekPembayaranVAReg } from "./controller/template.js";
 import { getWithHeader } from "https://cdn.jsdelivr.net/gh/jscroot/api@0.0.1/croot.js";
 import { postWithToken}  from "https://jscroot.github.io/api/croot.js";
-import { setInnerText } from "https://cdn.jsdelivr.net/gh/jscroot/element@0.0.5/croot.js";
+import { setInnerText, setInner } from "https://cdn.jsdelivr.net/gh/jscroot/element@0.0.5/croot.js";
 import { token } from "./controller/cookies.js";
 
 var header = new Headers();
