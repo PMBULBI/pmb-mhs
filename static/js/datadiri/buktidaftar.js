@@ -1,4 +1,4 @@
-import { UrlGetBiodataDiriWithToken,  UrlGetBiodataProdiWithToken, UrlGetDataPendaftar } from "../controller/template.js";
+import { UrlGetBiodataDiriWithToken, UrlGetBiodataJalurWithToken, UrlGetBiodataProdiWithToken, UrlGetDataPendaftar } from "../controller/template.js";
 import { token } from "../controller/cookies.js";
 import { setValue } from "https://cdn.jsdelivr.net/gh/jscroot/element@0.0.5/croot.js";
 
@@ -21,6 +21,58 @@ function responseNik(result){
 }
 
 // Get Untuk Jalur
+getWithHeader(UrlGetBiodataJalurWithToken, "login", token, responseDataJalur);
+
+function responseDataJalur(result) {
+  let namaJalur;
+
+  if (result.success) {
+    const jalurPendaftar = result.data.id_jalur;
+
+    switch (jalurPendaftar) {
+      case 1:
+        namaJalur = "Undangan";
+        break;
+      case 2:
+        namaJalur = "Jalur Rapor Gelombang 1";
+        break;
+      case 3:
+        namaJalur = "CBT";
+        document.getElementById('onlineTestCard').removeAttribute('hidden');
+        break;
+      case 4:
+        namaJalur = "Ikatan Dinas";
+        break;
+      case 5:
+        namaJalur = "Reguler Magister";
+        break;
+      case 6:
+        namaJalur = "Fast Track Magister";
+        break;
+      case 7:
+        namaJalur = "Kelas Karyawan";
+        break;
+      case 8:
+        namaJalur = "Mandiri";
+        break;
+      case 9:
+        namaJalur = "UTBK";
+        break;
+      case 10:
+        namaJalur = "RPL";
+        break;
+      default:
+        console.log("Tidak Ada Jalur");
+        return;
+    }
+
+    setValue('jalur', namaJalur);
+  } else {
+    console.log(result);
+  }
+}
+
+// Get Untuk Prodi
 // Map program codes to program names
 const programMap = {
     14: "S1 Terapan - Teknik Informatika",
@@ -43,12 +95,12 @@ const programMap = {
   
   // Function to get program name based on program code
   function getProgramName(programCode) {
-    return programMap[programCode] || "Tidak Ada Jalur";
+    return programMap[programCode] || "Tidak Ada Program Studi";
   }
   
-  getWithHeader(UrlGetBiodataProdiWithToken, "login", token, responseJalur);
+  getWithHeader(UrlGetBiodataProdiWithToken, "login", token, responseProdi);
   
-  function responseJalur(result) {
+  function responseProdi(result) {
     if (result.success) {
       const programStudi1 = result.data.prodi1;
       const programStudi2 = result.data.prodi2;
