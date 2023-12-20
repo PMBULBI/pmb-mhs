@@ -8,15 +8,10 @@ import { token } from "./cookies.js";
 getWithHeader(UrlGetKuesionerWithToken, "login", token, ResponseGetKuesioner)
 
 function ResponseGetKuesioner(value) {
-    const bgWarning = "py-[18px] px-6 font-normal font-Inter text-sm rounded-md bg-warning-500 text-white dark:bg-warning-500 dark:text-slate-300 mb-2";
-    const bgSuccess = "py-[18px] px-6 font-normal font-Inter text-sm rounded-md bg-success-500 text-white dark:bg-success-500 dark:text-slate-300 mb-2";
     if (value.success) {
-        setInner('alertKuesioner', '<b>Sudah Isi Kuesioner!</b> Terima kasih kamu mengisi kuesioner dengan baik dan benar.');
-        document.getElementById("colorAlert").className = bgSuccess;
-        console.log(value);
+        window.location.replace('https://pmb.ulbi.ac.id/pmb-mhs/kuesioner/konfirmasikuesioner.html');
     } else {
-        setInner('alertKuesioner', 'Silahkan <b>isi kuesioner</b> dengan baik dan benar.');
-    document.getElementById("colorAlert").className = bgWarning;
+        console.log(value);
     }
 }
 
@@ -109,6 +104,5 @@ const getData = async () => {
     }    
     return data;
 }
-
 
 main();
