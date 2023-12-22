@@ -1,4 +1,4 @@
-import { UrlGetBiodataDiriWithToken, UrlGetBiodataJalurWithToken, UrlGetBiodataOrtuWithToken, UrlGetBiodataProdiWithToken, UrlGetBiodataSekolahWithToken } from "../../js/controller/template.js";
+import { UrlGetBiodataDiriWithToken, UrlGetBiodataJalurWithToken, UrlGetBiodataOrtuWithToken, UrlGetBiodataProdiWithToken, UrlGetBiodataSekolahWithToken, UrlGetKuesionerWithToken } from "../../js/controller/template.js";
 import { token } from "../../js/controller/cookies.js";
 import { setInner } from "https://cdn.jsdelivr.net/gh/jscroot/element@0.0.5/croot.js";
 import { getWithHeader } from "https://cdn.jsdelivr.net/gh/jscroot/api@0.0.1/croot.js";
@@ -86,3 +86,19 @@ function responseSekolah(value) {
 }
 
 // Data Biodata Persyaratan
+
+// Data Isi Kuesioner
+getWithHeader(UrlGetKuesionerWithToken, "LOGIN", token, responseBadgesKuesioner)
+
+function responseBadgesKuesioner(value) {
+  const bgWarning = 'badge bg-warning-500 absolute text-white capitalize top-0 right-0 mt-1 mr-1';
+  const bgSuccess = 'badge bg-success-500 absolute text-white capitalize top-0 right-0 mt-1 mr-1';
+  if (value.success) {
+    setInner('badgeKuesioner', 'Sudah Diisi');
+    // Show the hidden button 
+    document.getElementById("badgeKuesioner").className = bgSuccess;
+  } else {
+    setInner('badgeKuesioner', 'Belum Diisi');
+    document.getElementById("badgeKuesioner").className = bgWarning;
+  }
+}
