@@ -53,9 +53,9 @@ function responseBiodataDiri(value) {
 }
 
 // Data Biodata Orang Tua
-getWithHeader(UrlGetBiodataOrtuWithToken, "LOGIN", token, responseBiodataDiri)
+getWithHeader(UrlGetBiodataOrtuWithToken, "LOGIN", token, responseOrtu)
 
-function responseBiodataDiri(value) {
+function responseOrtu(value) {
   const bgWarning = 'badge bg-warning-500 absolute text-white capitalize top-0 right-0 mt-1 mr-1';
   const bgSuccess = 'badge bg-success-500 absolute text-white capitalize top-0 right-0 mt-1 mr-1';
   if (value.success) {
@@ -69,9 +69,9 @@ function responseBiodataDiri(value) {
 }
 
 // Data Biodata Sekolah
-getWithHeader(UrlGetBiodataSekolahWithToken, "LOGIN", token, responseBiodataDiri)
+getWithHeader(UrlGetBiodataSekolahWithToken, "LOGIN", token, responseSekolah)
 
-function responseBiodataDiri(value) {
+function responseSekolah(value) {
   const bgWarning = 'badge bg-warning-500 absolute text-white capitalize top-0 right-0 mt-1 mr-1';
   const bgSuccess = 'badge bg-success-500 absolute text-white capitalize top-0 right-0 mt-1 mr-1';
   if (value.success) {
