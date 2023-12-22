@@ -1,5 +1,6 @@
 import { UrlGetBiodataDiriWithToken, UrlGetBiodataJalurWithToken, UrlGetBiodataOrtuWithToken, UrlGetBiodataProdiWithToken, UrlGetBiodataSekolahWithToken } from "../../js/controller/template.js";
 import { token } from "../../js/controller/cookies.js";
+import { setInner } from "https://cdn.jsdelivr.net/gh/jscroot/element@0.0.5/croot.js";
 import { getWithHeader } from "https://cdn.jsdelivr.net/gh/jscroot/api@0.0.1/croot.js";
 
 
